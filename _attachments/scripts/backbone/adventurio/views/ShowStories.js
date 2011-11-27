@@ -30,7 +30,16 @@ adventurio.views.ShowStories = Backbone.View.extend({
 				
 			},
 			events : {
-
+				"click .viewStoryLink": "viewStory"
+			},
+			
+			viewStory: function(e){
+				var dataUrl = $(e.currentTarget).attr("data-url");
+				if(dataUrl != null){
+					$.mobile.changePage("#mainpage" +dataUrl);	
+				}
+				
+				// $.mobile.changePage("index.html#singleStory");
 			}
 });
 

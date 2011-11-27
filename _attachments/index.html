@@ -28,7 +28,7 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 				<script id="listAllStories_template" type="text/x-handlebars-template">
 				{{#storyObjects}}
 					<li id="storyLink">
-						<a href="#viewStory" data-identity="{{_id}}" onclick="storyId='{{value._id}}';" >
+						<a href="#" class="viewStoryLink" data-identity="story_{{value._id}}" data-url="?story={{value._id}}" >
 							<h2 class="storyName">{{value.name}}</h2>
 						</a>
 						<p class="storyCreator">{{value.creator}}</p>
@@ -37,6 +37,23 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 				{{/storyObjects}}
 				</script>
 				</ul>
+			</div>
+			<div data-role="footer">
+				Footer
+			</div>
+		</div>
+		
+	<div data-role="page" id="viewStory" data-position="inline" data-back="true">
+			<div data-role="header" id="storyheader">
+				<h2 class="storyname">Replaced</h2>
+				<a href="#mainpage" data-icon="grid" class="ui-btn-right">Home</a>
+			</div>
+			<div data-role="content" id="viewStory_content" data-identity="{{storyId}}">
+				<script id="showStory_template" type="text/x-handlebars-template">
+					<h2 class="storyCreator"/>{{storyCreator}}</h2>
+					<p class="storyName">{{storyName}}</p>
+					<p class="description">{{storyDescription}}</p>
+				</script>
 			</div>
 			<div data-role="footer">
 				Footer
