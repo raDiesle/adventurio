@@ -1,0 +1,3 @@
+Story = Backbone.Model.extend({
+
+});

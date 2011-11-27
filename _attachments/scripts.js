@@ -1,0 +1,14 @@
+ $LAB
+ .setOptions({AlwaysPreserveOrder:true})
+ .script("init.js")
+ .script("lib/json2.js")
+ .script("lib/jquery-1.7.js")
+ .script("lib/jquery.mobile.router.js")
+ .script("lib/jquery.mobile-1.0.js")
+ .script("lib/underscore.js")
+ .script("lib/backbone.js")
+ .script("scripts/backbone/adventurio/mocks/stories.js")
+ .script("lib/handlebars-1.0.0.beta.4.js")
+ .script("scripts/backbone/adventurio/views/ShowStories.js")
+ .script("scripts/backbone/adventurio/routers/router.js")
+.script("app.js");

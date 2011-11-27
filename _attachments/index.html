@@ -1,0 +1,56 @@
+<%
+response.setHeader("Cache-Control","no-store"); //HTTP 1.1
+response.setHeader("Pragma","no-cache"); //HTTP 1.0
+response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
+%>
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org/" xmlns:ngm="http://github.com/tigbro/jquery-mobile-angular-adapter">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta names="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+    <link rel="stylesheet" href="lib/jquery.mobile-1.0.css">
+    <link rel="stylesheet" href="css/adventurio.css">
+
+    <title>Adventurio</title>
+    
+</head>
+<body>
+
+	<div data-role="page" id="mainpage">
+			<div data-role="header">
+				<h2>Stories</h2>
+			</div>
+			<div data-role="content">
+				<ul id="listedStories" data-role="listview" data-theme="c" data-divendertheme="b">
+				<script id="listAllStories_template" type="text/x-handlebars-template">
+				{{#storyObjects}}
+					<li id="storyLink">
+						<a href="#viewStory" data-identity="{{_id}}" onclick="storyId='{{value._id}}';" >
+							<h2 class="storyName">{{value.name}}</h2>
+						</a>
+						<p class="storyCreator">{{value.creator}}</p>
+						<p class="storyCategory">{{value.category}}</p>
+					</li>
+				{{/storyObjects}}
+				</script>
+				</ul>
+			</div>
+			<div data-role="footer">
+				Footer
+			</div>
+		</div>
+
+<!--
+/********************************************************
+*  Script management
+*********************************************************/
+-->
+
+	<script type="text/javascript" src="lib/LAB.js"></script>
+	<script type="text/javascript" src="scripts.js"></script>
+
+</body>
+</html>
