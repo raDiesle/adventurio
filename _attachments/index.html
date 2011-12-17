@@ -59,6 +59,40 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 				Footer
 			</div>
 		</div>
+		
+	<div data-role="page" id="createstory" data-position="inline" data-nobackbtn="true">
+			<div data-role="header" id="createStory_header">
+				<h2 class="storyname">Replaced</h2>
+				<a id="cancelBackButton" href="#" data-icon="delete">Close</a>
+			</div>
+			<div data-role="content" id="createStory_content" data-identity="{{storyId}}" >
+				<script id="createStory_template" type="text/x-handlebars-template">
+				<form id="createStory_form" action="#" method="get" data-identity="{{document}}">
+		            <div data-role="fieldcontain">
+		                <label for="createStory_storyName">Creator:</label>
+		                <input id="createStory_storyName" name="storyName" type="text" value="{{storyName}}" />
+		            </div>
+		            <div data-role="fieldcontain">
+		                <label for="createStory_description">Description:</label>
+		                <textarea id="createStory_description" name="description" cols="40" rows="8">{{storyDescription}}</textarea>
+		            </div>
+		         	<div data-role="fieldcontain">
+		                <label for="createStory_tags">Tags</label>
+		                <input id="createStory_tags" name="tags" type="text" value="tags" />
+			        </div>
+		            
+		            
+	            <div data-role="controlgroup" data-type="horizontal"> 
+	            	<a href="#" id="cancelButton" data-role="button" >Cancel</a>
+                 	<a href="#" id="submitButton" data-role="button" >Submit</a>
+             	</div>
+	        	</form>
+		        </script>
+			</div>
+			<div data-role="footer">
+				Footer
+			</div>
+		</div>
 
 <!--
 /********************************************************

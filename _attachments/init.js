@@ -6,6 +6,8 @@ var adventurio = {
     models : {},
     views : {
     	ShowStories : {},
+    	ShowStory : {},
+    	CreateStory : {},
         pages : {}
     },
     mocks : {},

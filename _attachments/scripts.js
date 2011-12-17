@@ -11,5 +11,7 @@
  .script("scripts/backbone/adventurio/mocks/singleStory.js")
  .script("lib/handlebars-1.0.0.beta.4.js")
  .script("scripts/backbone/adventurio/views/ShowStories.js")
+ .script("scripts/backbone/adventurio/views/ShowStory.js")
+ .script("scripts/backbone/adventurio/views/CreateStory.js")
  .script("scripts/backbone/adventurio/routers/router.js")
 .script("app.js");
