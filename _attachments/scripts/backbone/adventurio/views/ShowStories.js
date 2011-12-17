@@ -36,7 +36,7 @@ adventurio.views.ShowStories = Backbone.View.extend({
 			viewStory: function(e){
 				var dataUrl = $(e.currentTarget).attr("data-url");
 				if(dataUrl != null){
-					$.mobile.changePage("#mainpage" +dataUrl);	
+					$.mobile.changePage("#viewstory" +dataUrl);	
 				}
 				
 				// $.mobile.changePage("index.html#singleStory");

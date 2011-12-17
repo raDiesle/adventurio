@@ -8,6 +8,7 @@
  .script("lib/underscore.js")
  .script("lib/backbone.js")
  .script("scripts/backbone/adventurio/mocks/stories.js")
+ .script("scripts/backbone/adventurio/mocks/singleStory.js")
  .script("lib/handlebars-1.0.0.beta.4.js")
  .script("scripts/backbone/adventurio/views/ShowStories.js")
  .script("scripts/backbone/adventurio/routers/router.js")
