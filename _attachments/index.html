@@ -53,6 +53,9 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 					<h2 class="storyCreator"/>{{storyCreator}}</h2>
 					<p class="storyName">{{storyName}}</p>
 					<p class="description">{{storyDescription}}</p>
+					<a id="viewstory_edit" href="index.html#createstory" data-role="button" data-inline="true"
+						data-identity="story_{{value._id}}" data-url="?story={{storyId}}"
+					>Edit Story</a> 
 				</script>
 			</div>
 			<div data-role="footer">

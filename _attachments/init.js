@@ -3,7 +3,9 @@
  */
 
 var adventurio = {
-    models : {},
+    models : {
+    	StoryModel : {}
+    },
     views : {
     	ShowStories : {},
     	ShowStory : {},
@@ -12,10 +14,12 @@ var adventurio = {
     },
     mocks : {},
     routers : {},
-    collections : {},
+    collections : {
+    	StoryCollection : {},
+    	StoriesCollection : {}
+	},
     utils:{}
 };
-
 
 // function registerPlugins(){
 	// $.extend({

@@ -25,5 +25,20 @@ adventurio.views.ShowStory = Backbone.View.extend({
 		var html = template(context);
 		$("#viewStory_content").html(html);
 		$("#storyheader .storyname").text(data.name);
+	},
+	
+	events : {
+		"click #viewstory_edit" : "editStory"
+	},
+
+	editStory : function(e) {
+		console.log("Edit story link clicked");
+		var dataUrl = $(e.currentTarget).attr("data-url");
+		if(dataUrl != null) {
+			$.mobile.changePage("#createstory" + dataUrl);
+		}
+
+		// $.mobile.changePage("index.html#singleStory");
 	}
+
 });
