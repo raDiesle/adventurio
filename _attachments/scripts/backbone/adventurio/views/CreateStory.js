@@ -42,20 +42,21 @@ adventurio.views.CreateStory = Backbone.View.extend({
 		
 		var stories = new adventurio.collections.StoriesCollection();
 		
-		// test for create 
+		// test for fetch
 		var storyModel = new adventurio.models.StoryModel();
+		stories.fetch();
+		
+		var name = "Hofmann";
+	 	var creator = "GameCreator";
+	 	
+		// test for create 
+		var storyModel = new adventurio.collectionsStoryCollection();
 		var newStoryModel = storyModel.create({
 			"name" : name,
 			"creator" : creator
 		});
 			
 			
-		// test for fetch
-		var storyModel = adventurio.models.StoryModel;
-		storyModel.fetch();
-		
-		var name = "Hofmann";
-	 	var creator = "GameCreator";
 	 
 		
 	}

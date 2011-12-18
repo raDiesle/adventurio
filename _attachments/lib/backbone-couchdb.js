@@ -14,8 +14,8 @@
   };
   Backbone.couch_connector = con = {
     config: {
-      db_name: "backbone_connect",
-      ddoc_name: "backbone_example",
+      db_name: "adventurio",
+      ddoc_name: "adventurio",
       view_name: "byCollection",
       global_changes: false,
       base_url: null

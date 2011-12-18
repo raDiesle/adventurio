@@ -1,13 +1,10 @@
 adventurio.models.StoryModel = Backbone.Model.extend({
 	initialize : function(){
 	  if(!this.get("name")){
-        this.set({"name": "Anonymus"});
+        this.set({"name": "Peter Van"});
       }
-      if(!this.get("text")){
-        this.set({"text": "Nothing"});
-      }
-      if(!this.get("date")){
-        this.set({"date": new Date().getTime()});
+      if(!this.get("creator")){
+        this.set({"creator": "whoever"});
       }
 	}
 });
