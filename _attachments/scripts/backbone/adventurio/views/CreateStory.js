@@ -35,25 +35,23 @@ adventurio.views.CreateStory = Backbone.View.extend({
 		"click #submitButton" : "createStory",
 	},
 	
-	 
-	
 	createStory : function(e){
-		console.log("create Story clicked");
 		
-		var stories = new adventurio.collections.StoriesCollection();
 		
+		
+		/*
 		// test for fetch
+		var stories = new adventurio.collections.StoriesCollection();
 		var storyModel = new adventurio.models.StoryModel();
 		stories.fetch();
+		*/
 		
-		var name = "Hofmann";
-	 	var creator = "GameCreator";
-	 	
-		// test for create 
-		var storyModel = new adventurio.collectionsStoryCollection();
+	 
+		var storyModel = new adventurio.collections.StoryCollection();
 		var newStoryModel = storyModel.create({
-			"name" : name,
-			"creator" : creator
+			"name" : $("#createStory_storyName").val(),
+			"creator" : $("#createStory_description").val(),
+			"tags" : $("#createStory_tags").val()
 		});
 			
 			

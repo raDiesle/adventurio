@@ -28,11 +28,11 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 				<script id="listAllStories_template" type="text/x-handlebars-template">
 				{{#storyObjects}}
 					<li id="storyLink">
-						<a href="#" class="viewStoryLink" data-identity="story_{{value._id}}" data-url="?story={{value._id}}" >
-							<h2 class="storyName">{{value.name}}</h2>
+						<a href="#" class="viewStoryLink" data-identity="story_{{_id}}" data-url="?story={{_id}}" >
+							<h2 class="storyName">{{name}}</h2>
 						</a>
-						<p class="storyCreator">{{value.creator}}</p>
-						<p class="storyCategory">{{value.category}}</p>
+						<p class="storyCreator">{{creator}}</p>
+						<p class="storyCategory">{{tags}}</p>
 					</li>
 				{{/storyObjects}}
 				</script>
