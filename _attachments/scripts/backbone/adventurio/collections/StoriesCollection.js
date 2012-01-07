@@ -1,5 +1,5 @@
 adventurio.collections.StoryCollection = Backbone.Collection.extend({
-	url:"/adventurio",
+	url:"/adventurioO",
 	model: adventurio.models.StoryModel,
 	comparator : function(story){
 		return story.get("name");

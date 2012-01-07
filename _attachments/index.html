@@ -19,7 +19,7 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 </head>
 <body>
 
-	<div data-role="page" id="mainpage">
+	<div data-role="page" id="mainpage" data-url="#mainpage" >
 			<div data-role="header">
 				<h2>Stories</h2>
 			</div>
@@ -28,7 +28,7 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 				<script id="listAllStories_template" type="text/x-handlebars-template">
 				{{#storyObjects}}
 					<li id="storyLink">
-						<a href="#" class="viewStoryLink" data-identity="story_{{_id}}" data-url="?story={{_id}}" >
+						<a href="#viewstory?story={{_id}}" class="viewStoryLink" data-identity="story_{{_id}}" data-url="?story={{_id}}" >
 							<h2 class="storyName">{{name}}</h2>
 						</a>
 						<p class="storyCreator">{{creator}}</p>
@@ -43,13 +43,19 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 			</div>
 		</div>
 		
-	<div data-role="page" id="viewstory" data-position="inline" data-back="true">
+	<div data-role="page" id="viewstory" data-url="#viewstory" data-position="inline" data-back="true">
 			<div data-role="header" id="storyheader">
 				<h2 class="storyname">Replaced</h2>
 				<a href="#mainpage" data-icon="grid" class="ui-btn-right">Home</a>
 			</div>
 			<div data-role="content" id="viewStory_content" data-identity="{{storyId}}">
 				<script id="showStory_template" type="text/x-handlebars-template">
+					
+					 <div data-role="fieldcontain">
+		                <label for="createStory_storyNameTEST">Name:</label>
+		                <input id="createStory_storyNameTEST" name="storyName" type="text" value="{{storyName}}" />
+		            </div>
+					
 					<h2 class="storyCreator"/>{{storyCreator}}</h2>
 					<p class="storyName">{{storyName}}</p>
 					<p class="description">{{storyDescription}}</p>
@@ -63,7 +69,7 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 			</div>
 		</div>
 		
-	<div data-role="page" id="createstory" data-position="inline" data-nobackbtn="true">
+	<div data-role="page" id="createstory" data-url="createstory" data-position="inline" data-nobackbtn="true">
 			<div data-role="header" id="createStory_header">
 				<h2 class="storyname">Replaced</h2>
 				<a id="cancelBackButton" href="#" data-icon="delete">Close</a>
@@ -72,7 +78,7 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 				<script id="createStory_template" type="text/x-handlebars-template">
 				<form id="createStory_form" action="#" method="get" data-identity="{{document}}">
 		            <div data-role="fieldcontain">
-		                <label for="createStory_storyName">Creator:</label>
+		                <label for="createStory_storyName">Name:</label>
 		                <input id="createStory_storyName" name="storyName" type="text" value="{{storyName}}" />
 		            </div>
 		            <div data-role="fieldcontain">
@@ -81,7 +87,7 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 		            </div>
 		         	<div data-role="fieldcontain">
 		                <label for="createStory_tags">Tags</label>
-		                <input id="createStory_tags" name="tags" type="text" value="tags" />
+		                <input id="createStory_tags" name="tags" type="text" value="{{storyTags}}" />
 			        </div>
 		            
 		            

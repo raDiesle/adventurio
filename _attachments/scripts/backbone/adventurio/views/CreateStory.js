@@ -1,10 +1,24 @@
 var createStory_template = null;
 
 adventurio.views.CreateStory = Backbone.View.extend({
-
+	
 	el: $('#createstory'),
 	initialize: function(){
-		return this.render();
+		
+		// var storyId = this.options.parameter.story || {};
+		
+		
+		if(this.model){
+			// var data = data || {};
+			// data = );
+			// this.model = data;
+			this.model.bind('change', this.render, this);
+			this.model.fetch(); // {success : this.showPrefilledEditStory}
+		}else{
+			this.render();
+		}
+		
+		// return this.render();
 	},
 	render: function(event){
 		console.log("create story rendered");
@@ -14,39 +28,52 @@ adventurio.views.CreateStory = Backbone.View.extend({
 		}
 		
 		var template = Handlebars.compile(createStory_template);
-		var data = data || {};
-		data = adventurio.mocks.singleStory;
 		var context = {};
-		if(data != null){
-			console.log(data.rows);
+		
+		if(event.toJSON()){
+			var json = event.toJSON();
 			 context = {
-				storyId : data._id,
-				storyDescription : data.description,
-				storyName : data.name,
-				storyCreator : data.creator
+				storyId : json._id,
+				storyDescription : json.description,
+				storyName : json.name,
+				storyTags : json.tags
 			};
 		}
+		
+		
 		var html = template(context);
-
-		$("#createStory_content").html(html);
-		$("#createstory .storyname").text(data.name);
+	
+			$("#createStory_content").html(html).trigger("create");
+			$("#createstory .storyname").text(context.storyName);
+			$("#listedStories").listview("refresh");
+		
+		return this;
+		
 	},
 	events : {
 		"click #submitButton" : "createStory",
 	},
 	
+	renderStory : function(context){
+		var html = template(context);
+	
+			$("#createStory_content").html(html);
+			$("#createstory .storyname").text(context.storyName);
+	},
+	
+	showPrefilledEditStory : function(collection, response){
+		var json = collection.toJSON();
+			 context = {
+				storyId : json._id,
+				storyDescription : json.description,
+				storyName : json.name,
+				storyTags : json.tags
+			};
+			self.renderStory(context);
+	},
+	
 	createStory : function(e){
 		
-		
-		
-		/*
-		// test for fetch
-		var stories = new adventurio.collections.StoriesCollection();
-		var storyModel = new adventurio.models.StoryModel();
-		stories.fetch();
-		*/
-		
-	 
 		var storyModel = new adventurio.collections.StoryCollection();
 		var newStoryModel = storyModel.create({
 			"name" : $("#createStory_storyName").val(),

@@ -21,6 +21,17 @@ var adventurio = {
     utils:{}
 };
 
+
+/*
+ * Initializing parameters
+ */
+
+// $(document).bind("mobileinit",function(){
+        // $.mobile.jqmRouter={
+            // ajaxApp: true
+        // };
+    // });
+    
 // function registerPlugins(){
 	// $.extend({
 	  // getUrlVars: function(){
