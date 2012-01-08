@@ -5,15 +5,9 @@ adventurio.views.CreateStory = Backbone.View.extend({
 	el: $('#createstory'),
 	initialize: function(){
 		
-		// var storyId = this.options.parameter.story || {};
-		
-		
 		if(this.model){
-			// var data = data || {};
-			// data = );
-			// this.model = data;
 			this.model.bind('change', this.render, this);
-			this.model.fetch(); // {success : this.showPrefilledEditStory}
+			this.model.fetch(); 
 		}else{
 			this.render();
 		}
@@ -21,7 +15,7 @@ adventurio.views.CreateStory = Backbone.View.extend({
 		// return this.render();
 	},
 	render: function(event){
-		console.log("create story rendered");
+		// console.log("create story rendered");
 		
 		if(createStory_template === null) {
 			createStory_template = $("#createStory_template").html();
@@ -43,10 +37,10 @@ adventurio.views.CreateStory = Backbone.View.extend({
 		
 		var html = template(context);
 	
-			$("#createStory_content").html(html).trigger("create");
-			$("#createstory .storyname").text(context.storyName);
-			$("#listedStories").listview("refresh");
-		
+		$("#createStory_content").html(html).trigger("create");
+		$("#createstory .storyname").text(context.storyName);
+		$("#listedStories");
+		// .listview("refresh")
 		return this;
 		
 	},
@@ -54,35 +48,13 @@ adventurio.views.CreateStory = Backbone.View.extend({
 		"click #submitButton" : "createStory",
 	},
 	
-	renderStory : function(context){
-		var html = template(context);
-	
-			$("#createStory_content").html(html);
-			$("#createstory .storyname").text(context.storyName);
-	},
-	
-	showPrefilledEditStory : function(collection, response){
-		var json = collection.toJSON();
-			 context = {
-				storyId : json._id,
-				storyDescription : json.description,
-				storyName : json.name,
-				storyTags : json.tags
-			};
-			self.renderStory(context);
-	},
-	
 	createStory : function(e){
 		
 		var storyModel = new adventurio.collections.StoryCollection();
 		var newStoryModel = storyModel.create({
 			"name" : $("#createStory_storyName").val(),
-			"creator" : $("#createStory_description").val(),
+			"description" : $("#createStory_description").val(),
 			"tags" : $("#createStory_tags").val()
 		});
-			
-			
-	 
-		
 	}
 });

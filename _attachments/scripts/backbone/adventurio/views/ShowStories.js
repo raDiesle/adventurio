@@ -21,8 +21,6 @@ adventurio.views.ShowStories = Backbone.View.extend({
 	events : {
 		"click .viewStoryLink" : "viewStory"
 	},
-
-
 	showStories : function(collection, response){
 		if(listAllStories_template === null) {
 			listAllStories_template = $("#listAllStories_template").html();
@@ -35,7 +33,6 @@ adventurio.views.ShowStories = Backbone.View.extend({
 			storyObjects : collection.toJSON() 
 		};
 		console.log("Data to display:");
-		console.log(context.storyObjects);
 		var html = template(context);
 
 		// var compiled_template = _.template($("#showStories-template").html());
