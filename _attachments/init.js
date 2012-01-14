@@ -10,6 +10,8 @@ var adventurio = {
     	ShowStories : {},
     	ShowStory : {},
     	CreateStory : {},
+    	EditStory : {},
+    	CreatePage :{},
         pages : {}
     },
     mocks : {},

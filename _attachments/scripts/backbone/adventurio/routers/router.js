@@ -20,6 +20,12 @@ AdventurioController.router = new $.mobile.Router([
 		}},
 		{"#createstory(?:[?/](.*))?": {
 			handler: "createstory", events:"bc"
+		}},
+		{"#editstory(?:[?/](.*))?": {
+			handler: "editstory", events:"bc"
+		}},
+		{"#createpage": {
+			handler: "createpage", events:"bc"
 		}}
 		// ,{ defaultHandler:{ handler:"defaultHandler", defaultHandlerEvents: "bc"}}
 ], {
@@ -42,12 +48,25 @@ AdventurioController.router = new $.mobile.Router([
 		var storyId = parameter.story;
 		var newModel;
 		if(storyId){
-			newModel = new adventurio.models.StoryModel({	_id: storyId});
+			newModel = new adventurio.models.StoryModel({_id: storyId});
 		}
-		// else{
-			// new adventurio.views.CreateStory({'parameter' : parameter});
-		// }
-			new adventurio.views.CreateStory({'parameter' : parameter, model: newModel});
+			new adventurio.views.CreateStory({model: newModel});
+	},
+	editstory : function(type, match, ui){
+		console.log("editstory page was opened");
+		var parameter = AdventurioController.router.getParams(match[1]) || {};
+		var storyId = parameter.story;
+		var newModel;
+		if(storyId){
+			newModel = new adventurio.models.StoryModel({_id: storyId});
+		}
+	},
+	createpage : function(type, match, ui){
+		console.log("createpage was opened");
+		var parameter = AdventurioController.router.getParams(match[1]) || {};
+		var storyId = parameter.story;
+		var newModel = new adventurio.models.StoryModel({_id: storyId});
+		new adventurio.views.CreatePage({model: newModel}); // 
 	}
 	
 },

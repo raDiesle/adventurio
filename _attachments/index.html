@@ -19,7 +19,7 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 </head>
 <body>
 
-	<div data-role="page" id="mainpage" data-url="#mainpage" >
+	<div data-role="page" id="mainpage" data-url="#mainpage" data-position="fixed" >
 			<div data-role="header">
 				<h2>Stories</h2>
 			</div>
@@ -38,7 +38,8 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 				</script>
 				</ul>
 			</div>
-			<div data-role="footer">
+			<div data-role="footer" data-position="fixed">
+				<a href="#createstory" data-role="button" data-icon="plus">Create New Story</a>
 				Footer
 			</div>
 		</div>
@@ -50,15 +51,10 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 			</div>
 			<div data-role="content" id="viewStory_content" data-identity="{{storyId}}">
 				<script id="showStory_template" type="text/x-handlebars-template">
-					
-					 <div data-role="fieldcontain">
-		                <label for="createStory_storyNameTEST">Name:</label>
-		                <input id="createStory_storyNameTEST" name="storyName" type="text" value="{{storyName}}" />
-		            </div>
-					
 					<h2 class="storyCreator"/>{{storyCreator}}</h2>
-					<p class="storyName">{{storyName}}</p>
-					<p class="description">{{storyDescription}}</p>
+					<p class="storyName">Name: {{storyName}}</p>
+					<p class="description">Description: {{storyDescription}}</p>
+					<p class="tags">Tags: {{storyTags}}</p>
 					<a id="viewstory_edit" href="index.html#createstory" data-role="button" data-inline="true"
 						data-identity="story_{{value._id}}" data-url="?story={{storyId}}"
 					>Edit Story</a> 
@@ -101,6 +97,19 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 			<div data-role="footer">
 				Footer
 			</div>
+		</div>
+		
+		
+		<div data-role="page" id="createpage" data-url="createpage" data-position="inline" data-nobackbtn="true">
+			<div data-role="header" id="createPage_header">
+				<h2 class="storyname">Replaced</h2>
+				<a id="cancelBackButton" href="#" data-icon="delete">Close</a>
+			</div>
+			<div data-role="content" id="createPage_content" data-identity="{{storyId}}" >
+			</div>
+			<div data-role="footer">
+				Footer
+			</div> 
 		</div>
 
 <!--

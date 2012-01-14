@@ -32,7 +32,8 @@ adventurio.views.ShowStory = Backbone.View.extend({
 			storyId : json._id,
 			storyDescription : json.description,
 			storyName : json.name,
-			storyCreator : json.creator
+			storyCreator : json.creator,
+			storyTags : json.tags
 		};
 		var html = template(context);
 		$("#viewStory_content").html(html);
@@ -44,7 +45,7 @@ adventurio.views.ShowStory = Backbone.View.extend({
 		console.log("Edit story link clicked");
 		var dataUrl = $(e.currentTarget).attr("data-url");
 		if(dataUrl != null) {
-			$.mobile.changePage("#createstory" + dataUrl);
+			$.mobile.changePage("#createstory" + dataUrl, {dataUrl: "#createstory" + dataUrl});
 		}
 
 		// $.mobile.changePage("index.html#singleStory");

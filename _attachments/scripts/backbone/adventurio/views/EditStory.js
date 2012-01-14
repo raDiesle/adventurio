@@ -1,6 +1,6 @@
 var createStory_template = null;
 
-adventurio.views.CreateStory = Backbone.View.extend({
+adventurio.views.EditStory = Backbone.View.extend({
 	
 	el: $('#createstory'),
 	initialize: function(){

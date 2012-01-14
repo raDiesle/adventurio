@@ -12,11 +12,14 @@
  .script("lib/backbone.js")
  .script("lib/backbone-couchdb.js") // v1.0 https://github.com/janmonschke/backbone-couchdb
  .script("lib/handlebars-1.0.0.beta.4.js")
+ .script("lib/jstorange.js")// november 2011 https://github.com/andris9/jStorage
  .script("scripts/backbone/adventurio/mocks/stories.js")
  .script("scripts/backbone/adventurio/mocks/singleStory.js")
  .script("scripts/backbone/adventurio/views/ShowStories.js")
  .script("scripts/backbone/adventurio/views/ShowStory.js")
  .script("scripts/backbone/adventurio/views/CreateStory.js")
+ .script("scripts/backbone/adventurio/views/EditStory.js")
+ .script("scripts/backbone/adventurio/views/CreatePage.js")
  .script("scripts/backbone/adventurio/models/StoryModel.js")
  .script("scripts/backbone/adventurio/collections/StoriesCollection.js")
  .script("scripts/backbone/adventurio/routers/router.js")
