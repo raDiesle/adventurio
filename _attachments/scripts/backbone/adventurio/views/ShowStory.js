@@ -45,7 +45,7 @@ adventurio.views.ShowStory = Backbone.View.extend({
 		console.log("Edit story link clicked");
 		var dataUrl = $(e.currentTarget).attr("data-url");
 		if(dataUrl != null) {
-			$.mobile.changePage("#createstory" + dataUrl, {dataUrl: "#createstory" + dataUrl});
+			$.mobile.changePage("#editstory" + dataUrl, {dataUrl: "#editstory" + dataUrl});
 		}
 
 		// $.mobile.changePage("index.html#singleStory");

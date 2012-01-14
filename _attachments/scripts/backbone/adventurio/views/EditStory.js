@@ -2,16 +2,10 @@ var createStory_template = null;
 
 adventurio.views.EditStory = Backbone.View.extend({
 	
-	el: $('#createstory'),
+	el: $('#editstory'),
 	initialize: function(){
-		
-		if(this.model){
-			this.model.bind('change', this.render, this);
-			this.model.fetch(); 
-		}else{
-			this.render();
-		}
-		
+		this.model.bind('change', this.render, this);
+		this.model.fetch(); 
 		// return this.render();
 	},
 	render: function(event){
@@ -37,8 +31,8 @@ adventurio.views.EditStory = Backbone.View.extend({
 		
 		var html = template(context);
 	
-		$("#createStory_content").html(html).trigger("create");
-		$("#createstory .storyname").text(context.storyName);
+		$("#editStory_content").html(html).trigger("create");
+		$("#editstory .storyname").text(context.storyName);
 		$("#listedStories");
 		// .listview("refresh")
 		return this;
@@ -60,14 +54,14 @@ adventurio.views.EditStory = Backbone.View.extend({
 		
 		
 		if(this.model){
-			storyModel.update({success: this.createPage});
-			console.log("storymodel was saved");
+			storyModelReal.save({success: this.createPage});
+			console.log("storymodel was edited");
 		}
 		
-		if(!this.model){
-			var newStoryModel = storyModel.create(storyModelReal, {success: this.createPage});
-			console.log("story was created");
-		}
+		// if(!this.model){
+			// var newStoryModel = storyModel.create(storyModelReal, {success: this.createPage});
+			// console.log("story was created");
+		// }
 	},
 	createPage : function(event){
 		$.mobile.changePage("#createpage?story=" + event.id);

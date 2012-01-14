@@ -7,6 +7,15 @@ var AdventurioController = {};
 	// new adventurio.views.ShowStories();
 // };
 
+$(document).bind("mobileinit",function(){
+         $.mobile.ajaxEnabled = false;
+        $.mobile.hashListeningEnabled = false;
+
+        $.mobile.jqmRouter={
+            ajaxApp: true
+        };
+    });
+
 AdventurioController.router = new $.mobile.Router([
 		
 		{"#mainpage(?:[?/](.*))?": { 
@@ -16,21 +25,21 @@ AdventurioController.router = new $.mobile.Router([
 			handler: "test", events:"bc"
 		}},
 		{"#viewstory(?:[?/](.*))?": {
-			handler: "viewstory", events:"bc"
+			handler: "viewstory", events:"bc,c,bs,s"
 		}},
-		{"#createstory(?:[?/](.*))?": {
+		{"#createstory": {
 			handler: "createstory", events:"bc"
 		}},
 		{"#editstory(?:[?/](.*))?": {
 			handler: "editstory", events:"bc"
 		}},
-		{"#createpage": {
+		{"#createpage(?:[?/](.*))?": {
 			handler: "createpage", events:"bc"
 		}}
 		// ,{ defaultHandler:{ handler:"defaultHandler", defaultHandlerEvents: "bc"}}
 ], {
 	
-	mainpage : function(type, match, ui){
+	mainpage : function(type, match, ui, page, evt){
 		console.log("mainpage " + type + " " + match);
 		new adventurio.views.ShowStories();
 	}, 
@@ -44,13 +53,7 @@ AdventurioController.router = new $.mobile.Router([
 	},
 	createstory : function(type, match, ui){
 		console.log("createstory page was opened");
-		var parameter = AdventurioController.router.getParams(match[1]) || {};
-		var storyId = parameter.story;
-		var newModel;
-		if(storyId){
-			newModel = new adventurio.models.StoryModel({_id: storyId});
-		}
-			new adventurio.views.CreateStory({model: newModel});
+		new adventurio.views.CreateStory();
 	},
 	editstory : function(type, match, ui){
 		console.log("editstory page was opened");
@@ -60,6 +63,7 @@ AdventurioController.router = new $.mobile.Router([
 		if(storyId){
 			newModel = new adventurio.models.StoryModel({_id: storyId});
 		}
+		new adventurio.views.EditStory({model: newModel});
 	},
 	createpage : function(type, match, ui){
 		console.log("createpage was opened");
@@ -69,11 +73,14 @@ AdventurioController.router = new $.mobile.Router([
 		new adventurio.views.CreatePage({model: newModel}); // 
 	}
 	
-},
+}, 
 	{
-	defaultHandler: function(type, match, ui){
-		console.log("nothing found to match");
-	}, defaultHandlerEvents: "s, bc,c,i,bs"}
+		defaultHandler: function(type, match, ui){
+			console.log("nothing found to match");
+		}, defaultHandlerEvents: "s, bc,c,i,bs",
+		ajaxApp: false
+	}
+	 
 );
 
 adventurio.routers = AdventurioController.router;

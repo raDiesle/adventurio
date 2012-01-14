@@ -4,18 +4,9 @@ adventurio.views.CreateStory = Backbone.View.extend({
 	
 	el: $('#createstory'),
 	initialize: function(){
-		
-		if(this.model){
-			this.model.bind('change', this.render, this);
-			this.model.fetch(); 
-		}else{
-			this.render();
-		}
-		
-		// return this.render();
+		this.render();
 	},
 	render: function(event){
-		// console.log("create story rendered");
 		
 		if(createStory_template === null) {
 			createStory_template = $("#createStory_template").html();

@@ -55,7 +55,7 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 					<p class="storyName">Name: {{storyName}}</p>
 					<p class="description">Description: {{storyDescription}}</p>
 					<p class="tags">Tags: {{storyTags}}</p>
-					<a id="viewstory_edit" href="index.html#createstory" data-role="button" data-inline="true"
+					<a id="viewstory_edit" href="index.html#editstory" data-role="button" data-inline="true"
 						data-identity="story_{{value._id}}" data-url="?story={{storyId}}"
 					>Edit Story</a> 
 				</script>
@@ -86,7 +86,6 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 		                <input id="createStory_tags" name="tags" type="text" value="{{storyTags}}" />
 			        </div>
 		            
-		            
 	            <div data-role="controlgroup" data-type="horizontal"> 
 	            	<a href="#" id="cancelButton" data-role="button" >Cancel</a>
                  	<a href="#" id="submitButton" data-role="button" >Submit</a>
@@ -96,6 +95,19 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 			</div>
 			<div data-role="footer">
 				Footer
+			</div>
+		</div>
+		
+		<div data-role="page" id="editstory" data-url="editstory" data-position="inline" data-nobackbtn="true">
+			<div data-role="header" id="editStory_header">
+				<h2 class="storyname">Replaced</h2>
+				<a id="cancelBackButton" href="#" data-icon="delete">Close</a>
+			</div>
+			<div data-role="content" id="editStory_content" data-identity="{{storyId}}" >
+				<script id="editStory_template" type="text/x-handlebars-template">
+				</script>
+			</div>
+			<div data-role="footer">
 			</div>
 		</div>
 		
