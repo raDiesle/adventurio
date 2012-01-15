@@ -9,7 +9,7 @@ adventurio.views.ShowStory = Backbone.View.extend({
 	render : function(event) {
 		console.log("showStory was renedered");
 		
-		var storyId = this.options.parameter.story;
+		var storyId = this.options.parameter.storyId;
 		var data = data || {};
 		data = new adventurio.models.StoryModel({	_id: storyId});
 		data.fetch({success: this.showStory});
@@ -39,14 +39,14 @@ adventurio.views.ShowStory = Backbone.View.extend({
 		$("#viewStory_content").html(html);
 		$("#storyheader .storyname").text(json.name);
 		
+		$.mobile.changePage("#viewstory" ,{transition: 'slideup'}, false, false );
 	},
 
 	editStory : function(e) {
 		console.log("Edit story link clicked");
-		var dataUrl = $(e.currentTarget).attr("data-url");
-		if(dataUrl != null) {
-			$.mobile.changePage("#editstory" + dataUrl, {dataUrl: "#editstory" + dataUrl});
-		}
+		var dataUrl = $(e.currentTarget).attr("data-identity");
+		$.mobile.changePage("#editstory", {transition: 'slideup'}, false, false); // {dataUrl: "#editstory" + dataUrl}
+		location.hash = "creator/stories" + dataUrl;
 
 		// $.mobile.changePage("index.html#singleStory");
 	}

@@ -1,4 +1,4 @@
-var createStory_template = null;
+var editStory_template = null;
 
 adventurio.views.EditStory = Backbone.View.extend({
 	
@@ -9,13 +9,13 @@ adventurio.views.EditStory = Backbone.View.extend({
 		// return this.render();
 	},
 	render: function(event){
-		// console.log("create story rendered");
+		console.log("edit story rendered");
 		
-		if(createStory_template === null) {
-			createStory_template = $("#createStory_template").html();
+		if(editStory_template === null) {
+			editStory_template = $("#editStory_template").html();
 		}
 		
-		var template = Handlebars.compile(createStory_template);
+		var template = Handlebars.compile(editStory_template);
 		var context = {};
 		
 		if(event != undefined && event.toJSON()){
@@ -33,21 +33,20 @@ adventurio.views.EditStory = Backbone.View.extend({
 	
 		$("#editStory_content").html(html).trigger("create");
 		$("#editstory .storyname").text(context.storyName);
-		$("#listedStories");
-		// .listview("refresh")
+		$.mobile.changePage("#editstory", {transition: 'slideup'}, false, false);
 		return this;
 	},
 	events : {
-		"click #submitButton" : "createStory",
+		"click #submitButton" : "editStory",
 	},
 	
-	createStory : function(event){
+	editStory : function(event){
 		
-		
+		console.log(this.model);
 		var storyModelReal = new adventurio.models.StoryModel({
-				"name" : $("#createStory_storyName").val(),
-				"description" : $("#createStory_description").val(),
-				"tags" : $("#createStory_tags").val()
+				"name" : $("#editStory_storyName").val(),
+				"description" : $("#editStory_description").val(),
+				"tags" : $("#editStory_tags").val()
 		});
 		
 		var storyModel = new adventurio.collections.StoryCollection(storyModelReal);
@@ -55,16 +54,11 @@ adventurio.views.EditStory = Backbone.View.extend({
 		
 		if(this.model){
 			storyModelReal.save({success: this.createPage});
-			console.log("storymodel was edited");
 		}
-		
-		// if(!this.model){
-			// var newStoryModel = storyModel.create(storyModelReal, {success: this.createPage});
-			// console.log("story was created");
-		// }
 	},
-	createPage : function(event){
-		$.mobile.changePage("#createpage?story=" + event.id);
-	
+	createPage : function(model, response){
+		console.log("storymodel was edited");
+		$.mobile.changePage("#createpage", {transition: 'slideup'}, false, false);
+		location.hash = "creator/stories" + "/"+ model.toJSON().id;
 	}
 });

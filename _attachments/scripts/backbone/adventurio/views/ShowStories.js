@@ -4,15 +4,12 @@ adventurio.views.ShowStories = Backbone.View.extend({
 
 	el : $('#mainpage'),
 	initialize : function() {
-	
 		return this.render();
 	},
 	render : function(event) {
 		console.log("mainpage was renedered");
 		
 		// data = adventurio.mocks.listStories;
-		
-		
 		var data = new adventurio.collections.StoriesCollection;
 		data.fetch({success: this.showStories});
 		// function(collection, response){ console.log("SUCCESS");}
@@ -35,19 +32,20 @@ adventurio.views.ShowStories = Backbone.View.extend({
 		console.log("Data to display:");
 		var html = template(context);
 
-		// var compiled_template = _.template($("#showStories-template").html());
-		// this.el.html(compiled_template(this.model.toJSON()));
-
 		this.$("#listedStories").html(html);
 		$("#listedStories").listview("refresh");
-
 	},
 
 	viewStory : function(e) {
-		var dataUrl = $(e.currentTarget).attr("data-url");
-		if(dataUrl != null) {
-			$.mobile.changePage("#viewstory" + dataUrl);
-		}
+		// var dataUrl = $(e.currentTarget).attr("data-url");
+		var dataUrl = $(e.currentTarget).attr("data-identity");
+		// if(dataUrl != null) {
+			// dataUrl
+			$.mobile.changePage("#viewstory",{transition: 'slideup'}, false, false );
+			console.log("Change hashfor single story");
+			location.hash = "reader/stories" + dataUrl;
+			// adventurio.routers.MainRouter.navigate
+		// }
 
 		// $.mobile.changePage("index.html#singleStory");
 	}

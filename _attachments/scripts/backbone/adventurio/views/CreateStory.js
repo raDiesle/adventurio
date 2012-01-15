@@ -50,18 +50,17 @@ adventurio.views.CreateStory = Backbone.View.extend({
 		var storyModel = new adventurio.collections.StoryCollection(storyModelReal);
 		
 		
-		if(this.model){
-			storyModel.update({success: this.createPage});
-			console.log("storymodel was saved");
-		}
+		// if(this.model){
+			// storyModel.update({success: this.createPage});
+			// console.log("storymodel was saved");
+		// }
 		
 		if(!this.model){
 			var newStoryModel = storyModel.create(storyModelReal, {success: this.createPage});
-			console.log("story was created");
 		}
 	},
 	createPage : function(event){
+			console.log("story was created");
 		$.mobile.changePage("#createpage?story=" + event.id);
-	
 	}
 });

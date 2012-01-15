@@ -19,7 +19,7 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 </head>
 <body>
 
-	<div data-role="page" id="mainpage" data-url="#mainpage" data-position="fixed" >
+	<div data-role="page" id="mainpage" data-url="#mainpage"  > <!-- data-position="fixed" -->
 			<div data-role="header">
 				<h2>Stories</h2>
 			</div>
@@ -28,17 +28,18 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 				<script id="listAllStories_template" type="text/x-handlebars-template">
 				{{#storyObjects}}
 					<li id="storyLink">
-						<a href="#viewstory?story={{_id}}" class="viewStoryLink" data-identity="story_{{_id}}" data-url="?story={{_id}}" >
+						<!--#reader?id={{_id}} -->
+						<a href="#" class="viewStoryLink"  data-identity="/{{_id}}" > <!-- data-url="/{{_id}}"   -->
 							<h2 class="storyName">{{name}}</h2>
-						</a>
 						<p class="storyCreator">{{creator}}</p>
 						<p class="storyCategory">{{tags}}</p>
+						</a>
 					</li>
 				{{/storyObjects}}
 				</script>
 				</ul>
 			</div>
-			<div data-role="footer" data-position="fixed">
+			<div data-role="footer" > <!--data-position="fixed" -->
 				<a href="#createstory" data-role="button" data-icon="plus">Create New Story</a>
 				Footer
 			</div>
@@ -55,9 +56,10 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 					<p class="storyName">Name: {{storyName}}</p>
 					<p class="description">Description: {{storyDescription}}</p>
 					<p class="tags">Tags: {{storyTags}}</p>
-					<a id="viewstory_edit" href="index.html#editstory" data-role="button" data-inline="true"
-						data-identity="story_{{value._id}}" data-url="?story={{storyId}}"
-					>Edit Story</a> 
+					<a id="viewstory_edit" href="#" data-role="button" data-inline="true"
+						data-identity="/{{storyId}}" > <!-- data-url="stories/{{storyId}}" -->
+						Edit Story
+					</a> 
 				</script>
 			</div>
 			<div data-role="footer">
@@ -105,9 +107,29 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 			</div>
 			<div data-role="content" id="editStory_content" data-identity="{{storyId}}" >
 				<script id="editStory_template" type="text/x-handlebars-template">
-				</script>
+				<form id="editStory_form" action="#" method="get" data-identity="{{document}}">
+		            <div data-role="fieldcontain">
+		                <label for="editStory_storyName">Name:</label>
+		                <input id="editStory_storyName" name="storyName" type="text" value="{{storyName}}" />
+		            </div>
+		            <div data-role="fieldcontain">
+		                <label for="editStory_description">Description:</label>
+		                <textarea id="editStory_description" name="description" cols="40" rows="8">{{storyDescription}}</textarea>
+		            </div>
+		         	<div data-role="fieldcontain">
+		                <label for="editStory_tags">Tags</label>
+		                <input id="editStory_tags" name="tags" type="text" value="{{storyTags}}" />
+			        </div>
+		            
+	            <div data-role="controlgroup" data-type="horizontal"> 
+	            	<a href="#" id="cancelButton" data-role="button" >Cancel</a>
+                 	<a href="#" id="submitButton" data-role="button" >Submit</a>
+             	</div>
+	        	</form>
+		        </script>
 			</div>
 			<div data-role="footer">
+				Footer
 			</div>
 		</div>
 		

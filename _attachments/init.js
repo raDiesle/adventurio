@@ -15,7 +15,10 @@ var adventurio = {
         pages : {}
     },
     mocks : {},
-    routers : {},
+    routers : {
+    	MainRouterRef : {},
+    	MainRouter : {}
+    },
     collections : {
     	StoryCollection : {},
     	StoriesCollection : {}
