@@ -33,7 +33,9 @@ adventurio.views.EditStory = Backbone.View.extend({
 	
 		$("#editStory_content").html(html).trigger("create");
 		$("#editstory .storyname").text(context.storyName);
-		$.mobile.changePage("#editstory", {transition: 'slideup'}, false, false);
+		$.mobile.changePage("#editstory", {transition: 'slideup', reverse: false, changeHash: false});
+		
+		
 		return this;
 	},
 	events : {
@@ -53,12 +55,13 @@ adventurio.views.EditStory = Backbone.View.extend({
 		
 		
 		if(this.model){
-			storyModelReal.save({success: this.createPage});
+			storyModelReal.save({success: location.hash = "reader/stories/"+storyModelReal.toJSON._id});
 		}
 	},
 	createPage : function(model, response){
 		console.log("storymodel was edited");
-		$.mobile.changePage("#createpage", {transition: 'slideup'}, false, false);
-		location.hash = "creator/stories" + "/"+ model.toJSON().id;
+		
+		
+		location.hash = "creator/stories" + "/"+ model.toJSON().id + "/v1/h1";
 	}
 });

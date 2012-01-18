@@ -9,5 +9,7 @@ adventurio.views.CreatePage = Backbone.View.extend({
 	},
 	render : function(){
 		$("#createpage .storyname").text(this.model.toJSON()._id);
+		
+		$.mobile.changePage("#createpage", {transition: 'slideup', reverse: false, changeHash: false});
 	}
 });

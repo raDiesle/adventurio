@@ -29,7 +29,7 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 				{{#storyObjects}}
 					<li id="storyLink">
 						<!--#reader?id={{_id}} -->
-						<a href="#" class="viewStoryLink"  data-identity="/{{_id}}" > <!-- data-url="/{{_id}}"   -->
+						<a href="#" class="viewStoryLink"  data-ajax="false" data-identity="/{{_id}}" > <!-- data-url="/{{_id}}"   -->
 							<h2 class="storyName">{{name}}</h2>
 						<p class="storyCreator">{{creator}}</p>
 						<p class="storyCategory">{{tags}}</p>

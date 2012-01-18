@@ -39,13 +39,13 @@ adventurio.views.ShowStory = Backbone.View.extend({
 		$("#viewStory_content").html(html);
 		$("#storyheader .storyname").text(json.name);
 		
-		$.mobile.changePage("#viewstory" ,{transition: 'slideup'}, false, false );
+		$.mobile.changePage("#viewstory" ,{transition: 'slideup', reverse: false, changeHash: false});
 	},
 
 	editStory : function(e) {
 		console.log("Edit story link clicked");
 		var dataUrl = $(e.currentTarget).attr("data-identity");
-		$.mobile.changePage("#editstory", {transition: 'slideup'}, false, false); // {dataUrl: "#editstory" + dataUrl}
+		$.mobile.changePage("#editstory", {transition: 'slideup', reverse: false, changeHash: false}); // {dataUrl: "#editstory" + dataUrl}
 		location.hash = "creator/stories" + dataUrl;
 
 		// $.mobile.changePage("index.html#singleStory");
