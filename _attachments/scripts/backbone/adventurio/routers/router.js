@@ -30,19 +30,23 @@ adventurio.routers.MainRouterRef = Backbone.Router.extend({
 		"reader": 											"mainpage",
 		"reader/stories": 									"mainpage", 
 		"reader/stories/:story": 							"viewstory", 
-		"creator/stories": 									"createstory",
+		"creator/stories": 									"creator_stories",
+		"creator/stories/new":								"createstory",
 		"creator/stories/:story": 							"editstory",
-		"creator/stories/:story/v:vertical/h:horizontal": 	"createpage",
+		"creator/stories/:story/:vertical/:horizontal": 	"createpage",
 		"": 												"mainpage",
 	}, 
+	
+	creator_stories: function(query, sort, page){
+		console.log(page + " " + query + " was opened");
+		new adventurio.views.creator.Stories();
+	},
 	mainpage: function(query, sort, page){
 		console.log("mainpage " + page + " " + query);
 		new adventurio.views.ShowStories();
 	},
 	viewstory : function(query, sort, page){
 		console.log("viewstory page was opened ");
-		// var parameter = AdventurioController.router.getParams(match[1]);
-		// var newModel = new adventurio.models.StoryModel({_id: storyId});
 		var view = new adventurio.views.ShowStory({'parameter' : {'storyId': query}});
 	},
 	createstory : function(query, sort, page){
@@ -59,10 +63,9 @@ adventurio.routers.MainRouterRef = Backbone.Router.extend({
 		// }
 		new adventurio.views.EditStory({model: newModel});
 	},
-	createpage : function(query, sort, page){
+	createpage : function(storyId, vertical, horizontal){
 		console.log("createpage was opened");
-		var parameter = AdventurioController.router.getParams(match[1]) || {};
-		var storyId = parameter.story;
+		var storyId = storyId;
 		var newModel = new adventurio.models.StoryModel({_id: storyId});
 		new adventurio.views.CreatePage({model: newModel}); 
 	},

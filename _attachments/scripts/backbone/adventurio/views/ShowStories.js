@@ -34,7 +34,13 @@ adventurio.views.ShowStories = Backbone.View.extend({
 		var html = template(context);
 
 		this.$("#listedStories").html(html);
-		$("#listedStories").listview("refresh");
+		 $("#listedStories").listview("refresh");
+		 
+		 $.mobile.changePage("#mainpage", {
+			transition : 'slideup',
+			reverse : false,
+			changeHash : false
+		});
 	},
 	viewStory : function(e) {
 		// var dataUrl = $(e.currentTarget).attr("data-url");

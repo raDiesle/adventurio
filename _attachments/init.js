@@ -7,12 +7,20 @@ var adventurio = {
     	StoryModel : {}
     },
     views : {
+    	creator : {
+    		Stories: {}
+    	},
     	ShowStories : {},
     	ShowStory : {},
     	CreateStory : {},
     	EditStory : {},
     	CreatePage :{},
         pages : {}
+    },
+    templates: {
+    	creator: {
+    		Stories: {}
+    	}
     },
     mocks : {},
     routers : {

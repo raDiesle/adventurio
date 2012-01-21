@@ -1,66 +1,77 @@
 var createStory_template = null;
 
 adventurio.views.CreateStory = Backbone.View.extend({
-	
-	el: $('#createstory'),
-	initialize: function(){
-		this.render();
+
+	el : $('#createstory'),
+	initialize : function() {
+		// hack, otherwise changePage throws exception
+		$().ready(this.render);
+		// this.render();
 	},
-	render: function(event){
-		
+	render : function(event) {
+			console.log("create rendered");
 		if(createStory_template === null) {
 			createStory_template = $("#createStory_template").html();
 		}
-		
+
 		var template = Handlebars.compile(createStory_template);
 		var context = {};
-		
-		if(event != undefined && event.toJSON()){
-			var json = event.toJSON();
-			 context = {
-				storyId : json._id,
-				storyDescription : json.description,
-				storyName : json.name,
-				storyTags : json.tags
-			};
-		}
-		
-		
+
+		// if(event != undefined && event.toJSON()) {
+			// var json = event.toJSON();
+			// context = {
+				// storyId : json._id,
+				// storyDescription : json.description,
+				// storyName : json.name,
+				// storyTags : json.tags
+			// };
+		// }
+
+
 		var html = template(context);
-	
+
 		$("#createStory_content").html(html).trigger("create");
 		$("#createstory .storyname").text(context.storyName);
-		$("#listedStories");
+		// $("#listedStories");
 		// .listview("refresh")
-		return this;
+		
+		$.mobile.changePage("#createstory", {
+				transition : 'slideup',
+				reverse : false,
+				changeHash : false
+			});
+		
+		// return this;
 	},
 	events : {
-		"click #submitButton" : "createStory",
+		"click .submit" : "createStory",
 	},
-	
-	createStory : function(event){
-		
-		
+
+	createStory : function(event) {
+
 		var storyModelReal = new adventurio.models.StoryModel({
-				"name" : $("#createStory_storyName").val(),
-				"description" : $("#createStory_description").val(),
-				"tags" : $("#createStory_tags").val()
+			"name" : $("#createStory_storyName").val(),
+			"description" : $("#createStory_description").val(),
+			"tags" : $("#createStory_tags").val(),
+			"user" : "simpleUser"
 		});
-		
-		var storyModel = new adventurio.collections.StoryCollection(storyModelReal);
-		
-		
+
+		// var storyModel = new adventurio.collections.StoryCollection(storyModelReal);
+
 		// if(this.model){
-			// storyModel.update({success: this.createPage});
-			// console.log("storymodel was saved");
+		// storyModel.update({success: this.createPage});
+		// console.log("storymodel was saved");
 		// }
-		
-		if(!this.model){
-			var newStoryModel = storyModel.create(storyModelReal, {success: this.createPage});
-		}
+
+		// if(!this.model) {
+			var newStoryModel = storyModelReal.save({},{
+				success : this.createPage
+			});
+		// }
 	},
-	createPage : function(event){
-			console.log("story was created");
-		$.mobile.changePage("#createpage?story=" + event.id);
+	createPage : function(model, response) {
+		console.log("storymodel was edited");
+
+		location.hash = "creator/stories" + "/" + model.toJSON()._id + "/v1/h1";
 	}
 });
