@@ -2,12 +2,15 @@
  * Initialize namespacing
  */
 
-var adventurio = {
+var adventurio = adventurio || {
     models : {
-    	StoryModel : {}
+    	StoryModel : {},
+    	User: {},
     },
     views : {
     	creator : {
+    		Index: {},
+    		Login: {},
     		Stories: {}
     	},
     	ShowStories : {},
@@ -19,13 +22,16 @@ var adventurio = {
     },
     templates: {
     	creator: {
-    		Stories: {}
+    		Stories: {},
+    		Login: {}
     	}
     },
-    mocks : {},
+    mocks: {
+    	SingleStory: {},
+    	Stories: {}
+    },
     routers : {
-    	MainRouterRef : {},
-    	MainRouter : {}
+    	MainRouter: {},
     },
     collections : {
     	StoryCollection : {},
@@ -33,6 +39,8 @@ var adventurio = {
 	},
     utils:{}
 };
+
+
 
 
 /*
@@ -49,7 +57,9 @@ var adventurio = {
 	// $.extend({
 	  // getUrlVars: function(){
 	    // var vars = [], hash;
-	    // var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+	    // var hashes =
+		// window.location.href.slice(window.location.href.indexOf('?') +
+		// 1).split('&');
 	    // for(var i = 0; i < hashes.length; i++)
 	    // {
 	      // hash = hashes[i].split('=');
@@ -65,23 +75,11 @@ var adventurio = {
 // }
 // registerPlugins();
 /*
-var myApplication = {
-    models : {},
-    views : {
-        pages : {}
-    },
-    collections : {}
-};
-
-define(["./views/appView",
-		"util/loadCss",
-		"scripts/lib/backbone.js",
-		"scripts/lib/underscore.js",
-		"scripts/lib/jquery.tmpl.js"],
-		
-		function (AppView, loadCss){
-			// loadCss("adventurio");
-			var app = new AppView();
-			return {};
-		});
-*/
+ * var myApplication = { models : {}, views : { pages : {} }, collections : {} };
+ * 
+ * define(["./views/appView", "util/loadCss", "scripts/lib/backbone.js",
+ * "scripts/lib/underscore.js", "scripts/lib/jquery.tmpl.js"],
+ * 
+ * function (AppView, loadCss){ // loadCss("adventurio"); var app = new
+ * AppView(); return {}; });
+ */

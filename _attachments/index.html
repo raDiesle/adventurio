@@ -43,10 +43,45 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 				Footer
 			</div>
 		</div>
-		
-		
 		<!-- Creator -->
-		<!-- <div data-role="page" id="creator_stories" data-url="#creator_stories"  >
+		<!-- Creator start page -->
+		<div data-role="page" id="creator_page" data-id="creator_page">
+			<div data-role="header">
+				<h2>Login</h2>
+			</div>
+			<div data-role="content" >
+				<p>
+					Welcome to manage your stories
+				</p>
+			</div>
+			<div data-role="footer">
+				<a href="#" data-role="button" data-icon="plus" class="addButton">Create New Story</a>
+			</div>
+		</div>
+		<!-- Login dialog -->
+		<div data-role="page" id="creator_login" data-id="creator_login">
+			<div data-role="header">
+				<h2>Login</h2>
+			</div>
+			<div data-role="content" class="content">
+<!-- 				<script id="creator_login_template" type="text/x-handlebars-template"> -->
+				<p>
+					Please Login with your userdata
+				</p>
+				<div data-role="fieldcontain">
+					<form action="#" method="post" >
+						<label for="username" >Username:</label>
+						<input type="text" name="username" id="username"/>
+						<label for="password" >Password:</label>
+						<input type="password" name="password" id="password" />
+						<a href="#" data-role="button" class="submitButton">Click</a>
+					</form>
+				</div>
+<!-- 				</script> -->
+			</div>
+			<div data-role="footer"></div>
+		</div>
+		<div data-role="page" id="creator_stories" data-url="#creator_stories"  >
 			<div data-role="header">
 				<h2>Stories</h2>
 			</div>
@@ -65,13 +100,8 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 					{{/storyObjects}}
 				</script>
 			</div>
-			<div data-role="footer" >
-				<a href="#createstory" data-role="button" data-icon="plus">Create New Story</a>
-				Footer
-			</div>
-		</div> -->
-		
-		
+			<div data-role="footer" ></div>
+		</div>
 		<div data-role="page" id="viewstory" data-url="#viewstory" data-position="inline" data-back="true">
 			<div data-role="header" id="storyheader">
 				<h2 class="storyname">Replaced</h2>
@@ -93,7 +123,6 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 				Footer
 			</div>
 		</div>
-		
 		<div data-role="page" id="createstory" data-url="#createstory" data-position="inline" data-nobackbtn="true">
 			<div data-role="header" id="createStory_header">
 				<h2 class="storyname">Replaced</h2>
@@ -123,10 +152,9 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 				</script>
 			</div>
 			<div data-role="footer">
-				Footer
+				Footer <a href="#creator_login" data-rel="dialog">TO THE LOGIN</a>
 			</div>
 		</div>
-		
 		<div data-role="page" id="editstory" data-url="editstory" data-position="inline" data-nobackbtn="true">
 			<div data-role="header" id="editStory_header">
 				<h2 class="storyname">Replaced</h2>
