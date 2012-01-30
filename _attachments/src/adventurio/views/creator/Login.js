@@ -24,7 +24,9 @@ adventurio.views.creator.Login = Backbone.View.extend({
 		"click .submitButton" : "login"
 	},
 	login: function(){
-		var serializedJsonForm = $("#creator_login form").first();
-		 adventurio.models.UserSingleton.login(serializedJsonForm.username, serializedJsonForm.password);
+		var serializedJsonForm = $("#creator_login form").first().serializeJSON();
+		console.log(adventurio.models.UserSingleton.isAuthenticated());
+		adventurio.models.UserSingleton.login(serializedJsonForm.username, serializedJsonForm.password);
+		console.log(adventurio.models.UserSingleton.isAuthenticated());
 	}
 });

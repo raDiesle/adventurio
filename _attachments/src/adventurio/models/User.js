@@ -1,23 +1,27 @@
 adventurio.models.User = Backbone.Model.extend({
-	isAuthenticated : false,
-	name : '',
 	initialize : function() {
-
+	},
+	defaults : {
+		"name" : "guest"  
+	},
+	isAuthenticated: function(){
+		return this.get("name") !== this.defaults.name;
 	},
 	login : function(name, password) {
 		$.couch.login({
 			'name' : name,
 			'password' : password,
-			success : function(response) {
-				$.couch.session({
-					success : function(response) {
-						var currentUser = response.userCtx;
-						this.name = currentUser.name;
-						this.isAuthenticated = true;
-					}
-				});
-			}
+			success : $.proxy(this.checkLogin, this)
 		});
+	},
+	checkLogin: function(response) {
+		$.couch.session({
+			success : $.proxy(this.setCurrentUser, this)
+		});
+	},
+	setCurrentUser : function(response){
+		var currentUser = response.userCtx;
+		this.set({name :  currentUser.name});
 	},
 	logout : function() {
 		$.couch.logout({
