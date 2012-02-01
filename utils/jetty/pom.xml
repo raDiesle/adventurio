@@ -58,10 +58,14 @@
                     <stopKey>STOPJETTY</stopKey>
                     <stopPort>9999</stopPort>
                     <webAppConfig>
+                     	<defaultsDescriptor>webdefault.xml</defaultsDescriptor>
                         <contextPath>/${project.artifactId}</contextPath>
                         <resourceBases>
-                            <resourceBase>../../_attachments/scripts</resourceBase>
-                            <resourceBase>src/test/webapp</resourceBase>
+                        	<resourceBase>../jasmine</resourceBase>
+                        	<resourceBase>../../_attachments</resourceBase>
+                            <resourceBase>../../_attachments/src</resourceBase>
+                            <resourceBase>../../_attachments/src_tests</resourceBase>
+                            <resourceBase>../../_attachments/src_integration_tests</resourceBase>
                         </resourceBases>
                     </webAppConfig>
                 </configuration>
