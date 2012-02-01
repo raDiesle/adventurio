@@ -5,5 +5,8 @@
   // ".*\\.swp$"
   // ".*\\.bak$"
  "README.md",
- "utils"
+ "utils",
+ "_attachments\/lib_tests",
+ "_attachments\/src_tests",
+ "_attachments\/Resources_Tests.js"
 ]
