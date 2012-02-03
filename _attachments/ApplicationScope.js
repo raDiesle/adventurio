@@ -11,6 +11,7 @@ var adventurio = adventurio || {
     	creator : {
     		Index: {},
     		Login: {},
+    		Signup : {},
     		Stories: {}
     	},
     	ShowStories : {},

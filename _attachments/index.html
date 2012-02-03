@@ -58,6 +58,32 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 				<a href="#" data-role="button" data-icon="plus" class="addButton">Create New Story</a>
 			</div>
 		</div>
+		
+		<!-- Signup dialog -->
+		<div data-role="page" id="creator_signup" data-id="creator_signup">
+			<div data-role="header">
+				<h2>Login</h2>
+			</div>
+			<div data-role="content" class="content">
+<!-- 				<script id="creator_login_template" type="text/x-handlebars-template"> -->
+				<p>
+					Please Signup
+				</p>
+				<div data-role="fieldcontain">
+					<form action="#" method="post" >
+						<label for="username" >Username:</label>
+						<input type="text" name="username" id="username"/>
+						<label for="password" >Password:</label>
+						<input type="password" name="password" id="password" />
+						<a href="#" data-role="button" class="submitButton">Click</a>
+					</form>
+				</div>
+<!-- 				</script> -->
+			</div>
+			<div data-role="footer"></div>
+		</div>
+		
+		
 		<!-- Login dialog -->
 		<div data-role="page" id="creator_login" data-id="creator_login">
 			<div data-role="header">
@@ -81,6 +107,8 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 			</div>
 			<div data-role="footer"></div>
 		</div>
+		
+		<!-- Own Stories List -->
 		<div data-role="page" id="creator_stories" data-url="#creator_stories"  >
 			<div data-role="header">
 				<h2>Stories</h2>

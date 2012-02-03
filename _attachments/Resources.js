@@ -10,6 +10,7 @@ $LAB
  .script(libFolder+"jquery.couch.js") // november 2011 https://github.com/apache/couchdb/blob/master/share/www/script/jquery.couch.js
  .script(libFolder+"jquery.couch.app.js") // v 1.0.1 https://github.com/couchapp/couchapp/blob/master/couchapp/templates/vendor/couchapp/_attachments/jquery.couch.app.js
  .script(libFolder+"couch.js") // oktober 2011 https://github.com/apache/couchdb/blob/master/share/www/script/couch.js
+ .script(libFolder+"sha1.js") // couchdb
  .script(libFolder+"underscore.js")// 1.3.0 http://documentcloud.github.com/underscore/underscore.js
  .script(libFolder+"backbone.js") // 0.5.3 http://documentcloud.github.com/backbone/#
  .script(libFolder+"backbone-couchdb.js") // v1.0 https://github.com/janmonschke/backbone-couchdb
@@ -30,6 +31,7 @@ $LAB
  .script(srcFolder+"/adventurio/views/EditStory.js")
  .script(srcFolder+"/adventurio/views/CreatePage.js")
  .script(srcFolder+"/adventurio/views/creator/Index.js")
+ .script(srcFolder+"/adventurio/views/creator/Signup.js")
  .script(srcFolder+"/adventurio/views/creator/Login.js")
  .script(srcFolder+"/adventurio/views/creator/Stories.js")
  .script(srcFolder+"/adventurio/collections/StoriesCollection.js")

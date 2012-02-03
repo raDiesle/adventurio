@@ -32,10 +32,11 @@ adventurio.models.User = Backbone.Model.extend({
 	},
 	signup : function(name, password) {
 		$.couch.signup({
-			'name' : name
+			'name' : name,
+			'password' : password
 		}, password, {
 			success : function() {
-				this.login(name, password);
+				$proxy(this.login(name, password), this);
 			}
 		});
 	},

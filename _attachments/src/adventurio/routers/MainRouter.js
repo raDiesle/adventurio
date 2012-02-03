@@ -20,6 +20,7 @@ adventurio.routers.MainRouter = Backbone.Router.extend({
 		"reader/stories" : "doListStoriesInReadModeRequestedAction",
 		"reader/stories/:story" : "doViewSingleStoryInReadModeRequestedAction",
 		"creator/login": "login_dialog",
+		"creator/signup": "signup_dialog",
 		"creator/stories" : "creator_stories",
 		"creator/stories/new" : "doCreateNewStoryRequestedAction",
 		"creator/stories/:story" : "editstory",
@@ -32,6 +33,9 @@ adventurio.routers.MainRouter = Backbone.Router.extend({
 	,
 	login_dialog: function(){
 		new adventurio.views.creator.Login();	
+	},
+	signup_dialog : function(){
+		new adventurio.views.creator.Signup();
 	},
 	creator_stories : function(query, sort, page) {
 		console.log(page + " " + query + " was opened");
