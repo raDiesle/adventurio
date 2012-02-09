@@ -11,11 +11,42 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 		<meta name="apple-mobile-web-app-capable" content="yes"/>
 		<meta names="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 		<link rel="stylesheet" href="lib/jquery.mobile-1.0.css">
-		<link rel="stylesheet" href="css/adventurio.css">
+		<link rel="stylesheet" href="css/style.css">
 		<title>Adventurio</title>
 	</head>
 	<body>
-		<!-- reader -->
+	
+<!-- READER: index page  -->
+	<div data-role="page" id="reader_index" data-url="#reader" data-position="inline" data-nobackbtn="true">
+			<div data-role="header" class="header">
+				<h2 class="title">Replaced</h2>
+			</div>
+			<div data-role="content" data-identity="{{storyId}}" >
+				<div class="reader_index_content">
+<!-- 					<img src="http://fc04.deviantart.net/fs14/i/2006/358/4/a/dragon_by_GBrush.jpg" class=""/> -->
+					<div class="ui-grid-a"  >
+						<div class="ui-block-a" >
+							content
+						</div>
+						<ul data-role="listview" data-theme="g" class="ui-block-b transparent" data-inset="true">
+							<li data-role="list-divider">Creator</li>
+							<li><a href="acura.html">Create Story</a></li>
+							<li data-role="list-divider">Reader</li>
+							<li><a href="audi.html">Browse stories</a></li>
+						</ul>
+					</div>
+				</div>
+			<!-- /grid-a -->
+<!-- 				<script id="reader_index_template" type="text/x-handlebars-template"> -->
+<!-- <a href="index.html" data-role="button">Link button</a> -->
+<!-- 				</script> -->
+			</div>
+			<div data-role="footer">
+				Footer
+			</div>
+		</div>
+
+<!-- Reader: list stories -->
 		<div data-role="page" id="mainpage" data-url="#mainpage"  >
 			<!-- data-position="fixed" -->
 			<div data-role="header">
@@ -43,8 +74,8 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 				Footer
 			</div>
 		</div>
-		<!-- Creator -->
-		<!-- Creator start page -->
+<!-- Creator -->
+<!-- Creator start page -->
 		<div data-role="page" id="creator_page" data-id="creator_page">
 			<div data-role="header">
 				<h2>Login</h2>
@@ -84,7 +115,7 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 		</div>
 		
 		
-		<!-- Login dialog -->
+<!-- Login dialog -->
 		<div data-role="page" id="creator_login" data-id="creator_login">
 			<div data-role="header">
 				<h2>Login</h2>
@@ -108,7 +139,7 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 			<div data-role="footer"></div>
 		</div>
 		
-		<!-- Own Stories List -->
+<!-- Own Stories List -->
 		<div data-role="page" id="creator_stories" data-url="#creator_stories"  >
 			<div data-role="header">
 				<h2>Stories</h2>
@@ -151,6 +182,8 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 				Footer
 			</div>
 		</div>
+		
+<!-- Create Story -->
 		<div data-role="page" id="createstory" data-url="#createstory" data-position="inline" data-nobackbtn="true">
 			<div data-role="header" id="createStory_header">
 				<h2 class="storyname">Replaced</h2>
@@ -183,6 +216,8 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 				Footer <a href="#creator_login" data-rel="dialog">TO THE LOGIN</a>
 			</div>
 		</div>
+		
+<!-- Edit Story -->
 		<div data-role="page" id="editstory" data-url="editstory" data-position="inline" data-nobackbtn="true">
 			<div data-role="header" id="editStory_header">
 				<h2 class="storyname">Replaced</h2>

@@ -17,6 +17,7 @@ $LAB
 //  Tests
  .script(srcFolder+"adventurio/models/LoginTest.js")
  .script(srcFolder+"adventurio/views/creator/SignupTest.js")
+ .script(srcFolder+"adventurio/views/reader/IndexTest.js")
  
  .wait(function() {
       var jasmineEnv = jasmine.getEnv();

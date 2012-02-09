@@ -14,6 +14,9 @@ var adventurio = adventurio || {
     		Signup : {},
     		Stories: {}
     	},
+    	reader : {
+    		Index: {}
+    	},
     	ShowStories : {},
     	ShowStory : {},
     	CreateStory : {},
@@ -25,6 +28,9 @@ var adventurio = adventurio || {
     	creator: {
     		Stories: {},
     		Login: {}
+    	},
+    	reader : {
+    		Index : {}
     	}
     },
     mocks: {

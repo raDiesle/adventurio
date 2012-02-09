@@ -25,7 +25,10 @@ adventurio.routers.MainRouter = Backbone.Router.extend({
 		"creator/stories/new" : "doCreateNewStoryRequestedAction",
 		"creator/stories/:story" : "editstory",
 		"creator/stories/:story/:vertical/:horizontal" : "createpage",
-		"" : "doListStoriesInReadModeRequestedAction",
+		"" : "doIndexHomePageRequestedAction",
+	},
+	doIndexHomePageRequestedAction : function(){
+		new adventurio.views.reader.Index();
 	},
 	doCreatorIndexPageRequestedAction : function(){
 		new adventurio.views.creator.Index();

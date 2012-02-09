@@ -3,8 +3,8 @@
 
 // Singletons
 adventurio.models.UserSingleton =  new adventurio.models.User();
-MainRouterSingleton: new adventurio.routers.MainRouter();
-Backbone.history.start();
+adventurio.routers.MainRouterSingleton = new adventurio.routers.MainRouter();
+Backbone.history.start(); // {silent:true, pushState:true}
 
 Backbone.couch_connector.config.db_name = "adventurio";
 Backbone.couch_connector.config.ddoc_name = "adventurio";

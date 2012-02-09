@@ -10,8 +10,8 @@ adventurio.views.CreateStory = Backbone.View.extend({
 	},
 	render : function(event) {
 		
-			console.log("create rendered");
-		if(createStory_template === null) {
+		console.log("create rendered");
+		if (createStory_template === null) {
 			createStory_template = $("#createStory_template").html();
 		}
 
@@ -19,15 +19,14 @@ adventurio.views.CreateStory = Backbone.View.extend({
 		var context = {};
 
 		// if(event != undefined && event.toJSON()) {
-			// var json = event.toJSON();
-			// context = {
-				// storyId : json._id,
-				// storyDescription : json.description,
-				// storyName : json.name,
-				// storyTags : json.tags
-			// };
+		// var json = event.toJSON();
+		// context = {
+		// storyId : json._id,
+		// storyDescription : json.description,
+		// storyName : json.name,
+		// storyTags : json.tags
+		// };
 		// }
-
 
 		var html = template(context);
 
@@ -35,13 +34,15 @@ adventurio.views.CreateStory = Backbone.View.extend({
 		$("#createstory .storyname").text(context.storyName);
 		// $("#listedStories");
 		// .listview("refresh")
-		
+
 		$.mobile.changePage("#createstory", {
-				transition : 'slideup',
-				reverse : false,
-				changeHash : false
-			});
+			transition : 'slideup',
+			reverse : false,
+			changeHash : false
+		});
 		
+		
+
 		// return this;
 	},
 	events : {
@@ -57,7 +58,8 @@ adventurio.views.CreateStory = Backbone.View.extend({
 			"user" : "simpleUser"
 		});
 
-		// var storyModel = new adventurio.collections.StoryCollection(storyModelReal);
+		// var storyModel = new
+		// adventurio.collections.StoryCollection(storyModelReal);
 
 		// if(this.model){
 		// storyModel.update({success: this.createPage});
@@ -65,10 +67,10 @@ adventurio.views.CreateStory = Backbone.View.extend({
 		// }
 
 		// if(!this.model) {
-			var newStoryModel = storyModelReal.save(storyModelReal,{
-				success: this.createPage,
-				error: this.errorHandling
-			});
+		var newStoryModel = storyModelReal.save(storyModelReal, {
+			success : this.createPage,
+			error : this.errorHandling
+		});
 		// }
 	},
 	createPage : function(model, response) {
@@ -76,7 +78,7 @@ adventurio.views.CreateStory = Backbone.View.extend({
 
 		location.hash = "creator/stories" + "/" + model.toJSON()._id + "/v1/h1";
 	},
-	errorHandling : function(model, response){
+	errorHandling : function(model, response) {
 		console.log(response);
 	}
 });

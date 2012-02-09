@@ -7,7 +7,7 @@ $LAB
  .script(libFolder+"jquery-1.7.js")
  // .script("lib/jquery.mobile.router.js")
  .script(libFolder+"jquery.mobile-1.0.js")
- .script(libFolder+"jquery.couch.js") // november 2011 https://github.com/apache/couchdb/blob/master/share/www/script/jquery.couch.js
+ .script(libFolder+"jquery.couch.js") // for signup november 2011 https://github.com/apache/couchdb/blob/master/share/www/script/jquery.couch.js
  .script(libFolder+"jquery.couch.app.js") // v 1.0.1 https://github.com/couchapp/couchapp/blob/master/couchapp/templates/vendor/couchapp/_attachments/jquery.couch.app.js
  .script(libFolder+"couch.js") // oktober 2011 https://github.com/apache/couchdb/blob/master/share/www/script/couch.js
  .script(libFolder+"sha1.js") // couchdb
@@ -25,6 +25,7 @@ $LAB
  
  .script(srcFolder+"/adventurio/models/StoryModel.js")
  .script(srcFolder+"/adventurio/models/User.js")
+ .script(srcFolder+"/adventurio/views/reader/Index.js")
  .script(srcFolder+"/adventurio/views/ShowStories.js")
  .script(srcFolder+"/adventurio/views/ShowStory.js")
  .script(srcFolder+"/adventurio/views/CreateStory.js")
