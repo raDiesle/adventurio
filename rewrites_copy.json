@@ -1,0 +1,21 @@
+[
+	{
+		"from": "*",
+		"to" : "*"
+	},
+	{
+		"from": "",
+		"to" : "index.html"
+	}
+	,
+	{
+		"from" : "../../*",
+		"to" : "stories/*"
+	},
+	{
+		"from" : "whatever",
+		"to": "../../../:db/:id"
+	}
+]
+
+

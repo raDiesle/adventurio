@@ -10,7 +10,7 @@ adventurio.collections.StoriesCollection = Backbone.Collection.extend({
 	db : {
 		view: "all_stories"
 	},
-	url: "/all_stories",
+	url: "all_stories",
 	model: adventurio.models.StoryModel
 	// ,
 	// initialize: function(){

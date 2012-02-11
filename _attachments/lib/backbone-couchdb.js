@@ -48,6 +48,7 @@
         if (con.config.base_url != null) {
           db.uri = "" + con.config.base_url + "/" + con.config.db_name + "/";
         }
+//        db.uri = "whatever"; // TODO CHANGED
         return db;
       }
     },

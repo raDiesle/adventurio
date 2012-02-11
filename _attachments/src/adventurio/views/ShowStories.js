@@ -14,7 +14,7 @@ adventurio.views.ShowStories = Backbone.View.extend({
 		data.fetch({
 			success : this.showStories
 		});
-		// function(collection, response){ console.log("SUCCESS");}
+		// function(collection, response){ console.log("sUCCESs");}
 
 	},
 	events : {
@@ -34,7 +34,11 @@ adventurio.views.ShowStories = Backbone.View.extend({
 		var html = template(context);
 
 		this.$("#listedStories").html(html);
+		try{
 		 $("#listedStories").listview("refresh");
+		}catch(e){
+			console.log("Error occurred" + e);
+		}
 		 
 		 $.mobile.changePage("#mainpage", {
 			transition : 'slideup',

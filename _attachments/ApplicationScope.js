@@ -46,3 +46,4 @@ var adventurio = adventurio || {
 	},
     utils:{}
 };
+

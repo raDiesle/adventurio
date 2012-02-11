@@ -23,19 +23,27 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 			</div>
 			<div data-role="content" data-identity="{{storyId}}" >
 				<div class="reader_index_content">
-<!-- 					<img src="http://fc04.deviantart.net/fs14/i/2006/358/4/a/dragon_by_GBrush.jpg" class=""/> -->
 					<div class="ui-grid-a"  >
 						<div class="ui-block-a" >
-							content
+							content 123
 						</div>
 						<ul data-role="listview" data-theme="g" class="ui-block-b transparent" data-inset="true">
-							<li data-role="list-divider">Creator</li>
-							<li><a href="acura.html">Create Story</a></li>
-							<li data-role="list-divider">Reader</li>
-							<li><a href="audi.html">Browse stories</a></li>
+							<script id="reader_index_template" type="text/x-handlebars-template">
+								 {{#menuObjects}}
+									<li data-role="list-divider">{{header}}</li>
+									{{#menu}}
+									<li><a href="#" data-ajax="false" class="reader_index_menu_link" data-identity="{{route}}" >{{entry}}</a></li>
+									{{/menu}}
+								{{/menuObjects}} 
+							</script>
 						</ul>
 					</div>
 				</div>
+<!-- 							<li><a href="#reader/stories">Continue Reading Last Story</a></li> -->
+<!-- 							<li data-role="list-divider">Creator</li> -->
+<!-- 							<li><a href="#creator/stories">Manage Your Stories</a></li> -->
+<!-- 							<li><a href="#creator/stories/new">Create New Story</a></li> -->
+<!-- 							<li><a href="#creator">Profile</a></li> -->
 			<!-- /grid-a -->
 <!-- 				<script id="reader_index_template" type="text/x-handlebars-template"> -->
 <!-- <a href="index.html" data-role="button">Link button</a> -->
@@ -58,10 +66,10 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 						{{#storyObjects}}
 						<li id="storyLink">
 						<!--#reader?id={{_id}} -->
-						<a href="#" class="viewStoryLink"  data-ajax="false" data-identity="/{{_id}}" > <!-- data-url="/{{_id}}"   -->
-						<h2 class="storyName">{{name}}</h2>
-						<p class="storyCreator">{{creator}}</p>
-						<p class="storyCategory">{{tags}}</p>
+						<a href="#" class="viewStoryLink"  data-ajax="false" data-identity="/{{_id}}" >
+							<h2 class="storyName">{{name}}</h2>
+							<p class="storyCreator">{{creator}}</p>
+							<p class="storyCategory">{{tags}}</p>
 						</a>
 						</li>
 						{{/storyObjects}}
@@ -267,5 +275,21 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 		-->
 		<script type="text/javascript" src="lib/LAB.js"></script>
 		<script type="text/javascript" src="Resources.js"></script>
+		<script type="text/javascript" src="lib/watcher.js"></script>
+		<script type="text/javascript" src="lib/collector.js"></script>
+		<!-- https://github.com/twolfson/Resource-Collector  -->
+		<script>
+// 		    (function () {
+// 		       var watcher = new FileWatcher(),
+// 		           resources = ResourceCollector.collect();
+// 		       watcher.addListener(function (url) {
+// 		         if (url.match(/(js|html)$/)) {
+// 		           location.reload();
+// 		         }
+// 		       });
+// 		       watcher.watch(resources);
+// 		    }());
+		</script>
+<!-- 		<meta http-equiv="refresh" content="2;url=index.html" />  -->
 	</body>
 </html>

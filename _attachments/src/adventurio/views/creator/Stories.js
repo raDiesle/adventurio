@@ -32,9 +32,10 @@ adventurio.views.creator.Stories = Backbone.View.extend({
 
 		var html = template(context);
 
-		var content = this.$('.content').first();
+		var content = $('#creator_stories .content').first();
 		content.html(html);
-		this.$('.listview').first().listview('refresh');
+//		this.$('.listview').first().listview('refresh');
+		$('#creator_stories .listview').first().listview('refresh');
 		$.mobile.changePage("#creator_stories", {transition: 'slideup', reverse: false, changeHash: false});
 	},
 	viewStory : function(e) {
