@@ -1,11 +1,20 @@
 [
 	{
-		"from": "*",
-		"to" : "*"
+		"from" : "/stories",
+		"to" : "_view/all_stories"
+	}
+	,
+	{
+		"from" : "/stories/*",
+		"to" : "../../../adventurio/*"
 	},
 	{
 		"from": "",
 		"to" : "index.html"
+	},
+	{
+		"from": "/*",
+		"to" : "*"
 	}
 	
 ]
