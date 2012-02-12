@@ -36,8 +36,16 @@
  */
 (function($) {
 
+	
   $.couch = $.couch || {};
   /** @lends $.couch */
+  
+  $.couch.properties = {
+	databaseUri : "",
+	designUri : "", //"_design/" 
+	appUri : "",
+	viewUri : "/" // /_view/
+  };
 
   /**
    * @private
@@ -46,7 +54,7 @@
     var parts = docID.split("/");
     if (parts[0] == "_design") {
       parts.shift();
-      return "_design/" + encodeURIComponent(parts.join('/'));
+      return $.couch.properties.designUri + encodeURIComponent(parts.join('/'));
     }
     return encodeURIComponent(docID);
   }
@@ -846,7 +854,7 @@
           ajax({
               type: type,
               data: data,
-              url: this.uri + '_design/' + list[0] +
+              url: this.uri + $.couch.properties.designUri + list[0] +
                    '/_list/' + list[1] + '/' + view + encodeOptions(options)
               },
               ajaxOptions, 'An error occured accessing the list'
@@ -879,8 +887,8 @@
           ajax({
               type: type,
               data: data,
-              url: this.uri + "_design/" + name[0] +
-                   "/_view/" + name[1] + encodeOptions(options)
+              url: this.uri + $.couch.properties.designUri + name[0] +
+                   $.couch.properties.viewUri + name[1] + encodeOptions(options)
             },
             options, "An error occurred accessing the view"
           );

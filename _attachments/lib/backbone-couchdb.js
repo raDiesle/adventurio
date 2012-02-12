@@ -14,8 +14,8 @@
   };
   Backbone.couch_connector = con = {
     config: {
-      db_name: "adventurio",
-      ddoc_name: "adventurio",
+      db_name: "stories",
+      ddoc_name: "_",
       view_name: "byCollection",
       global_changes: false,
       base_url: null
@@ -48,7 +48,6 @@
         if (con.config.base_url != null) {
           db.uri = "" + con.config.base_url + "/" + con.config.db_name + "/";
         }
-//        db.uri = "whatever"; // TODO CHANGED
         return db;
       }
     },
