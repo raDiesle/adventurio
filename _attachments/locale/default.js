@@ -10,6 +10,17 @@ var locale = {
 		}
 	},
 	creator : {
-		header: "Creator"
+		header : "Creator",
+		stories : {
+			singleStory : {
+				menu : {
+					header : "Manage Story",
+					entry : {
+						editStory : "Edit Story Settings",
+						builtStory : "Built Story"
+					}
+				}
+			}
+		}
 	}
 };

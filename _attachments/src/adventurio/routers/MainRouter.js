@@ -23,7 +23,8 @@ adventurio.routers.MainRouter = Backbone.Router.extend({
 		"creator/signup": "signup_dialog",
 		"creator/stories" : "creator_stories",
 		"creator/stories/new" : "doCreateNewStoryRequestedAction",
-		"creator/stories/:story" : "editstory",
+		"creator/stories/:story?edit" : "editstory",
+		"creator/stories/:story" : "doManageStoryRequestedAction",
 		"creator/stories/:story/:vertical/:horizontal" : "createpage",
 		"" : "doIndexHomePageRequestedAction",
 	},
@@ -57,22 +58,28 @@ adventurio.routers.MainRouter = Backbone.Router.extend({
 	doCreateNewStoryRequestedAction : function() {
 		new adventurio.views.CreateStory();
 	},
-	editstory : function(query, sort, page) {
+	editstory : function(storyId) {
 		newModel = new adventurio.models.StoryModel({
-			'_id' : query
+			'_id' : storyId
 		});
 		new adventurio.views.EditStory({
 			model : newModel
 		});
 	},
 	createpage : function(storyId, vertical, horizontal) {
-		var storyId = storyId;
 		var newModel = new adventurio.models.StoryModel({
 			_id : storyId
 		});
 		new adventurio.views.CreatePage({
 			model : newModel
 		});
+	},
+	doManageStoryRequestedAction : function(storyId){
+		new adventurio.views.creator.ManageStory({
+				model : new adventurio.models.StoryModel({
+			_id : storyId 
+		}),
+		el : $('#creator_stories_storyid')});
 	},
 	defaultRoute : function(other) {
 		console.log("Invalid. You attempted to reach:" + other);

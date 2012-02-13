@@ -9,6 +9,7 @@ var adventurio = adventurio || {
     },
     views : {
     	creator : {
+    		ManageStory : {},
     		Index: {},
     		Login: {},
     		Signup : {},
@@ -26,8 +27,9 @@ var adventurio = adventurio || {
     },
     templates: {
     	creator: {
-    		Stories: {},
-    		Login: {}
+    		ManageStory : {},
+    		Stories : {},
+    		Login : {}
     	},
     	reader : {
     		Index : {}

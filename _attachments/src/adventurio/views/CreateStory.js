@@ -18,16 +18,6 @@ adventurio.views.CreateStory = Backbone.View.extend({
 		var template = Handlebars.compile(createStory_template);
 		var context = {};
 
-		// if(event != undefined && event.toJSON()) {
-		// var json = event.toJSON();
-		// context = {
-		// storyId : json._id,
-		// storyDescription : json.description,
-		// storyName : json.name,
-		// storyTags : json.tags
-		// };
-		// }
-
 		var html = template(context);
 
 		$("#createStory_content").html(html).trigger("create");
@@ -40,8 +30,6 @@ adventurio.views.CreateStory = Backbone.View.extend({
 			reverse : false,
 			changeHash : false
 		});
-		
-		
 
 		// return this;
 	},
@@ -58,15 +46,6 @@ adventurio.views.CreateStory = Backbone.View.extend({
 			"user" : "simpleUser"
 		});
 
-		// var storyModel = new
-		// adventurio.collections.StoryCollection(storyModelReal);
-
-		// if(this.model){
-		// storyModel.update({success: this.createPage});
-		// console.log("storymodel was saved");
-		// }
-
-		// if(!this.model) {
 		var newStoryModel = storyModelReal.save(storyModelReal, {
 			success : this.createPage,
 			error : this.errorHandling

@@ -10,7 +10,7 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"/>
 		<meta name="apple-mobile-web-app-capable" content="yes"/>
 		<meta names="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-		<link rel="stylesheet" href="lib/jquery.mobile-1.0.css">
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.css">
 		<link rel="stylesheet" href="css/style.css">
 		<title>Adventurio</title>
 	</head>
@@ -39,18 +39,50 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 						</ul>
 					</div>
 				</div>
-<!-- 							<li><a href="#reader/stories">Continue Reading Last Story</a></li> -->
-<!-- 							<li data-role="list-divider">Creator</li> -->
-<!-- 							<li><a href="#creator/stories">Manage Your Stories</a></li> -->
-<!-- 							<li><a href="#creator/stories/new">Create New Story</a></li> -->
-<!-- 							<li><a href="#creator">Profile</a></li> -->
-			<!-- /grid-a -->
-<!-- 				<script id="reader_index_template" type="text/x-handlebars-template"> -->
-<!-- <a href="index.html" data-role="button">Link button</a> -->
-<!-- 				</script> -->
 			</div>
 			<div data-role="footer">
 				Footer
+			</div>
+		</div>
+
+
+<!--  Creator: Manage Story Menu -->
+
+<div data-role="page" id="creator_stories_storyid"   data-url="#whatever" data-position="inline" >
+			<div data-role="header" class="header">
+				<h2 class="title">Manage Story</h2>
+			</div>
+			<div data-role="content" class="reader_index_content" data-identity="{{storyId}}" >
+				<div class="creator_index_content">
+					<div class="ui-grid-a"  >
+						<div class="ui-block-a" >
+							content 123
+						</div>
+						<ul data-role="listview" data-theme="g" class="ui-block-b transparent" data-inset="true">
+							<script id="creator_stories_storyId_template" type="text/x-handlebars-template">
+									<li data-role="list-divider">{{editStory.header}}</li>
+									<li><a href="#" data-ajax="false" class="reader_index_menu_link" data-identity="{{editStory.menu.route}}" >{{editStory.menu.entry}}</a></li>
+									
+									<li data-role="list-divider">{{builtStory.header}}</li>
+									<li data-role="fieldcontain">
+										<a href="#" data-ajax="false" class="reader_index_menu_link" data-identity="{{builtStory.menu.route}}" >{{builtStory.menu.entry}}</a>
+										
+										</li>
+								</script>
+						</ul>
+
+					</div>
+				</div>
+			</div>
+			
+					<form>
+<!-- 						<label for="slider-0">Built Story: </label> -->
+				<input type="range" name="slider" id="slider-0" value="60" min="0" max="100" highlight="true" step="2"  />
+						</form>
+			
+			<div data-role="footer">
+				Footer
+				
 			</div>
 		</div>
 
@@ -147,7 +179,7 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 			<div data-role="footer"></div>
 		</div>
 		
-<!-- Own Stories List -->
+<!--CREATOR:  Own Stories List -->
 		<div data-role="page" id="creator_stories" data-url="#creator_stories"  >
 			<div data-role="header">
 				<h2>Stories</h2>
@@ -169,10 +201,13 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 			</div>
 			<div data-role="footer" ></div>
 		</div>
-		<div data-role="page" id="viewstory" data-url="#viewstory" data-position="inline" data-back="true">
+		
+<!-- READER: view single story-->		
+		<div data-role="page" id="viewstory" data-url="#viewstory" data-position="inline">
 			<div data-role="header" id="storyheader">
-				<h2 class="storyname">Replaced</h2>
-				<a href="#mainpage" data-icon="grid" class="ui-btn-right">Home</a>
+				
+				<h2 class="storyname">Name</h2>
+				<a href="#mainpage" data-icon="grid" class="ui-btn-right"  data-rel="back" >Home</a>
 			</div>
 			<div data-role="content" id="viewStory_content" data-identity="{{storyId}}">
 				<script id="showStory_template" type="text/x-handlebars-template">
@@ -225,11 +260,11 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 			</div>
 		</div>
 		
-<!-- Edit Story -->
-		<div data-role="page" id="editstory" data-url="editstory" data-position="inline" data-nobackbtn="true">
+<!-- CREATOR: Edit Story -->
+		<div data-role="page" id="editstory" data-url="editstory" data-position="inline" >
 			<div data-role="header" id="editStory_header">
 				<h2 class="storyname">Replaced</h2>
-				<a id="cancelBackButton" href="#" data-icon="delete">Close</a>
+				<a id="cancelBackButton" href="#creator/stories" data-icon="delete" data-rel="back">Back</a>
 			</div>
 			<div data-role="content" id="editStory_content" data-identity="{{storyId}}" >
 				<script id="editStory_template" type="text/x-handlebars-template">

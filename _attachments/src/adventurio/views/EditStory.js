@@ -45,13 +45,7 @@ adventurio.views.EditStory = Backbone.View.extend({
 	},
 
 	editStory : function(event) {
-
 		var storyModelReal = this.model;
-		// storyModelReal.attributes.name = $("#editStory_storyName").val();
-		// storyModelReal.attributes.description = $("#editStory_description").val();
-		// storyModelReal.attributes.tags = $("#editStory_tags").val();
-
-		// var storyModel = new adventurio.collections.StoryCollection(storyModelReal);
 
 		if(this.model) {
 			// can use error dialog instead and use usage of localstorage
