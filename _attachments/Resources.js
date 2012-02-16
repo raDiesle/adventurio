@@ -6,7 +6,7 @@ $LAB
  .setOptions({AlwaysPreserveOrder:true})
  .script("ApplicationScope.js")
  .script(libFolder+"json2.js")
- .script(libFolder+"jquery-1.7.js")
+ .script("http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js") // http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
  
  .wait(function() {
       $(document).bind("mobileinit", function(){
@@ -38,7 +38,7 @@ $LAB
  .script(srcFolder+"/adventurio/models/StoryModel.js")
  .script(srcFolder+"/adventurio/models/User.js")
  .script(srcFolder+"/adventurio/views/reader/Index.js")
- .script(srcFolder+"/adventurio/views/ShowStories.js")
+ .script(srcFolder+"/adventurio/views/reader/Stories.js")
  .script(srcFolder+"/adventurio/views/ShowStory.js")
  .script(srcFolder+"/adventurio/views/CreateStory.js")
  .script(srcFolder+"/adventurio/views/EditStory.js")

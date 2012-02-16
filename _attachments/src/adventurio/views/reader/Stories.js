@@ -1,6 +1,4 @@
-var listAllStories_template = null;
-
-adventurio.views.ShowStories = Backbone.View.extend({
+adventurio.views.reader.Stories = Backbone.View.extend({
 
 	el : $('#mainpage'),
 	initialize : function() {
@@ -21,17 +19,12 @@ adventurio.views.ShowStories = Backbone.View.extend({
 		"click .viewStoryLink" : "viewStory"
 	},
 	showStories : function(collection, response) {
-		if(listAllStories_template === null) {
-			listAllStories_template = $("#listAllStories_template").html();
-		}
-
-		var template = Handlebars.compile(listAllStories_template);
 
 		var context = {
 			storyObjects : collection.toJSON()
 		};
 		console.log("Data to display:");
-		var html = template(context);
+		var html = adventurio.templates.listviews.SimpleList.compile(context);
 
 		this.$("#listedStories").html(html);
 		try{

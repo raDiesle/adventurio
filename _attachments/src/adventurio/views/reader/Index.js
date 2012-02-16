@@ -1,4 +1,4 @@
-adventurio.templates.reader.Index = null;
+//adventurio.templates.menus.Simple = null;
 
 adventurio.views.reader.Index = Backbone.View.extend({
 	el : ('#reader_index'),
@@ -9,14 +9,14 @@ adventurio.views.reader.Index = Backbone.View.extend({
 		// return this;
 	},
 	events : {
-		"click #reader_index .reader_index_menu_link" : "redirectPage"
+		"click a" : "redirectPage" //#reader_index
 	},
 	render : function() {
-		if (adventurio.templates.reader.Index === null) {
-			adventurio.templates.reader.Index = $("#reader_index_template").html();
-		}
+//		if (adventurio.templates.menus.Simple === null) {
+//			adventurio.templates.menus.Simple = ;
+//		}
 		//		
-		var template = Handlebars.compile(adventurio.templates.reader.Index);
+//		var template = Handlebars.compile($("#templates_menus_simple").html());
 		var context = {
 			menuObjects : [ {
 				header : locale.reader.header,
@@ -40,7 +40,7 @@ adventurio.views.reader.Index = Backbone.View.extend({
 			} ]
 		};
 		//		
-		var html = template(context);
+		var html = adventurio.templates.menus.Simple.compile(context);
 		//
 		$("#reader_index ul").first().html(html).listview("refresh");
 		$("#reader_index .title").first().text("WELCOME");

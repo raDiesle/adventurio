@@ -1,5 +1,3 @@
-adventurio.templates.creator.Stories = null;
-
 adventurio.views.creator.Stories = Backbone.View.extend({
 
 	el : $('#creator_stories'),
@@ -20,22 +18,20 @@ adventurio.views.creator.Stories = Backbone.View.extend({
 		"click .liAnchor" : "viewStory"
 	},
 	showStories : function(collection, response) {
-		if(adventurio.templates.creator.Stories === null) {
-			adventurio.templates.creator.Stories = $("#creator_stories_template").html();
-		}
 
-		var template = Handlebars.compile(adventurio.templates.creator.Stories);
 
 		var context = {
 			storyObjects : collection.toJSON()
 		};
 
-		var html = template(context);
+		var html = adventurio.templates.listviews.SimpleList.compile(context);
 
 		var content = $('#creator_stories .content').first();
-		content.html(html);
 //		this.$('.listview').first().listview('refresh');
-		$('#creator_stories .listview').first().listview('refresh');
+		try{
+			$('#creator_stories ul').first().html(html).listview('refresh');
+		}catch(exception){
+		}
 		$.mobile.changePage("#creator_stories", {transition: 'slideup', reverse: false, changeHash: false});
 	},
 	viewStory : function(e) {

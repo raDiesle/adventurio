@@ -28,14 +28,7 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 							content 123
 						</div>
 						<ul data-role="listview" data-theme="g" class="ui-block-b transparent" data-inset="true">
-							<script id="reader_index_template" type="text/x-handlebars-template">
-								 {{#menuObjects}}
-									<li data-role="list-divider">{{header}}</li>
-									{{#menu}}
-									<li><a href="#" data-ajax="false" class="reader_index_menu_link" data-identity="{{route}}" >{{entry}}</a></li>
-									{{/menu}}
-								{{/menuObjects}} 
-							</script>
+							
 						</ul>
 					</div>
 				</div>
@@ -45,46 +38,20 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 			</div>
 		</div>
 
+<!--  TEMPLATE MENU -->
+<script id="templates_menus_simple" type="text/x-handlebars-template">
+	{{#menuObjects}}
+		<li data-role="list-divider">{{header}}</li>
+		{{#menu}}
+		<li>
+			<a href="#" data-ajax="false" class="reader_index_menu_link" data-identity="{{route}}" >
+				{{entry}}
+			</a>
+		</li>
+		{{/menu}}
+	{{/menuObjects}} 
+</script>
 
-<!--  Creator: Manage Story Menu -->
-
-<div data-role="page" id="creator_stories_storyid"   data-url="#whatever" data-position="inline" >
-			<div data-role="header" class="header">
-				<h2 class="title">Manage Story</h2>
-			</div>
-			<div data-role="content" class="reader_index_content" data-identity="{{storyId}}" >
-				<div class="creator_index_content">
-					<div class="ui-grid-a"  >
-						<div class="ui-block-a" >
-							content 123
-						</div>
-						<ul data-role="listview" data-theme="g" class="ui-block-b transparent" data-inset="true">
-							<script id="creator_stories_storyId_template" type="text/x-handlebars-template">
-									<li data-role="list-divider">{{editStory.header}}</li>
-									<li><a href="#" data-ajax="false" class="reader_index_menu_link" data-identity="{{editStory.menu.route}}" >{{editStory.menu.entry}}</a></li>
-									
-									<li data-role="list-divider">{{builtStory.header}}</li>
-									<li data-role="fieldcontain">
-										<a href="#" data-ajax="false" class="reader_index_menu_link" data-identity="{{builtStory.menu.route}}" >{{builtStory.menu.entry}}</a>
-										
-										</li>
-								</script>
-						</ul>
-
-					</div>
-				</div>
-			</div>
-			
-					<form>
-<!-- 						<label for="slider-0">Built Story: </label> -->
-				<input type="range" name="slider" id="slider-0" value="60" min="0" max="100" highlight="true" step="2"  />
-						</form>
-			
-			<div data-role="footer">
-				Footer
-				
-			</div>
-		</div>
 
 <!-- Reader: list stories -->
 		<div data-role="page" id="mainpage" data-url="#mainpage"  >
@@ -94,18 +61,7 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 			</div>
 			<div data-role="content">
 				<ul id="listedStories" data-role="listview" data-theme="c" data-divendertheme="b">
-					<script id="listAllStories_template" type="text/x-handlebars-template">
-						{{#storyObjects}}
-						<li id="storyLink">
-						<!--#reader?id={{_id}} -->
-						<a href="#" class="viewStoryLink"  data-ajax="false" data-identity="/{{_id}}" >
-							<h2 class="storyName">{{name}}</h2>
-							<p class="storyCreator">{{creator}}</p>
-							<p class="storyCategory">{{tags}}</p>
-						</a>
-						</li>
-						{{/storyObjects}}
-					</script>
+					<!-- template -->
 				</ul>
 			</div>
 			<div data-role="footer" >
@@ -114,6 +70,48 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 				Footer
 			</div>
 		</div>
+		
+<!-- TEMPLATE simple Listview -->
+<script id="templates_listviews_SimpleList" type="text/x-handlebars-template">
+	{{#storyObjects}}
+	<li id="storyLink">
+	<!--#reader?id={{_id}} -->
+		<a href="#" class="viewStoryLink"  data-ajax="false" data-identity="/{{_id}}" >
+			<h2 class="storyName">{{name}}</h2>
+			<p class="storyCreator">{{creator}}</p>
+			<p class="storyCategory">{{tags}}</p>
+		</a>
+	</li>
+	{{/storyObjects}}
+</script>
+		
+		
+<!-- READER: view single story-->		
+		<div data-role="page" id="viewstory" data-url="#viewstory" data-position="inline">
+			<div data-role="header" id="storyheader">
+				
+				<h2 class="storyname">Name</h2>
+				<a href="#mainpage" data-icon="grid" class="ui-btn-right"  data-rel="back" >Home</a>
+			</div>
+			<div data-role="content" id="viewStory_content" data-identity="{{storyId}}">
+				<script id="showStory_template" type="text/x-handlebars-template">
+					<h2 class="storyCreator"/>{{storyCreator}}</h2>
+					<p class="storyName">Name: {{storyName}}</p>
+					<p class="description">Description: {{storyDescription}}</p>
+					<p class="tags">Tags: {{storyTags}}</p>
+					<a id="viewstory_edit" href="#" data-role="button" data-inline="true"
+					data-identity="/{{storyId}}" > <!-- data-url="stories/{{storyId}}" -->
+					Edit Story
+					</a>
+				</script>
+			</div>
+			<div data-role="footer">
+				Footer
+			</div>
+		</div>
+		
+		
+		
 <!-- Creator -->
 <!-- Creator start page -->
 		<div data-role="page" id="creator_page" data-id="creator_page">
@@ -179,51 +177,51 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 			<div data-role="footer"></div>
 		</div>
 		
+		
+		
+
+<!--  Creator: Manage Story Menu -->
+
+<div data-role="page" id="creator_stories_storyid"   data-url="#whatever" data-position="inline" >
+			<div data-role="header" class="header">
+				<h2 class="title">Manage Story</h2>
+			</div>
+			<div data-role="content" class="reader_index_content" data-identity="{{storyId}}" >
+				<div class="creator_index_content">
+					<div class="ui-grid-a"  >
+						<div class="ui-block-a" >
+							content 123
+						</div>
+						<ul data-role="listview" data-theme="g" class="ui-block-b transparent" data-inset="true">
+						</ul>
+
+					</div>
+				</div>
+			</div>
+					<form>
+<!-- 						<label for="slider-0">Built Story: </label> -->
+				<input type="range" name="slider" id="slider-0" value="60" min="0" max="100" highlight="true" step="2"  />
+						</form>
+			
+			<div data-role="footer">
+				Footer
+				
+			</div>
+		</div>
+
+
+		
 <!--CREATOR:  Own Stories List -->
 		<div data-role="page" id="creator_stories" data-url="#creator_stories"  >
 			<div data-role="header">
 				<h2>Stories</h2>
 			</div>
 			<div data-role="content" class="content">
-				<script id="creator_stories_template" type="text/x-handlebars-template">
-					{{#storyObjects}}
-					<ul data-role="listview" data-theme="c" data-divendertheme="b">
-					<li id="storyLink">
-					<a href="#" class="liAnchor"  data-ajax="false" data-identity="/{{_id}}" >
-					<h2>{{name}}</h2>
-					<p>{{creator}}</p>
-					<p>{{tags}}</p>
-					</a>
-					</li>
-					</ul>
-					{{/storyObjects}}
-				</script>
+				<ul data-role="listview" data-theme="c" data-divendertheme="b">
+					<!-- template -->
+				</ul>
 			</div>
 			<div data-role="footer" ></div>
-		</div>
-		
-<!-- READER: view single story-->		
-		<div data-role="page" id="viewstory" data-url="#viewstory" data-position="inline">
-			<div data-role="header" id="storyheader">
-				
-				<h2 class="storyname">Name</h2>
-				<a href="#mainpage" data-icon="grid" class="ui-btn-right"  data-rel="back" >Home</a>
-			</div>
-			<div data-role="content" id="viewStory_content" data-identity="{{storyId}}">
-				<script id="showStory_template" type="text/x-handlebars-template">
-					<h2 class="storyCreator"/>{{storyCreator}}</h2>
-					<p class="storyName">Name: {{storyName}}</p>
-					<p class="description">Description: {{storyDescription}}</p>
-					<p class="tags">Tags: {{storyTags}}</p>
-					<a id="viewstory_edit" href="#" data-role="button" data-inline="true"
-					data-identity="/{{storyId}}" > <!-- data-url="stories/{{storyId}}" -->
-					Edit Story
-					</a>
-				</script>
-			</div>
-			<div data-role="footer">
-				Footer
-			</div>
 		</div>
 		
 <!-- Create Story -->
@@ -310,8 +308,8 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 		-->
 		<script type="text/javascript" src="lib/LAB.js"></script>
 		<script type="text/javascript" src="Resources.js"></script>
-		<script type="text/javascript" src="lib/watcher.js"></script>
-		<script type="text/javascript" src="lib/collector.js"></script>
+<!-- 		<script type="text/javascript" src="lib/watcher.js"></script> -->
+<!-- 		<script type="text/javascript" src="lib/collector.js"></script> -->
 		<!-- https://github.com/twolfson/Resource-Collector  -->
 		<script>
 // 		    (function () {

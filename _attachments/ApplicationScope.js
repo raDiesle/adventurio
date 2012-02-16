@@ -16,9 +16,9 @@ var adventurio = adventurio || {
     		Stories: {}
     	},
     	reader : {
-    		Index: {}
+    		Index: {},
+    		Stories : {},
     	},
-    	ShowStories : {},
     	ShowStory : {},
     	CreateStory : {},
     	EditStory : {},
@@ -26,6 +26,20 @@ var adventurio = adventurio || {
         pages : {}
     },
     templates: {
+    	menus : {
+    		Simple : {
+    			compile : function(context){
+    				return Handlebars.compile($("#templates_menus_simple").html())(context);
+    			}
+    		}
+    	},
+    	listviews : {
+    		SimpleList : {
+    			compile : function(context){
+    				return Handlebars.compile($("#templates_listviews_SimpleList").html())(context);
+    			}
+    		}
+    	},
     	creator: {
     		ManageStory : {},
     		Stories : {},
