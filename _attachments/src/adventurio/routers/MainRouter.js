@@ -24,9 +24,13 @@ adventurio.routers.MainRouter = Backbone.Router.extend({
 		"creator/stories" : "creator_stories",
 		"creator/stories/new" : "doCreateNewStoryRequestedAction",
 		"creator/stories/:story?edit" : "editstory",
+		"creator/stories/:story?browse" : "doNavigatePagesRequestedAction",
 		"creator/stories/:story" : "doManageStoryRequestedAction",
 		"creator/stories/:story/:vertical/:horizontal" : "createpage",
 		"" : "doIndexHomePageRequestedAction",
+	},
+	doNavigatePagesRequestedAction : function(){
+		new adventurio.views.creator.BrowseStory();
 	},
 	doIndexHomePageRequestedAction : function(){
 		new adventurio.views.reader.Index();
@@ -62,7 +66,7 @@ adventurio.routers.MainRouter = Backbone.Router.extend({
 		newModel = new adventurio.models.StoryModel({
 			'_id' : storyId
 		});
-		new adventurio.views.EditStory({
+		new adventurio.views.creator.Story({
 			model : newModel
 		});
 	},

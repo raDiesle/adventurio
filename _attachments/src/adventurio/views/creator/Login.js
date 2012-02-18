@@ -15,8 +15,6 @@ adventurio.views.creator.Login = Backbone.View.extend({
 		}
 		
 //		var template = Handlebars.compile(adventurio.templates.creator.Login);
-		
-		
 //		$("#creator_login .content").first().couchLogin();
 		$.mobile.changePage('#creator_login', {transition: 'slideup',  role: "dialog", reverse: false, changeHash: false});
 	},

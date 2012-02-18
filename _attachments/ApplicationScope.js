@@ -8,12 +8,17 @@ var adventurio = adventurio || {
     	User: {},
     },
     views : {
+    	superClasses : {
+    		Basic : {}
+    	},
     	creator : {
     		ManageStory : {},
+    		BrowseStory : {},
     		Index: {},
     		Login: {},
     		Signup : {},
-    		Stories: {}
+    		Stories: {},
+    		Story : {}
     	},
     	reader : {
     		Index: {},
@@ -33,7 +38,19 @@ var adventurio = adventurio || {
     			}
     		}
     	},
+    	forms : {
+    		Story :{
+    			compile : function(context){
+    				return Handlebars.compile($("#templates_forms_story").html())(context);
+    			}
+    		}
+    	},
     	listviews : {
+    		Browse : {
+    			compile : function(context){
+    				return Handlebars.compile($("#templates_listviews_Browse").html())(context);
+    			}
+    		},
     		SimpleList : {
     			compile : function(context){
     				return Handlebars.compile($("#templates_listviews_SimpleList").html())(context);

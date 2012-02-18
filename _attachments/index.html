@@ -10,7 +10,8 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"/>
 		<meta name="apple-mobile-web-app-capable" content="yes"/>
 		<meta names="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.css">
+<!-- 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.css"> -->
+		<link rel="stylesheet" href="lib/jquery.mobile-1.0.css">
 		<link rel="stylesheet" href="css/style.css">
 		<title>Adventurio</title>
 	</head>
@@ -70,22 +71,7 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 				Footer
 			</div>
 		</div>
-		
-<!-- TEMPLATE simple Listview -->
-<script id="templates_listviews_SimpleList" type="text/x-handlebars-template">
-	{{#storyObjects}}
-	<li id="storyLink">
-	<!--#reader?id={{_id}} -->
-		<a href="#" class="viewStoryLink"  data-ajax="false" data-identity="/{{_id}}" >
-			<h2 class="storyName">{{name}}</h2>
-			<p class="storyCreator">{{creator}}</p>
-			<p class="storyCategory">{{tags}}</p>
-		</a>
-	</li>
-	{{/storyObjects}}
-</script>
-		
-		
+
 <!-- READER: view single story-->		
 		<div data-role="page" id="viewstory" data-url="#viewstory" data-position="inline">
 			<div data-role="header" id="storyheader">
@@ -111,6 +97,59 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 		</div>
 		
 		
+<!-- TEMPLATE simple Listview -->
+<script id="templates_listviews_SimpleList" type="text/x-handlebars-template">
+	{{#storyObjects}}
+	<li id="storyLink">
+	<!--#reader?id={{_id}} -->
+		<a href="#" class="viewStoryLink"  data-ajax="false" data-identity="/{{_id}}" >
+			<h2 class="storyName">{{name}}</h2>
+			<p class="storyCreator">{{creator}}</p>
+			<p class="storyCategory">{{tags}}</p>
+		</a>
+	</li>
+	{{/storyObjects}}
+</script>
+
+<!-- TEMPLATE Browse Listview -->
+<script id="templates_listviews_Browse" type="text/x-handlebars-template">
+	<ul data-role="listview" data-theme="g" class="ui-block-b transparent" data-inset="true">
+		{{#elements}}
+		<li>
+			<a href="#" data-ajax="false" data-identity="/{{_id}}" >
+				<h2>{{header}}</h2>
+				<p>{{description}}</p>
+			</a>
+		</li>
+		{{/elements}}
+	</ul>
+</script>
+
+
+
+<!--  Edit Story Template -->
+<script id="templates_forms_story" type="text/x-handlebars-template">
+	<form id="editStory_form" action="#" method="get" data-identity="{{document}}">
+		<div data-role="fieldcontain">
+			<label for="editStory_storyName">Name:</label>
+			<input id="editStory_storyName" name="storyName" type="text" value="{{storyName}}" />
+		</div>
+		<div data-role="fieldcontain">
+			<label for="editStory_description">Description:</label>
+			<textarea id="editStory_description" name="description" cols="40" rows="8">{{storyDescription}}</textarea>
+		</div>
+		<div data-role="fieldcontain">
+			<label for="editStory_tags">Tags</label>
+			<input id="editStory_tags" name="tags" type="text" value="{{storyTags}}" />
+		</div>
+	
+		<div data-role="controlgroup" data-type="horizontal">
+			<a href="#" class="cancelButton" data-role="button" >Cancel</a>
+			<a href="#" class="submitButton" data-role="button" >Submit</a>
+		</div>
+	</form>
+</script>
+
 		
 <!-- Creator -->
 <!-- Creator start page -->
@@ -178,10 +217,7 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 		</div>
 		
 		
-		
-
 <!--  Creator: Manage Story Menu -->
-
 <div data-role="page" id="creator_stories_storyid"   data-url="#whatever" data-position="inline" >
 			<div data-role="header" class="header">
 				<h2 class="title">Manage Story</h2>
@@ -259,38 +295,19 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 		</div>
 		
 <!-- CREATOR: Edit Story -->
-		<div data-role="page" id="editstory" data-url="editstory" data-position="inline" >
-			<div data-role="header" id="editStory_header">
-				<h2 class="storyname">Replaced</h2>
+		<div data-role="page" id="creator_stories_story" data-position="inline" > <!-- data-url="editstory"  -->
+			<div data-role="header" >
+				<h1 class="storyname">Replaced</h1>
 				<a id="cancelBackButton" href="#creator/stories" data-icon="delete" data-rel="back">Back</a>
 			</div>
 			<div data-role="content" id="editStory_content" data-identity="{{storyId}}" >
-				<script id="editStory_template" type="text/x-handlebars-template">
-					<form id="editStory_form" action="#" method="get" data-identity="{{document}}">
-					<div data-role="fieldcontain">
-					<label for="editStory_storyName">Name:</label>
-					<input id="editStory_storyName" name="storyName" type="text" value="{{storyName}}" />
-					</div>
-					<div data-role="fieldcontain">
-					<label for="editStory_description">Description:</label>
-					<textarea id="editStory_description" name="description" cols="40" rows="8">{{storyDescription}}</textarea>
-					</div>
-					<div data-role="fieldcontain">
-					<label for="editStory_tags">Tags</label>
-					<input id="editStory_tags" name="tags" type="text" value="{{storyTags}}" />
-					</div>
-
-					<div data-role="controlgroup" data-type="horizontal">
-					<a href="#" id="cancelButton" data-role="button" >Cancel</a>
-					<a href="#" id="submitButton" data-role="button" >Submit</a>
-					</div>
-					</form>
-				</script>
+				<!--  template -->	
 			</div>
 			<div data-role="footer">
 				Footer
 			</div>
 		</div>
+<!--  Creator: Create Page -->		
 		<div data-role="page" id="createpage" data-url="createpage" data-position="inline" data-nobackbtn="true">
 			<div data-role="header" id="createPage_header">
 				<h2 class="storyname">Replaced</h2>
@@ -301,6 +318,23 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 				Footer
 			</div>
 		</div>
+		
+<!-- Creator : browse -->
+		<div data-role="page" id="creator_stories_story-browse" data-position="inline" >
+			<div data-role="header" >
+				<h1 ></h1>
+				<a id="cancelBackButton" href="#creator/stories" data-icon="delete" data-rel="back">Back</a>
+			</div>
+			<div data-role="content">
+				<!--  templates_listviews_Browse -->
+			</div>
+			<div data-role="footer">
+			</div>
+		</div>
+		
+				
+		
+		
 		<!--
 		/********************************************************
 		*  Script management
