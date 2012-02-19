@@ -43,6 +43,11 @@ var adventurio = adventurio || {
     			compile : function(context){
     				return Handlebars.compile($("#templates_forms_story").html())(context);
     			}
+    		},
+    		Dynamic : {
+    			compile : function(context){
+    				return Handlebars.compile($("#templates_forms_dynamic").html())(context);
+    			}
     		}
     	},
     	listviews : {

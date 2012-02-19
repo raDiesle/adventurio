@@ -24,8 +24,9 @@ adventurio.views.creator.BrowseStory = Backbone.View.extend({
 	},
 	changeValue : function(event){
 		var position = event.currentTarget.value;
-		var factor = 2;
-		location.hash = "creator/stories/"+this.model.get('_id')+"/v"+position*factor + "-" + ((position*factor)+factor);
+		var factor = 2; // (position*factor) ((position*factor)+factor
+		
+		location.hash = "creator/stories/"+this.model.get('_id')+"/"+position;
 		
 		this.collection.models
 	},

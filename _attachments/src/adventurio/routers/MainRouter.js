@@ -27,7 +27,7 @@ adventurio.routers.MainRouter = Backbone.Router.extend({
 		"creator/stories/:story?browse" : "doNavigatePagesRequestedAction",
 		"creator/stories/:story?browse=:verticalFrom-:verticalTo" : "doNavigatePagesRequestedAction",
 		"creator/stories/:story" : "doManageStoryRequestedAction",
-		"creator/stories/:story/:vertical/:horizontal" : "createpage",
+		"creator/stories/:story/:vertical/:horizontal" : "doCreatePageAction",
 		"" : "doIndexHomePageRequestedAction",
 	},
 	doNavigatePagesRequestedAction : function(storyId, verticalFrom, verticalTo){
@@ -86,7 +86,7 @@ adventurio.routers.MainRouter = Backbone.Router.extend({
 			model : newModel
 		});
 	},
-	createpage : function(storyId, vertical, horizontal) {
+	doCreatePageAction : function(storyId, vertical, horizontal) {
 		var newModel = new adventurio.models.StoryModel({
 			_id : storyId
 		});
