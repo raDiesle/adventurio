@@ -54,4 +54,5 @@ $LAB
  .script(srcFolder+"/adventurio/views/creator/ManageStory.js")
  .script(srcFolder+"/adventurio/collections/StoriesCollection.js")
  .script(srcFolder+"/adventurio/routers/MainRouter.js")
- .script(srcFolder+"/adventurio/application/ApplicationSettings.js");
+// .script(srcFolder+"/adventurio/templates/listviews/Browse.js")
+.script(srcFolder+"/adventurio/application/ApplicationSettings.js");

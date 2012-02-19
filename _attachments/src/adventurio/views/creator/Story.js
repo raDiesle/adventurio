@@ -1,22 +1,22 @@
 adventurio.views.creator.Story = Backbone.View.extend({
 	el : $('#creator_stories_story'),
 	initialize : function() {
-		this.model.bind('change', this.render, this);
+		this.model.on('change', this.render, this);
 		this.model.fetch();
 		// return this.render();
 	},
-	render : function(storyToEdit) {
+	render : function() {
 //		if(event != undefined && event.toJSON()) {
 //			var json = toryToEdit.toJSON();
 			var templateContextVariables = {
-				storyId : storyToEdit.get('_id'),
-				storyDescription : storyToEdit.get('description'),
-				storyName : storyToEdit.get('name'),
-				storyTags : storyToEdit.get('tags')
+				storyId : this.model.get('_id'),
+				storyDescription : this.model.get('description'),
+				storyName : this.model.get('name'),
+				storyTags : this.model.get('tags')
 			};
 //		}
 
-		this.renderTemplate(adventurio.templates.forms.Story.compile(templateContextVariables), storyToEdit.get('name'));
+		this.renderTemplate(adventurio.templates.forms.Story.compile(templateContextVariables), this.model.get('name'));
 		$.mobile.changePage("#"+this.el.id, {
 			transition : 'slideup',
 			reverse : false,

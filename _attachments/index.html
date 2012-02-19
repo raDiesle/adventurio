@@ -61,9 +61,7 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 				<h2>Your Stories</h2>
 			</div>
 			<div data-role="content">
-				<ul id="listedStories" data-role="listview" data-theme="c" data-divendertheme="b">
-					<!-- template -->
-				</ul>
+					<!-- templates_listviews_SimpleList -->
 			</div>
 			<div data-role="footer" >
 				<!--data-position="fixed" -->
@@ -99,6 +97,7 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 		
 <!-- TEMPLATE simple Listview -->
 <script id="templates_listviews_SimpleList" type="text/x-handlebars-template">
+<ul data-role="listview" data-theme="c" data-divendertheme="b">
 	{{#storyObjects}}
 	<li id="storyLink">
 	<!--#reader?id={{_id}} -->
@@ -109,22 +108,19 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 		</a>
 	</li>
 	{{/storyObjects}}
+</ul>
 </script>
 
 <!-- TEMPLATE Browse Listview -->
 <script id="templates_listviews_Browse" type="text/x-handlebars-template">
-	<ul data-role="listview" data-theme="g" class="ui-block-b transparent" data-inset="true">
+	<ul data-role="listview" data-theme="a" data-divendertheme="b">  <!-- class="ui-block-b transparent" data-inset="true" -->
 		{{#elements}}
 		<li>
-			<a href="#" data-ajax="false" data-identity="/{{_id}}" >
-				<h2>{{header}}</h2>
-				<p>{{description}}</p>
-			</a>
+			<a href="#" data-ajax="false" data-identity="/{{_id}}" ><h2>{{header}}</h2><p>{{description}}</p></a>
 		</li>
 		{{/elements}}
 	</ul>
 </script>
-
 
 
 <!--  Edit Story Template -->
@@ -248,11 +244,11 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 
 		
 <!--CREATOR:  Own Stories List -->
-		<div data-role="page" id="creator_stories" data-url="#creator_stories"  >
+		<div data-role="page" id="creator_stories"  > <!-- data-url="#creator_stories"  -->
 			<div data-role="header">
-				<h2>Stories</h2>
+				<h1>Stories</h1>
 			</div>
-			<div data-role="content" class="content">
+			<div data-role="content" >
 				<ul data-role="listview" data-theme="c" data-divendertheme="b">
 					<!-- template -->
 				</ul>
@@ -260,7 +256,7 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 			<div data-role="footer" ></div>
 		</div>
 		
-<!-- Create Story -->
+<!-- CREATOR :Create Story -->
 		<div data-role="page" id="createstory" data-url="#createstory" data-position="inline" data-nobackbtn="true">
 			<div data-role="header" id="createStory_header">
 				<h2 class="storyname">Replaced</h2>
@@ -328,7 +324,12 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 			<div data-role="content">
 				<!--  templates_listviews_Browse -->
 			</div>
-			<div data-role="footer">
+			<div data-role="footer" data-position="fixed">
+				<form>
+				<label for="slider-0">Input slider:</label>
+				<input type="range" name="slider" id="slider" value="0" min="0" max="100" data-mini="true" />
+				</form>
+			</div>
 			</div>
 		</div>
 		

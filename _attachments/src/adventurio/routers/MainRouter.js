@@ -25,12 +25,26 @@ adventurio.routers.MainRouter = Backbone.Router.extend({
 		"creator/stories/new" : "doCreateNewStoryRequestedAction",
 		"creator/stories/:story?edit" : "editstory",
 		"creator/stories/:story?browse" : "doNavigatePagesRequestedAction",
+		"creator/stories/:story?browse=:verticalFrom-:verticalTo" : "doNavigatePagesRequestedAction",
 		"creator/stories/:story" : "doManageStoryRequestedAction",
 		"creator/stories/:story/:vertical/:horizontal" : "createpage",
 		"" : "doIndexHomePageRequestedAction",
 	},
-	doNavigatePagesRequestedAction : function(){
-		new adventurio.views.creator.BrowseStory();
+	doNavigatePagesRequestedAction : function(storyId, verticalFrom, verticalTo){
+		console.log(storyId + "_" + verticalFrom + "_" + verticalTo);
+		if(verticalFrom == undefined){
+			verticalFrom = 1;
+		}
+		if(verticalTo == undefined){
+			verticalTo = 3;
+		}
+		new adventurio.views.creator.BrowseStory({
+			parameter : {'verticalFrom' : verticalFrom, 'verticalTo' : verticalTo},
+			collection : new adventurio.collections.StoriesCollection(),
+			model : new adventurio.models.StoryModel({
+				'_id' : storyId
+			})
+		});
 	},
 	doIndexHomePageRequestedAction : function(){
 		new adventurio.views.reader.Index();
@@ -47,7 +61,9 @@ adventurio.routers.MainRouter = Backbone.Router.extend({
 	},
 	creator_stories : function(query, sort, page) {
 		console.log(page + " " + query + " was opened");
-		new adventurio.views.creator.Stories();
+		new adventurio.views.creator.Stories({
+			collection : new adventurio.collections.StoriesCollection()
+		});
 	},
 	doListStoriesInReadModeRequestedAction : function() {
 		new adventurio.views.reader.Stories();
