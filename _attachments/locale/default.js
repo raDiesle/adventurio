@@ -17,7 +17,8 @@ var locale = {
 					header : "Manage Story",
 					entry : {
 						editStory : "Edit Story Settings",
-						builtStory : "Built Story"
+						builtStory : "Built Story",
+						browseStory : "Browse Story"
 					}
 				}
 			}

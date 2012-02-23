@@ -82,6 +82,13 @@ var adventurio = adventurio || {
     	StoryCollection : {},
     	StoriesCollection : {}
 	},
-    utils:{}
+    utilies:{
+    	Json : {
+    		xml2json : {},
+    		json2xml : {},
+    		addElement : {},
+    		createElement : {}
+    	}
+    }
 };
 

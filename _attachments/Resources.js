@@ -28,15 +28,23 @@ $LAB
  .script(libFolder+"backbone.js") // 0.9.1 http://documentcloud.github.com/backbone/#
  .script(libFolder+"backbone-couchdb.js") // v1.0 https://github.com/janmonschke/backbone-couchdb
  .script(libFolder+"handlebars-1.0.0.beta.6.js") // 1.0.0.beta.6 https://github.com/wycats/handlebars.js/archives/master
+ .script(libFolder+"helpers.js") // http://kan.so/packages/details/handlebars-helpers
  .script(libFolder+"form2js.js") // November 13 2011, https://github.com/maxatwork/form2js/tree/master/src
  // .script(libFolder+"js2form.js")// september 19 2011, .script("lib/jstorange.js")// november 2011 https://github.com/andris9/jStorage
  .script(libFolder+"jquery.toObject.js")// Nomeber 13 2011, . https://github.com/daffl/jquery.dform/
  .script(libFolder+"jquery.couchLogin.js")// May 10, 2011 https://github.com/couchapp/couchdb-login-jquery
  
+ .script(libFolder+"json2xml.js")// http://goessner.net/download/prj/jsonxml/
+ .script(libFolder+"xml2json.js")
+ .script(libFolder+"jquery.jeditable.js")// 1.7.1 http://www.appelsiini.net/download/jquery.jeditable.js
+ 
+ 
+ 
 // .script(srcFolder+"/adventurio/mocks/Stories.js")
 // .script(srcFolder+"/adventurio/mocks/SingleStory.js")
  
  .script(localeFolder+"default.js")
+ .script(srcFolder+"/adventurio/utilies/Json.js")
  
  .script(srcFolder+"/adventurio/models/StoryModel.js")
  .script(srcFolder+"/adventurio/models/User.js")

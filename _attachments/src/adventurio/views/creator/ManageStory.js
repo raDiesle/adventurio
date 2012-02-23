@@ -20,7 +20,12 @@ adventurio.views.creator.ManageStory = Backbone.View.extend({
 				{
 					route : "creator/stories/new",
 					entry : locale.creator.stories.singleStory.menu.entry.builtStory
-				}]
+				},
+				{
+					route : 'creator/stories/' + this.model.get('_id') + '/1',
+					entry : locale.creator.stories.singleStory.menu.entry.browseStory
+				}
+				]
 			}
 		};
 

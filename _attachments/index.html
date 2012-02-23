@@ -53,9 +53,13 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 	{{/menuObjects}} 
 </script>
 
-<!-- <script id="templates_forms_dynamic" type="text/x-handlebars-template"> -->
-	{{#
-<!-- </script> -->
+<script id="templates_forms_dynamic" type="text/x-handlebars-template">
+	{{#formItems}}
+	 	{{#ifequal type "text"}}
+	 		{{label}} {{type}}
+	 	{{/ifequal}}
+	{{/formItems}}
+</script>
 
 
 <!-- Reader: list stories -->
