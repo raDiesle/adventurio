@@ -3,6 +3,15 @@ var createPage_template = null;
 adventurio.views.CreatePage = Backbone.View.extend({
 	
 	el: $('#createpage'),
+	attributes : {
+		editModeStatus : {
+			ENTERS_WRITE_MODE : true,
+			// ENTERS_READ_MODE : false,
+			READ_MODE : true,
+			// LEAVES_READ_MODE : false,
+			LEAVES_WRITE_MODE : false
+		}
+	},
 	initialize: function(){
 		console.log(this.model.toJSON()._id);
 		// hack, otherwise changePage throws exception
@@ -67,17 +76,33 @@ adventurio.views.CreatePage = Backbone.View.extend({
 	},
 	events: {
 		"click .edit_area" : "triggerCreate",
+		"click .saveButton" : "saveEditedValue"
+	},
+	saveEditedValue : function(clickEvent){
+		clickEvent.preventDefault();
+		this.attributes.editModeStatus.LEAVES_WRITE_MODE = true;
+		this.attributes.editModeStatus.READ_MODE = true;
 	},
 	triggerCreate : function(event){
+		event.stopPropagation();
 		var containerEditElement = $(event.currentTarget);
-		var currentContent = containerEditElement.html();
-		containerEditElement.html("");
-		containerEditElement.prepend("<a href='#' data-role='button'>save</a>");
-		containerEditElement.prepend("<textarea class='ui-input-text ui-body-c ui-corner-all ui-shadow-inset'>"+
-		currentContent+"</textarea>");
-		// hack to support autoscroll
-		$('.edit_area').trigger('create');
-		$('input').textinput();	
+		
+		if(this.attributes.editModeStatus.READ_MODE && !this.attributes.editModeStatus.LEAVES_WRITE_MODE){
+			var currentContent = containerEditElement.html().replace(/<br>/g, "\n");
+			containerEditElement.html("");
+			containerEditElement.prepend("<a href='#' data-role='button' class='saveButton' >save</a>");
+			containerEditElement.prepend("<textarea class='ui-input-text ui-body-c ui-corner-all ui-shadow-inset'>"+
+			currentContent+"</textarea>");
+			// hack to support autoscroll
+			$('.edit_area').trigger('create');
+			$('input').textinput();	
+			this.attributes.editModeStatus.READ_MODE = false;
+		}
+		else if(this.attributes.editModeStatus.LEAVES_WRITE_MODE){
+			// go to read mode
+			containerEditElement.html($('textarea', containerEditElement).val().replace(/\n/g, "<br>"));
+			this.attributes.editModeStatus.LEAVES_WRITE_MODE = false;
+		}
 	},
 	renderTemplate: function(htmlContent, headerTitle){
 		$('[data-role="content"]', this.el).html(htmlContent);
