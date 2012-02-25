@@ -89,6 +89,11 @@ var adventurio = adventurio || {
     		addElement : {},
     		createElement : {}
     	}
+    },
+    application : {
+    	jeditable : {
+    		MarkItUpSettings : {}
+    	}
     }
 };
 

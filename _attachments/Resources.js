@@ -34,18 +34,19 @@ $LAB
  .script(libFolder+"jquery.toObject.js")// Nomeber 13 2011, . https://github.com/daffl/jquery.dform/
  .script(libFolder+"jquery.couchLogin.js")// May 10, 2011 https://github.com/couchapp/couchdb-login-jquery
  
- .script(libFolder+"json2xml.js")// http://goessner.net/download/prj/jsonxml/
+ .script(libFolder+"json2xml.js") // http://goessner.net/download/prj/jsonxml/
  .script(libFolder+"xml2json.js")
- .script(libFolder+"jquery.jeditable.js")// 1.7.1 http://www.appelsiini.net/download/jquery.jeditable.js
+ .script(libFolder+"jquery.jeditable.js") // 1.7.1 http://www.appelsiini.net/download/jquery.jeditable.js
+ .script(libFolder+"jquery.markitup.js") // v 1.1.x https://github.com/markitup/1.x/blob/master/markitup/jquery.markitup.js
  
  
  
 // .script(srcFolder+"/adventurio/mocks/Stories.js")
 // .script(srcFolder+"/adventurio/mocks/SingleStory.js")
  
- .script(localeFolder+"default.js")
+ .script(localeFolder+"default.js") // i18n
  .script(srcFolder+"/adventurio/utilies/Json.js")
- 
+ .script(srcFolder+"/adventurio/application/jeditable/MarkItUpSettings.js")
  .script(srcFolder+"/adventurio/models/StoryModel.js")
  .script(srcFolder+"/adventurio/models/User.js")
  .script(srcFolder+"/adventurio/views/reader/Index.js")

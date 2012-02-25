@@ -46,38 +46,58 @@ adventurio.views.CreatePage = Backbone.View.extend({
 		};
 	this.renderTemplate(adventurio.utilies.Json.json2xml(element), "Story header");
 
-	// $('.edit_area').editable(function(value, settings){
-		// return value.replace(/\n/g, "<br>");
-	// },{
-		// type : 'textarea',
-		// cancel : 'cancel',
-		// submit : 'OK',
-		// tooltip : 'click here',
-		// style : 'height: auto; width: auto;',
-		// width : 'auto',
-		// height : 'auto',
-		// rows : 'none',
-		// cols : 'none',
-		// cssclass : 'ui-input-text ui-body-c ui-corner-all ui-shadow-inset',
-	// });
+	$.editable.addInputType('markitup', {
+    element : $.editable.types.textarea.element,
+    plugin  : function(settings, original) {
+        $('textarea', this).markItUp(settings.markitup);
+    }
+	});
+
+
+
+	$('#textid').editable(function(value, settings){
+		return value;
+	}, {
+		type : 'markitup',
+		markitup : adventurio.application.jeditable.MarkItUpSettings
+	});
+	
+	$('.edit_area').editable(function(value, settings){
+		return value.replace(/\n/g, "<br>");
+	},{
+		type : 'textarea',
+		cancel : 'cancel',
+		submit : 'OK',
+		tooltip : 'click here',
+		style : 'height: auto',
+		width : 'none',
+		height : 'none',
+		rows : 'none',
+		cols : 'none',
+		cssclass : 'ui-input-text ui-body-c ui-corner-all ui-shadow-inset',
+		
+	});
 	
 	
 	// $('.edit_area').trigger('create');
 	// $('input').textinput();	
+	
+	
+	
 	},
 	events: {
+		// "click span" : "moveToEditMode",
 		"click .edit_area" : "triggerCreate",
+		// "click .edit_area" : "triggerCreate"
 	},
 	triggerCreate : function(event){
-		var containerEditElement = $(event.currentTarget);
-		var currentContent = containerEditElement.html();
-		containerEditElement.html("");
-		containerEditElement.prepend("<a href='#' data-role='button'>save</a>");
-		containerEditElement.prepend("<textarea class='ui-input-text ui-body-c ui-corner-all ui-shadow-inset'>"+
-		currentContent+"</textarea>");
-		// hack to support autoscroll
 		$('.edit_area').trigger('create');
 		$('input').textinput();	
+		console.log('create trigger called');
+	},
+	moveToEditMode : function(event){
+		console.log("event mode");
+		$('span').html('<textarea class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset">whatever</textarea>');
 	},
 	renderTemplate: function(htmlContent, headerTitle){
 		$('[data-role="content"]', this.el).html(htmlContent);

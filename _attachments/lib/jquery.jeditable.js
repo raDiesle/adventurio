@@ -469,13 +469,14 @@
                 element : function(settings, original) {
                     var textarea = $('<textarea />');
                     textarea.attr('class', 'ui-input-text ui-body-c ui-corner-all ui-shadow-inset');
+                    // textarea.attr('style', 'height: auto');
                     if (settings.rows) {
-                        textarea.attr('rows', settings.rows);
+                        // textarea.attr('rows', settings.rows);
                     } else if (settings.height != "none") {
                         textarea.height(settings.height);
                     }
                     if (settings.cols) {
-                        textarea.attr('cols', settings.cols);
+                        // textarea.attr('cols', settings.cols);
                     } else if (settings.width != "none") {
                         textarea.width(settings.width);
                     }

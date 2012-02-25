@@ -65,7 +65,7 @@
                         	<resourceBase>../../_attachments</resourceBase>
                             <resourceBase>../../_attachments/src</resourceBase>
                             <resourceBase>../../_attachments/src_tests</resourceBase>
-                            <resourceBase>../../_attachments/src_integration_tests</resourceBase>
+<!--                             <resourceBase>../../_attachments/src_integration_tests</resourceBase> -->
                         </resourceBases>
                     </webAppConfig>
                 </configuration>
