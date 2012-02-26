@@ -7,5 +7,5 @@ adventurio.models.StoryModel = Backbone.Model.extend({
         // this.set({"creator": "whoever"});
       // }
 	},
-	urlRoot: "/adventurio"
+	urlRoot: "/adventurio" // "/adventurio"
 });

@@ -1,63 +1,48 @@
 var createStory_template = null;
 
-adventurio.views.CreateStory = Backbone.View.extend({
+adventurio.views.CreateStory = adventurio.views.superClasses.Basic.extend({
 
 	el : $('#createstory'),
 	initialize : function() {
-		// hack, otherwise changePage throws exception
-		$().ready(this.render);
-		// this.render();
+		$().ready($.proxy(this.render, this)); // hack
 	},
 	render : function(event) {
-		
-		console.log("create rendered");
-		if (createStory_template === null) {
-			createStory_template = $("#createStory_template").html();
-		}
-
-		var template = Handlebars.compile(createStory_template);
-		var context = {};
-
-		var html = template(context);
-
-		$("#createStory_content").html(html).trigger("create");
-		$("#createstory .storyname").text(context.storyName);
-		// $("#listedStories");
-		// .listview("refresh")
-
-		$.mobile.changePage("#createstory", {
-			transition : 'slideup',
-			reverse : false,
-			changeHash : false
-		});
-
-		// return this;
+		this._super("render", [adventurio.templates.creator.CreateStory.compile({}), "Story header"]);
 	},
 	events : {
 		"click .submit" : "createStory",
 	},
-
 	createStory : function(event) {
-
-		var storyModelReal = new adventurio.models.StoryModel({
-			"name" : $("#createStory_storyName").val(),
-			"description" : $("#createStory_description").val(),
-			"tags" : $("#createStory_tags").val(),
-			"user" : "simpleUser"
-		});
-
-		var newStoryModel = storyModelReal.save(storyModelReal, {
+		var storyToBeCreated = $("form", this.el).serializeJSON();
+		storyToBeCreated.user = "simpleUser";
+		var defaultGetStartedPage = storyToBeCreated.pages = [{
+			vPos : 1,
+			fields : [{
+				name : "spielername",
+				hPos : 1,
+				type : "text",
+				title : "Please enter whatever",
+				value : {}
+			}, {
+				name : "StoryDescription",
+				hPos : 2,
+				type : "text",
+				title : "Please enter whatever",
+				value : {}
+			}]
+		}];
+		
+		var storyModelToSave = new adventurio.models.StoryModel(storyToBeCreated);
+		var newStoryModel = storyModelToSave.save(storyModelToSave, {
 			success : this.createPage,
 			error : this.errorHandling
 		});
-		// }
 	},
 	createPage : function(model, response) {
-		console.log("storymodel was edited");
-
-		location.hash = "creator/stories" + "/" + model.toJSON()._id + "/v1/h1";
+		//location.hash = "creator/stories" + "/" + model.toJSON()._id + "/1/1";
+		
 	},
 	errorHandling : function(model, response) {
-		console.log(response);
+		alert("Could not save");
 	}
 });

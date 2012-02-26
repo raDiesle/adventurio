@@ -5,7 +5,10 @@
 var adventurio = adventurio || {
     models : {
     	StoryModel : {},
-    	User: {},
+    	User : {},
+    	UserSingleton: { get : function(){
+    		return new adventurio.models.User();
+    	}},
     },
     views : {
     	superClasses : {
@@ -63,6 +66,11 @@ var adventurio = adventurio || {
     		}
     	},
     	creator: {
+    		CreateStory : {
+    			compile : function(context){
+    				return Handlebars.compile($("#createStory_template").html())(context);
+    			}
+    		},
     		ManageStory : {},
     		Stories : {},
     		Login : {}
@@ -76,7 +84,10 @@ var adventurio = adventurio || {
     	Stories: {}
     },
     routers : {
-    	MainRouter: {},
+    	MainRouter : {},
+    	MainRouterSingleton: { get : function(){
+    		new adventurio.routers.MainRouter();
+    	}},
     },
     collections : {
     	StoryCollection : {},

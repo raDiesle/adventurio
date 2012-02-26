@@ -1,5 +1,6 @@
 adventurio.models.User = Backbone.Model.extend({
 	initialize : function() {
+		console.log("initialized user model");
 	},
 	defaults : {
 		"name" : "guest"  

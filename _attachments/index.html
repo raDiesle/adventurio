@@ -11,7 +11,7 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 		<meta name="apple-mobile-web-app-capable" content="yes"/>
 		<meta names="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <!-- 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.css"> -->
-		<link rel="stylesheet" href="lib/jquery.mobile-1.0.css">
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css">
 		<link rel="stylesheet" href="lib/jquery.markitup.main.css">
 		<link rel="stylesheet" href="lib/jquery.markitup.sets.css">
 		<link rel="stylesheet" href="css/style.css">
@@ -28,7 +28,7 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 				<div class="reader_index_content">
 					<div class="ui-grid-a"  >
 						<div class="ui-block-a" >
-							content 123
+							content 12345
 						</div>
 						<ul data-role="listview" data-theme="g" class="ui-block-b transparent" data-inset="true">
 							
@@ -276,8 +276,8 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 				<script id="createStory_template" type="text/x-handlebars-template">
 					<form id="createStory_form" action="#" method="get" data-identity="{{document}}">
 					<div data-role="fieldcontain">
-					<label for="createStory_storyName">Name:</label>
-					<input id="createStory_storyName" name="storyName" type="text" value="{{storyName}}" />
+					<label for="name">Name:</label>
+					<input name="name" type="text" value="{{storyName}}" />
 					</div>
 					<div data-role="fieldcontain">
 					<label for="createStory_description">Description:</label>

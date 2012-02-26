@@ -8,6 +8,13 @@ describe("Regex", function() {
 		expect(result).toBe("Ahis As <br />");
 		console.log(result);
 	});
+	
+	it('should convert xml to json', function() {
+		var xmlElement = '<ul><li id="first">content1</li><li>content2</li></ul>';
+		var actual = adventurio.utilies.Json.xml2json(adventurio.utilies.Json.parseXml(xmlElement));
+		expect(actual).toBe("");
+	});
+	
 	it('should convert json to xhtml and way around', function() {
 		var jsonElement = {
 			"ul" : {

@@ -2,7 +2,7 @@ adventurio.templates.creator.Login = null;
 
 adventurio.views.creator.Login = Backbone.View.extend({
 	el: ('#creator_login'),
-	model: adventurio.models.UserSingleton,
+	model: adventurio.models.UserSingleton.get(),
 	initialize : function() {
 		// hack, otherwise changePage throws exception
 		$().ready(this.render);
@@ -23,8 +23,8 @@ adventurio.views.creator.Login = Backbone.View.extend({
 	},
 	login: function(){
 		var serializedJsonForm = $("#creator_login form").first().serializeJSON();
-		console.log(adventurio.models.UserSingleton.isAuthenticated());
-		adventurio.models.UserSingleton.login(serializedJsonForm.username, serializedJsonForm.password);
-		console.log(adventurio.models.UserSingleton.isAuthenticated());
+		console.log(adventurio.models.UserSingleton.get().isAuthenticated());
+		adventurio.models.UserSingleton.get().login(serializedJsonForm.username, serializedJsonForm.password);
+		console.log(adventurio.models.UserSingleton.get().isAuthenticated());
 	}
 });

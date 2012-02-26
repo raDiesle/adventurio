@@ -1,5 +1,3 @@
-var createPage_template = null;
-
 adventurio.views.CreatePage = adventurio.views.superClasses.Basic.extend({
 
 	el : $('#createpage'),
@@ -14,37 +12,39 @@ adventurio.views.CreatePage = adventurio.views.superClasses.Basic.extend({
 	},
 	initialize : function() {
 		console.log(this.model.toJSON()._id);
-		// hack, otherwise changePage throws exception
-		$().ready($.proxy(this.render, this));
+		$().ready($.proxy(this.render, this)); // hack
 	},
 	render : function() {
 		var element = {
 			"ul" : {
 				"@data-role" : "listview",
 				"@data-inset" : true,
-				"li" : [{
-					"span" : {
-						"#text" : "#mytext",
-						"@id" : "textid"
+				"@data-split-theme": "d",
+				"@data-split-icon" : "gear",
+				"li" : [ {
+					"a" : [{
+						"@class" : "edit_area",
+						 "#text" : "m" // \u000A\u000D <br />  \n  &#13;&#10;
 					},
-				}, {
-					"input" : {
-						"@type" : "text",
-						"@placeholder" : "Enter character name"
-					}
-				}, {
-					"div" : {
-						"@data-role" : "fieldcontain",
-						"@class" : "edit_area",
-						// "@style" : "height: auto; width : 100%;",
-						 "#text" : "mytext  testxX" // \u000A\u000D <br />  \n  &#13;&#10;
-					}
-				}, {
-					"textarea" : {
-						"#text" : "thats it",
-						"@class" : "edit_area",
-						"@style" : "width : 100%"
-					}
+					{
+						"@href" : '#',
+						"#text" : "text"
+					}]
+				},{
+					a : [{
+						"@href" : '#',
+							span : {
+							"@id" : "textid",
+							"@placeholder" : "Enter character name",
+							"@class" : 'ui-input-text ui-body-c ui-corner-all ui-shadow-inset',
+							"@style" : 'padding: 7px; width: auto',
+							"#text" : "this is so funny"
+							}
+					},
+					{
+						"@href" : '#',
+						"#text" : "text"
+					}]
 				}]
 			}
 		};
@@ -53,6 +53,7 @@ adventurio.views.CreatePage = adventurio.views.superClasses.Basic.extend({
 		$('.edit_area').trigger('create');
 		$('input').textinput();
 
+	console.log(adventurio.utilies.Json.json2xml(element));
 		this._super("render", [adventurio.utilies.Json.json2xml(element), "Story header"]);
 	},
 	events : {
