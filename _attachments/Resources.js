@@ -26,6 +26,7 @@ $LAB
  .script(libFolder+"sha1.js") // couchdb
  .script(libFolder+"underscore.js")// 1.3.1 http://documentcloud.github.com/underscore/underscore.js
  .script(libFolder+"backbone.js") // 0.9.1 http://documentcloud.github.com/backbone/#
+  .script(libFolder+"backbone_super.js")// https://gist.github.com/1542120
  .script(libFolder+"backbone-couchdb.js") // v1.0 https://github.com/janmonschke/backbone-couchdb
  .script(libFolder+"handlebars-1.0.0.beta.6.js") // 1.0.0.beta.6 https://github.com/wycats/handlebars.js/archives/master
  .script(libFolder+"helpers.js") // http://kan.so/packages/details/handlebars-helpers
@@ -49,6 +50,7 @@ $LAB
  .script(srcFolder+"/adventurio/application/jeditable/MarkItUpSettings.js")
  .script(srcFolder+"/adventurio/models/StoryModel.js")
  .script(srcFolder+"/adventurio/models/User.js")
+ .script(srcFolder+"/adventurio/views/superClasses/Basic.js")
  .script(srcFolder+"/adventurio/views/reader/Index.js")
  .script(srcFolder+"/adventurio/views/reader/Stories.js")
  .script(srcFolder+"/adventurio/views/ShowStory.js")

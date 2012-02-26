@@ -41,5 +41,5 @@ adventurio.utilies.Json.json2xml = function (o, tab) {
    }, xml="";
    for (var m in o)
       xml += toXml(o[m], m, "");
-   return tab ? xml.replace(/\t/g, tab) : xml.replace(/\t|\n/g, "");
+   return xml;//tab ? xml.replace(/\t/g, tab) : xml.replace(/\t|\n/g, "");
 }
