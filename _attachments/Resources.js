@@ -6,7 +6,7 @@ $LAB
  .setOptions({AlwaysPreserveOrder:true})
  .script("ApplicationScope.js")
  .script(libFolder+"json2.js")
- .script("http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js") // http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
+ .script(libFolder+"jquery-1.7.1.js") // http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
  
  .wait(function() {
       $(document).bind("mobileinit", function(){
@@ -19,7 +19,7 @@ $LAB
   
 //  .script(libFolder+"jquery-1.7.js")
 //  .script(libFolder+"jquery.mobile-1.0.js")
- .script("http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.js")
+ .script(libFolder+"jquery.mobile-1.1.0-rc.1.js")
  .script(libFolder+"jquery.couch.js") // for signup november 2011 https://github.com/apache/couchdb/blob/master/share/www/script/jquery.couch.js
  .script(libFolder+"jquery.couch.app.js") // v 1.0.1 https://github.com/couchapp/couchapp/blob/master/couchapp/templates/vendor/couchapp/_attachments/jquery.couch.app.js
  .script(libFolder+"couch.js") // oktober 2011 https://github.com/apache/couchdb/blob/master/share/www/script/couch.js
