@@ -49,12 +49,22 @@ adventurio.views.CreatePage = adventurio.views.superClasses.Basic.extend({
 			}
 		};
 
+var context = {
+		formItems : [
+			{
+			type : 'text',
+			label : 'welcome to the jungle'
+			}
+		]
+};
+
 // Hack
 		$('.edit_area').trigger('create');
 		$('input').textinput();
 
-	console.log(adventurio.utilies.Json.json2xml(element));
-		this._super("render", [adventurio.utilies.Json.json2xml(element), "Story header"]);
+		this._super("render", [adventurio.templates.forms.Dynamic.compile(context), "Story header"]);
+	// console.log(adventurio.utilies.Json.json2xml(element));
+		// this._super("render", [adventurio.utilies.Json.json2xml(element), "Story header"]);
 	},
 	events : {
 		"click .edit_area" : "triggerCreate",

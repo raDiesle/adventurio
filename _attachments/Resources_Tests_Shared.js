@@ -5,6 +5,7 @@ var libFolder = "lib_tests/";
 var srcFolder = "src_tests/";
 $LAB
  .setGlobalDefaults({AlwaysPreserveOrder :true, UseLocalXHR : true})
+  .script("lib/"+"jquery-1.7.1.js") // should be already present
  .script(libFolder+"jquery.json-2.3.js") // 2.3 September 2011 http://code.google.com/p/jquery-json/downloads/list
  .script(libFolder+"jasmine.js") // 1.1.0 http://pivotal.github.com/jasmine/download.html
  .script(libFolder+"jasmine-html.js") // https://github.com/tigbro/jasmine-ui/blob/master/test/lib/jasmine-html.js

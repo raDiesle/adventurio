@@ -19,27 +19,7 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 	</head>
 	<body>
 	
-<!-- READER: index page  -->
-	<div data-role="page" id="reader_index" data-url="#reader" data-position="inline" data-nobackbtn="true">
-			<div data-role="header" class="header">
-				<h2 class="title">Replaced</h2>
-			</div>
-			<div data-role="content" data-identity="{{storyId}}" >
-				<div class="reader_index_content">
-					<div class="ui-grid-a"  >
-						<div class="ui-block-a" >
-							content 12345
-						</div>
-						<ul data-role="listview" data-theme="g" class="ui-block-b transparent" data-inset="true">
-							
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div data-role="footer">
-				Footer
-			</div>
-		</div>
+
 
 <!--  TEMPLATE MENU -->
 <script id="templates_menus_simple" type="text/x-handlebars-template">
@@ -57,54 +37,15 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 
 <script id="templates_forms_dynamic" type="text/x-handlebars-template">
 	{{#formItems}}
+	
 	 	{{#ifequal type "text"}}
 	 		{{label}} {{type}}
 	 	{{/ifequal}}
+	 	
 	{{/formItems}}
 </script>
 
 
-<!-- Reader: list stories -->
-		<div data-role="page" id="mainpage" data-url="#mainpage"  >
-			<!-- data-position="fixed" -->
-			<div data-role="header">
-				<h2>Your Stories</h2>
-			</div>
-			<div data-role="content">
-					<!-- templates_listviews_SimpleList -->
-			</div>
-			<div data-role="footer" >
-				<!--data-position="fixed" -->
-				<a href="#createstory" data-role="button" data-icon="plus">Create New Story</a>
-				Footer
-			</div>
-		</div>
-
-<!-- READER: view single story-->		
-		<div data-role="page" id="viewstory" data-url="#viewstory" data-position="inline">
-			<div data-role="header" id="storyheader">
-				
-				<h2 class="storyname">Name</h2>
-				<a href="#mainpage" data-icon="grid" class="ui-btn-right"  data-rel="back" >Home</a>
-			</div>
-			<div data-role="content" id="viewStory_content" data-identity="{{storyId}}">
-				<script id="showStory_template" type="text/x-handlebars-template">
-					<h2 class="storyCreator"/>{{storyCreator}}</h2>
-					<p class="storyName">Name: {{storyName}}</p>
-					<p class="description">Description: {{storyDescription}}</p>
-					<p class="tags">Tags: {{storyTags}}</p>
-					<a id="viewstory_edit" href="#" data-role="button" data-inline="true"
-					data-identity="/{{storyId}}" > <!-- data-url="stories/{{storyId}}" -->
-					Edit Story
-					</a>
-				</script>
-			</div>
-			<div data-role="footer">
-				Footer
-			</div>
-		</div>
-		
-		
 <!-- TEMPLATE simple Listview -->
 <script id="templates_listviews_SimpleList" type="text/x-handlebars-template">
 <ul data-role="listview" data-theme="c" data-divendertheme="b">
@@ -157,6 +98,71 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 </script>
 
 		
+
+<!-- READER: index page  -->
+	<div data-role="page" id="reader_index" data-url="#reader" data-position="inline" data-nobackbtn="true">
+			<div data-role="header" class="header">
+				<h2 class="title">Replaced</h2>
+			</div>
+			<div data-role="content" data-identity="{{storyId}}" >
+				<div class="reader_index_content">
+					<div class="ui-grid-a"  >
+						<div class="ui-block-a" >
+							content 12345
+						</div>
+						<ul data-role="listview" data-theme="g" class="ui-block-b transparent" data-inset="true">
+							
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div data-role="footer">
+				Footer
+			</div>
+		</div>
+
+<!-- Reader: list stories -->
+		<div data-role="page" id="mainpage" data-url="#mainpage"  >
+			<!-- data-position="fixed" -->
+			<div data-role="header">
+				<h2>Your Stories</h2>
+			</div>
+			<div data-role="content">
+					<!-- templates_listviews_SimpleList -->
+			</div>
+			<div data-role="footer" >
+				<!--data-position="fixed" -->
+				<a href="#createstory" data-role="button" data-icon="plus">Create New Story</a>
+				Footer
+			</div>
+		</div>
+
+<!-- READER: view single story-->		
+		<div data-role="page" id="viewstory" data-url="#viewstory" data-position="inline">
+			<div data-role="header" id="storyheader">
+				
+				<h2 class="storyname">Name</h2>
+				<a href="#mainpage" data-icon="grid" class="ui-btn-right"  data-rel="back" >Home</a>
+			</div>
+			<div data-role="content" id="viewStory_content" data-identity="{{storyId}}">
+				<script id="showStory_template" type="text/x-handlebars-template">
+					<h2 class="storyCreator"/>{{storyCreator}}</h2>
+					<p class="storyName">Name: {{storyName}}</p>
+					<p class="description">Description: {{storyDescription}}</p>
+					<p class="tags">Tags: {{storyTags}}</p>
+					<a id="viewstory_edit" href="#" data-role="button" data-inline="true"
+					data-identity="/{{storyId}}" > <!-- data-url="stories/{{storyId}}" -->
+					Edit Story
+					</a>
+				</script>
+			</div>
+			<div data-role="footer">
+				Footer
+			</div>
+		</div>
+		
+		
+
 <!-- Creator -->
 <!-- Creator start page -->
 		<div data-role="page" id="creator_page" data-id="creator_page">
