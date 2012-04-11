@@ -35,14 +35,36 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 	{{/menuObjects}} 
 </script>
 
+
+<script id="templates_formitems_text" type="text/x-handlebars-template">
+		<li>
+			<a class="edit_area">{{label}}</a>
+			<a href="#">text 2</a>
+		</li>
+</script>
+
+<script id="templates_formitems_textfield" type="text/x-handlebars-template">
+<li>
+	<a href="#">
+		<span id="textid" placeholder="Enter character name" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset" style="padding: 7px; width: auto">
+			{{label}}
+		</span>
+	</a>
+	<a href="#">text 2</a>
+</li>
+</script>
+
 <script id="templates_forms_dynamic" type="text/x-handlebars-template">
-	{{#formItems}}
-	
-	 	{{#ifequal type "text"}}
-	 		{{label}} {{type}}
-	 	{{/ifequal}}
-	 	
-	{{/formItems}}
+	<ul data-role="listview" data-inset="true" data-split-theme="d">
+	{{#each formItems}}
+		{{#ifIsTypeOf this "text"}}
+			{{> templates_formitems_text}}
+		{{/ifIsTypeOf}}
+		{{#ifIsTypeOf this "textfield"}}
+			{{> templates_formitems_textfield}}
+		{{/ifIsTypeOf}}
+	{{/each}}
+	</ul>
 </script>
 
 

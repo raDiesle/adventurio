@@ -1,9 +1,8 @@
-adventurio.views.creator.BrowseStory = Backbone.View.extend({
+adventurio.views.creator.BrowseStory = adventurio.views.superClasses.Basic.extend({
 	el : $('#creator_stories_story-browse'),
 	initialize : function() {
 		// hack, otherwise changePage throws exception
 //		$().ready($.proxy(this.render, this));
-//		return this.render();
 		console.log(this.options.parameter.verticalFrom + "_"+
 		this.options.parameter.verticalTo);
 		$('input', this.el).val(this.options.parameter.verticalFrom); 
@@ -15,8 +14,7 @@ adventurio.views.creator.BrowseStory = Backbone.View.extend({
 		var templateContextVariables = {
 				elements : this.collection.toJSON()
 		};
-		this.renderTemplate(adventurio.templates.listviews.Browse.compile(templateContextVariables), "browse story blabla");
-		
+		this._super("render", [adventurio.templates.listviews.Browse.compile(templateContextVariables), "Browse Story"]);
 	return this;
 	},
 	events : {

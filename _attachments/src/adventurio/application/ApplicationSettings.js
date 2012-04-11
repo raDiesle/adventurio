@@ -51,6 +51,8 @@ if( doExecutionHandling = false) {
 	})( jQuery );
 
 
+
+
 /*
  * This decorates Handlebars.js with the ability to load
  * templates from an external source, with light caching.

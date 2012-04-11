@@ -11,9 +11,12 @@ $LAB
  .script(libFolder+"jasmine-html.js") // https://github.com/tigbro/jasmine-ui/blob/master/test/lib/jasmine-html.js
  .script(libFolder+"sinon-1.3.1.js") // 1.3.1 http://sinonjs.org/
  .script(libFolder+"jasmine-sinon.js") // 10. Februar 2011 https://github.com/froots/jasmine-sinon
-// .script(libFolder+"JasmineAdapter.js") // 1.1 https://github.com/ibolmo/jasmine-jstd-adapter/blob/master/src/JasmineAdapter.js
  .script(libFolder+"mock-ajax.js")// 23. September 2011 https://github.com/pivotal/jasmine-ajax/blob/master/lib/mock-ajax.js
  .script(libFolder+"jasmine-jquery.js")// 11. August 2011 https://github.com/velesin/jasmine-jquery/blob/master/lib/jasmine-jquery.js
+
+// .script(libFolder+"JasmineAdapter.js") // 1.1 https://github.com/ibolmo/jasmine-jstd-adapter/blob/master/src/JasmineAdapter.js
+
+
 //  Tests
 // .script(srcFolder+"adventurio/views/reader/IndexIntegrTest.js")
 // .script(srcFolder+"adventurio/models/StoryIntegrTest.js")

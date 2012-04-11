@@ -41,6 +41,18 @@ var adventurio = adventurio || {
     			}
     		}
     	},
+    	formitems : {
+    		Text : {
+    			compile : function(context){
+    				return Handlebars.compile($("#templates_formitems_text").html())(context);
+    			}
+    		},
+    		TextField : {
+    			compile : function(context){
+    				return Handlebars.compile($("#templates_formitems_textfield").html())(context);
+    			}
+    		}
+		},
     	forms : {
     		Story :{
     			compile : function(context){

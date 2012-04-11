@@ -29,7 +29,7 @@ $LAB
   .script(libFolder+"backbone_super.js")// https://gist.github.com/1542120
  .script(libFolder+"backbone-couchdb.js") // v1.0 https://github.com/janmonschke/backbone-couchdb
  .script(libFolder+"handlebars-1.0.0.beta.6.js") // 1.0.0.beta.6 https://github.com/wycats/handlebars.js/archives/master
- .script(libFolder+"helpers.js") // http://kan.so/packages/details/handlebars-helpers
+ //.script(libFolder+"helpers.js") // http://kan.so/packages/details/handlebars-helpers
  .script(libFolder+"form2js.js") // November 13 2011, https://github.com/maxatwork/form2js/tree/master/src
  // .script(libFolder+"js2form.js")// september 19 2011, .script("lib/jstorange.js")// november 2011 https://github.com/andris9/jStorage
  .script(libFolder+"jquery.toObject.js")// Nomeber 13 2011, . https://github.com/daffl/jquery.dform/

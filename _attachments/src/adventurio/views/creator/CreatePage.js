@@ -15,54 +15,48 @@ adventurio.views.CreatePage = adventurio.views.superClasses.Basic.extend({
 		$().ready($.proxy(this.render, this)); // hack
 	},
 	render : function() {
-		var element = {
-			"ul" : {
-				"@data-role" : "listview",
-				"@data-inset" : true,
-				"@data-split-theme": "d",
-				"@data-split-icon" : "gear",
-				"li" : [ {
-					"a" : [{
-						"@class" : "edit_area",
-						 "#text" : "m" // \u000A\u000D <br />  \n  &#13;&#10;
-					},
-					{
-						"@href" : '#',
-						"#text" : "text"
-					}]
-				},{
-					a : [{
-						"@href" : '#',
-							span : {
-							"@id" : "textid",
-							"@placeholder" : "Enter character name",
-							"@class" : 'ui-input-text ui-body-c ui-corner-all ui-shadow-inset',
-							"@style" : 'padding: 7px; width: auto',
-							"#text" : "this is so funny"
-							}
-					},
-					{
-						"@href" : '#',
-						"#text" : "text"
-					}]
-				}]
-			}
-		};
 
-var context = {
-		formItems : [
+	var formItems = [
 			{
 			type : 'text',
 			label : 'welcome to the jungle'
+			},
+			{
+			type : 'textfield',
+			label : 'welcome to the jungle'
 			}
-		]
-};
+		];
 
-// Hack
+		// Hack
 		$('.edit_area').trigger('create');
 		$('input').textinput();
 
-		this._super("render", [adventurio.templates.forms.Dynamic.compile(context), "Story header"]);
+	
+	Handlebars.registerPartial("templates_formitems_text", $("#templates_formitems_text").html());
+	Handlebars.registerPartial("templates_formitems_textfield", $("#templates_formitems_textfield").html());
+	
+	
+	Handlebars.registerHelper("ifIsTypeOf", function(actualFormItem, formItemTypeToCheck, fn, elseFn) {
+		if(actualFormItem.type === formItemTypeToCheck){
+			return fn(actualFormItem);
+		}
+	});
+
+	var html ="";
+	// $.each(formItems, function(index, currentFormItem){
+		// switch(currentFormItem.type){
+			// case "text" :
+				// html += adventurio.templates.formitems.Text.compile(currentFormItem);
+				// break;
+			// case "textfield" :
+				// html += adventurio.templates.formitems.TextItem.compile(currentFormItem);
+			// break;
+		// };
+	// });
+	var context = {};
+	context.formItems = formItems;
+html = adventurio.templates.forms.Dynamic.compile(context);
+	this._super("render", [html, "Story header"]);
 	// console.log(adventurio.utilies.Json.json2xml(element));
 		// this._super("render", [adventurio.utilies.Json.json2xml(element), "Story header"]);
 	},
