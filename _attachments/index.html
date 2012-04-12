@@ -38,8 +38,8 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 
 <script id="templates_formitems_text" type="text/x-handlebars-template">
 		<li>
-			<a class="edit_area">{{label}}</a>
-			<a href="#">text 2</a>
+			<a class="edit_area">{{value}}</a>
+			<a href="#">PROPERTIES</a>
 		</li>
 </script>
 
@@ -47,10 +47,10 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 <li>
 	<a href="#">
 		<span id="textid" placeholder="Enter character name" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset" style="padding: 7px; width: auto">
-			{{label}}
+			{{value}}
 		</span>
 	</a>
-	<a href="#">text 2</a>
+	<a href="#" class="setFormItemProperties" >PROPERTIES</a>
 </li>
 </script>
 
@@ -352,6 +352,30 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 				Footer
 			</div>
 		</div>
+		
+<!-- CREATOR: EditPageFormItemOptions Dialog  -->
+		<div data-role="page" id="creator_page_formitem_options" data-id="creator_page_formitem_options">
+			<div data-role="header">
+				<h2>Login</h2>
+			</div>
+			<div data-role="content" class="content">
+			<script id="template_formitem_options" type="text/x-handlebars-template"> 
+				<p>
+					Options for formItem
+				</p>
+				<div data-role="fieldcontain">
+					<form action="#" method="post" >
+						<label for="name" >name:</label>
+						<input type="name" name="name" id="name"/>
+						<label for="title" >title</label>
+						<input type="title" name="title" id="title" />
+						<a href="#" data-role="button" class="submitButton">Click</a>
+					</form>
+				</div>
+			</script>
+			</div>
+			<div data-role="footer"></div>
+		</div>		
 		
 <!-- Creator : browse -->
 		<div data-role="page" id="creator_stories_story-browse" data-position="inline" >

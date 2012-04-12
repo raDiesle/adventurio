@@ -1,5 +1,8 @@
 adventurio.views.superClasses.Basic = Backbone.View.extend({
-	render : function(htmlContent, headerTitle){
+	render : function(htmlContent, headerTitle, options){
+		options = options || {};
+		var role = typeof(options['role'] == 'undefined') ? "page" : options['role']; 
+		
 		$('[data-role="content"]', this.el).html(htmlContent);
 //		.trigger("create");
 		// $("ul", this.el).listview('refresh');
@@ -8,7 +11,8 @@ adventurio.views.superClasses.Basic = Backbone.View.extend({
 		$.mobile.changePage("#"+this.el.id, {
 			transition : 'slideup',
 			reverse : false,
-			changeHash : false
+			changeHash : false,
+			role : role
 		});
 	}
 });

@@ -55,6 +55,7 @@ $LAB
  .script(srcFolder+"/adventurio/views/reader/Stories.js")
  .script(srcFolder+"/adventurio/views/ShowStory.js")
  .script(srcFolder+"/adventurio/views/CreateStory.js")
+ .script(srcFolder+"/adventurio/views/creator/EditPageFormItemOptionsWindow.js")
  .script(srcFolder+"/adventurio/views/creator/CreatePage.js")
  .script(srcFolder+"/adventurio/views/creator/BrowseStory.js")
  .script(srcFolder+"/adventurio/views/creator/Story.js")

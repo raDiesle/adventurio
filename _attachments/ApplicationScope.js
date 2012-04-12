@@ -17,6 +17,7 @@ var adventurio = adventurio || {
     	creator : {
     		ManageStory : {},
     		BrowseStory : {},
+    		EditPageFormItemOptionsWindow : {},
     		Index: {},
     		Login: {},
     		Signup : {},
@@ -42,6 +43,13 @@ var adventurio = adventurio || {
     		}
     	},
     	formitems : {
+    		
+    		Options : {
+    			compile : function(context){
+    				return Handlebars.compile($("#template_formitem_options").html())(context);
+    			}
+    			
+    		},
     		Text : {
     			compile : function(context){
     				return Handlebars.compile($("#templates_formitems_text").html())(context);
@@ -98,7 +106,7 @@ var adventurio = adventurio || {
     routers : {
     	MainRouter : {},
     	MainRouterSingleton: { get : function(){
-    		new adventurio.routers.MainRouter();
+    		return new adventurio.routers.MainRouter();
     	}},
     },
     collections : {

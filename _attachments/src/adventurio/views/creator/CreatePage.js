@@ -19,11 +19,11 @@ adventurio.views.CreatePage = adventurio.views.superClasses.Basic.extend({
 	var formItems = [
 			{
 			type : 'text',
-			label : 'welcome to the jungle'
+			value : 'The big crash'
 			},
 			{
 			type : 'textfield',
-			label : 'welcome to the jungle'
+			value : 'Enter player name'
 			}
 		];
 
@@ -62,7 +62,13 @@ html = adventurio.templates.forms.Dynamic.compile(context);
 	},
 	events : {
 		"click .edit_area" : "triggerCreate",
-		"click .saveButton" : "saveEditedValue"
+		"click .saveButton" : "saveEditedValue",
+		"click .setFormItemProperties" : "openFormItemProperties"
+	},
+	openFormItemProperties : function(clickEvent){
+		var urlToCurrentCreatePage = location.hash + "?edit";
+		//var urlToCurrentCreatePage = "creator/stories/"+this.model.get("_id")+"/"+this.model.get("vertical")+"/"+this.model.get("horizontal")+"?edit";
+		adventurio.routers.MainRouterSingleton.get().navigate(urlToCurrentCreatePage, {trigger: true});		
 	},
 	saveEditedValue : function(clickEvent) {
 		clickEvent.preventDefault();
@@ -98,17 +104,4 @@ html = adventurio.templates.forms.Dynamic.compile(context);
 			this.attributes.editModeStatus.LEAVES_WRITE_MODE = false;
 		}
 	}
-	// ,
-	// renderTemplate: function(htmlContent, headerTitle){
-	// $('[data-role="content"]', this.el).html(htmlContent);
-	// //		.trigger("create");
-	// //		$("ul", this.el).listview('refresh');
-	// $("ul", this.el).trigger("create");
-	// $('h1', this.el).text(headerTitle);
-	// $.mobile.changePage("#"+this.el.id, {
-	// transition : 'slideup',
-	// reverse : false,
-	// changeHash : false
-	// });
-	// }
 });

@@ -29,7 +29,16 @@ adventurio.routers.MainRouter = Backbone.Router.extend({
 // "creator/stories/:story?browse=:verticalFrom-:verticalTo" : "doNavigatePagesRequestedAction",
 		"creator/stories/:storyId" : "doManageStoryRequestedAction",
 		"creator/stories/:storyId/:vertical/:horizontal" : "doCreatePageAction",
+		"creator/stories/:storyId/:vertical/:horizontal/:formItemPos" : "doEditPageFormItemOptionsAction",
 		"" : "doIndexHomePageRequestedAction",
+	},
+	doEditPageFormItemOptionsAction : function(storyId, verticalFrom, verticalTo, formItemPos){
+		new adventurio.views.creator.EditPageFormItemOptionsWindow({
+			parameter : {'verticalFrom' : verticalFrom, 'verticalTo' : verticalTo},
+			model : new adventurio.models.StoryModel({
+				'_id' : storyId
+			}) 
+		})
 	},
 	doNavigatePagesRequestedAction : function(storyId, verticalFrom, verticalTo){
 		console.log(storyId + "_" + verticalFrom + "_" + verticalTo);
