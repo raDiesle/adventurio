@@ -2,9 +2,7 @@ describe("EditPageFormItem should initialize ", function() {
 	it('Test, if singleton collection is working', function() {
 		expect(adventurio.views.creator.EditPageFormItemOptionsWindow).toBeDefined();
 		expect(adventurio.collections.StoryCollection.singleton).toBeUndefined();
-		
 	})
-
 
 	it('Test, if model singleton is working', function(){
 		var id= "5bbb283105f08f47ba02597b8500027b";
@@ -16,7 +14,6 @@ describe("EditPageFormItem should initialize ", function() {
 		adventurio.models.StoryModel.singleton.fetch({
 			success : showStory
 		});
-		
 		
 		waits(1000);
 		// expect(showStory).wasCalledWith(arguments);

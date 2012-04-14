@@ -15,10 +15,6 @@ $LAB
       });
   })
  
- // .script("lib/jquery.mobile.router.js")
-  
-//  .script(libFolder+"jquery-1.7.js")
-//  .script(libFolder+"jquery.mobile-1.0.js")
  .script(libFolder+"jquery.mobile-1.1.0-rc.1.js")
  .script(libFolder+"jquery.couch.js") // for signup november 2011 https://github.com/apache/couchdb/blob/master/share/www/script/jquery.couch.js
  .script(libFolder+"jquery.couch.app.js") // v 1.0.1 https://github.com/couchapp/couchapp/blob/master/couchapp/templates/vendor/couchapp/_attachments/jquery.couch.app.js
@@ -26,21 +22,23 @@ $LAB
  .script(libFolder+"sha1.js") // couchdb
  .script(libFolder+"underscore.js")// 1.3.1 http://documentcloud.github.com/underscore/underscore.js
  .script(libFolder+"backbone.js") // 0.9.1 http://documentcloud.github.com/backbone/#
-  .script(libFolder+"backbone_super.js")// https://gist.github.com/1542120
+ .script(libFolder+"backbone_super.js")// https://gist.github.com/1542120
  .script(libFolder+"backbone-couchdb.js") // v1.0 https://github.com/janmonschke/backbone-couchdb
  .script(libFolder+"handlebars-1.0.0.beta.6.js") // 1.0.0.beta.6 https://github.com/wycats/handlebars.js/archives/master
- //.script(libFolder+"helpers.js") // http://kan.so/packages/details/handlebars-helpers
- .script(libFolder+"form2js.js") // November 13 2011, https://github.com/maxatwork/form2js/tree/master/src
- // .script(libFolder+"js2form.js")// september 19 2011, .script("lib/jstorange.js")// november 2011 https://github.com/andris9/jStorage
- .script(libFolder+"jquery.toObject.js")// Nomeber 13 2011, . https://github.com/daffl/jquery.dform/
+
+
  .script(libFolder+"jquery.couchLogin.js")// May 10, 2011 https://github.com/couchapp/couchdb-login-jquery
  
  .script(libFolder+"json2xml.js") // http://goessner.net/download/prj/jsonxml/
  .script(libFolder+"xml2json.js")
- .script(libFolder+"jquery.jeditable.js") // 1.7.1 http://www.appelsiini.net/download/jquery.jeditable.js
- .script(libFolder+"jquery.markitup.js") // v 1.1.x https://github.com/markitup/1.x/blob/master/markitup/jquery.markitup.js
  
+ // Desktop
+ // .script(libFolder+"jquery.jeditable.js") // 1.7.1 http://www.appelsiini.net/download/jquery.jeditable.js
+ // .script(libFolder+"jquery.markitup.js") // v 1.1.x https://github.com/markitup/1.x/blob/master/markitup/jquery.markitup.js
  
+ // will probably be used:
+ // .script(libFolder+"form2js.js") // November 13 2011, https://github.com/maxatwork/form2js/tree/master/src
+ // .script("lib/jstorange.js")// november 2011 https://github.com/andris9/jStorage
  
 // .script(srcFolder+"/adventurio/mocks/Stories.js")
 // .script(srcFolder+"/adventurio/mocks/SingleStory.js")
