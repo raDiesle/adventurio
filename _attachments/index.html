@@ -39,7 +39,7 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 <script id="templates_formitems_text" type="text/x-handlebars-template">
 		<li>
 			<a class="edit_area">{{value}}</a>
-			<a href="#">PROPERTIES</a>
+			<a href="#" data-identity="{{formItemPos}}">PROPERTIES</a>
 		</li>
 </script>
 
@@ -341,19 +341,21 @@ response.setDateHeader ("Expires", 0); //prevent caching at the proxy server
 				Footer
 			</div>
 		</div>
-<!--  Creator: Create Page -->		
+<!--  Creator: adventurio.creator.CreatePage -->		
 		<div data-role="page" id="createpage" data-url="createpage" data-position="inline" data-nobackbtn="true">
 			<div data-role="header" id="createPage_header">
 				<h2 class="storyname">Replaced</h2>
 				<a id="cancelBackButton" href="#" data-icon="delete">Close</a>
 			</div>
-			<div data-role="content" id="createPage_content" data-identity="{{storyId}}" ></div>
+			<div data-role="content" id="createPage_content" data-identity="{{storyId}}" >
+				<!-- templates_forms_dynamic -->
+			</div>
 			<div data-role="footer">
 				Footer
 			</div>
 		</div>
 		
-<!-- CREATOR: EditPageFormItemOptions Dialog  -->
+<!-- CREATOR: adventurio.creator.EditPageFormItemOptions Dialog  -->
 		<div data-role="page" id="creator_page_formitem_options" data-id="creator_page_formitem_options">
 			<div data-role="header">
 				<h2>Login</h2>

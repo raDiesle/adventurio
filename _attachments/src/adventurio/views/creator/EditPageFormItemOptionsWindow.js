@@ -4,6 +4,7 @@ adventurio.views.creator.EditPageFormItemOptionsWindow = adventurio.views.superC
 		$().ready($.proxy(this.render, this)); // hack
 	},
 	render : function(){
+		var context = adventurio.collections.StoriesCollection;
 		this._super("render", [adventurio.templates.formitems.Options.compile(), "FormItem options", {role: "dialog"}]);
 	}
 });

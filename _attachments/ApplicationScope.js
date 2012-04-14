@@ -4,12 +4,16 @@
 
 var adventurio = adventurio || {
     models : {
-    	StoryModel : {},
+    	StoryModel : { singleton : {}},
     	User : {},
     	UserSingleton: { get : function(){
     		return new adventurio.models.User();
     	}},
     },
+    collections : {
+    	StoryCollection : { singleton : {}},
+    	StoriesCollection : {}
+	},
     views : {
     	superClasses : {
     		Basic : {}
@@ -17,6 +21,7 @@ var adventurio = adventurio || {
     	creator : {
     		ManageStory : {},
     		BrowseStory : {},
+    		CreatePage : { singleton : {}},
     		EditPageFormItemOptionsWindow : {},
     		Index: {},
     		Login: {},
@@ -31,7 +36,6 @@ var adventurio = adventurio || {
     	ShowStory : {},
     	CreateStory : {},
     	EditStory : {},
-    	CreatePage :{},
         pages : {}
     },
     templates: {
@@ -109,10 +113,6 @@ var adventurio = adventurio || {
     		return new adventurio.routers.MainRouter();
     	}},
     },
-    collections : {
-    	StoryCollection : {},
-    	StoriesCollection : {}
-	},
     utilies:{
     	Json : {
     		xml2json : {},

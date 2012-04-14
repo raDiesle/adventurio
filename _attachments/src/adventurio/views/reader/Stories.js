@@ -8,11 +8,10 @@ adventurio.views.reader.Stories = Backbone.View.extend({
 		console.log("mainpage was renedered");
 
 		// data = adventurio.mocks.listStories;
-		var data = new adventurio.collections.StoriesCollection;
-		data.fetch({
+		adventurio.collections.StoriesCollection.singleton = new adventurio.collections.StoriesCollection;
+		adventurio.collections.StoriesCollection.singleton.fetch({
 			success : this.showStories
 		});
-		// function(collection, response){ console.log("sUCCESs");}
 
 	},
 	events : {
@@ -39,9 +38,9 @@ adventurio.views.reader.Stories = Backbone.View.extend({
 			changeHash : false
 		});
 	},
-	viewStory : function(e) {
+	viewStory : function(clickEvent) {
 		// var dataUrl = $(e.currentTarget).attr("data-url");
-		var dataUrl = $(e.currentTarget).attr("data-identity");
+		var dataUrl = $(clickEvent.currentTarget).attr("data-identity");
 		// if(dataUrl != null) {
 		// dataUrl
 

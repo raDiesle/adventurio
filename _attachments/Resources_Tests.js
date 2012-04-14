@@ -15,6 +15,8 @@ $LAB
  .script(libFolder+"jasmine-jquery.js")// 11. August 2011 https://github.com/velesin/jasmine-jquery/blob/master/lib/jasmine-jquery.js
  .script(libFolder+"jasmine-ui-1.0.0.js") 
 //  Tests
+.script(srcFolder+"adventurio/views/creator/CreatePageTest.js")
+.script(srcFolder+"adventurio/views/creator/EditPageFormItemOptionsWindowTest.js")
 //.script(srcFolder+"adventurio/views/reader/IndexIntegrTest.js")
 //.script(srcFolder+"adventurio/models/StoryIntegrTest.js")
 //.script(srcFolder+"adventurio/utilities/JsonTest.js")

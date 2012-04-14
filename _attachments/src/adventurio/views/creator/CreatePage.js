@@ -1,4 +1,4 @@
-adventurio.views.CreatePage = adventurio.views.superClasses.Basic.extend({
+adventurio.views.creator.CreatePage = adventurio.views.superClasses.Basic.extend({
 
 	el : $('#createpage'),
 	attributes : {
@@ -16,16 +16,7 @@ adventurio.views.CreatePage = adventurio.views.superClasses.Basic.extend({
 	},
 	render : function() {
 
-	var formItems = [
-			{
-			type : 'text',
-			value : 'The big crash'
-			},
-			{
-			type : 'textfield',
-			value : 'Enter player name'
-			}
-		];
+	
 
 		// Hack
 		$('.edit_area').trigger('create');
@@ -54,8 +45,8 @@ adventurio.views.CreatePage = adventurio.views.superClasses.Basic.extend({
 		// };
 	// });
 	var context = {};
-	context.formItems = formItems;
-html = adventurio.templates.forms.Dynamic.compile(context);
+	context.formItems = this.model.get("formItems");
+	html = adventurio.templates.forms.Dynamic.compile(context);
 	this._super("render", [html, "Story header"]);
 	// console.log(adventurio.utilies.Json.json2xml(element));
 		// this._super("render", [adventurio.utilies.Json.json2xml(element), "Story header"]);
@@ -66,9 +57,11 @@ html = adventurio.templates.forms.Dynamic.compile(context);
 		"click .setFormItemProperties" : "openFormItemProperties"
 	},
 	openFormItemProperties : function(clickEvent){
-		var urlToCurrentCreatePage = location.hash + "?edit";
+		var clickedFormItemPos = $(e.currentTarget).attr("data-identity");
+		var urlToCurrentCreatePage = location.hash + clickedFormItemPos;
 		//var urlToCurrentCreatePage = "creator/stories/"+this.model.get("_id")+"/"+this.model.get("vertical")+"/"+this.model.get("horizontal")+"?edit";
-		adventurio.routers.MainRouterSingleton.get().navigate(urlToCurrentCreatePage, {trigger: true});		
+		adventurio.routers.MainRouterSingleton.get().navigate(urlToCurrentCreatePage, {trigger: true});
+				
 	},
 	saveEditedValue : function(clickEvent) {
 		clickEvent.preventDefault();

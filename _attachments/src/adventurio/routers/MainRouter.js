@@ -97,10 +97,25 @@ adventurio.routers.MainRouter = Backbone.Router.extend({
 		});
 	},
 	doCreatePageAction : function(storyId, vertical, horizontal) {
+		
+		var formItems = [
+			{
+			type : 'text',
+			value : 'The big crash',
+			formItemPos : 1
+			},
+			{
+			type : 'textfield',
+			value : 'Enter player name',
+			formItemPos : 2
+			}
+		];
+		
 		var newModel = new adventurio.models.StoryModel({
-			_id : storyId
+			_id : storyId,
+			formItems : formItems
 		});
-		new adventurio.views.CreatePage({
+		adventurio.views.creator.CreatePage.singleton = new adventurio.views.creator.CreatePage({
 			model : newModel
 		});
 	},
