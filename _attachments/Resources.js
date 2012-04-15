@@ -50,6 +50,7 @@ $LAB
  .script(srcFolder+"/adventurio/models/StoryModel.js")
  .script(srcFolder+"/adventurio/models/User.js")
  .script(srcFolder+"/adventurio/views/superClasses/Basic.js")
+ 
  .script(srcFolder+"/adventurio/views/reader/Index.js")
  .script(srcFolder+"/adventurio/views/reader/Stories.js")
  .script(srcFolder+"/adventurio/views/ShowStory.js")

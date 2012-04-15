@@ -7,7 +7,7 @@ adventurio.views.superClasses.Basic = Backbone.View.extend({
 
 		// var hasListview = typeof options['hasListview'] == 'undefined' ? false : options['hasListview'];
 		// if(hasListview){
-			$("ul", this.el).listview();
+			 $("ul", this.el).first().listview();
 		// }
 		
 		$('h1', this.el).text(headerTitle);

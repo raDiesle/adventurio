@@ -1,18 +1,23 @@
-adventurio.views.reader.Stories = Backbone.View.extend({
-
+adventurio.views.reader.Stories = adventurio.views.superClasses.Basic.extend({
 	el : $('#mainpage'),
 	initialize : function() {
-		return this.render();
+		this.collection.on('reset', this.render, this);
+		this.collection.fetch();
 	},
-	render : function(event) {
+	render : function(collection, response) {
 		console.log("mainpage was renedered");
 
 		// data = adventurio.mocks.listStories;
-		adventurio.collections.StoriesCollection.singleton = new adventurio.collections.StoriesCollection;
-		adventurio.collections.StoriesCollection.singleton.fetch({
-			success : this.showStories
-		});
+		// adventurio.collections.StoriesCollection.singleton = new adventurio.collections.StoriesCollection;
+		// adventurio.collections.StoriesCollection.singleton.fetch({
+			// success : this.showStories
+		// });
+		var context = {
+			storyObjects : collection.toJSON()
+		};
 
+		var html = adventurio.templates.listviews.SimpleList.compile(context);
+		this._super("render", [html, I18n.t("index.header")]);
 	},
 	events : {
 		"click .viewStoryLink" : "viewStory"
@@ -22,21 +27,23 @@ adventurio.views.reader.Stories = Backbone.View.extend({
 		var context = {
 			storyObjects : collection.toJSON()
 		};
-		console.log("Data to display:");
+
 		var html = adventurio.templates.listviews.SimpleList.compile(context);
 
-		this.$("#listedStories").html(html);
-		try{
-		 $("#listedStories").listview("refresh");
-		}catch(e){
-			console.log("Error occurred" + e);
-		}
+		// this.$("#listedStories").html(html);
+		// try{
+		 // $("#listedStories").listview("refresh");
+		// }catch(e){
+			// console.log("Error occurred" + e);
+		// }
 		 
-		 $.mobile.changePage("#mainpage", {
-			transition : 'slideup',
-			reverse : false,
-			changeHash : false
-		});
+		 // $.mobile.changePage("#mainpage", {
+			// transition : 'slideup',
+			// reverse : false,
+			// changeHash : false
+		// });
+		
+		this._super("render", [html, I18n.t("reader.Index.browseStories")]);
 	},
 	viewStory : function(clickEvent) {
 		// var dataUrl = $(e.currentTarget).attr("data-url");

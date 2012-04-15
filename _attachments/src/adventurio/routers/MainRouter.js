@@ -76,7 +76,10 @@ adventurio.routers.MainRouter = Backbone.Router.extend({
 		});
 	},
 	doListStoriesInReadModeRequestedAction : function() {
-		new adventurio.views.reader.Stories();
+		new adventurio.views.reader.Stories({
+			collection : new adventurio.collections.StoriesCollection()
+		}
+		);
 	},
 	doViewSingleStoryInReadModeRequestedAction : function(requestedStoryId) {
 		var view = new adventurio.views.ShowStory({
