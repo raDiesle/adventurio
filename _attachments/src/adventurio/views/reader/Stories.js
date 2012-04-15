@@ -5,7 +5,6 @@ adventurio.views.reader.Stories = adventurio.views.superClasses.Basic.extend({
 		this.collection.fetch();
 	},
 	render : function(collection, response) {
-		console.log("mainpage was renedered");
 
 		// data = adventurio.mocks.listStories;
 		// adventurio.collections.StoriesCollection.singleton = new adventurio.collections.StoriesCollection;
@@ -58,15 +57,3 @@ adventurio.views.reader.Stories = adventurio.views.superClasses.Basic.extend({
 		// $.mobile.changePage("index.html#singleStory");
 	}
 });
-
-// var adventurio_views_ShowStories = Backbone.View.extend({
-// el : $('#showStories'),
-// render : function(event) {
-// var compiled_template = _.template($("#showStories-template").html());
-// this.el.html(compiled_template(this.model.toJSON()));
-// return this;
-// },
-// events : {
-//
-// }
-// });

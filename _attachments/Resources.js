@@ -12,10 +12,11 @@ $LAB
       $(document).bind("mobileinit", function(){
         $.mobile.ajaxEnabled = false;
         $.mobile.hashListeningEnabled = false;
+         $.mobile.linkBindingEnabled = false;
       });
   })
  
- .script(libFolder+"jquery.mobile-1.1.0-rc.1.js")
+ .script(libFolder+"jquery.mobile-1.1.0.js")
  .script(libFolder+"jquery.couch.js") // for signup november 2011 https://github.com/apache/couchdb/blob/master/share/www/script/jquery.couch.js
  .script(libFolder+"jquery.couch.app.js") // v 1.0.1 https://github.com/couchapp/couchapp/blob/master/couchapp/templates/vendor/couchapp/_attachments/jquery.couch.app.js
  .script(libFolder+"couch.js") // oktober 2011 https://github.com/apache/couchdb/blob/master/share/www/script/couch.js
