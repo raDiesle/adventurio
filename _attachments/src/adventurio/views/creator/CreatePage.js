@@ -26,6 +26,11 @@ adventurio.views.creator.CreatePage = adventurio.views.superClasses.Basic.extend
 	Handlebars.registerPartial("templates_formitems_text", $("#templates_formitems_text").html());
 	Handlebars.registerPartial("templates_formitems_textfield", $("#templates_formitems_textfield").html());
 	
+	Handlebars.registerHelper('I18n',
+	  function(str){
+	    return (I18n != undefined ? I18n.t(str) : str);
+	  }
+	);
 	
 	Handlebars.registerHelper("ifIsTypeOf", function(actualFormItem, formItemTypeToCheck, fn, elseFn) {
 		if(actualFormItem.type === formItemTypeToCheck){
@@ -34,16 +39,6 @@ adventurio.views.creator.CreatePage = adventurio.views.superClasses.Basic.extend
 	});
 
 	var html ="";
-	// $.each(formItems, function(index, currentFormItem){
-		// switch(currentFormItem.type){
-			// case "text" :
-				// html += adventurio.templates.formitems.Text.compile(currentFormItem);
-				// break;
-			// case "textfield" :
-				// html += adventurio.templates.formitems.TextItem.compile(currentFormItem);
-			// break;
-		// };
-	// });
 	var context = {};
 	context.formItems = this.model.get("formItems");
 	html = adventurio.templates.forms.Dynamic.compile(context);

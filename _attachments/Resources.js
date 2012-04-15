@@ -25,7 +25,7 @@ $LAB
  .script(libFolder+"backbone_super.js")// https://gist.github.com/1542120
  .script(libFolder+"backbone-couchdb.js") // v1.0 https://github.com/janmonschke/backbone-couchdb
  .script(libFolder+"handlebars-1.0.0.beta.6.js") // 1.0.0.beta.6 https://github.com/wycats/handlebars.js/archives/master
-
+ .script(libFolder+"i18n.js")// https://github.com/fnando/i18n-js/blob/master/vendor/assets/javascripts/i18n.js
 
  .script(libFolder+"jquery.couchLogin.js")// May 10, 2011 https://github.com/couchapp/couchdb-login-jquery
  
@@ -44,8 +44,9 @@ $LAB
 // .script(srcFolder+"/adventurio/mocks/SingleStory.js")
  
  .script(localeFolder+"default.js") // i18n
+ .script(localeFolder+"locales.js") // i18n
  .script(srcFolder+"/adventurio/utilies/Json.js")
- .script(srcFolder+"/adventurio/application/jeditable/MarkItUpSettings.js")
+ // .script(srcFolder+"/adventurio/application/jeditable/MarkItUpSettings.js")
  .script(srcFolder+"/adventurio/models/StoryModel.js")
  .script(srcFolder+"/adventurio/models/User.js")
  .script(srcFolder+"/adventurio/views/superClasses/Basic.js")

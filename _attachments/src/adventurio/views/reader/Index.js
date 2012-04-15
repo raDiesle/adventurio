@@ -1,56 +1,39 @@
-//adventurio.templates.menus.Simple = null;
-
-adventurio.views.reader.Index = Backbone.View.extend({
+adventurio.views.reader.Index = adventurio.views.superClasses.Basic.extend({
 	el : ('#reader_index'),
 	initialize : function() {
 		// hack, otherwise changePage throws exception
-		$().ready(this.render);
-
-		// return this;
+		$().ready($.proxy(this.render, this));
 	},
 	events : {
 		"click a" : "redirectPage" //#reader_index
 	},
 	render : function() {
-//		if (adventurio.templates.menus.Simple === null) {
-//			adventurio.templates.menus.Simple = ;
-//		}
-		//		
-//		var template = Handlebars.compile($("#templates_menus_simple").html());
 		var context = {
 			menuObjects : [ {
-				header : locale.reader.header,
+				header : I18n.t("reader.header"),
 				menu : [ {
 					route : "reader/stories",
-					entry : locale.reader.Index.browseStories,
+					entry : I18n.t("reader.Index.browseStories"),
 				}, {
 					route : "reader/stories",
-					entry : locale.reader.Index.continueReading
+					entry : I18n.t("reader.Index.continueReading")
 				} ]
 			}, {
-				header : locale.creator.header,
+				header : I18n.t("creator.header"),
 				menu : [ {
 					route : "creator/stories",
-					entry : locale.reader.Index.manageStories
+					entry : I18n.t("reader.Index.manageStories")
 				},
 				{
 					route : "creator/stories/new",
-					entry : locale.reader.Index.continueEditStory
+					entry : I18n.t("reader.Index.continueEditStory")
 				} ]
 			} ]
 		};
 		//		
 		var html = adventurio.templates.menus.Simple.compile(context);
-		//
-		$("#reader_index ul").first().html(html).listview("refresh");
-		$("#reader_index .title").first().text("WELCOME");
-
-		$.mobile.changePage('#reader_index', {
-			transition : 'slideup',
-			role : "dialog",
-			reverse : false,
-			changeHash : false
-		});
+		
+		this._super("render", [html, I18n.t("index.header")]);
 	},
 	redirectPage : function(event) {
 		var dataUrl = $(event.currentTarget).attr("data-identity");

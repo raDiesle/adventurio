@@ -1,6 +1,9 @@
 // Backbone.history.start();
 
-
+ I18n.fallbacks = true;
+ I18n.defaultLocale = "de"
+ I18n.locale = "en";
+ 
 // Singletons
 //adventurio.models.UserSingleton =  new adventurio.models.User();
 adventurio.routers.MainRouterSingleton.get();

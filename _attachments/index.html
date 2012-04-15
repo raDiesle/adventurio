@@ -14,23 +14,34 @@
 
 <!--  TEMPLATE MENU -->
 <script id="templates_menus_simple" type="text/x-handlebars-template">
-	{{#menuObjects}}
-		<li data-role="list-divider">{{header}}</li>
-		{{#menu}}
-		<li>
-			<a href="#" data-ajax="false" class="reader_index_menu_link" data-identity="{{route}}" >
-				{{entry}}
-			</a>
-		</li>
-		{{/menu}}
-	{{/menuObjects}} 
+<div class="reader_index_content">
+	<div class="ui-grid-a" >
+		<div class="ui-block-a" >
+			content
+		</div>
+	
+		<ul data-role="listview" data-theme="g" class="ui-block-b transparent" data-inset="true">
+		
+		{{#menuObjects}}
+			<li data-role="list-divider">{{header}}</li>
+			{{#menu}}
+			<li>
+				<a href="#" data-ajax="false" class="reader_index_menu_link" data-identity="{{route}}" >
+					{{entry}}
+				</a>
+			</li>
+			{{/menu}}
+		{{/menuObjects}}
+		</ul>
+	</div>
+</div>
 </script>
 
 
 <script id="templates_formitems_text" type="text/x-handlebars-template">
 		<li>
 			<a class="edit_area">{{value}}</a>
-			<a href="#" data-identity="{{formItemPos}}">PROPERTIES</a>
+			<a href="#" data-identity="{{formItemPos}}">{{I18n "message"}}</a>
 		</li>
 </script>
 
@@ -117,17 +128,8 @@
 			<div data-role="header" class="header">
 				<h2 class="title">Replaced</h2>
 			</div>
-			<div data-role="content" data-identity="{{storyId}}" >
-				<div class="reader_index_content">
-					<div class="ui-grid-a"  >
-						<div class="ui-block-a" >
-							content 12345
-						</div>
-						<ul data-role="listview" data-theme="g" class="ui-block-b transparent" data-inset="true">
-							
-						</ul>
-					</div>
-				</div>
+			<div data-role="content"  > <!--data-identity="{{storyId}}"-->
+					<!-- adventurio_menus_simple -->
 			</div>
 			<div data-role="footer">
 				Footer
