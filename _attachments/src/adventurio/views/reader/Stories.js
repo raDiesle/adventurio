@@ -6,11 +6,6 @@ adventurio.views.reader.Stories = adventurio.views.superClasses.Basic.extend({
 	},
 	render : function(collection, response) {
 
-		// data = adventurio.mocks.listStories;
-		// adventurio.collections.StoriesCollection.singleton = new adventurio.collections.StoriesCollection;
-		// adventurio.collections.StoriesCollection.singleton.fetch({
-			// success : this.showStories
-		// });
 		var context = {
 			storyObjects : collection.toJSON()
 		};
@@ -28,32 +23,10 @@ adventurio.views.reader.Stories = adventurio.views.superClasses.Basic.extend({
 		};
 
 		var html = adventurio.templates.listviews.SimpleList.compile(context);
-
-		// this.$("#listedStories").html(html);
-		// try{
-		 // $("#listedStories").listview("refresh");
-		// }catch(e){
-			// console.log("Error occurred" + e);
-		// }
-		 
-		 // $.mobile.changePage("#mainpage", {
-			// transition : 'slideup',
-			// reverse : false,
-			// changeHash : false
-		// });
-		
 		this._super("render", [html, I18n.t("reader.Index.browseStories")]);
 	},
 	viewStory : function(clickEvent) {
-		// var dataUrl = $(e.currentTarget).attr("data-url");
 		var dataUrl = $(clickEvent.currentTarget).attr("data-identity");
-		// if(dataUrl != null) {
-		// dataUrl
-
-		location.hash = "reader/stories" + dataUrl;
-		// adventurio.routers.MainRouter.navigate
-		// }
-
-		// $.mobile.changePage("index.html#singleStory");
+		adventurio.routers.MainRouterSingleton.get().navigate("reader/stories/" + dataUrl, {trigger: true});
 	}
 });

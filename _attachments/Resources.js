@@ -12,7 +12,7 @@ $LAB
       $(document).bind("mobileinit", function(){
         $.mobile.ajaxEnabled = false;
         $.mobile.hashListeningEnabled = false;
-         $.mobile.linkBindingEnabled = false;
+        // $.mobile.linkBindingEnabled = false; -- will cause bug where window.hash = will stay empty
       });
   })
  

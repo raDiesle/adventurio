@@ -72,11 +72,12 @@
 
 <!-- TEMPLATE simple Listview -->
 <script id="templates_listviews_SimpleList" type="text/x-handlebars-template">
+	<!--id="storyLink" -->
+	<!--#reader?id={{_id}} -->
 <ul data-role="listview" data-theme="c" data-divendertheme="b">
 	{{#storyObjects}}
-	<li id="storyLink">
-	<!--#reader?id={{_id}} -->
-		<a href="#" class="viewStoryLink"  data-ajax="false" data-identity="/{{_id}}" >
+	<li>
+		<a href="#" class="viewStoryLink"  data-ajax="false" data-identity="{{_id}}" >
 			<h2 class="storyName">{{name}}</h2>
 			<p class="storyCreator">{{creator}}</p>
 			<p class="storyCategory">{{tags}}</p>
@@ -84,6 +85,8 @@
 	</li>
 	{{/storyObjects}}
 </ul>
+
+
 </script>
 
 <!-- TEMPLATE Browse Listview -->
@@ -275,17 +278,15 @@
 
 		
 <!--CREATOR:  Own Stories List -->
-		<div data-role="page" id="creator_stories"  > <!-- data-url="#creator_stories"  -->
-			<div data-role="header">
-				<h1>Stories</h1>
-			</div>
-			<div data-role="content" >
-				<ul data-role="listview" data-theme="c" data-divendertheme="b">
-					<!-- template -->
-				</ul>
-			</div>
-			<div data-role="footer" ></div>
-		</div>
+<div data-role="page" id="creator_stories" data-url="#creator_stories"> <!-- data-url="#creator_stories"  -->
+	<div data-role="header">
+		<h1>Stories</h1>
+	</div>
+	<div data-role="content" >
+			<!-- templates_listviews_SimpleList -->
+	</div>
+	<div data-role="footer" ></div>
+</div>
 		
 <!-- CREATOR :Create Story -->
 		<div data-role="page" id="createstory" data-url="#createstory" data-position="inline" data-nobackbtn="true">

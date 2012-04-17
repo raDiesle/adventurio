@@ -37,7 +37,7 @@ adventurio.views.reader.Index = adventurio.views.superClasses.Basic.extend({
 	},
 	redirectPage : function(event) {
 		var dataUrl = $(event.currentTarget).attr("data-identity");
-		location.hash = dataUrl;
+		adventurio.routers.MainRouterSingleton.get().navigate(dataUrl, {trigger: true});
 
 	}
 });

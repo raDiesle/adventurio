@@ -15,9 +15,6 @@ adventurio.views.creator.CreatePage = adventurio.views.superClasses.Basic.extend
 		$().ready($.proxy(this.render, this)); // hack
 	},
 	render : function() {
-
-	
-
 		// Hack
 		$('.edit_area').trigger('create');
 		$('input').textinput();
@@ -43,8 +40,6 @@ adventurio.views.creator.CreatePage = adventurio.views.superClasses.Basic.extend
 	context.formItems = this.model.get("formItems");
 	html = adventurio.templates.forms.Dynamic.compile(context);
 	this._super("render", [html, "Story header"]);
-	// console.log(adventurio.utilies.Json.json2xml(element));
-		// this._super("render", [adventurio.utilies.Json.json2xml(element), "Story header"]);
 	},
 	events : {
 		"click .edit_area" : "triggerCreate",
@@ -56,7 +51,6 @@ adventurio.views.creator.CreatePage = adventurio.views.superClasses.Basic.extend
 		var urlToCurrentCreatePage = location.hash + clickedFormItemPos;
 		//var urlToCurrentCreatePage = "creator/stories/"+this.model.get("_id")+"/"+this.model.get("vertical")+"/"+this.model.get("horizontal")+"?edit";
 		adventurio.routers.MainRouterSingleton.get().navigate(urlToCurrentCreatePage, {trigger: true});
-				
 	},
 	saveEditedValue : function(clickEvent) {
 		clickEvent.preventDefault();
