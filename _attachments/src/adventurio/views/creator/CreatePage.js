@@ -50,7 +50,7 @@ adventurio.views.creator.CreatePage = adventurio.views.superClasses.Basic.extend
 		var clickedFormItemPos = $(e.currentTarget).attr("data-identity");
 		var urlToCurrentCreatePage = location.hash + clickedFormItemPos;
 		//var urlToCurrentCreatePage = "creator/stories/"+this.model.get("_id")+"/"+this.model.get("vertical")+"/"+this.model.get("horizontal")+"?edit";
-		adventurio.routers.MainRouterSingleton.get().navigate(urlToCurrentCreatePage, {trigger: true});
+		adventurio.routers.MainRouter.singleton.navigate(urlToCurrentCreatePage, {trigger: true});
 	},
 	saveEditedValue : function(clickEvent) {
 		clickEvent.preventDefault();

@@ -82,22 +82,24 @@ adventurio.routers.MainRouter = Backbone.Router.extend({
 		);
 	},
 	doViewSingleStoryInReadModeRequestedAction : function(requestedStoryId) {
-		var view = new adventurio.views.ShowStory({
-			'parameter' : {
-				'storyId' : requestedStoryId
-			}
+		var myModel = new adventurio.models.StoryModel({
+			_id : requestedStoryId
+		});
+		
+		var view = new adventurio.views.reader.Story({
+			model : myModel
 		});
 	},
-	doCreateNewStoryRequestedAction : function() {
-		new adventurio.views.CreateStory();
-	},
 	editstory : function(storyId) {
-		newModel = new adventurio.models.StoryModel({
+		var newModel = new adventurio.models.StoryModel({
 			'_id' : storyId
 		});
 		new adventurio.views.creator.Story({
 			model : newModel
 		});
+	},
+	doCreateNewStoryRequestedAction : function() {
+		new adventurio.views.CreateStory();
 	},
 	doCreatePageAction : function(storyId, vertical, horizontal) {
 		

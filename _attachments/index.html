@@ -85,8 +85,6 @@
 	</li>
 	{{/storyObjects}}
 </ul>
-
-
 </script>
 
 <!-- TEMPLATE Browse Listview -->
@@ -124,7 +122,14 @@
 	</form>
 </script>
 
-		
+<script id="templates_forms_ReaderStory" type="text/x-handlebars-template">
+	<h2>{{storyName}} (by {{storyCreator}})</h2>
+	<p>{{storyDescription}}</p>
+	<p><a href="#">{{storyTags}}</a></p>
+	<a href="#" data-role="button" data-theme="b" data-inline="true" data-identity="{{storyId}}" >
+		Edit Story
+	</a>
+</script>
 
 <!-- READER: index page  -->
 	<div data-role="page" id="reader_index" data-url="#reader" data-position="inline" data-nobackbtn="true">
@@ -156,23 +161,13 @@
 		</div>
 
 <!-- READER: view single story-->		
-		<div data-role="page" id="viewstory" data-url="#viewstory" data-position="inline">
+		<div data-role="page" id="page_reader_story" data-url="#page_reader_story" data-position="inline">
 			<div data-role="header" id="storyheader">
-				
 				<h2 class="storyname">Name</h2>
 				<a href="#mainpage" data-icon="grid" class="ui-btn-right"  data-rel="back" >Home</a>
 			</div>
-			<div data-role="content" id="viewStory_content" data-identity="{{storyId}}">
-				<script id="showStory_template" type="text/x-handlebars-template">
-					<h2 class="storyCreator"/>{{storyCreator}}</h2>
-					<p class="storyName">Name: {{storyName}}</p>
-					<p class="description">Description: {{storyDescription}}</p>
-					<p class="tags">Tags: {{storyTags}}</p>
-					<a id="viewstory_edit" href="#" data-role="button" data-inline="true"
-					data-identity="/{{storyId}}" > <!-- data-url="stories/{{storyId}}" -->
-					Edit Story
-					</a>
-				</script>
+			<div data-role="content" data-identity="{{storyId}}">
+				<!-- showStory_template -->
 			</div>
 			<div data-role="footer">
 				Footer

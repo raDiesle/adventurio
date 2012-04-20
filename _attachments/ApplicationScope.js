@@ -47,12 +47,10 @@ var adventurio = adventurio || {
     		}
     	},
     	formitems : {
-    		
     		Options : {
     			compile : function(context){
     				return Handlebars.compile($("#template_formitem_options").html())(context);
     			}
-    			
     		},
     		Text : {
     			compile : function(context){
@@ -69,6 +67,11 @@ var adventurio = adventurio || {
     		Story :{
     			compile : function(context){
     				return Handlebars.compile($("#templates_forms_story").html())(context);
+    			}
+    		},
+    		ReaderStory : {
+    			compile : function(context){
+    				return Handlebars.compile($("#templates_forms_ReaderStory").html())(context);
     			}
     		},
     		Dynamic : {
@@ -108,7 +111,7 @@ var adventurio = adventurio || {
     	Stories: {}
     },
     routers : {
-    	MainRouter : {},
+    	MainRouter : { singleton : {}},
     	MainRouterSingleton: { get : function(){
     		return new adventurio.routers.MainRouter();
     	}},

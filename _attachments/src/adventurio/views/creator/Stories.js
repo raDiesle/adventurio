@@ -19,7 +19,7 @@ adventurio.views.creator.Stories = adventurio.views.superClasses.Basic.extend({
 	},
 	viewStory : function(e) {
 		var dataUrl = $(e.currentTarget).attr("data-identity");
-		adventurio.routers.MainRouterSingleton.get().navigate("creator/stories/" + dataUrl, {trigger: true});
+		adventurio.routers.MainRouter.singleton.navigate("creator/stories/" + dataUrl, {trigger: true});
 	},
 	renderTemplate : function(htmlContent, headerTitle){
 		$('[data-role="content"]', this.el).html(htmlContent);
