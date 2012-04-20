@@ -27,7 +27,8 @@ var adventurio = adventurio || {
     		Login: {},
     		Signup : {},
     		Stories: {},
-    		Story : {}
+    		Story : {},
+    		CreateStory : {}
     	},
     	reader : {
     		Index: {},
@@ -64,11 +65,6 @@ var adventurio = adventurio || {
     		}
 		},
     	forms : {
-    		Story :{
-    			compile : function(context){
-    				return Handlebars.compile($("#templates_forms_story").html())(context);
-    			}
-    		},
     		ReaderStory : {
     			compile : function(context){
     				return Handlebars.compile($("#templates_forms_ReaderStory").html())(context);
@@ -85,17 +81,17 @@ var adventurio = adventurio || {
     			compile : function(context){
     				return Handlebars.compile($("#templates_listviews_Browse").html())(context);
     			}
-    		},
-    		SimpleList : {
+    		}
+    		,SimpleList : {
     			compile : function(context){
     				return Handlebars.compile($("#templates_listviews_SimpleList").html())(context);
     			}
     		}
     	},
     	creator: {
-    		CreateStory : {
+    		Story :{
     			compile : function(context){
-    				return Handlebars.compile($("#createStory_template").html())(context);
+    				return Handlebars.compile($("#templates_creator_story").html())(context);
     			}
     		},
     		ManageStory : {},

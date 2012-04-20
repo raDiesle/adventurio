@@ -7,6 +7,7 @@ adventurio.views.reader.Stories = adventurio.views.superClasses.Basic.extend({
 	render : function(collection, response) {
 
 		var context = {
+			visitEntryPrefix : 'reader/stories/',
 			storyObjects : collection.toJSON()
 		};
 
@@ -14,7 +15,6 @@ adventurio.views.reader.Stories = adventurio.views.superClasses.Basic.extend({
 		this._super("render", [html, I18n.t("index.header")]);
 	},
 	events : {
-		"click .viewStoryLink" : "viewStory"
 	},
 	showStories : function(collection, response) {
 
@@ -24,9 +24,5 @@ adventurio.views.reader.Stories = adventurio.views.superClasses.Basic.extend({
 
 		var html = adventurio.templates.listviews.SimpleList.compile(context);
 		this._super("render", [html, I18n.t("reader.Index.browseStories")]);
-	},
-	viewStory : function(clickEvent) {
-		var dataUrl = $(clickEvent.currentTarget).attr("data-identity");
-		adventurio.routers.MainRouterSingleton.get().navigate("reader/stories/" + dataUrl, {trigger: true});
 	}
 });

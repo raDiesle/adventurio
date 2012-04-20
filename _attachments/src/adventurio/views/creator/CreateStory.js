@@ -1,13 +1,11 @@
-var createStory_template = null;
+adventurio.views.creator.CreateStory = adventurio.views.superClasses.Basic.extend({
 
-adventurio.views.CreateStory = adventurio.views.superClasses.Basic.extend({
-
-	el : $('#createstory'),
+	el : $('#page_creator_stories_new'),
 	initialize : function() {
 		$().ready($.proxy(this.render, this)); // hack
 	},
 	render : function(event) {
-		this._super("render", [adventurio.templates.creator.CreateStory.compile({}), "Story header"]);
+		this._super("render", [adventurio.templates.creator.Story.compile({}), "Story header"]);
 	},
 	events : {
 		"click .submit" : "createStory",

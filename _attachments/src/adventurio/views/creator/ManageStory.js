@@ -1,15 +1,12 @@
-adventurio.views.creator.ManageStory = Backbone.View.extend({
-
+adventurio.views.creator.ManageStory = adventurio.views.superClasses.Basic.extend({
+	el : "#creator_stories_storyid",
 	initialize : function() {
-		// hack, otherwise changePage throws exception
 		$().ready($.proxy(this.render, this));
-		// _.bindAll(this, "render");
 	},
 	events : {
-		"click a" : "redirectPage"
+		// "click a" : "redirectPage"
 	},
 	render : function() {
-				
 		var context = {
 			menuObjects : {
 				header : locale.creator.stories.singleStory.menu.header,
@@ -28,32 +25,10 @@ adventurio.views.creator.ManageStory = Backbone.View.extend({
 				]
 			}
 		};
-
-		var html = adventurio.templates.menus.Simple.compile(context);
-
-		try {
-			$("ul", this.el).first().html(html).listview("refresh");
-		} catch (alreadyRendered) {
-		}
-		// try{
-//		$("input", this.el).trigger('create');
-		// $("input", this.el).slider('refresh');
-		// }catch(alreadyRenedered){
-		// }
-
-		$(".title", this.el).first().text("WELCOME");
-
-		$.mobile.changePage('#creator_stories_storyid', {
-			transition : 'slideup',
-			role : "page",
-			reverse : false,
-			changeHash : false
-		});
-
-		return this;
-	},
-	redirectPage : function(event) {
-		var dataUrl = $(event.currentTarget).attr("data-identity");
-		location.hash = dataUrl;
+		this._super("render", [adventurio.templates.menus.Simple.compile(context), "manage title"]);
 	}
+	// ,redirectPage : function(event) {
+		// var dataUrl = $(event.currentTarget).attr("data-identity");
+		// adventurio.routers.MainRouter.singleton.navigate(dataUrl, {trigger: true});
+	// }
 });
