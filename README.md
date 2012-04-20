@@ -9,6 +9,11 @@ Clone with git:
     git clone git://github.com/couchapp/example.git
     cd example
 
+
+Configure:
+	bind_address = 127.0.0.1
+	localhost:5984/ = /adventurio/_design/adventurio/_rewrite/
+
 Install with 
     
     couchapp push . http://localhost:5984/example
