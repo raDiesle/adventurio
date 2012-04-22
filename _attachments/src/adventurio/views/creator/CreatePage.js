@@ -1,5 +1,4 @@
 adventurio.views.creator.CreatePage = adventurio.views.superClasses.Basic.extend({
-
 	el : $('#createpage'),
 	attributes : {
 		editModeStatus : {
@@ -11,7 +10,6 @@ adventurio.views.creator.CreatePage = adventurio.views.superClasses.Basic.extend
 		}
 	},
 	initialize : function() {
-		console.log(this.model.toJSON()._id);
 		$().ready($.proxy(this.render, this)); // hack
 	},
 	render : function() {

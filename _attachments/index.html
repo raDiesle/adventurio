@@ -40,7 +40,7 @@
 <script id="templates_formitems_text" type="text/x-handlebars-template">
 	<li>
 		<a class="edit_area">{{$_.value}}</a>
-		<a href="#creator/stories/{{_id }}/{{horizontal}}/{{vertical}}/{{$_.formItemPos}}" data-identity="{{formItemPos}}">{{I18n "message"}}</a>
+		<a href="#creator/stories/{{_id }}/{{horizontal}}/{{vertical}}/{{$_.formItemPos}}" data-identity="{{formItemPos}}" data-ajax="false">{{I18n "message"}}</a>
 	</li>
 </script>
 
@@ -51,7 +51,7 @@
 			{{$_.value}}
 		</span>
 	</a>
-	<a href="#creator/stories/{{_id }}/{{horizontal}}/{{vertical}}/{{$_.formItemPos}}" class="setFormItemProperties" >PROPERTIES</a>
+	<a href="#creator/stories/{{_id }}/{{horizontal}}/{{vertical}}/{{$_.formItemPos}}" class="setFormItemProperties" data-ajax="false" >PROPERTIES</a>
 </li>
 </script>
 
