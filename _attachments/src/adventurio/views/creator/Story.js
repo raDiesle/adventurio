@@ -7,10 +7,6 @@ adventurio.views.creator.Story = adventurio.views.superClasses.Basic.extend({
 	render : function() {
 		this._super("render", [adventurio.templates.creator.Story.compile(this.model.toJSON()), this.model.get("name")]);
 	},
-	renderTemplate : function(htmlContent, headerTitle){
-		$('[data-role="content"]', this.el).html(htmlContent).trigger("create");
-		$('h1', this.el).text(headerTitle);
-	},
 	events : {
 		"click .submitButton" : "editStory",
 	},

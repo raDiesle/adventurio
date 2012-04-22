@@ -4,7 +4,6 @@ adventurio.views.creator.ManageStory = adventurio.views.superClasses.Basic.exten
 		$().ready($.proxy(this.render, this));
 	},
 	events : {
-		// "click a" : "redirectPage"
 	},
 	render : function() {
 		var context = {
@@ -27,8 +26,4 @@ adventurio.views.creator.ManageStory = adventurio.views.superClasses.Basic.exten
 		};
 		this._super("render", [adventurio.templates.menus.Simple.compile(context), "manage title"]);
 	}
-	// ,redirectPage : function(event) {
-		// var dataUrl = $(event.currentTarget).attr("data-identity");
-		// adventurio.routers.MainRouter.singleton.navigate(dataUrl, {trigger: true});
-	// }
 });

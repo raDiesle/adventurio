@@ -27,7 +27,7 @@ var adventurio = adventurio || {
     		Login: {},
     		Signup : {},
     		Stories: {},
-    		Story : {},
+    		Story : {singleton : {}},
     		CreateStory : {}
     	},
     	reader : {

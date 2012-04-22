@@ -94,7 +94,8 @@ adventurio.routers.MainRouter = Backbone.Router.extend({
 		var newModel = new adventurio.models.StoryModel({
 			'_id' : storyId
 		});
-		new adventurio.views.creator.Story({
+		
+		adventurio.views.creator.Story.singleton = new adventurio.views.creator.Story({
 			model : newModel
 		});
 	},
