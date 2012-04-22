@@ -38,33 +38,34 @@
 
 
 <script id="templates_formitems_text" type="text/x-handlebars-template">
-		<li>
-			<a class="edit_area">{{value}}</a>
-			<a href="#" data-identity="{{formItemPos}}">{{I18n "message"}}</a>
-		</li>
+	<li>
+		<a class="edit_area">{{$_.value}}</a>
+		<a href="#creator/stories/{{_id }}/{{horizontal}}/{{vertical}}/{{$_.formItemPos}}" data-identity="{{formItemPos}}">{{I18n "message"}}</a>
+	</li>
 </script>
 
 <script id="templates_formitems_textfield" type="text/x-handlebars-template">
 <li>
 	<a href="#">
 		<span id="textid" placeholder="Enter character name" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset" style="padding: 7px; width: auto">
-			{{value}}
+			{{$_.value}}
 		</span>
 	</a>
-	<a href="#" class="setFormItemProperties" >PROPERTIES</a>
+	<a href="#creator/stories/{{_id }}/{{horizontal}}/{{vertical}}/{{$_.formItemPos}}" class="setFormItemProperties" >PROPERTIES</a>
 </li>
 </script>
 
 <script id="templates_forms_dynamic" type="text/x-handlebars-template">
 	<ul data-role="listview" data-inset="true" data-split-theme="d">
-	{{#each formItems}}
+	{{#formItems}}
+
 		{{#ifIsTypeOf this "text"}}
-			{{> templates_formitems_text}}
+			{{#$ ../../props }}{{> templates_formitems_text}}{{/$}}
 		{{/ifIsTypeOf}}
 		{{#ifIsTypeOf this "textfield"}}
-			{{> templates_formitems_textfield}}
+			{{#$ ../../props }}{{> templates_formitems_textfield}}{{/$}}
 		{{/ifIsTypeOf}}
-	{{/each}}
+	{{/formItems}}
 	</ul>
 </script>
 
@@ -286,19 +287,20 @@
 		Footer
 	</div>
 </div>
+
 <!--  Creator: adventurio.creator.CreatePage -->		
-	<div data-role="page" id="createpage" data-url="createpage" data-position="inline" data-nobackbtn="true">
-		<div data-role="header" id="createPage_header">
-			<h2 class="storyname">Replaced</h2>
-			<a id="cancelBackButton" href="#" data-icon="delete">Close</a>
-		</div>
-		<div data-role="content" id="createPage_content" data-identity="{{storyId}}" >
-			<!-- templates_forms_dynamic -->
-		</div>
-		<div data-role="footer">
-			Footer
-		</div>
+<div data-role="page" id="createpage" data-url="createpage" data-position="inline" data-nobackbtn="true">
+	<div data-role="header" id="createPage_header">
+		<h2 class="storyname">Replaced</h2>
+		<a id="cancelBackButton" href="#" data-icon="delete">Close</a>
 	</div>
+	<div data-role="content" id="createPage_content" data-identity="{{storyId}}" >
+		<!-- templates_forms_dynamic -->
+	</div>
+	<div data-role="footer">
+		Footer
+	</div>
+</div>
 		
 <!-- CREATOR: adventurio.creator.EditPageFormItemOptions Dialog  -->
 		<div data-role="page" id="creator_page_formitem_options" data-id="creator_page_formitem_options">

@@ -47,6 +47,7 @@ $LAB
  .script(localeFolder+"default.js") // i18n
  .script(localeFolder+"locales.js") // i18n
  .script(srcFolder+"/adventurio/utilies/Json.js")
+ .script(srcFolder+"/adventurio/utilies/Handlebars.js")
  // .script(srcFolder+"/adventurio/application/jeditable/MarkItUpSettings.js")
  .script(srcFolder+"/adventurio/models/StoryModel.js")
  .script(srcFolder+"/adventurio/models/User.js")
