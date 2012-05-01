@@ -1,30 +1,27 @@
-adventurio.templates.creator.Login = null;
-
-adventurio.views.creator.Login = Backbone.View.extend({
-	el: ('#creator_login'),
-	model: adventurio.models.UserSingleton.get(),
+adventurio.views.creator.Login = adventurio.views.superClasses.Basic.extend({
+	el : ('#page_creator_login'),
+	model : adventurio.models.User,
 	initialize : function() {
-		// hack, otherwise changePage throws exception
-		$().ready(this.render);
-		// this.render();
+		$().ready($.proxy(this.render, this));
 	},
-	render: function(event){
-		console.log("login rendered");
-		if(adventurio.templates.creator.Login === null) {
-			adventurio.templates.creator.Login = $("#creator_login_template").html();
-		}
-		
-//		var template = Handlebars.compile(adventurio.templates.creator.Login);
-//		$("#creator_login .content").first().couchLogin();
-		$.mobile.changePage('#creator_login', {transition: 'slideup',  role: "dialog", reverse: false, changeHash: false});
+	render : function(event) {
+		this._super("render", [adventurio.templates.creator.Login.compile({}), "Story header", {
+			'role' : 'dialog'
+		}]);
 	},
 	events : {
-		"click .submitButton" : "login"
+		"click input[data-theme='b']" : "login"
 	},
-	login: function(){
-		var serializedJsonForm = $("#creator_login form").first().serializeJSON();
-		console.log(adventurio.models.UserSingleton.get().isAuthenticated());
-		adventurio.models.UserSingleton.get().login(serializedJsonForm.username, serializedJsonForm.password);
-		console.log(adventurio.models.UserSingleton.get().isAuthenticated());
+	login : function() {
+		var serializedJsonForm = $("form", this.el).first().serializeJSON();
+
+		this.model.login(serializedJsonForm.username, serializedJsonForm.password);
+		this.model.on("change", function() {
+			if(this.model.get("name") !== this.model.defaults.name) {
+				window.history.back();
+				// history.go(-1);
+
+			}
+		}, this)
 	}
 });

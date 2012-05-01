@@ -100,7 +100,7 @@ adventurio.routers.MainRouter = Backbone.Router.extend({
 		});
 	},
 	doCreateNewStoryRequestedAction : function() {
-		new adventurio.views.creator.CreateStory();
+		adventurio.views.creator.CreateStory.render();
 	},
 	doCreatePageAction : function(storyId, vertical, horizontal) {
 		

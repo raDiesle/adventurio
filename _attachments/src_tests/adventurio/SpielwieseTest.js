@@ -3,10 +3,11 @@ describe("Spielwiese test UI code", function() {
 	describeUi("Spielwiese", "/spielwiese.html", function() {
 
 		it("Should load ui and reuse in tests", function() {
-			console.log(($("#anycontent")));
+			// console.log(($("#anycontent")));
 			// expect($("#anycontent").length).toBe(1);
 			runs(function() {
-				// expect($("#anycontent")).toBeDefined();
+				expect($("#anycontent")).toBeDefined();
+				// expect(1).toBe(2);
 				// expect($("#anycontentNOTEXISTING")).toBeDefined();
 			});
 		});

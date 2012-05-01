@@ -3,7 +3,8 @@ var srcFolder = "src/";
 var localeFolder = "locale/";
 
 $LAB
- .setOptions({AlwaysPreserveOrder:true})
+ .setOptions({AlwaysPreserveOrder:true, UseLocalXHR : false})
+ 
  .script("ApplicationScope.js")
  .script(libFolder+"json2.js")
  .script(libFolder+"jquery-1.7.1.js") // http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
@@ -13,6 +14,7 @@ $LAB
         $.mobile.ajaxEnabled = false;
         $.mobile.hashListeningEnabled = false;
         $.mobile.pushStateEnabled = false;
+        $.mobile.ajaxEnabled = false;
         // $.mobile.linkBindingEnabled = false; -- will cause bug where window.hash = will stay empty
       });
   })
@@ -28,11 +30,11 @@ $LAB
  .script(libFolder+"backbone-couchdb.js") // v1.0 https://github.com/janmonschke/backbone-couchdb
  .script(libFolder+"handlebars-1.0.0.beta.6.js") // 1.0.0.beta.6 https://github.com/wycats/handlebars.js/archives/master
  .script(libFolder+"i18n.js")// https://github.com/fnando/i18n-js/blob/master/vendor/assets/javascripts/i18n.js
-
+.script(libFolder+"backbone.validation.js")// March 2012 https://github.com/thedersen/backbone.validation#readme https://github.com/n-time/backbone.validations
  .script(libFolder+"jquery.couchLogin.js")// May 10, 2011 https://github.com/couchapp/couchdb-login-jquery
  
- .script(libFolder+"json2xml.js") // http://goessner.net/download/prj/jsonxml/
- .script(libFolder+"xml2json.js")
+ // .script(libFolder+"json2xml.js") // http://goessner.net/download/prj/jsonxml/
+ // .script(libFolder+"xml2json.js")
  
  // Desktop
  // .script(libFolder+"jquery.jeditable.js") // 1.7.1 http://www.appelsiini.net/download/jquery.jeditable.js
@@ -45,7 +47,6 @@ $LAB
 // .script(srcFolder+"/adventurio/mocks/Stories.js")
 // .script(srcFolder+"/adventurio/mocks/SingleStory.js")
  
- .script(localeFolder+"default.js") // i18n
  .script(localeFolder+"locales.js") // i18n
  .script(srcFolder+"/adventurio/utilies/Json.js")
  .script(srcFolder+"/adventurio/utilies/Handlebars.js")
@@ -62,7 +63,6 @@ $LAB
  .script(srcFolder+"/adventurio/views/creator/CreatePage.js")
  .script(srcFolder+"/adventurio/views/creator/BrowseStory.js")
  .script(srcFolder+"/adventurio/views/creator/Story.js")
- .script(srcFolder+"/adventurio/views/creator/Index.js")
  .script(srcFolder+"/adventurio/views/creator/Signup.js")
  .script(srcFolder+"/adventurio/views/creator/Login.js")
  .script(srcFolder+"/adventurio/views/creator/Stories.js")

@@ -1,4 +1,4 @@
-adventurio.models.User = Backbone.Model.extend({
+adventurio.models.User = new (Backbone.Model.extend({
 	initialize : function() {
 		console.log("initialized user model");
 	},
@@ -41,4 +41,4 @@ adventurio.models.User = Backbone.Model.extend({
 			}
 		});
 	},
-});
+}));

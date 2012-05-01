@@ -1,5 +1,5 @@
 adventurio.views.creator.Index = Backbone.View.extend({
-	el : $('#creator_page'),
+	el : $('#'),
 	initialize : function() {
 		// hack, otherwise changePage throws exception
 		$().ready(this.render);

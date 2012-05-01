@@ -8,18 +8,18 @@ adventurio.views.creator.ManageStory = adventurio.views.superClasses.Basic.exten
 	render : function() {
 		var context = {
 			menuObjects : {
-				header : locale.creator.stories.singleStory.menu.header,
+				header : I18n.t("creator.stories.singleStory.menu.header"),
 				menu :[ {
 					route : "creator/stories/" + this.model.get('_id') + "?edit",
-					entry : locale.creator.stories.singleStory.menu.entry.editStory
+					entry : I18n.t("creator.stories.singleStory.menu.entry.editStory")
 				},
 				{
 					route : "creator/stories/new",
-					entry : locale.creator.stories.singleStory.menu.entry.builtStory
+					entry : I18n.t("creator.stories.singleStory.menu.entry.builtStory")
 				},
 				{
 					route : 'creator/stories/' + this.model.get('_id') + '/1',
-					entry : locale.creator.stories.singleStory.menu.entry.browseStory
+					entry : I18n.t("creator.stories.singleStory.menu.entry.browseStory")
 				}
 				]
 			}

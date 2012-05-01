@@ -1,16 +1,47 @@
-adventurio.models.StoryModel = Backbone.Model.extend({
+adventurio.models.StoryModel =  Backbone.Model.extend({
+	validation : {
+		name : {required : true},
+		id : {required : true},
+		description : {required : true},
+		tags : {required : true},
+		language : {required : true}
+	},
 	attributes : {
-		vertical :  {},
-		horizontal :  {},
-		formItems : {}
+		// rating : 
+		// vertical : 
+		// horizontal :  {required : true},
+		// formItems : {required : true} 
+	},
+	defaults : {
+		pages : [{
+			vPos : 1,
+			fields : [{
+				name : "spielername",
+				hPos : 1,
+				type : "text",
+				title : "Please enter whatever",
+				value : "an example"
+			}, {
+				name : "StoryDescription",
+				hPos : 2,
+				type : "text",
+				title : "Please enter whatever",
+				value : "another example"
+			}]
+		}]
 	},
 	initialize : function(){
-	  // if(!this.get("name")){
-        // this.set({"name": "Peter Van"});
-      // }
-      // if(!this.get("creator")){
-        // this.set({"creator": "whoever"});
-      // }
+	
 	},
+	validationError : function(model, errs) {
+		console.log("validation error");
+	},
+	// validate : function(attributes){
+		// if(!adventurio.models.UserSingleton.get().isAuthenticated()){
+			// adventurio.routers.MainRouterSingleton.get().navigate("creator/login",{trigger : true});
+			// return "error";
+		// }
+	// },
+	
 	urlRoot: "/adventurio" // "/adventurio"
 });

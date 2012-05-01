@@ -20,6 +20,7 @@ I18n.translations["en"] = {
 	creator : {
 		header : "Creator",
 		stories : {
+			newStory : "Start creating a new story",
 			singleStory : {
 				menu : {
 					header : "Manage Story",

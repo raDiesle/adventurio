@@ -25,8 +25,6 @@ $LAB
 // .script(srcFolder+"/adventurio/mocks/Stories.js")
 // .script(srcFolder+"/adventurio/mocks/SingleStory.js")
  
- .script(localeFolder+"default.js")
- 
  .script(srcFolder+"/adventurio/models/StoryModel.js")
  .script(srcFolder+"/adventurio/models/User.js")
  .script(srcFolder+"/adventurio/views/reader/Index.js")

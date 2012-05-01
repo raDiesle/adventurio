@@ -20,14 +20,20 @@ adventurio.views.reader.Index = adventurio.views.superClasses.Basic.extend({
 				} ]
 			}, {
 				header : I18n.t("creator.header"),
-				menu : [ {
-					route : "creator/stories",
-					entry : I18n.t("reader.Index.manageStories")
-				},
-				{
-					route : "creator/stories/new",
-					entry : I18n.t("reader.Index.continueEditStory")
-				} ]
+				menu : [ 
+					{
+						route : "creator/stories/new",
+						entry : I18n.t("creator.stories.newStory")
+					},
+					{
+						route : "creator/stories",
+						entry : I18n.t("reader.Index.manageStories")
+					},
+					{
+						route : "creator/stories/new",
+						entry : I18n.t("reader.Index.continueEditStory")
+					} 
+				]
 			} ]
 		};
 		//		

@@ -1,33 +1,26 @@
-// Backbone.history.start();
 
- I18n.fallbacks = true;
- I18n.defaultLocale = "de"
- I18n.locale = "en";
  
-// Singletons
+
 //adventurio.models.UserSingleton =  new adventurio.models.User();
 adventurio.routers.MainRouter.singleton = new adventurio.routers.MainRouter();//.get();
-Backbone.history.start(); // {silent:true, pushState:true}
-
+$(function(){
+	Backbone.history.start(); // {silent:true, pushState:true}
+});
+/* Couchdb plugin settings */
 //Backbone.couch_connector.config.db_name = "adventurio";
 //Backbone.couch_connector.config.ddoc_name = "adventurio";
 // If set to true, the connector will listen to the changes feed
 // and will provide your models with real time remote updates.
 //Backbone.couch_connector.config.global_changes = false;
 
+/* Handler to redirect to login, if needed */
 $(document).ajaxError(function(event, jqXHR, ajaxSettings, thrownError) {
 	if(thrownError === "Unauthorized") {
-		// location.hash = "creator/login";
-		$.mobile.changePage('#creator_login', {
-			transition : 'slideup',
-			role : "dialog",
-			reverse : false,
-			changeHash : false
-		});
-
+		adventurio.routers.MainRouter.singleton.navigate("creator/login",{trigger : true});
 	}
 });
-// not working, yet
+
+/* Catch js errors to not crash application - not working, yet */
 
 if( doExecutionHandling = false) {
 	$(window).error(function(errorMessage, fileName, lineNumber) {
@@ -42,7 +35,12 @@ if( doExecutionHandling = false) {
 
 }
 
+/* I18n settings */
+I18n.defaultLocale = "de"
+I18n.fallbacks = true;
+I18n.locale = "en";
 
+/* Serialize form to JSON */
 (function( $ ){
 	$.fn.serializeJSON=function() {
 	var json = {};
@@ -53,7 +51,9 @@ if( doExecutionHandling = false) {
 	};
 	})( jQuery );
 
-
+Backbone.Validation.configure({
+  selector: 'name'
+});
 
 // check for handlebar helpers
 // https://github.com/kanso/handlebars-helpers/blob/master/build/helpers.js

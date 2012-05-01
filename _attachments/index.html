@@ -73,10 +73,10 @@
 <ul data-role="listview" data-theme="c" data-divendertheme="b">
 	{{#storyObjects}}
 	<li>
-		<a href="#{{../visitEntryPrefix}}{{_id}}" class="viewStoryLink"  data-ajax="false" data-identity="{{_id}}" >
-			<h2 class="storyName">{{name}}</h2>
-			<p class="storyCreator">{{creator}}</p>
-			<p class="storyCategory">{{tags}}</p>
+		<a href="#{{../visitEntryPrefix}}{{_id}}" data-ajax="false" data-identity="{{_id}}" >
+			<h2>{{name}}</h2>
+			<p>{{creator}}</p>
+			<p>{{tags}}</p>
 		</a>
 	</li>
 	{{/storyObjects}}
@@ -94,13 +94,27 @@
 	</ul>
 </script>
 
+<script id="templates_creator_login" type="text/x-handlebars-template">
+	<p>
+		Please Login with your userdata
+	</p>
+	<div data-role="fieldcontain">
+		<form action="#" method="post" >
+			<label for="login_username" >Username:</label>
+			<input type="text" name="username" id="login_username"/>
+			<label for="login_password" >Password:</label>
+			<input type="password" name="password" id="login_password" />
+			<input type="button" href="#" data-role="button" data-theme="b" value="click"/>
+		</form>
+	</div>
+</script>
 
 <!--  Edit Story Template -->
 <script id="templates_creator_story" type="text/x-handlebars-template">
 	<form action="#" method="get" data-identity="{{document}}">
 		<div data-role="fieldcontain">
-			<label for="editStory_storyName">Name:</label>
-			<input id="editStory_storyName" name="storyName" type="text" value="{{name}}" />
+			<label for="editStory_storyName">Name: </label>
+			<input id="editStory_storyName" name="name" type="text" value="{{name}}" />
 		</div>
 		<div data-role="fieldcontain">
 			<label for="editStory_description">Description:</label>
@@ -113,13 +127,13 @@
 	
 		<div data-role="controlgroup" data-type="horizontal">
 			<a href="#" class="cancelButton" data-role="button" >Cancel</a>
-			<a href="#" class="submitButton" data-role="button" >Submit</a>
+			<a href="#" class="submitButton" data-role="button" data-theme="b">Submit</a>
 		</div>
 	</form>
 </script>
 
 <script id="templates_forms_ReaderStory" type="text/x-handlebars-template">
-	<h2>{{name}} (by {{creator}})</h2>
+	<h2>{{name}} (by {{user}})</h2>
 	<p>{{description}}</p>
 	<p><a href="#">{{tags}}</a></p>
 </script>
@@ -191,7 +205,6 @@
 		<h2>Login</h2>
 	</div>
 	<div data-role="content" class="content">
-<!-- 				<script id="creator_login_template" type="text/x-handlebars-template"> -->
 		<p>
 			Please Signup
 		</p>
@@ -211,28 +224,15 @@
 		
 		
 <!-- Login dialog -->
-		<div data-role="page" id="creator_login" data-id="creator_login">
-			<div data-role="header">
-				<h2>Login</h2>
-			</div>
-			<div data-role="content" class="content">
-<!-- 				<script id="creator_login_template" type="text/x-handlebars-template"> -->
-				<p>
-					Please Login with your userdata
-				</p>
-				<div data-role="fieldcontain">
-					<form action="#" method="post" >
-						<label for="username" >Username:</label>
-						<input type="text" name="username" id="username"/>
-						<label for="password" >Password:</label>
-						<input type="password" name="password" id="password" />
-						<a href="#" data-role="button" class="submitButton">Click</a>
-					</form>
-				</div>
-<!-- 				</script> -->
-			</div>
-			<div data-role="footer"></div>
-		</div>
+<div data-role="page" id="page_creator_login" data-id="page_creator_login">
+	<div data-role="header">
+		<h2>Login</h2>
+	</div>
+	<div data-role="content" class="content">
+		<!-- templates_creator_login -->
+	</div>
+	<div data-role="footer"></div>
+</div>
 		
 		
 <!--  Creator: Manage Story Menu -->
