@@ -1,10 +1,13 @@
-adventurio.views.creator.Story = adventurio.views.superClasses.Basic.extend({
+adventurio.views.creator.Story = new (adventurio.views.superClasses.Basic.extend({
 	el : $('#page_creator_stories_story'),
-	initialize : function() {
+	model : adventurio.models.SingleStorySingleton,
+	initialize : function(){
 		this.model.on('change', this.render, this);
-		this.model.fetch();
 	},
-	render : function() {
+	updateModel : function(storyId) {
+		this.model.fetch(storyId);
+	},
+	render : function(storyId) {
 		this._super("render", [adventurio.templates.creator.Story.compile(this.model.toJSON()), this.model.get("name")]);
 	},
 	events : {
@@ -29,4 +32,4 @@ adventurio.views.creator.Story = adventurio.views.superClasses.Basic.extend({
 			});
 		}
 	}
-});
+}));

@@ -1,4 +1,4 @@
-adventurio.models.StoryModel =  Backbone.Model.extend({
+adventurio.models.StoryModel = Backbone.Model.extend({
 	validation : {
 		name : {required : true},
 		id : {required : true},
@@ -42,6 +42,17 @@ adventurio.models.StoryModel =  Backbone.Model.extend({
 			// return "error";
 		// }
 	// },
-	
+	fetch : function(possibleNewId){
+		if(this.id === possibleNewId){
+			this.trigger("change");
+			return;
+		}
+		
+		// this.set({"id" : id});
+		this.id = possibleNewId;
+		Backbone.Model.prototype.fetch.call(this, {async: false}); // async seems not to doesnt work
+	},
 	urlRoot: "/adventurio" // "/adventurio"
 });
+
+adventurio.models.SingleStorySingleton = new adventurio.models.StoryModel();

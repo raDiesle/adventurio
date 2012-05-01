@@ -91,35 +91,29 @@ adventurio.routers.MainRouter = Backbone.Router.extend({
 		});
 	},
 	doEditStoryAction : function(storyId) {
-		var newModel = new adventurio.models.StoryModel({
-			'_id' : storyId
-		});
-		
-		adventurio.views.creator.Story.singleton = new adventurio.views.creator.Story({
-			model : newModel
-		});
+		adventurio.views.creator.Story.updateModel(storyId);
 	},
 	doCreateNewStoryRequestedAction : function() {
 		adventurio.views.creator.CreateStory.render();
 	},
 	doCreatePageAction : function(storyId, vertical, horizontal) {
 		
-		var formItems = [
-			{
-			type : 'text',
-			value : 'The big crash',
-			formItemPos : 1
-			},
-			{
-			type : 'textfield',
-			value : 'Enter player name',
-			formItemPos : 2
-			}
-		];
+		// var formItems = [
+			// {
+			// type : 'text',
+			// value : 'The big crash',
+			// formItemPos : 1
+			// },
+			// {
+			// type : 'textfield',
+			// value : 'Enter player name',
+			// formItemPos : 2
+			// }
+		// ];
 		
 		var newModel = new adventurio.models.StoryModel({
-			_id : storyId,
-			formItems : formItems
+			_id : storyId
+			// ,formItems : formItems
 		});
 		adventurio.views.creator.CreatePage.singleton = new adventurio.views.creator.CreatePage({
 			model : newModel

@@ -4,12 +4,9 @@
 
 var adventurio = adventurio || {
     models : {
-    	StoryModel : { singleton : {}},
-    	User : { singleton : {}}
-    	// ,
-    	// UserSingleton: { get : function(){
-    		// return new adventurio.models.User();
-    	// }},
+    	StoryModel : {},
+    	SingleStorySingleton : {},
+    	User : {}
     },
     collections : {
     	StoryCollection : { singleton : {}},
