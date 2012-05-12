@@ -1,22 +1,22 @@
-.invalid {
-    /*color: red;
+label.error {
+    color: red;
     font-size: 16px;
     font-weight: normal;
     line-height: 1.4;
     margin-top: 0.5em;
     width: 100%;
     float: none;
-    display:block;*/
-   float: none; 
-   color: red; 
-   padding-left: .5em; 
-   vertical-align: top;
-   display: block;
 }
 
-.validation {
-	display: none;
+@media screen and (orientation: portrait){
+    label.error { margin-left: 0; display: block; }
 }
+
+@media screen and (orientation: landscape){
+    label.error { display: inline-block; margin-left: 22%; }
+}
+
+
 
 .reader_index_content {
 	background-image: url('../images/dragon_03.jpg');

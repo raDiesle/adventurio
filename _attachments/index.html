@@ -114,7 +114,7 @@
 	<form id="createstory_form" action="#" method="get" data-identity="{{document}}">
 		<div data-role="fieldcontain">
 			<label for="editStory_storyName">Name: </label>
-			<input id="editStory_storyName" name="name" type="text" value="{{name}}" class="required"/>
+			<input id="editStory_storyName" name="name" type="text" value="{{name}}"/>
 		</div>
 		<div data-role="fieldcontain">
 			<label for="editStory_description">Description:</label>
@@ -123,6 +123,11 @@
 		<div data-role="fieldcontain">
 			<label for="editStory_tags">Tags</label>
 			<input id="editStory_tags" name="tags" type="text" value="{{tags}}" />
+		</div>
+		
+		<div data-role="fieldcontain">
+			<label for="editStory_language">Language</label>
+			<input id="editStory_language" name="language" type="text" value="{{language}}" />
 		</div>
 	
 		<div data-role="controlgroup" data-type="horizontal">
