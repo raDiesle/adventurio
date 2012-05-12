@@ -1,21 +1,27 @@
-adventurio.views.creator.CreateStory = new (adventurio.views.superClasses.Basic.extend({
-	// adventurio.views.creator.CreateStory = Backbone.View.extend({
+adventurio.views.creator.CreateStory = adventurio.views.superClasses.Basic.extend({
 	el : $('#page_creator_stories_new'),
 	model: adventurio.models.SingleStorySingleton,
 	initialize : function() {
-		Backbone.Validation.bind(this);
-		this.model.bind('validated', function(isValid, model, attrs) {
-  			console.log("triggered validation");
-		});
+		$().ready($.proxy(this.render, this));
 	},
 	render : function(event) {
 		this._super("render", [adventurio.templates.creator.Story.compile({}), "Story header"]);
-		// this.createStory({});
+		$("#createstory_form",this.el).validate({rules : this.model.attributes.rules, messages : this.model.attributes.messages, 
+			submitHandler: function( form ) {
+        		alert( "Call Login Action" );
+		}});
 	},
 	events : {
-		"click a[data-theme='b']" : "createStory",
+		"click a[data-theme='b']" : "validateForm",
 	},
+	validateForm : function(event){
+      event.preventDefault();
+      $("#createstory_form",this.el).submit();
+    },
 	createStory : function(event) {
+		
+		
+		
 		var storyToBeCreated = $("form", this.el).serializeJSON();
 		storyToBeCreated.user = adventurio.models.User;
 		
@@ -31,4 +37,4 @@ adventurio.views.creator.CreateStory = new (adventurio.views.superClasses.Basic.
 			}
 		});
 	}
-}));
+});

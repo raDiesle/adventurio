@@ -5,7 +5,6 @@ adventurio.views.reader.Stories = adventurio.views.superClasses.Basic.extend({
 		this.collection.fetch();
 	},
 	render : function(collection, response) {
-
 		var context = {
 			visitEntryPrefix : 'reader/stories/',
 			storyObjects : collection.toJSON()

@@ -70,7 +70,6 @@ adventurio.routers.MainRouter = Backbone.Router.extend({
 		new adventurio.views.creator.Signup();
 	},
 	creator_stories : function(query, sort, page) {
-		console.log(page + " " + query + " was opened");
 		new adventurio.views.creator.Stories({
 			collection : new adventurio.collections.StoriesCollection()
 		});
@@ -82,19 +81,18 @@ adventurio.routers.MainRouter = Backbone.Router.extend({
 		);
 	},
 	doViewSingleStoryInReadModeRequestedAction : function(requestedStoryId) {
-		var myModel = new adventurio.models.StoryModel({
+		new adventurio.views.reader.Story({
+			model : new adventurio.models.StoryModel({
 			_id : requestedStoryId
-		});
-		
-		var view = new adventurio.views.reader.Story({
-			model : myModel
-		});
+		})});
 	},
-	doEditStoryAction : function(storyId) {
-		adventurio.views.creator.Story.updateModel(storyId);
+	doEditStoryAction : function(requestedStoryId) {
+		new adventurio.views.creator.Story({model : new adventurio.models.StoryModel({
+			_id : requestedStoryId
+		})});
 	},
 	doCreateNewStoryRequestedAction : function() {
-		adventurio.views.creator.CreateStory.render();
+		new adventurio.views.creator.CreateStory();
 	},
 	doCreatePageAction : function(storyId, vertical, horizontal) {
 		

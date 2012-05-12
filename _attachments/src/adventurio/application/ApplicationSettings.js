@@ -51,10 +51,6 @@ I18n.locale = "en";
 	};
 	})( jQuery );
 
-Backbone.Validation.configure({
-  selector: 'name'
-});
-
 // check for handlebar helpers
 // https://github.com/kanso/handlebars-helpers/blob/master/build/helpers.js
 

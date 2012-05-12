@@ -30,7 +30,8 @@ $LAB
  .script(libFolder+"backbone-couchdb.js") // v1.0 https://github.com/janmonschke/backbone-couchdb
  .script(libFolder+"handlebars-1.0.0.beta.6.js") // 1.0.0.beta.6 https://github.com/wycats/handlebars.js/archives/master
  .script(libFolder+"i18n.js")// https://github.com/fnando/i18n-js/blob/master/vendor/assets/javascripts/i18n.js
-.script(libFolder+"backbone.validation.js")// March 2012 https://github.com/thedersen/backbone.validation#readme https://github.com/n-time/backbone.validations
+// .script(libFolder+"backbone.validation.js")// March 2012 https://github.com/thedersen/backbone.validation#readme https://github.com/n-time/backbone.validations
+.script(libFolder+"jquery.validation.js") // http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js
  .script(libFolder+"jquery.couchLogin.js")// May 10, 2011 https://github.com/couchapp/couchdb-login-jquery
  
  // .script(libFolder+"json2xml.js") // http://goessner.net/download/prj/jsonxml/

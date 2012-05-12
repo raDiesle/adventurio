@@ -1,3 +1,23 @@
+.invalid {
+    /*color: red;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.4;
+    margin-top: 0.5em;
+    width: 100%;
+    float: none;
+    display:block;*/
+   float: none; 
+   color: red; 
+   padding-left: .5em; 
+   vertical-align: top;
+   display: block;
+}
+
+.validation {
+	display: none;
+}
+
 .reader_index_content {
 	background-image: url('../images/dragon_03.jpg');
 	background-repeat: no-repeat;

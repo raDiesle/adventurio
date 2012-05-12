@@ -19,13 +19,13 @@ var adventurio = adventurio || {
     	creator : {
     		ManageStory : {},
     		BrowseStory : {},
-    		CreatePage : { singleton : {}},
+    		CreatePage : {},
     		EditPageFormItemOptionsWindow : {},
     		Index: {},
     		Login: {},
     		Signup : {},
     		Stories: {},
-    		Story : {singleton : {}},
+    		Story : {},
     		CreateStory : {}
     	},
     	reader : {
@@ -33,7 +33,7 @@ var adventurio = adventurio || {
     		Stories : {},
     	},
     	ShowStory : {},
-    	CreateStory : { singleton : {}},
+    	CreateStory : {},
     	EditStory : {},
         pages : {}
     },
@@ -109,7 +109,7 @@ var adventurio = adventurio || {
     	Stories: {}
     },
     routers : {
-    	MainRouter : { singleton : {}}
+    	MainRouter : {singleton : {}}
     },
     utilies:{
     	Json : {

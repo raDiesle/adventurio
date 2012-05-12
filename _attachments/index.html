@@ -111,10 +111,10 @@
 
 <!--  Edit Story Template -->
 <script id="templates_creator_story" type="text/x-handlebars-template">
-	<form action="#" method="get" data-identity="{{document}}">
+	<form id="createstory_form" action="#" method="get" data-identity="{{document}}">
 		<div data-role="fieldcontain">
 			<label for="editStory_storyName">Name: </label>
-			<input id="editStory_storyName" name="name" type="text" value="{{name}}" />
+			<input id="editStory_storyName" name="name" type="text" value="{{name}}" class="required"/>
 		</div>
 		<div data-role="fieldcontain">
 			<label for="editStory_description">Description:</label>
@@ -127,7 +127,7 @@
 	
 		<div data-role="controlgroup" data-type="horizontal">
 			<a href="#" class="cancelButton" data-role="button" >Cancel</a>
-			<a href="#" class="submitButton" data-role="button" data-theme="b">Submit</a>
+			<a href="#" class="submitButton" data-role="button" data-theme="b" type="submit">Submit</a>
 		</div>
 	</form>
 </script>

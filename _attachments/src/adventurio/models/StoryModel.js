@@ -1,18 +1,34 @@
 adventurio.models.StoryModel = Backbone.Model.extend({
-	validation : {
-		name : {required : true},
-		id : {required : true},
-		description : {required : true},
-		tags : {required : true},
-		language : {required : true}
-	},
+	// validation : {
+		// name : {required : true},
+		// id : {required : true},
+		// description : {required : true},
+		// tags : {required : true},
+		// language : {required : true}
+	// },
 	attributes : {
+		copyValuesToSingletonNeeded : true,
+		rules : {}
 		// rating : 
 		// vertical : 
 		// horizontal :  {required : true},
 		// formItems : {required : true} 
 	},
 	defaults : {
+		rules : {
+			name : "required",
+			id : "required",
+			description : "required",
+			tags : "required",
+			language : "required"
+		},
+		messages : {
+			name : "required",
+			id : "required",
+			description : "required",
+			tags : "required",
+			language : "required"
+		},
 		pages : [{
 			vPos : 1,
 			fields : [{
@@ -31,7 +47,7 @@ adventurio.models.StoryModel = Backbone.Model.extend({
 		}]
 	},
 	initialize : function(){
-	
+		this.on('change', this.notifySingleton, this);	
 	},
 	validationError : function(model, errs) {
 		console.log("validation error");
@@ -42,17 +58,28 @@ adventurio.models.StoryModel = Backbone.Model.extend({
 			// return "error";
 		// }
 	// },
-	fetch : function(possibleNewId){
-		if(this.id === possibleNewId){
+	lazyFetch : function(){
+		if(this.id === adventurio.models.SingleStorySingleton.id ){
+			// || adventurio.models.SingleStorySingleton.id != undefined
+			// copy values to this model
+			this.set(adventurio.models.SingleStorySingleton.attributes);
+			this.attributes.copyValuesToSingletonNeeded = false;
 			this.trigger("change");
 			return;
 		}
 		
-		// this.set({"id" : id});
-		this.id = possibleNewId;
-		Backbone.Model.prototype.fetch.call(this, {async: false}); // async seems not to doesnt work
+		this.attributes.copyValuesToSingletonNeeded = true;
+		this.fetch();
+		// Backbone.Model.prototype.fetch.call(this, {async: false}); // async seems not to doesnt work
+	},
+	notifySingleton : function(story, response){
+		if(this.attributes.copyValuesToSingletonNeeded){
+		console.log("copied values to singleton");
+			adventurio.models.SingleStorySingleton.set(story.attributes);
+		}
 	},
 	urlRoot: "/adventurio" // "/adventurio"
 });
 
 adventurio.models.SingleStorySingleton = new adventurio.models.StoryModel();
+adventurio.models.SingleStorySingleton.off("change", this.notifySingleton);
