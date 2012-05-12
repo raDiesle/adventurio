@@ -9,7 +9,6 @@
   <link rel="stylesheet" type="text/css" href="jasmine/jasmine.css">
   
 	<script type="text/javascript" src="lib/LAB.js"></script>
-  <script type="text/javascript" src="Resources.js"></script>
   
      
   <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script> -->
@@ -18,7 +17,13 @@
   
   
 <!--   <script type="text/javascript" src="src_tests/adventurio/SpielwieseTest.js"></script>   -->
-  <script type="text/javascript" src="src_tests/adventurio/views/creator/CreateStoryIntegrTest.js"></script> 
+  	<script type="text/javascript" src="Resources.js"></script>
+  <script type="text/javascript" src="src_tests/adventurio/views/creator/CreateStoryIntegrTest.js">
+  	$LAB.script("src_tests/adventurio/views/creator/CreateStoryIntegrTest.js");
+  	// $LAB.script("src_tests/adventurio/views/reader/IndexIntegrTest.js");
+  </script> 
+  
+ 
 </head>
 
 <body>

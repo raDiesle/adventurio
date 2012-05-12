@@ -3,7 +3,7 @@ var srcFolder = "src/";
 var localeFolder = "locale/";
 
 $LAB
- .setOptions({AlwaysPreserveOrder:true, UseLocalXHR : false})
+ .setOptions({AlwaysPreserveOrder:true, UseLocalXHR : true})
  
  .script("ApplicationScope.js")
  .script(libFolder+"json2.js")

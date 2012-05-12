@@ -12,7 +12,7 @@ adventurio.views.creator.CreateStory = adventurio.views.superClasses.Basic.exten
 		// this._super("addValidationHandler");
 	},
 	events : {
-		"click a[data-theme='b']" : "validateForm",
+		"click input[type='submit']" : "validateForm",
 	},
 	validateForm : function(event) {
 		event.preventDefault();
@@ -20,7 +20,6 @@ adventurio.views.creator.CreateStory = adventurio.views.superClasses.Basic.exten
 	},
 	// create story
 	onSuccessfulValidation : function() {
-
 		var storyToBeCreated = $("form", this.el).serializeJSON();
 
 		if(adventurio.models.User.isAuthenticated) {
@@ -29,7 +28,7 @@ adventurio.views.creator.CreateStory = adventurio.views.superClasses.Basic.exten
 
 		this.model.save(storyToBeCreated, {
 			success : function(model, response) {
-				adventurio.routers.MainRouter.singleton.navigate("creator/stories/" + model.get("id") + "/1/1", {
+				adventurio.routers.MainRouter.singleton.navigate("creator/stories/" + model.id + "/1/1", {
 					trigger : true
 				});
 			}

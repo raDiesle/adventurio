@@ -1,12 +1,18 @@
 describe("Create new Story Model", function() {
-
-	it('check for access', function() {
-		adventurio.routers.MainRouterSingleton.get().navigate("creator/stories/new", {trigger : true});
+describeUi("MAIN program", "/index.html", function() {
+	
+	it('check create story', function() {
 		runs(function(){
-			var $storyName = ("#editStory_storyName",adventurio.views.CreateStory.singleton.el);
-			var currentName = "Balu der Bär";
-			$storyName.html(currentName);
-			expect($storyName.html()).toBe(currentName);				
+			adventurio.routers.MainRouter.singleton.navigate("creator/stories/new", {trigger : true});
+			var $form = $("form", new adventurio.views.creator.CreateStory().el);
+			$("input[name='name']",$form).val("PeterPan");
+			$("textarea[name='description']",$form).val("Das ist eine story");
+			$("input[name='tags']",$form).val("fun");
+			$("input[name='language']",$form).val("de");
+			
+			// simulate($("input[type='submit']",$form), 'click');
+			$("input[type='submit']",$form).click();
 		});
 	});
+});
 });
