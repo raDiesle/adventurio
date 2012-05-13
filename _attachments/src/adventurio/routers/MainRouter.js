@@ -42,20 +42,17 @@ adventurio.routers.MainRouter = Backbone.Router.extend({
 			})
 		})
 	},
-	doNavigatePagesRequestedAction : function(storyId, verticalFrom, verticalTo) {
-		console.log(storyId + "_" + verticalFrom + "_" + verticalTo);
+	doNavigatePagesRequestedAction : function(storyId, verticalFrom) {
+		console.log(storyId + "_" + verticalFrom );
 		if(verticalFrom == undefined) {
 			verticalFrom = 1;
 		}
-		if(verticalTo == undefined) {
-			verticalTo = 3;
-		}
+
 		new adventurio.views.creator.BrowseStory({
 			parameter : {
-				'verticalFrom' : verticalFrom,
-				'verticalTo' : verticalTo
+				'verticalFrom' : verticalFrom
 			},
-			collection : new adventurio.collections.StoriesCollection(),
+			// collection : new adventurio.collections.StoriesCollection(),
 			model : new adventurio.models.StoryModel({
 				'_id' : storyId
 			})

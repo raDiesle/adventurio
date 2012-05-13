@@ -86,11 +86,11 @@
 <!-- TEMPLATE Browse Listview -->
 <script id="templates_listviews_Browse" type="text/x-handlebars-template">
 	<ul data-role="listview" data-theme="a" data-divendertheme="b">  <!-- class="ui-block-b transparent" data-inset="true" -->
-		{{#elements}}
+		{{#pages}}
 		<li>
-			<a href="#" data-ajax="false" data-identity="/{{_id}}" ><h2>{{header}}</h2><p>{{description}}</p></a>
+			<a href="#creator/stories/{{../id}}/{{../vPos}}/{{hPos}}" ><p>{{hPos}} {{fields.[0].value}}</p></a>
 		</li>
-		{{/elements}}
+		{{/pages}}
 	</ul>
 </script>
 
@@ -344,7 +344,7 @@
 		</div>		
 		
 <!-- Creator : browse -->
-		<div data-role="page" id="creator_stories_story-browse" data-position="inline" >
+		<div data-role="page" id="creator_stories_story_browse" data-position="inline" >
 			<div data-role="header" >
 				<h1 ></h1>
 				<a id="cancelBackButton" href="#creator/stories" data-icon="delete" data-rel="back">Back</a>

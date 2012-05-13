@@ -1,25 +1,17 @@
 adventurio.models.StoryModel = Backbone.Model.extend({
-	// validation : {
-	// name : {required : true},
-	// id : {required : true},
-	// description : {required : true},
-	// tags : {required : true},
-	// language : {required : true}
-	// },
+	initialize : function() {
+		this.on('change', this.notifySingleton, this);
+	},
 	attributes : {
 		copyValuesToSingletonNeeded : true,
-		rules : {}
-		// rating :
-		// vertical :
-		// horizontal :  {required : true},
-		// formItems : {required : true}
 	},
 	settings : {
 		validation : {
 			rules : {
 				name : {
-					"required" : true, "noSpecialChars" : true
-					},
+					"required" : true,
+					"noSpecialChars" : true
+				},
 				id : "required",
 				description : "required",
 				tags : "required",
@@ -28,25 +20,52 @@ adventurio.models.StoryModel = Backbone.Model.extend({
 		}
 	},
 	defaults : {
-		pages : [{
+		levels : [{
 			vPos : 1,
-			fields : [{
-				name : "spielername",
+			pages : [{
 				hPos : 1,
-				type : "text",
-				title : "Please enter whatever",
-				value : "an example"
+				fields : [{
+					name : "header",
+					pos : 1,
+					type : "textfield",
+					title : "Welcome to our story",
+					value : "Welcome to our story"
+				}, {
+					name : "spielername",
+					pos : 2,
+					type : "text",
+					title : "Please enter whatever",
+					value : "an example"
+				}, {
+					name : "StoryDescription",
+					pos : 3,
+					type : "text",
+					title : "Please enter whatever",
+					value : "another example"
+				}]
 			}, {
-				name : "StoryDescription",
 				hPos : 2,
-				type : "text",
-				title : "Please enter whatever",
-				value : "another example"
+				fields : [{
+					name : "header",
+					pos : 1,
+					type : "textfield",
+					title : "Please enter your name",
+					value : "Please enter your name"
+				}, {
+					name : "spielername",
+					pos : 2,
+					type : "text",
+					title : "Please enter whatever",
+					value : "an example"
+				}, {
+					name : "StoryDescription",
+					pos : 3,
+					type : "text",
+					title : "Please enter whatever",
+					value : "another example"
+				}]
 			}]
 		}]
-	},
-	initialize : function() {
-		this.on('change', this.notifySingleton, this);
 	},
 	validationError : function(model, errs) {
 		console.log("validation error");
