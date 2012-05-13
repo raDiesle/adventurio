@@ -1,5 +1,5 @@
 adventurio.views.creator.CreatePage = adventurio.views.superClasses.Basic.extend({
-	el : $('#createpage'),
+	el : $('#page_creator_vPos_hPos'),
 	attributes : {
 		editModeStatus : {
 			ENTERS_WRITE_MODE : true,
@@ -20,13 +20,12 @@ adventurio.views.creator.CreatePage = adventurio.views.superClasses.Basic.extend
 	var html ="";
 	var context = {};
 	context.props = {};
-	context.props.vertical = 1;
-	context.props.horizontal = 1;
-	context.props._id = this.model.get("_id");
-	context.formItems = this.model.get("formItems");
+	context.props.vertical = this.options.parameter.vPos;
+	context.props.horizontal = this.options.parameter.hPos;
+	context.props._id = this.model.id;
+	context.formItems = this.model.get("levels")[this.options.parameter.vPos-1].pages[this.options.parameter.hPos-1].fields;
 	
-	html = adventurio.templates.forms.Dynamic.compile(context);
-	this._super("render", [html, "Story header"]);
+	this._super("render", [adventurio.templates.forms.Dynamic.compile(context), "Story header"]);
 	},
 	events : {
 		"click .edit_area" : "triggerCreate",
@@ -51,20 +50,11 @@ adventurio.views.creator.CreatePage = adventurio.views.superClasses.Basic.extend
 		var containerEditElement = $(event.currentTarget);
 
 		if(this.attributes.editModeStatus.READ_MODE && !this.attributes.editModeStatus.LEAVES_WRITE_MODE) {
+			var context = {};
 			var currentContent = containerEditElement.html().replace(/<br>/g, "\n");
-			var editModeContent = {
-				"textarea" : {
-					"@class" : 'ui-input-text ui-body-c ui-corner-all ui-shadow-inset',
-					"#text" : currentContent
-				},
-				"a" : {
-					"@href" : '#',
-					"@data-role" : 'button',
-					'@class' : 'saveButton',
-					"#text" : 'save'
-				}
-			};
-			containerEditElement.html(adventurio.utilies.Json.json2xml(editModeContent));
+			context.value = currentContent;
+		
+			containerEditElement.html(adventurio.templates.formitems.Text.edit.compile(context));
 			// hack to support autoscroll
 			$('.edit_area').trigger('create');
 			$('input').textinput();

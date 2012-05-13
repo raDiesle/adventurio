@@ -44,6 +44,13 @@
 	</li>
 </script>
 
+<script id="templates_formitems_text_edit" type="text/x-handlebars-template">
+	<textarea class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset">
+		{{value}}
+	</textarea>
+	<a href="#" data-role="button" class="saveButton">save</a>
+</script>
+
 <script id="templates_formitems_textfield" type="text/x-handlebars-template">
 <li>
 	<a href="#">
@@ -58,7 +65,6 @@
 <script id="templates_forms_dynamic" type="text/x-handlebars-template">
 	<ul data-role="listview" data-inset="true" data-split-theme="d">
 	{{#formItems}}
-
 		{{#ifIsTypeOf this "text"}}
 			{{#$ ../../props }}{{> templates_formitems_text}}{{/$}}
 		{{/ifIsTypeOf}}
@@ -68,6 +74,7 @@
 	{{/formItems}}
 	</ul>
 </script>
+
 
 <script id="templates_listviews_SimpleList" type="text/x-handlebars-template">
 <ul data-role="listview" data-theme="c" data-divendertheme="b">
@@ -85,13 +92,13 @@
 
 <!-- TEMPLATE Browse Listview -->
 <script id="templates_listviews_Browse" type="text/x-handlebars-template">
-	<ul data-role="listview" data-theme="a" data-divendertheme="b">  <!-- class="ui-block-b transparent" data-inset="true" -->
-		{{#pages}}
-		<li>
-			<a href="#creator/stories/{{../id}}/{{../vPos}}/{{hPos}}" ><p>{{hPos}} {{fields.[0].value}}</p></a>
-		</li>
-		{{/pages}}
-	</ul>
+<ul data-role="listview" data-theme="a" data-divendertheme="b">  <!-- class="ui-block-b transparent" data-inset="true" -->
+	{{#pages}}
+	<li>
+		<a href="#creator/stories/{{../id}}/{{../vPos}}/{{hPos}}" data-ajax="false"><p>{{hPos}} {{fields.[0].value}}</p></a>
+	</li>
+	{{/pages}}
+</ul>
 </script>
 
 <script id="templates_creator_login" type="text/x-handlebars-template">
@@ -272,7 +279,7 @@
 		<h1>Stories</h1>
 	</div>
 	<div data-role="content" >
-			<!-- templates_listviews_SimpleList -->
+		<!-- templates_listviews_SimpleList -->
 	</div>
 	<div data-role="footer" ></div>
 </div>
@@ -306,12 +313,12 @@
 </div>
 
 <!--  Creator: adventurio.creator.CreatePage -->		
-<div data-role="page" id="createpage" data-url="createpage" data-position="inline" data-nobackbtn="true">
+<div data-role="page" id="page_creator_vPos_hPos" > <!--data-url="createpage" data-position="inline" data-nobackbtn="true" -->
 	<div data-role="header" id="createPage_header">
 		<h2 class="storyname">Replaced</h2>
 		<a id="cancelBackButton" href="#" data-icon="delete">Close</a>
 	</div>
-	<div data-role="content" id="createPage_content" data-identity="{{storyId}}" >
+	<div data-role="content" >
 		<!-- templates_forms_dynamic -->
 	</div>
 	<div data-role="footer">

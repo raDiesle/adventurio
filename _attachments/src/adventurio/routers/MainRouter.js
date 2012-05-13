@@ -97,8 +97,12 @@ adventurio.routers.MainRouter = Backbone.Router.extend({
 	doCreateNewStoryRequestedAction : function() {
 		new adventurio.views.creator.CreateStory();
 	},
-	doCreatePageAction : function(storyId, vertical, horizontal) {
-		adventurio.views.creator.CreatePage.singleton = new adventurio.views.creator.CreatePage({
+	doCreatePageAction : function(storyId, vPos, hPos) {
+		new adventurio.views.creator.CreatePage({
+			parameter : {
+				'vPos' : vPos,
+				'hPos' : hPos
+			},
 			model : new adventurio.models.StoryModel({
 				_id : storyId
 			})

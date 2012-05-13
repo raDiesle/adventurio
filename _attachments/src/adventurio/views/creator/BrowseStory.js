@@ -11,7 +11,7 @@ adventurio.views.creator.BrowseStory = adventurio.views.superClasses.Basic.exten
 		var templateContextVariables = {
 			// elements : this.collection.toJSON()
 			pages : this.model.get("levels")[this.options.parameter.verticalFrom - 1].pages,
-			id : this.model._id,
+			id : this.model.id,
 			vPos : this.options.parameter.verticalFrom
 		};
 		this._super("render", [adventurio.templates.listviews.Browse.compile(templateContextVariables), "Browse Story"]);
