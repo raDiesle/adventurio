@@ -17,7 +17,9 @@ adventurio.models.StoryModel = Backbone.Model.extend({
 	settings : {
 		validation : {
 			rules : {
-				name : "required",
+				name : {
+					"required" : true, "noSpecialChars" : true
+					},
 				id : "required",
 				description : "required",
 				tags : "required",

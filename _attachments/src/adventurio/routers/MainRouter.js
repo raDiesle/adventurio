@@ -1,4 +1,3 @@
-
 $.mobile.hashListeningEnabled = false;
 $.mobile.pushStateEnabled = false;
 $.mobile.page.prototype.options.degradeInputs.date = true;
@@ -16,57 +15,62 @@ adventurio.routers.MainRouter = Backbone.Router.extend({
 	h : '',
 	routes : {
 		"reader" : "doListStoriesInReadModeRequestedAction",
-		"creator": "doCreatorIndexPageRequestedAction",
+		"creator" : "doCreatorIndexPageRequestedAction",
 		"reader/stories" : "doListStoriesInReadModeRequestedAction",
 		"reader/stories/:story" : "doViewSingleStoryInReadModeRequestedAction",
-		"creator/login": "login_dialog",
-		"creator/signup": "signup_dialog",
+		"creator/login" : "login_dialog",
+		"creator/signup" : "signup_dialog",
 		"creator/stories" : "creator_stories",
 		"creator/stories/new" : "doCreateNewStoryRequestedAction",
 		"creator/stories/:story?edit" : "doEditStoryAction",
-// "creator/stories/:story?browse" : "doNavigatePagesRequestedAction",
+		// "creator/stories/:story?browse" : "doNavigatePagesRequestedAction",
 		"creator/stories/:story/:vertical" : "doNavigatePagesRequestedAction",
-// "creator/stories/:story?browse=:verticalFrom-:verticalTo" : "doNavigatePagesRequestedAction",
+		// "creator/stories/:story?browse=:verticalFrom-:verticalTo" : "doNavigatePagesRequestedAction",
 		"creator/stories/:storyId" : "doManageStoryRequestedAction",
 		"creator/stories/:storyId/:vertical/:horizontal" : "doCreatePageAction",
 		"creator/stories/:storyId/:vertical/:horizontal/:formItemPos" : "doEditPageFormItemOptionsAction",
 		"" : "doIndexHomePageRequestedAction",
 	},
-	doEditPageFormItemOptionsAction : function(storyId, verticalFrom, verticalTo, formItemPos){
+	doEditPageFormItemOptionsAction : function(storyId, verticalFrom, verticalTo, formItemPos) {
 		new adventurio.views.creator.EditPageFormItemOptionsWindow({
-			parameter : {'verticalFrom' : verticalFrom, 'verticalTo' : verticalTo},
+			parameter : {
+				'verticalFrom' : verticalFrom,
+				'verticalTo' : verticalTo
+			},
 			model : new adventurio.models.StoryModel({
 				'_id' : storyId
-			}) 
+			})
 		})
 	},
-	doNavigatePagesRequestedAction : function(storyId, verticalFrom, verticalTo){
+	doNavigatePagesRequestedAction : function(storyId, verticalFrom, verticalTo) {
 		console.log(storyId + "_" + verticalFrom + "_" + verticalTo);
-		if(verticalFrom == undefined){
+		if(verticalFrom == undefined) {
 			verticalFrom = 1;
 		}
-		if(verticalTo == undefined){
+		if(verticalTo == undefined) {
 			verticalTo = 3;
 		}
 		new adventurio.views.creator.BrowseStory({
-			parameter : {'verticalFrom' : verticalFrom, 'verticalTo' : verticalTo},
+			parameter : {
+				'verticalFrom' : verticalFrom,
+				'verticalTo' : verticalTo
+			},
 			collection : new adventurio.collections.StoriesCollection(),
 			model : new adventurio.models.StoryModel({
 				'_id' : storyId
 			})
 		});
 	},
-	doIndexHomePageRequestedAction : function(){
+	doIndexHomePageRequestedAction : function() {
 		new adventurio.views.reader.Index();
 	},
-	doCreatorIndexPageRequestedAction : function(){
+	doCreatorIndexPageRequestedAction : function() {
 		new adventurio.views.creator.Index();
-	}
-	,
-	login_dialog: function(){
-		new adventurio.views.creator.Login();	
 	},
-	signup_dialog : function(){
+	login_dialog : function() {
+		new adventurio.views.creator.Login();
+	},
+	signup_dialog : function() {
 		new adventurio.views.creator.Signup();
 	},
 	creator_stories : function(query, sort, page) {
@@ -77,57 +81,42 @@ adventurio.routers.MainRouter = Backbone.Router.extend({
 	doListStoriesInReadModeRequestedAction : function() {
 		new adventurio.views.reader.Stories({
 			collection : new adventurio.collections.StoriesCollection()
-		}
-		);
+		});
 	},
 	doViewSingleStoryInReadModeRequestedAction : function(requestedStoryId) {
 		new adventurio.views.reader.Story({
 			model : new adventurio.models.StoryModel({
-			_id : requestedStoryId
-		})});
+				_id : requestedStoryId
+			})
+		});
 	},
 	doEditStoryAction : function(requestedStoryId) {
-		new adventurio.views.creator.Story({model : new adventurio.models.StoryModel({
-			_id : requestedStoryId
-		})});
+		new adventurio.views.creator.Story({
+			model : new adventurio.models.StoryModel({
+				_id : requestedStoryId
+			})
+		});
 	},
 	doCreateNewStoryRequestedAction : function() {
 		new adventurio.views.creator.CreateStory();
 	},
 	doCreatePageAction : function(storyId, vertical, horizontal) {
-		
-		// var formItems = [
-			// {
-			// type : 'text',
-			// value : 'The big crash',
-			// formItemPos : 1
-			// },
-			// {
-			// type : 'textfield',
-			// value : 'Enter player name',
-			// formItemPos : 2
-			// }
-		// ];
-		
-		var newModel = new adventurio.models.StoryModel({
-			_id : storyId
-			// ,formItems : formItems
-		});
 		adventurio.views.creator.CreatePage.singleton = new adventurio.views.creator.CreatePage({
-			model : newModel
+			model : new adventurio.models.StoryModel({
+				_id : storyId
+			})
 		});
 	},
-	doManageStoryRequestedAction : function(storyId){
+	doManageStoryRequestedAction : function(storyId) {
 		new adventurio.views.creator.ManageStory({
-				model : new adventurio.models.StoryModel({
-			_id : storyId 
-		}),
-		el : $('#creator_stories_storyid')});
+			model : new adventurio.models.StoryModel({
+				_id : storyId
+			}),
+			el : $('#creator_stories_storyid')
+		});
 	},
 	defaultRoute : function(other) {
 		console.log("Invalid. You attempted to reach:" + other);
 	}
 });
-
-
 

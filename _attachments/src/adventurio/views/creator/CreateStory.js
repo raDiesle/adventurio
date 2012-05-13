@@ -12,17 +12,17 @@ adventurio.views.creator.CreateStory = adventurio.views.superClasses.Basic.exten
 		// this._super("addValidationHandler");
 	},
 	events : {
-		"click input[type='submit']" : "validateForm",
+		"click a[type='submit']" : "validateForm",
 	},
 	validateForm : function(event) {
 		event.preventDefault();
-		$.proxy($("#createstory_form", this.el).submit(), this);
+		$.proxy($("form", this.el).submit(), this);
 	},
 	// create story
 	onSuccessfulValidation : function() {
 		var storyToBeCreated = $("form", this.el).serializeJSON();
 
-		if(adventurio.models.User.isAuthenticated) {
+		if(adventurio.models.User.isAuthenticated()) {
 			storyToBeCreated.user = adventurio.models.User.attributes.name;
 		}
 

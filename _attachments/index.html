@@ -99,19 +99,24 @@
 		Please Login with your userdata
 	</p>
 	<div data-role="fieldcontain">
-		<form action="#" method="post" >
+		<form action="#">
 			<label for="login_username" >Username:</label>
 			<input type="text" name="username" id="login_username"/>
+			
 			<label for="login_password" >Password:</label>
-			<input type="password" name="password" id="login_password" />
-			<input type="button" href="#" data-role="button" data-theme="b" value="click"/>
+			<input type="password" name="password" id="login_password"/>
+			
+			<div data-role="controlgroup" data-type="horizontal">
+				<a href="#" data-role="button" type="">Logout</a>
+				<a href="#" data-role="button" data-theme="b" type="submit">Login</a>
+			</div>
 		</form>
 	</div>
 </script>
 
 <!--  Edit Story Template -->
 <script id="templates_creator_story" type="text/x-handlebars-template">
-	<form id="createstory_form" action="#" method="get" data-identity="{{document}}">
+	<form action="#" >
 		<div data-role="fieldcontain">
 			<label for="editStory_storyName">Name: </label>
 			<input id="editStory_storyName" name="name" type="text" value="{{name}}"/>
@@ -131,8 +136,10 @@
 		</div>
 	
 		<div data-role="controlgroup" data-type="horizontal">
-			<input href="#" class="cancelButton" data-role="button" >Cancel</a>
-			<input href="#" class="submitButton" data-role="button" data-theme="b" type="submit">Submit</a>
+			<!-- <input  type="reset" value="cancel" />
+			<input  type="submit" value="submit" /> -->
+			<a href="#" data-role="button" >Cancel</a>
+			<a href="#" data-role="button" data-theme="b" type="submit">Submit</a>
 		</div>
 	</form>
 </script>
@@ -219,7 +226,12 @@
 				<input type="text" name="username" id="username"/>
 				<label for="password" >Password:</label>
 				<input type="password" name="password" id="password" />
-				<a href="#" data-role="button" class="submitButton">Click</a>
+				
+				<div data-role="controlgroup" data-type="horizontal">
+					<input type="reset" value="logout">
+					<input type="submit" value="signup">
+				</div>
+				
 			</form>
 		</div>
 <!-- 				</script> -->
