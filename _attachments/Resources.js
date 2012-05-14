@@ -26,6 +26,7 @@ $LAB
  .script(libFolder+"underscore.js")// 1.3.1 http://documentcloud.github.com/underscore/underscore.js
  .script(libFolder+"backbone.js") // 0.9.1 http://documentcloud.github.com/backbone/#
  .script(libFolder+"backbone_super.js")// https://gist.github.com/1542120
+ .script(libFolder+"deep-model.js")// 13.Mai 2012 https://github.com/powmedia/backbone-deep-model
  .script(libFolder+"backbone-couchdb.js") // v1.0 https://github.com/janmonschke/backbone-couchdb
  .script(libFolder+"handlebars-1.0.0.beta.6.js") // 1.0.0.beta.6 https://github.com/wycats/handlebars.js/archives/master
  .script(libFolder+"i18n.js")// https://github.com/fnando/i18n-js/blob/master/vendor/assets/javascripts/i18n.js

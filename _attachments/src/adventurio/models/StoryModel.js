@@ -1,9 +1,18 @@
-adventurio.models.StoryModel = Backbone.Model.extend({
+adventurio.models.StoryModel = Backbone.Model.extend({ // Backbone.DeepModel.extend({
 	initialize : function() {
 		this.on('change', this.notifySingleton, this);
 	},
 	attributes : {
 		copyValuesToSingletonNeeded : true,
+	},
+	getModelFieldsPath : function(vPos, hPos){
+		// return "levels."+(vPos-1)+".pages."+(this.options.parameter.hPos-1)+"fields";
+		return this.get("levels")[vPos-1].pages[hPos - 1].fields
+	},
+	getModelFieldValuePath : function(vPos, hPos, fieldPos){
+		// return getModelFieldsPath(vPos, hPos) + "."+fieldPos+".value";
+		var modelFieldsPath = this.getModelFieldsPath(vPos, hPos);
+		return modelFieldsPath[fieldPos-1].value;
 	},
 	settings : {
 		validation : {

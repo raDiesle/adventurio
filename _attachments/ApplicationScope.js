@@ -3,6 +3,11 @@
  */
 
 var adventurio = adventurio || {
+	routers : {
+		MainRouter : {
+			singleton : {}
+		}
+	},
 	models : {
 		StoryModel : {},
 		SingleStorySingleton : {},
@@ -114,11 +119,6 @@ var adventurio = adventurio || {
 	mocks : {
 		SingleStory : {},
 		Stories : {}
-	},
-	routers : {
-		MainRouter : {
-			singleton : {}
-		}
 	},
 	utilies : {
 		Json : {

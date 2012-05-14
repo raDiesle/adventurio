@@ -17,33 +17,33 @@ adventurio.views.creator.CreatePage = adventurio.views.superClasses.Basic.extend
 		$('.edit_area').trigger('create');
 		$('input').textinput();
 
-	var html ="";
-	var context = {};
-	context.props = {};
-	context.props.vertical = this.options.parameter.vPos;
-	context.props.horizontal = this.options.parameter.hPos;
-	context.props._id = this.model.id;
-	context.formItems = this.model.get("levels")[this.options.parameter.vPos-1].pages[this.options.parameter.hPos-1].fields;
+		var html ="";
+		var context = {};
+		context.props = {};
+		context.props.vertical = this.options.parameter.vPos;
+		context.props.horizontal = this.options.parameter.hPos;
+		context.props._id = this.model.id;
+		context.formItems = this.getModelFields();
 	
-	this._super("render", [adventurio.templates.forms.Dynamic.compile(context), "Story header"]);
+		this._super("render", [adventurio.templates.forms.Dynamic.compile(context), "Story header"]);
 	},
 	events : {
 		"click .edit_area" : "triggerCreate",
 		"click .saveButton" : "saveEditedValue"
 		// ,"click .setFormItemProperties" : "openFormItemProperties"
-	}
-	// ,
-	// openFormItemProperties : function(clickEvent){
-		// var clickedFormItemPos = $(e.currentTarget).attr("data-identity");
-		// var urlToCurrentCreatePage = location.hash + clickedFormItemPos;
-		// //var urlToCurrentCreatePage = "creator/stories/"+this.model.get("_id")+"/"+this.model.get("vertical")+"/"+this.model.get("horizontal")+"?edit";
-		// adventurio.routers.MainRouter.singleton.navigate(urlToCurrentCreatePage, {trigger: true});
-	// }
-	
-	,saveEditedValue : function(clickEvent) {
+	},
+	saveEditedValue : function(clickEvent) {
 		clickEvent.preventDefault();
 		this.attributes.editModeStatus.LEAVES_WRITE_MODE = true;
 		this.attributes.editModeStatus.READ_MODE = true;
+		
+		var fieldPos = $(clickEvent.currentTarget).data("identity");
+		var vPos = this.options.parameter.vPos;
+		var hPos = this.options.parameter.hPos;
+		
+		var valueOfFieldToChange = this.model.getModelFieldValuePath(vPos, hPos, fieldPos);
+		var editedValueToSave = $(clickEvent.currentTarget).prev().val();
+		this.model.set({ valueOfFieldToChange :  editedValueToSave });
 	},
 	triggerCreate : function(event) {
 		event.stopPropagation();
@@ -51,10 +51,11 @@ adventurio.views.creator.CreatePage = adventurio.views.superClasses.Basic.extend
 
 		if(this.attributes.editModeStatus.READ_MODE && !this.attributes.editModeStatus.LEAVES_WRITE_MODE) {
 			var context = {};
-			var currentContent = containerEditElement.html().replace(/<br>/g, "\n");
-			context.value = currentContent;
-		
+			context.value = containerEditElement.html().replace(/<br>/g, "\n");
+			context.pos =  containerEditElement.data("identity");
+			
 			containerEditElement.html(adventurio.templates.formitems.Text.edit.compile(context));
+
 			// hack to support autoscroll
 			$('.edit_area').trigger('create');
 			$('input').textinput();
