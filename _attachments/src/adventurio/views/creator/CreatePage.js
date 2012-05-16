@@ -10,7 +10,9 @@ adventurio.views.creator.CreatePage = adventurio.views.superClasses.Basic.extend
 		}
 	},
 	initialize : function() {
-		$().ready($.proxy(this.render, this)); // hack
+		// $().ready($.proxy(this.render, this)); // hack
+		this.model.on('change', this.render, this);
+		this.model.lazyFetch(); 
 	},
 	render : function() {
 		// Hack
@@ -23,7 +25,7 @@ adventurio.views.creator.CreatePage = adventurio.views.superClasses.Basic.extend
 		context.props.vertical = this.options.parameter.vPos;
 		context.props.horizontal = this.options.parameter.hPos;
 		context.props._id = this.model.id;
-		context.formItems = this.getModelFields();
+		context.formItems = this.model.getModelFieldsPath(this.options.parameter.vPos, this.options.parameter.hPos);
 	
 		this._super("render", [adventurio.templates.forms.Dynamic.compile(context), "Story header"]);
 	},
@@ -41,9 +43,14 @@ adventurio.views.creator.CreatePage = adventurio.views.superClasses.Basic.extend
 		var vPos = this.options.parameter.vPos;
 		var hPos = this.options.parameter.hPos;
 		
-		var valueOfFieldToChange = this.model.getModelFieldValuePath(vPos, hPos, fieldPos);
+		// var fieldToChange = this.model.getModelFieldPath(vPos, hPos, fieldPos);
 		var editedValueToSave = $(clickEvent.currentTarget).prev().val();
-		this.model.set({ valueOfFieldToChange :  editedValueToSave });
+		var fieldToBeChanged = this.model.getModelFieldPath(vPos, hPos, fieldPos);
+		fieldToBeChanged.value = editedValueToSave;
+		this.model.save(this.model.toJSON());
+		// this.model.set({fields : });
+		// this.model.setModelFieldValue(vPos, hPos, fieldPos, editedValueToSave);
+		
 	},
 	triggerCreate : function(event) {
 		event.stopPropagation();

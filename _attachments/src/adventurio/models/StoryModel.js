@@ -3,6 +3,8 @@ adventurio.models.StoryModel = Backbone.Model.extend({ // Backbone.DeepModel.ext
 		this.on('change', this.notifySingleton, this);
 	},
 	attributes : {
+		_id : {},
+		_rev : {},
 		copyValuesToSingletonNeeded : true,
 	},
 	getModelFieldsPath : function(vPos, hPos){
@@ -11,8 +13,17 @@ adventurio.models.StoryModel = Backbone.Model.extend({ // Backbone.DeepModel.ext
 	},
 	getModelFieldValuePath : function(vPos, hPos, fieldPos){
 		// return getModelFieldsPath(vPos, hPos) + "."+fieldPos+".value";
+		var getModelFieldPath = this.getModelFieldPath(vPos,hPos, fieldPos);
+		return getModelFieldPath.value;
+	},
+	getModelFieldPath : function(vPos, hPos, fieldPos){
+		// return getModelFieldsPath(vPos, hPos) + "."+fieldPos+".value";
 		var modelFieldsPath = this.getModelFieldsPath(vPos, hPos);
-		return modelFieldsPath[fieldPos-1].value;
+		return modelFieldsPath[fieldPos-1];
+	},
+	setModelFieldValue : function(vPos, hPos, fieldPos, newValue){
+		// return getModelFieldsPath(vPos, hPos) + "."+fieldPos+".value";
+		return this.get("levels").get(vPos-1).get("pages").get(hPos-1).get("fields").set({value : newValue});
 	},
 	settings : {
 		validation : {
@@ -99,6 +110,10 @@ adventurio.models.StoryModel = Backbone.Model.extend({ // Backbone.DeepModel.ext
 		this.fetch();
 		// Backbone.Model.prototype.fetch.call(this, {async: false}); // async seems not to doesnt work
 	},
+	// save : function(){
+		
+		 // Backbone.Model.prototype.set.apply(this, this.model.toJSON());
+	// },
 	notifySingleton : function(story, response) {
 		if(this.attributes.copyValuesToSingletonNeeded) {
 			console.log("copied values to singleton");
