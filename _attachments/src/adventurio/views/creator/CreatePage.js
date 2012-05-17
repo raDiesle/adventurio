@@ -25,9 +25,11 @@ adventurio.views.creator.CreatePage = adventurio.views.superClasses.Basic.extend
 		context.props.vertical = this.options.parameter.vPos;
 		context.props.horizontal = this.options.parameter.hPos;
 		context.props._id = this.model.id;
-		context.formItems = this.model.getModelFieldsPath(this.options.parameter.vPos, this.options.parameter.hPos);
+		var currentPage = this.model.getModelPagePath(this.options.parameter.vPos, this.options.parameter.hPos);
+		context.formItems = currentPage.fields;
+		context.linkPageDecisions = currentPage.linkPageDecisions;
 	
-		this._super("render", [adventurio.templates.forms.Dynamic.compile(context), "Story header"]);
+		this._super("render", [adventurio.templates.forms.Dynamic.compile(context), currentPage.header]);
 	},
 	events : {
 		"click .edit_area" : "triggerCreate",
@@ -62,7 +64,7 @@ adventurio.views.creator.CreatePage = adventurio.views.superClasses.Basic.extend
 			context.value = containerEditElement.html().replace(/<br>/g, "\n");
 			context.pos =  containerEditElement.data("identity");
 			
-			containerEditElement.html(adventurio.templates.formitems.Text.edit.compile(context));
+			containerEditElement.html(adventurio.templates.formitems.StaticText.edit.compile(context));
 
 			// hack to support autoscroll
 			$('.edit_area').trigger('create');

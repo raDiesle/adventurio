@@ -37,41 +37,68 @@
 </script>
 
 
-<script id="templates_formitems_text" type="text/x-handlebars-template">
+<script id="templates_creator_formitems_text_display" type="text/x-handlebars-template">
 	<li>
 		<a class="edit_area" data-identity="{{$_.pos}}" >{{{$_.value}}}</a>
 		<a href="#creator/stories/{{_id }}/{{horizontal}}/{{vertical}}/{{$_.pos}}" data-identity="{{pos}}" data-ajax="false">{{I18n "message"}}</a>
 	</li>
 </script>
 
-<script id="templates_formitems_text_edit" type="text/x-handlebars-template">
+<script id="templates_creator_formitems_text_edit" type="text/x-handlebars-template">
 	<textarea class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset">
 		{{value}}
 	</textarea>
 	<a href="#" data-role="button" class="saveButton" data-identity="{{pos}}">save</a>
 </script>
 
-<script id="templates_formitems_textfield" type="text/x-handlebars-template">
+<script id="templates_creator_formitems_textfield_display" type="text/x-handlebars-template">
 <li>
 	<a href="#">
 		<span id="textid" placeholder="Enter character name" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset" style="padding: 7px; width: auto">
 			{{$_.value}}
 		</span>
 	</a>
-	<a href="#creator/stories/{{_id }}/{{horizontal}}/{{vertical}}/{{$_.formItemPos}}" class="setFormItemProperties" data-ajax="false" >PROPERTIES</a>
+	<a href="#creator/stories/{{_id }}/{{vertical}}/{{horizontal}}/{{$_.formItemPos}}" class="setFormItemProperties" data-ajax="false" >PROPERTIES</a>
 </li>
 </script>
 
+<script id="templates_creator_formitems_linkPageDecisions_display" type="text/x-handlebars-template">
+<li>
+	<a href="#">
+		<div data-role="controlgroup" data-type="horizontal">
+			{{#linkPageDecisions}} 
+				<a href="#creator/stories/{{../props/_id }}/{{vPos}}/{{hPos}}" data-role="button" type="">{{value}}</a>
+			{{/linkPageDecisions}}
+		</div>
+		
+	</a>
+</li>
+</script>
+
+<script id="templates_creator_formitems_linkPageDecisions_edit" type="text/x-handlebars-template">
+<li>
+	<a href="#">
+		<div data-role="controlgroup" data-type="horizontal">
+			{{#linkPageDecisions}} 
+				<a href="#creator/stories/{{../props/_id }}/{{vPos}}/{{hPos}}" data-role="button" type="">{{value}}</a>
+			{{/linkPageDecisions}}
+		</div>
+	</a>
+</li>
+</script> 
+
 <script id="templates_forms_dynamic" type="text/x-handlebars-template">
 	<ul data-role="listview" data-inset="true" data-split-theme="d">
-	{{#formItems}}
+	 {{#formItems}}
 		{{#ifIsTypeOf this "text"}}
-			{{#$ ../../props }}{{> templates_formitems_text}}{{/$}}
+			{{#$ ../../props }}{{> templates_creator_formitems_text_display}}{{/$}}
 		{{/ifIsTypeOf}}
 		{{#ifIsTypeOf this "textfield"}}
-			{{#$ ../../props }}{{> templates_formitems_textfield}}{{/$}}
+			{{#$ ../../props }}{{> templates_creator_formitems_textfield_display}}{{/$}}
 		{{/ifIsTypeOf}}
-	{{/formItems}}
+	{{/formItems}} 
+	
+	{{> templates_creator_formitems_linkPageDecisions_display}}
 	</ul>
 </script>
 
@@ -325,7 +352,7 @@
 </div>
 		
 <!-- CREATOR: adventurio.creator.EditPageFormItemOptions Dialog  -->
-		<div data-role="page" id="creator_page_formitem_options" data-id="creator_page_formitem_options">
+		<div data-role="page" id="creator_page_formitems_options" data-id="creator_page_formitem_options">
 			<div data-role="header">
 				<h2>Login</h2>
 			</div>

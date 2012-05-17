@@ -6,7 +6,7 @@ adventurio.views.creator.Story = adventurio.views.superClasses.Basic.extend({
 	},
 	render : function() {
 		console.log("triggered render");
-		this._super("render", [adventurio.templates.creator.Story.compile(this.model.toJSON()), this.model.get("name")]);
+		this._super("render", [adventurio.templates.CreateAndEditStory.compile(this.model.toJSON()), this.model.get("name")]);
 	},
 	events : {
 		"click .submitButton" : "editStory",

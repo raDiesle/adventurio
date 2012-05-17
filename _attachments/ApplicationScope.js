@@ -52,28 +52,7 @@ var adventurio = adventurio || {
 				}
 			}
 		},
-		formitems : {
-			Options : {
-				compile : function(context) {
-					return Handlebars.compile($("#template_formitem_options").html())(context);
-				}
-			},
-			Text : {
-				compile : function(context) {
-					return Handlebars.compile($("#templates_formitems_text").html())(context);
-				},
-				edit : {
-					compile : function(context) {
-						return Handlebars.compile($("#templates_formitems_text_edit").html())(context);
-					}
-				}
-			},
-			TextField : {
-				compile : function(context) {
-					return Handlebars.compile($("#templates_formitems_textfield").html())(context);
-				}
-			}
-		},
+
 		forms : {
 			ReaderStory : {
 				compile : function(context) {
@@ -98,22 +77,63 @@ var adventurio = adventurio || {
 				}
 			}
 		},
+		Login : {
+			compile : function(context) {
+				return Handlebars.compile($("#templates_creator_login").html())(context);
+			}
+		},
 		creator : {
-			Story : {
+			CreateAndEditStory : {
 				compile : function(context) {
 					return Handlebars.compile($("#templates_creator_story").html())(context);
 				}
 			},
-			ManageStory : {},
-			Stories : {},
-			Login : {
-				compile : function(context) {
-					return Handlebars.compile($("#templates_creator_login").html())(context);
+			page : {
+				Header : {
+					compile : function(context) {
+						return Handlebars.compile($("#templates_creator_formitems_linkPageDecisions_edit").html())(context);
+					}
+				},
+				formitems : {
+					StaticText : {
+						display : {
+							register : function() {
+								Handlebars.registerPartial("templates_creator_formitems_text_display", $("#templates_creator_formitems_text_display").html());
+							}
+						},
+						edit : {
+							compile : function(context) {
+								return Handlebars.compile($("#templates_creator_formitems_text_edit").html())(context);
+							}
+						},
+						/*TODO*/
+						options : {
+							compile : function(context) {
+								return Handlebars.compile($("#template_creator_formitems_text_options").html())(context);
+							}
+						}
+					},
+					TextField : {
+						display : {
+							register : function() {
+								Handlebars.registerPartial("templates_creator_formitems_textfield_display", $("#templates_creator_formitems_textfield_display").html());
+							}
+						},
+						edit : {
+							compile : function(context) {
+								return Handlebars.compile($("#templates_creator_formitems_textfield_edit").html())(context);
+							}
+						}
+					}
+				},
+				LinkPageDecisions : {
+					display : {
+						register : function() {
+							Handlebars.registerPartial("templates_creator_formitems_linkPageDecisions_display", $("#templates_creator_formitems_linkPageDecisions_display").html());
+						}
+					}
 				}
 			}
-		},
-		reader : {
-			Index : {}
 		}
 	},
 	mocks : {
@@ -134,4 +154,6 @@ var adventurio = adventurio || {
 		}
 	}
 };
+
+window.adventurio = adventurio;
 

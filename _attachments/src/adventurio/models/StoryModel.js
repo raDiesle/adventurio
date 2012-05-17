@@ -2,14 +2,57 @@ adventurio.models.StoryModel = Backbone.Model.extend({ // Backbone.DeepModel.ext
 	initialize : function() {
 		this.on('change', this.notifySingleton, this);
 	},
+	defaults : {
+		levels : [{
+			vPos : 1,
+			pages : [{
+				hPos : 1,
+				header : {
+					value : "Please enter your name"
+				},
+				linkPageDecisions : [{
+					pos: 1,
+					vPos : 2,
+					hPos : 1,
+					value : "Go left"
+				},{
+					pos : 2,
+					vPos : 2,
+					hPos : 2,
+					value : "Go right"
+				}],
+				fields : [
+				 {
+					pos : 1,
+					type : "text",
+					title : "Welcome to our story",
+					value : "Welcome to our story. <h2>Please enter your name:</h2>"
+				},{
+					pos : 2,
+					type : "textfield",
+					title : "Your name",
+					value : "Your name"
+				},{
+					pos : 3,
+					type : "text",
+					value : "You're in a forest, everything is dark. What do you want to do next?"
+				},
+				]
+			}]
+		}]
+	},
 	attributes : {
 		_id : {},
 		_rev : {},
 		copyValuesToSingletonNeeded : true,
 	},
+	getModelPagePath : function(vPos, hPos){
+		return this.get("levels")[vPos-1].pages[hPos - 1];
+	},
 	getModelFieldsPath : function(vPos, hPos){
 		// return "levels."+(vPos-1)+".pages."+(this.options.parameter.hPos-1)+"fields";
-		return this.get("levels")[vPos-1].pages[hPos - 1].fields
+		var getModelPagePath = getModelPagePath(vPos, hPos);
+		return getModelPagePath.fields;
 	},
 	getModelFieldValuePath : function(vPos, hPos, fieldPos){
 		// return getModelFieldsPath(vPos, hPos) + "."+fieldPos+".value";
@@ -39,63 +82,7 @@ adventurio.models.StoryModel = Backbone.Model.extend({ // Backbone.DeepModel.ext
 			}
 		}
 	},
-	defaults : {
-		levels : [{
-			vPos : 1,
-			pages : [{
-				hPos : 1,
-				fields : [
-				 {
-					name : "header",
-					pos : 1,
-					type : "text",
-					title : "Welcome to our story",
-					value : "Welcome to our story. <h2>Please enter your name:</h2>"
-				},{
-					name : "spielername",
-					pos : 2,
-					type : "textfield",
-					title : "Your name",
-					value : "Your name"
-				},{
-					name : "StoryDescription",
-					pos : 3,
-					type : "text",
-					title : "Please enter whatever",
-					value : "You're in a forest, everything is dark. What do you want to do next?"
-				},{
-					name : "linkPage",
-					type : "linkPage",
-					vPos : 3,
-					hPos : 8,
-					value : "You're in a forest, everything is dark. What do you want to do next?"
-				},
-				
-				]
-			}, {
-				hPos : 2,
-				fields : [{
-					name : "header",
-					pos : 1,
-					type : "textfield",
-					title : "Please enter your name",
-					value : "Please enter your name"
-				}, {
-					name : "spielername",
-					pos : 2,
-					type : "text",
-					title : "Please enter whatever",
-					value : "an example"
-				}, {
-					name : "StoryDescription",
-					pos : 3,
-					type : "text",
-					title : "Please enter whatever",
-					value : "another example"
-				}]
-			}]
-		}]
-	},
+	
 	validationError : function(model, errs) {
 		console.log("validation error");
 	},
