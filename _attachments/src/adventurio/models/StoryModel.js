@@ -44,25 +44,34 @@ adventurio.models.StoryModel = Backbone.Model.extend({ // Backbone.DeepModel.ext
 			vPos : 1,
 			pages : [{
 				hPos : 1,
-				fields : [{
+				fields : [
+				 {
 					name : "header",
 					pos : 1,
-					type : "textfield",
+					type : "text",
 					title : "Welcome to our story",
-					value : "Welcome to our story"
-				}, {
+					value : "Welcome to our story. <h2>Please enter your name:</h2>"
+				},{
 					name : "spielername",
 					pos : 2,
-					type : "text",
-					title : "Please enter whatever",
-					value : "an example"
-				}, {
+					type : "textfield",
+					title : "Your name",
+					value : "Your name"
+				},{
 					name : "StoryDescription",
 					pos : 3,
 					type : "text",
 					title : "Please enter whatever",
-					value : "another example"
-				}]
+					value : "You're in a forest, everything is dark. What do you want to do next?"
+				},{
+					name : "linkPage",
+					type : "linkPage",
+					vPos : 3,
+					hPos : 8,
+					value : "You're in a forest, everything is dark. What do you want to do next?"
+				},
+				
+				]
 			}, {
 				hPos : 2,
 				fields : [{

@@ -39,7 +39,7 @@
 
 <script id="templates_formitems_text" type="text/x-handlebars-template">
 	<li>
-		<a class="edit_area" data-identity="{{$_.pos}}" >{{$_.value}}</a>
+		<a class="edit_area" data-identity="{{$_.pos}}" >{{{$_.value}}}</a>
 		<a href="#creator/stories/{{_id }}/{{horizontal}}/{{vertical}}/{{$_.pos}}" data-identity="{{pos}}" data-ajax="false">{{I18n "message"}}</a>
 	</li>
 </script>
@@ -200,8 +200,6 @@
 			</div>
 		</div>
 		
-		
-
 <!-- Creator -->
 <!-- Creator start page -->
 <div data-role="page" id="creator_page" data-id="creator_page">

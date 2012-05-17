@@ -3,12 +3,14 @@ adventurio.views.superClasses.Basic = Backbone.View.extend({
 		options = options || {};
 		var role = typeof options['role'] == 'undefined' ? "page" : options['role'];
 
+	$("div[data-role='header'] h2", this.el).text(headerTitle);
+
 		$content = $('[data-role="content"]', this.el);
 		$content.html(htmlContent);
 
 		var firstTimeRendered = !$content.hasClass('ui-content');
 
-		$('h1', this.el).text(headerTitle);
+		// $('h1', this.el).text(headerTitle);
 		$.mobile.changePage("#" + this.el.id, {
 			transition : 'slideup',
 			reverse : false,
@@ -35,9 +37,6 @@ adventurio.views.superClasses.Basic = Backbone.View.extend({
 		// }catch(ExceptionHackForBackButton){ /*do nothing*/}
 		// });
 		// this.el.trigger('create');
-	},
-	why : function() {
-		alert("in");
 	},
 	addValidationHandler : function() {
 		$("form", this.el).validate({

@@ -46,8 +46,8 @@ adventurio.views.creator.CreatePage = adventurio.views.superClasses.Basic.extend
 		// var fieldToChange = this.model.getModelFieldPath(vPos, hPos, fieldPos);
 		var editedValueToSave = $(clickEvent.currentTarget).prev().val();
 		var fieldToBeChanged = this.model.getModelFieldPath(vPos, hPos, fieldPos);
-		fieldToBeChanged.value = editedValueToSave;
-		this.model.save(this.model.toJSON());
+		fieldToBeChanged.value = editedValueToSave.replace(/^\s+|\s+$/g, "").replace(/\n/g, "<br>"); // .replace( /\r?\n/g, "\r\n"
+		this.model.save(); // this.model.toJSON()
 		// this.model.set({fields : });
 		// this.model.setModelFieldValue(vPos, hPos, fieldPos, editedValueToSave);
 		
@@ -56,6 +56,7 @@ adventurio.views.creator.CreatePage = adventurio.views.superClasses.Basic.extend
 		event.stopPropagation();
 		var containerEditElement = $(event.currentTarget);
 
+		// && !this.attributes.editModeStatus.LEAVES_WRITE_MODE
 		if(this.attributes.editModeStatus.READ_MODE && !this.attributes.editModeStatus.LEAVES_WRITE_MODE) {
 			var context = {};
 			context.value = containerEditElement.html().replace(/<br>/g, "\n");
@@ -69,7 +70,8 @@ adventurio.views.creator.CreatePage = adventurio.views.superClasses.Basic.extend
 			this.attributes.editModeStatus.READ_MODE = false;
 		} else if(this.attributes.editModeStatus.LEAVES_WRITE_MODE) {
 			// go to read mode
-			containerEditElement.html($('textarea', containerEditElement).val().replace(/\n/g, "<br>"));
+			// var valueForReadMode = $('textarea', containerEditElement).val().replace(/\n/g, "<br>");
+			// containerEditElement.html(valueForReadMode);
 			this.attributes.editModeStatus.LEAVES_WRITE_MODE = false;
 		}
 	}

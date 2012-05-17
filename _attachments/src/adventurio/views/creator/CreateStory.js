@@ -7,12 +7,20 @@ adventurio.views.creator.CreateStory = adventurio.views.superClasses.Basic.exten
 		$().ready($.proxy(this.render, this));
 	},
 	render : function(event) {
-		this._super("render", [adventurio.templates.creator.Story.compile({}), "Story header"]);
+		var templateContext = this.restoreContextBeforeAuthentication();
+
+		this._super("render", [adventurio.templates.creator.Story.compile(templateContext), "Story header"]);
 		this.constructor.__super__.addValidationHandler.apply(this, []);
 		// this._super("addValidationHandler");
 	},
 	events : {
 		"click a[type='submit']" : "validateForm",
+	},
+	restoreContextBeforeAuthentication : function() {
+		if(adventurio.models.SingleStorySingleton.tempNew != undefined) {
+			return adventurio.models.SingleStorySingleton.tempNew;
+		}
+		return {};
 	},
 	validateForm : function(event) {
 		event.preventDefault();
@@ -25,6 +33,8 @@ adventurio.views.creator.CreateStory = adventurio.views.superClasses.Basic.exten
 		if(adventurio.models.User.isAuthenticated()) {
 			storyToBeCreated.user = adventurio.models.User.attributes.name;
 		}
+
+		adventurio.models.SingleStorySingleton.tempNew = storyToBeCreated;
 
 		this.model.save(storyToBeCreated, {
 			success : function(model, response) {

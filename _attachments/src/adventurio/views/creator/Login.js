@@ -20,7 +20,7 @@ adventurio.views.creator.Login = adventurio.views.superClasses.Basic.extend({
 		this.model.on("change", function() {
 			if(this.model.isAuthenticated()) {
 				// window.history.back();
-				// history.go(-1);
+				history.go(-1);
 				console.log("is authenticated");
 
 			}
