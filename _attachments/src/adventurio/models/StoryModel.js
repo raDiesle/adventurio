@@ -8,7 +8,7 @@ adventurio.models.StoryModel = Backbone.Model.extend({ // Backbone.DeepModel.ext
 			pages : [{
 				hPos : 1,
 				header : {
-					value : "Please enter your name"
+					value : "Welcome to my new story!"
 				},
 				linkPageDecisions : [{
 					pos: 1,
@@ -25,8 +25,7 @@ adventurio.models.StoryModel = Backbone.Model.extend({ // Backbone.DeepModel.ext
 				 {
 					pos : 1,
 					type : "text",
-					title : "Welcome to our story",
-					value : "Welcome to our story. <h2>Please enter your name:</h2>"
+					value : "<h1>Please enter your name:</h1>"
 				},{
 					pos : 2,
 					type : "textfield",
@@ -42,6 +41,7 @@ adventurio.models.StoryModel = Backbone.Model.extend({ // Backbone.DeepModel.ext
 		}]
 	},
 	attributes : {
+		
 		_id : {},
 		_rev : {},
 		copyValuesToSingletonNeeded : true,
@@ -51,7 +51,7 @@ adventurio.models.StoryModel = Backbone.Model.extend({ // Backbone.DeepModel.ext
 	},
 	getModelFieldsPath : function(vPos, hPos){
 		// return "levels."+(vPos-1)+".pages."+(this.options.parameter.hPos-1)+"fields";
-		var getModelPagePath = getModelPagePath(vPos, hPos);
+		var getModelPagePath = this.getModelPagePath(vPos, hPos);
 		return getModelPagePath.fields;
 	},
 	getModelFieldValuePath : function(vPos, hPos, fieldPos){

@@ -1,13 +1,6 @@
 adventurio.views.creator.CreatePage = adventurio.views.superClasses.Basic.extend({
 	el : $('#page_creator_vPos_hPos'),
 	attributes : {
-		editModeStatus : {
-			ENTERS_WRITE_MODE : true,
-			// ENTERS_READ_MODE : false,
-			READ_MODE : true,
-			// LEAVES_READ_MODE : false,
-			LEAVES_WRITE_MODE : false
-		}
 	},
 	initialize : function() {
 		// $().ready($.proxy(this.render, this)); // hack
@@ -15,6 +8,7 @@ adventurio.views.creator.CreatePage = adventurio.views.superClasses.Basic.extend
 		this.model.lazyFetch(); 
 	},
 	render : function() {
+		$("#page_creator_vPos_hPos").removeClass("ui-dialog-background ");
 		// Hack
 		$('.edit_area').trigger('create');
 		$('input').textinput();
@@ -26,15 +20,15 @@ adventurio.views.creator.CreatePage = adventurio.views.superClasses.Basic.extend
 		context.props.horizontal = this.options.parameter.hPos;
 		context.props._id = this.model.id;
 		var currentPage = this.model.getModelPagePath(this.options.parameter.vPos, this.options.parameter.hPos);
-		context.formItems = currentPage.fields;
+		context.fields = currentPage.fields;
 		context.linkPageDecisions = currentPage.linkPageDecisions;
 	
-		this._super("render", [adventurio.templates.forms.Dynamic.compile(context), currentPage.header]);
+		this._super("render", [adventurio.templates.forms.Dynamic.compile(context), currentPage.header.value]);
 	},
 	events : {
-		"click .edit_area" : "triggerCreate",
-		"click .saveButton" : "saveEditedValue"
-		// ,"click .setFormItemProperties" : "openFormItemProperties"
+		// "click .edit_area" : "triggerCreate",
+		// "click .saveButton" : "saveEditedValue"
+		// "click a" : "openFormItemProperties"
 	},
 	saveEditedValue : function(clickEvent) {
 		clickEvent.preventDefault();
@@ -64,7 +58,7 @@ adventurio.views.creator.CreatePage = adventurio.views.superClasses.Basic.extend
 			context.value = containerEditElement.html().replace(/<br>/g, "\n");
 			context.pos =  containerEditElement.data("identity");
 			
-			containerEditElement.html(adventurio.templates.formitems.StaticText.edit.compile(context));
+			containerEditElement.html(adventurio.templates.creator.page.fields.StaticText.edit.compile(context));
 
 			// hack to support autoscroll
 			$('.edit_area').trigger('create');

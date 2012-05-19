@@ -9,7 +9,7 @@ adventurio.views.creator.CreateStory = adventurio.views.superClasses.Basic.exten
 	render : function(event) {
 		var templateContext = this.restoreContextBeforeAuthentication();
 
-		this._super("render", [adventurio.templates.CreateAndEditStory.compile(templateContext), "Story header"]);
+		this._super("render", [adventurio.templates.creator.CreateAndEditStory.compile(templateContext), "Story header"]);
 		this.constructor.__super__.addValidationHandler.apply(this, []);
 		// this._super("addValidationHandler");
 	},

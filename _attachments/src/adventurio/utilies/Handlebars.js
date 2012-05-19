@@ -12,9 +12,10 @@ Handlebars.registerHelper('whatis', function(param) {
 });
 
 
-adventurio.templates.creator.page.formitems.StaticText.display.register();
-adventurio.templates.creator.page.formitems.TextField.display.register();
-adventurio.templates.creator.page.LinkPageDecisions.display.register();
+adventurio.templates.page.element.field.StaticText.display.register();
+adventurio.templates.page.element.field.TextField.display.register();
+adventurio.templates.page.element.LinkPageDecisions.display.register();
+adventurio.templates.creator.page.element.editor.Buttons.register();
 	
 Handlebars.registerHelper('include', function(template, options){
   // Find the partial in question.

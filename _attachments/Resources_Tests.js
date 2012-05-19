@@ -23,8 +23,9 @@ $LAB
  // .script(srcFolder+"adventurio/models/LoginTest.js")
  // .script(srcFolder+"adventurio/views/creator/SignupTest.js")
  // .script(srcFolder+"adventurio/views/reader/IndexTest.js")
- .script(srcFolder+"adventurio/models/StoryModelTest.js")
- .script(srcFolder+"adventurio/views/creator/CreatePageTest.js")
+ .script(srcFolder+"adventurio/mocks/CreateStoriesMock.js")
+ // .script(srcFolder+"adventurio/models/StoryModelTest.js")
+ // .script(srcFolder+"adventurio/views/creator/CreatePageTest.js")
  
  .wait(function() {
       var jasmineEnv = jasmine.getEnv();

@@ -1532,6 +1532,14 @@ Handlebars.VM = {
   noop: function() { return ""; },
   invokePartial: function(partial, name, context, helpers, partials, data) {
     options = { helpers: helpers, partials: partials, data: data };
+ 	
+ 	if(partial == undefined &&
+	 context[name] != undefined &&
+     partials[context[name]] != undefined){
+
+     name = context[name];
+     partial = partials[name];
+  }
 
     if(partial === undefined) {
       throw new Handlebars.Exception("The partial " + name + " could not be found");

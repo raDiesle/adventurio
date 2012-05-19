@@ -9,7 +9,7 @@ describe(
 				// var urlToCurrentCreatePage = "creator/stories/"+storyId+"/1/1";
 				// adventurio.routers.MainRouter.singleton.navigate(urlToCurrentCreatePage, {trigger: true});
 				
-				// var viewModel = adventurio.views.creator.CreatePage.model.get("formItems");
+				// var viewModel = adventurio.views.creator.CreatePage.model.get("fields");
 				// expect(viewModel).toBeDefined();
 				// expect(viewModel[0].type).toBe("text");
 				

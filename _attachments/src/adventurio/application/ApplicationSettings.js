@@ -1,3 +1,21 @@
+/* Initialize all jquery mobile pages without content dynamic */
+
+Handlebars.registerPartial("template_basic_page_simple", $("#template_basic_page_simple").html());
+
+
+var templateValues ={
+	allPages : $('script[id^="template_page_"]').map(function(){
+				return this.id; // return {'templatePageID' : this.id};
+		}).toArray()
+};
+
+$.each(templateValues.allPages, function(index, foundPageId){
+	Handlebars.registerPartial(foundPageId, $("#"+foundPageId).html());
+});
+
+$("#allPages").html(Handlebars.compile($("#template_renderAllDetectedPageContainers").html())(templateValues));
+
+
 
 // Backbone.View.prototype._super = function(funcName){
     // return this.constructor.__super__[funcName].apply(this, _.rest(arguments));

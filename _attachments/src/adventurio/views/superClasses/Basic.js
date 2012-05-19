@@ -1,42 +1,48 @@
 adventurio.views.superClasses.Basic = Backbone.View.extend({
-	render : function(htmlContent, headerTitle, options) {
+	
+	// getElTemplateResult : function(){
+		// var expectedTemplateDefinitionID = this.el.attr('id').replace(/page/, "template");
+		// this.getTemplateResult(expectedTemplateDefinitionID, this.getTemplateValues());
+	// },
+	getTemplateResult : function(templateDefinitionID, templateValues){
+		return Handlebars.compile($("#"+templateDefinitionID).html())(templateValues);
+	},
+	getBasicPageTemplateResult : function(headerTitle){
+		var templateValues = {templatePartialPageID : "template_"+this.id, headerTitle : headerTitle};
+		var specific = this.getSpecificTemplateValues();
+		
+		$.extend(templateValues, this.getSpecificTemplateValues());
+		this.getTemplateResult("template_basic_page_simple", templateValues);
+	},
+	getRequestedPageTemplateResult : function(){
+		this.getBasicPageTemplateResult();
+	},
+	render : function(headerTitle, options) {
+		//_.bind(this.getBasicPageTemplateResult, this); 
+		
 		options = options || {};
 		var role = typeof options['role'] == 'undefined' ? "page" : options['role'];
+		
+		this.el = $("#"+this.id);
+		var htmlContent = typeof options['htmlContent'] == 'undefined' ? this.getBasicPageTemplateResult(headerTitle) : options['htmlContent'];
+		
+	// $("div[data-role='header'] h2", this.el).text(headerTitle);
 
-	$("div[data-role='header'] h2", this.el).text(headerTitle);
+		// $content = $('[data-role="content"]', this.el);
+		// $content.html(htmlContent);
 
-		$content = $('[data-role="content"]', this.el);
-		$content.html(htmlContent);
+		// var firstTimeRendered = !$content.hasClass('ui-content');
 
-		var firstTimeRendered = !$content.hasClass('ui-content');
-
-		// $('h1', this.el).text(headerTitle);
-		$.mobile.changePage("#" + this.el.id, {
+		$.mobile.changePage("#" + this.id, {
 			transition : 'slideup',
 			reverse : false,
 			changeHash : false,
 			role : role
-			// ,reloadPage : true
 		});
 
-		if(!firstTimeRendered) {
-			$content.trigger("create");
-		}
-
-		// var $listview = $("ul", $content); // .first()
-		// var wasAlreadyRenderedByJQM = $listview.hasClass('ui-listview')
-		// if (!wasAlreadyRenderedByJQM) {
-		// $listview.listview();
+		// if(!firstTimeRendered) {
+			// $content.trigger("create");
 		// }
-
-		// var hasListview = typeof options['hasListview'] == 'undefined' ? false : options['hasListview'];
-		// if(hasListview){
-		// $listview.hasClass('ui-block-b') || || $listview.hasClass(".ui-body-c")
-		// try{
-		// $listview.listview('refresh');
-		// }catch(ExceptionHackForBackButton){ /*do nothing*/}
-		// });
-		// this.el.trigger('create');
 	},
 	addValidationHandler : function() {
 		$("form", this.el).validate({
@@ -45,5 +51,10 @@ adventurio.views.superClasses.Basic = Backbone.View.extend({
 			submitHandler : $.proxy(this.onSuccessfulValidation, this),
 			debug : true
 		});
+	},
+	makeLastPageTransparent : function(prevPageAsTransparentBackground){
+		if(prevPageAsTransparentBackground.css("display") !== "none"){
+			prevPageAsTransparentBackground.addClass("ui-dialog-background ");
+		}
 	}
 }); 
