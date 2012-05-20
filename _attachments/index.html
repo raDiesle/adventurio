@@ -17,17 +17,16 @@
 
 <script id="template_renderAllDetectedPageContainers" type="text/x-handlebars-template">
 	{{#allPages}}
-		<div data-role="page" id="{{templatePageID}}" data-position="inline" data-nobackbtn="true"></div>
+		<div data-role="page" id="{{pageID}}" data-position="inline" data-nobackbtn="true"></div>
 	{{/allPages}}
 </script>
 
 <script id="template_basic_page_simple" type="text/x-handlebars-template">
 	<div data-role="header">
-		<h2> </h2>
+		<h2>{{headerTitle}}</h2>
 		<a href="#" data-icon="delete">Close</a>
 	</div>
 	<div data-role="content">
-		{{whatis templatePartialPageID}}
 		{{> templatePartialPageID}}
 	</div>
 	<div data-role="footer">
@@ -36,6 +35,8 @@
 </script>
 
 <script id="template_page_reader_StorySummary" type="text/x-handlebars-template">
+	{{whatis this}}
+		
 	<h2>{{name}} (by {{user}})</h2>
 	<p>{{description}}</p>
 	<p><a href="#">{{tags}}</a></p>

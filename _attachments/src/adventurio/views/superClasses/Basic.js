@@ -12,7 +12,7 @@ adventurio.views.superClasses.Basic = Backbone.View.extend({
 		var specific = this.getSpecificTemplateValues();
 		
 		$.extend(templateValues, this.getSpecificTemplateValues());
-		this.getTemplateResult("template_basic_page_simple", templateValues);
+		return this.getTemplateResult("template_basic_page_simple", templateValues);
 	},
 	getRequestedPageTemplateResult : function(){
 		this.getBasicPageTemplateResult();
@@ -25,23 +25,25 @@ adventurio.views.superClasses.Basic = Backbone.View.extend({
 		
 		this.el = $("#"+this.id);
 		var htmlContent = typeof options['htmlContent'] == 'undefined' ? this.getBasicPageTemplateResult(headerTitle) : options['htmlContent'];
-		
+		$(this.el).html(htmlContent);
 	// $("div[data-role='header'] h2", this.el).text(headerTitle);
 
-		// $content = $('[data-role="content"]', this.el);
+		$content = $('[data-role="content"]', this.el);
 		// $content.html(htmlContent);
 
-		// var firstTimeRendered = !$content.hasClass('ui-content');
+		var firstTimeRendered = !$content.hasClass('ui-content');
 
 		$.mobile.changePage("#" + this.id, {
 			transition : 'slideup',
 			reverse : false,
 			changeHash : false,
 			role : role
+			// ,reloadPage : true
 		});
 
 		// if(!firstTimeRendered) {
-			// $content.trigger("create");
+			// $(this.el).trigger("create");
+			$(this.el).page("destroy").page();
 		// }
 	},
 	addValidationHandler : function() {

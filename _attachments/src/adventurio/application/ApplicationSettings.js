@@ -4,16 +4,18 @@ Handlebars.registerPartial("template_basic_page_simple", $("#template_basic_page
 
 
 var templateValues ={
-	allPages : $('script[id^="template_page_"]').map(function(){
-				return this.id; // return {'templatePageID' : this.id};
+	allPages : $("body").children('script[id^="template_page_"]').map(function(){
+				return {'templatePartialPageID' : this.id,
+						'pageID' : this.id.replace(/template_page_/, "page_"),
+						};
 		}).toArray()
 };
 
-$.each(templateValues.allPages, function(index, foundPageId){
-	Handlebars.registerPartial(foundPageId, $("#"+foundPageId).html());
+$.each(templateValues.allPages, function(index, foundPage){
+	Handlebars.registerPartial(foundPage.templatePartialPageID, $("#"+foundPage.templatePartialPageID).html());
 });
 
-$("#allPages").html(Handlebars.compile($("#template_renderAllDetectedPageContainers").html())(templateValues));
+$("#allPagesContainer").html(Handlebars.compile($("#template_renderAllDetectedPageContainers").html())(templateValues));
 
 
 
