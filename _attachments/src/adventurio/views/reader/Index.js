@@ -1,14 +1,11 @@
 adventurio.views.reader.Index = adventurio.views.superClasses.Basic.extend({
-	el : ('#reader_index'),
+	id : "page_reader_Index",
 	initialize : function() {
-		// hack, otherwise changePage throws exception
-		$().ready($.proxy(this.render, this));
+		 _.bindAll(this, 'render');
+		 this.render();
 	},
-	events : {
-		// "click a" : "redirectPage" //#reader_index
-	},
-	render : function() {
-		var context = {
+	getSpecificTemplateValues : function(){
+		return {
 			menuObjects : [ {
 				header : I18n.t("reader.header"),
 				menu : [ {
@@ -36,13 +33,8 @@ adventurio.views.reader.Index = adventurio.views.superClasses.Basic.extend({
 				]
 			} ]
 		};
-		//		
-		var html = adventurio.templates.menus.Simple.compile(context);
-		
-		this._super("render", [html, I18n.t("index.header")]);
+	},
+	render : function() {
+		this._super("render", [I18n.t("index.header")]);
 	}
-	// ,redirectPage : function(event) {
-		// var dataUrl = $(event.currentTarget).attr("data-identity");
-		// adventurio.routers.MainRouterSingleton.get().navigate(dataUrl, {trigger: true});
-	// }
 });

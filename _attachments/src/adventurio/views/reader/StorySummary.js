@@ -3,7 +3,6 @@ adventurio.views.reader.StorySummary = adventurio.views.superClasses.Basic.exten
 	initialize : function() {
 		this.model.on('change', this.render, this);
 		this.model.lazyFetch();
-		//  _.bindAll(this, 'render');
 	},
 	getSpecificTemplateValues : function(){
 		return this.model.toJSON();

@@ -24,8 +24,11 @@ adventurio.views.superClasses.Basic = Backbone.View.extend({
 		var role = typeof options['role'] == 'undefined' ? "page" : options['role'];
 		
 		this.el = $("#"+this.id);
+		this.delegateEvents();
 		var htmlContent = typeof options['htmlContent'] == 'undefined' ? this.getBasicPageTemplateResult(headerTitle) : options['htmlContent'];
 		$(this.el).html(htmlContent);
+		
+		
 	// $("div[data-role='header'] h2", this.el).text(headerTitle);
 
 		$content = $('[data-role="content"]', this.el);
@@ -41,16 +44,20 @@ adventurio.views.superClasses.Basic = Backbone.View.extend({
 			// ,reloadPage : true
 		});
 
+
 		// if(!firstTimeRendered) {
 			// $(this.el).trigger("create");
 			$(this.el).page("destroy").page();
 		// }
 	},
 	addValidationHandler : function() {
-		$("form", this.el).validate({
+			$("form", this.el).validate({
 			rules : this.model.settings.validation.rules,
 			// messages : this.model.attributes.messages,
-			submitHandler : $.proxy(this.onSuccessfulValidation, this),
+			submitHandler : function(){
+				alert("validated");
+			},
+			//$.proxy(this.onSuccessfulValidation, this),
 			debug : true
 		});
 	},
