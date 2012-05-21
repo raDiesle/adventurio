@@ -10,11 +10,20 @@ $LAB
  .script(libFolder+"jquery-1.7.1.js") // http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
  
  .wait(function() {
+ 	// $(document).on("pagebeforechange", function(e, data){
+		// // Only on url updates, non-jquery elements
+		// if (typeof data.toPage === "string") {
+		// e.preventDefault();
+		// var url = $("<a/>").attr("href",data.toPage)[0].pathname; // Get our path
+		// adventurio.routers.MainRouter.navigate(url, {trigger: true});
+		// }
+	// })
+ 	
       $(document).bind("mobileinit", function(){
         $.mobile.ajaxEnabled = false;
         $.mobile.hashListeningEnabled = false;
         $.mobile.pushStateEnabled = false;
-        // $.mobile.linkBindingEnabled = false; -- will cause bug where window.hash = will stay empty
+        // $.mobile.linkBindingEnabled = false; //-- will cause bug where window.hash = will stay empty
       });
   })
  

@@ -17,7 +17,7 @@
 
 <script id="template_renderAllDetectedPageContainers" type="text/x-handlebars-template">
 	{{#allPages}}
-		<div data-role="page" id="{{pageID}}" data-position="inline" data-nobackbtn="true"></div>
+		<div data-role="page" id="{{pageID}}" data-position="inline" data-nobackbtn="true">template content</div>
 	{{/allPages}}
 </script>
 
@@ -222,7 +222,6 @@
 </script>
 
 <script id="template_page_creator_CreateStory" type="text/x-handlebars-template">
-	{{whatis this}}
 	{{> template_creator_CreateOrEditStory}}
 </script>
 <script id="template_page_creator_EditStory" type="text/x-handlebars-template">

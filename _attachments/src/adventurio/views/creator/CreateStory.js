@@ -1,6 +1,6 @@
 adventurio.views.creator.CreateStory = adventurio.views.superClasses.Basic.extend({
 	id : "page_creator_CreateStory",
-	//el : $("#page_creator_CreateStory"),
+	 // el : $("#page_creator_CreateStory"),
 	model : adventurio.models.SingleStorySingleton,
 	initialize : function() {
 		//_.bindAll(this, 'render');
@@ -12,15 +12,15 @@ adventurio.views.creator.CreateStory = adventurio.views.superClasses.Basic.exten
 	},
 	render : function(event) {
 		this._super("render", ["Story header"]);
+		this.constructor.__super__.addValidationHandler.apply(this, []);
 		return this;
-		//this.constructor.__super__.addValidationHandler.apply(this, []);
 	},
 	events : {
-		"click a[type='submit']" : "validateForm",
-		"dblclick" : "test"
+		"pagehide": "onPageHide",
+		"click a[type='submit']" : "validateForm"
 	},
-	test : function(event){
-		alert("doubleclicked");
+	onPageHide : function(){
+		$(this.el).remove();
 	},
 	restoreContextBeforeAuthentication : function() {
 		if(adventurio.models.SingleStorySingleton.tempNew != undefined) {

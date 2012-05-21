@@ -8,7 +8,7 @@ adventurio.views.superClasses.Basic = Backbone.View.extend({
 		return Handlebars.compile($("#"+templateDefinitionID).html())(templateValues);
 	},
 	getBasicPageTemplateResult : function(headerTitle){
-		var templateValues = {templatePartialPageID : "template_"+this.id, headerTitle : headerTitle};
+		var templateValues = {templatePartialPageID : "template_"+"page_creator_CreateStory", headerTitle : headerTitle};
 		var specific = this.getSpecificTemplateValues();
 		
 		$.extend(templateValues, this.getSpecificTemplateValues());
@@ -23,18 +23,20 @@ adventurio.views.superClasses.Basic = Backbone.View.extend({
 		options = options || {};
 		var role = typeof options['role'] == 'undefined' ? "page" : options['role'];
 		
-		this.el = $("#"+this.id);
-		this.delegateEvents();
+		// this.el = $("#"+this.id);
 		var htmlContent = typeof options['htmlContent'] == 'undefined' ? this.getBasicPageTemplateResult(headerTitle) : options['htmlContent'];
 		$(this.el).html(htmlContent);
+		$("body").append($(this.el));
+		// $(this.el).page();
 		
+		// this.delegateEvents();
 		
 	// $("div[data-role='header'] h2", this.el).text(headerTitle);
 
-		$content = $('[data-role="content"]', this.el);
+		// $content = $('[data-role="content"]', this.el);
+		
 		// $content.html(htmlContent);
 
-		var firstTimeRendered = !$content.hasClass('ui-content');
 
 		$.mobile.changePage("#" + this.id, {
 			transition : 'slideup',
@@ -44,10 +46,11 @@ adventurio.views.superClasses.Basic = Backbone.View.extend({
 			// ,reloadPage : true
 		});
 
+		// var firstTimeRendered = !$content.hasClass('ui-content');
 
 		// if(!firstTimeRendered) {
 			// $(this.el).trigger("create");
-			$(this.el).page("destroy").page();
+			// $(this.el).page("destroy").page();
 		// }
 	},
 	addValidationHandler : function() {
@@ -55,9 +58,8 @@ adventurio.views.superClasses.Basic = Backbone.View.extend({
 			rules : this.model.settings.validation.rules,
 			// messages : this.model.attributes.messages,
 			submitHandler : function(){
-				alert("validated");
+				$.proxy(this.onSuccessfulValidation, this)
 			},
-			//$.proxy(this.onSuccessfulValidation, this),
 			debug : true
 		});
 	},

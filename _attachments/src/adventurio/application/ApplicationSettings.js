@@ -15,7 +15,7 @@ $.each(templateValues.allPages, function(index, foundPage) {
 	Handlebars.registerPartial(foundPage.templatePartialPageID, $("#" + foundPage.templatePartialPageID).html());
 });
 
-$("#allPagesContainer").html(Handlebars.compile($("#template_renderAllDetectedPageContainers").html())(templateValues));
+// $("#allPagesContainer").html(Handlebars.compile($("#template_renderAllDetectedPageContainers").html())(templateValues));
 
 // Backbone.View.prototype._super = function(funcName){
 // return this.constructor.__super__[funcName].apply(this, _.rest(arguments));
