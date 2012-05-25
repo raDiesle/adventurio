@@ -8,7 +8,7 @@ adventurio.views.superClasses.Basic = Backbone.View.extend({
 		return Handlebars.compile($("#"+templateDefinitionID).html())(templateValues);
 	},
 	getBasicPageTemplateResult : function(headerTitle){
-		var templateValues = {templatePartialPageID : "template_"+"page_creator_CreateStory", headerTitle : headerTitle};
+		var templateValues = {templatePartialPageID : "template_"+this.id, headerTitle : headerTitle};
 		var specific = this.getSpecificTemplateValues();
 		
 		$.extend(templateValues, this.getSpecificTemplateValues());
@@ -22,6 +22,14 @@ adventurio.views.superClasses.Basic = Backbone.View.extend({
 		
 		options = options || {};
 		var role = typeof options['role'] == 'undefined' ? "page" : options['role'];
+		
+		var $previousEl = $("#"+this.id);
+		var alreadyInDom = $previousEl.length > 0;
+		if(alreadyInDom){
+			$previousEl.remove();
+		}
+		
+		// "pagehide": "onPageHide"
 		
 		// this.el = $("#"+this.id);
 		var htmlContent = typeof options['htmlContent'] == 'undefined' ? this.getBasicPageTemplateResult(headerTitle) : options['htmlContent'];

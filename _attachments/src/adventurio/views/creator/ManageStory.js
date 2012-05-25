@@ -1,12 +1,10 @@
 adventurio.views.creator.ManageStory = adventurio.views.superClasses.Basic.extend({
-	el : "#creator_stories_storyid",
+	id : "page_creator_stories_storyid",
 	initialize : function() {
 		$().ready($.proxy(this.render, this));
 	},
-	events : {
-	},
-	render : function() {
-		var context = {
+	getSpecificTemplateValues : function(){
+		return {
 			menuObjects : {
 				header : I18n.t("creator.stories.singleStory.menu.header"),
 				menu :[ {
@@ -24,6 +22,9 @@ adventurio.views.creator.ManageStory = adventurio.views.superClasses.Basic.exten
 				]
 			}
 		};
-		this._super("render", [adventurio.templates.menus.Simple.compile(context), "manage title"]);
+	},
+	render : function() {
+		this._super("render", ["manage title"]);
+		return this;
 	}
 });

@@ -16,11 +16,7 @@ adventurio.views.creator.CreateStory = adventurio.views.superClasses.Basic.exten
 		return this;
 	},
 	events : {
-		"pagehide": "onPageHide",
-		"click a[type='submit']" : "validateForm"
-	},
-	onPageHide : function(){
-		$(this.el).remove();
+		"click a[type='submit']" : "validateForm",
 	},
 	restoreContextBeforeAuthentication : function() {
 		if(adventurio.models.SingleStorySingleton.tempNew != undefined) {

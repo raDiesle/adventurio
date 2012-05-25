@@ -113,8 +113,7 @@ adventurio.routers.MainRouter = Backbone.Router.extend({
 		new adventurio.views.creator.ManageStory({
 			model : new adventurio.models.StoryModel({
 				_id : storyId
-			}),
-			el : $('#creator_stories_storyid')
+			})
 		});
 	},
 	defaultRoute : function(other) {

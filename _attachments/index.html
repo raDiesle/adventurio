@@ -46,6 +46,7 @@
 
 <!--  TEMPLATE MENU -->
 <script id="templates_menus_simple" type="text/x-handlebars-template">
+	{{whatis this}}
 	<div class="reader_index_content">
 		<div class="ui-grid-a" >
 			<div class="ui-block-a" >
@@ -281,7 +282,14 @@
 </script>
 
 
+<script id="template_page_creator_stories" type="text/x-handlebars-template">
+	{{> templates_listviews_SimpleList}}
+</script>
 
+
+<script id="template_page_creator_stories_storyid" type="text/x-handlebars-template">
+	{{> templates_menus_simple}}
+</script>
 
 <!-- CREATOR: adventurio.creator.EditPageFormItemOptions Dialog  -->
 <div data-role="dialog" id="dialog_creator_pageelementeditor"  class="dialog_window_option" data-id="creator_page_formitem_options">
@@ -363,32 +371,6 @@
 	<div data-role="footer"></div>
 </div>
 		
-		
-<!--  Creator: Manage Story Menu -->
-<div data-role="page" id="creator_stories_storyid"   data-url="#whatever" data-position="inline" >
-	<div data-role="header" class="header">
-		<h2 class="title">Manage Story</h2>
-	</div>
-	<div data-role="content" >
-		<!-- template_menus_simple -->
-	</div>
-	<div data-role="footer">
-		Footer
-	</div>
-</div>
-
-		
-<!--CREATOR:  Own Stories List -->
-<div data-role="page" id="page_creator_stories" data-url="#creator_stories"> <!-- data-url="#creator_stories"  -->
-	<div data-role="header">
-		<h1>Stories</h1>
-	</div>
-	<div data-role="content" >
-		<!-- templates_listviews_SimpleList -->
-	</div>
-	<div data-role="footer" ></div>
-</div>
-
 <!--  Creator: adventurio.creator.CreatePage -->		
 <div data-role="page" id="page_creator_vPos_hPos"> <!--data-url="createpage" data-position="inline" data-nobackbtn="true" -->
 	<div data-role="header">

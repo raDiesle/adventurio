@@ -1,12 +1,14 @@
 adventurio.views.creator.Story = adventurio.views.superClasses.Basic.extend({
-	el : $('#page_creator_stories_story'),
+	id : 'page_creator_stories_story',
 	initialize : function(){
 		this.model.on('change', this.render, this);
 		this.model.lazyFetch();
 	},
+	getSpecificTemplateValues : function(){
+		return this.model.toJSON();
+	},
 	render : function() {
-		console.log("triggered render");
-		this._super("render", [adventurio.templates.creator.CreateAndEditStory.compile(this.model.toJSON()), this.model.get("name")]);
+		this._super("render", [this.model.get("name")]);
 	},
 	events : {
 		"click .submitButton" : "editStory",

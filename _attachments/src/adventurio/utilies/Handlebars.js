@@ -16,6 +16,7 @@ Handlebars.registerPartial("template_basic_page_simple", $("#template_basic_page
 Handlebars.registerPartial("templates_menus_simple", $("#templates_menus_simple").html());
 Handlebars.registerPartial("templates_listviews_SimpleList", $("#templates_listviews_SimpleList").html());
 Handlebars.registerPartial("template_creator_CreateOrEditStory", $("#template_creator_CreateOrEditStory").html());
+Handlebars.registerPartial("templates_menus_simple", $("#templates_menus_simple").html());
 
 
 adventurio.templates.page.element.field.StaticText.display.register();
