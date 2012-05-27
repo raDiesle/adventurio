@@ -15,8 +15,14 @@ Handlebars.registerHelper('whatis', function(param) {
 Handlebars.registerPartial("template_basic_page_simple", $("#template_basic_page_simple").html());
 Handlebars.registerPartial("templates_menus_simple", $("#templates_menus_simple").html());
 Handlebars.registerPartial("templates_listviews_SimpleList", $("#templates_listviews_SimpleList").html());
+
+Handlebars.registerPartial("templates_listviews_Browse", $("#templates_listviews_Browse").html());
+
 Handlebars.registerPartial("template_creator_CreateOrEditStory", $("#template_creator_CreateOrEditStory").html());
 Handlebars.registerPartial("templates_menus_simple", $("#templates_menus_simple").html());
+Handlebars.registerPartial("templates_creator_formitems_linkPageDecisions_display", $("#templates_creator_formitems_linkPageDecisions_display").html());
+Handlebars.registerPartial("templates_creator_formitems_text_display", $("#templates_creator_formitems_text_display").html());
+Handlebars.registerPartial("templates_creator_formitems_textfield_display", $("#templates_creator_formitems_textfield_display").html());
 
 
 adventurio.templates.page.element.field.StaticText.display.register();

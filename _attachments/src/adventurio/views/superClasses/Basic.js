@@ -1,9 +1,5 @@
 adventurio.views.superClasses.Basic = Backbone.View.extend({
 	
-	// getElTemplateResult : function(){
-		// var expectedTemplateDefinitionID = this.el.attr('id').replace(/page/, "template");
-		// this.getTemplateResult(expectedTemplateDefinitionID, this.getTemplateValues());
-	// },
 	getTemplateResult : function(templateDefinitionID, templateValues){
 		return Handlebars.compile($("#"+templateDefinitionID).html())(templateValues);
 	},
@@ -18,58 +14,36 @@ adventurio.views.superClasses.Basic = Backbone.View.extend({
 		this.getBasicPageTemplateResult();
 	},
 	render : function(headerTitle, options) {
-		//_.bind(this.getBasicPageTemplateResult, this); 
-		
 		options = options || {};
 		var role = typeof options['role'] == 'undefined' ? "page" : options['role'];
-		
-		var $previousEl = $("#"+this.id);
-		var alreadyInDom = $previousEl.length > 0;
-		if(alreadyInDom){
-			$previousEl.remove();
-		}
-		
-		// "pagehide": "onPageHide"
-		
-		// this.el = $("#"+this.id);
 		var htmlContent = typeof options['htmlContent'] == 'undefined' ? this.getBasicPageTemplateResult(headerTitle) : options['htmlContent'];
+		
+		this.cleanupPossiblePageDuplicationInDOM();
+				
 		$(this.el).html(htmlContent);
 		$("body").append($(this.el));
-		// $(this.el).page();
 		
-		// this.delegateEvents();
-		
-	// $("div[data-role='header'] h2", this.el).text(headerTitle);
-
-		// $content = $('[data-role="content"]', this.el);
-		
-		// $content.html(htmlContent);
-
-
 		$.mobile.changePage("#" + this.id, {
 			transition : 'slideup',
 			reverse : false,
 			changeHash : false,
 			role : role
-			// ,reloadPage : true
 		});
-
-		// var firstTimeRendered = !$content.hasClass('ui-content');
-
-		// if(!firstTimeRendered) {
-			// $(this.el).trigger("create");
-			// $(this.el).page("destroy").page();
-		// }
 	},
 	addValidationHandler : function() {
 			$("form", this.el).validate({
 			rules : this.model.settings.validation.rules,
-			// messages : this.model.attributes.messages,
-			submitHandler : function(){
-				$.proxy(this.onSuccessfulValidation, this)
-			},
+			submitHandler : $.proxy(this.onSuccessfulValidation, this),
 			debug : true
 		});
+	},
+	cleanupPossiblePageDuplicationInDOM : function(){
+				var $previousEl = $("#"+this.id);
+		var alreadyInDom = $previousEl.length > 0;
+		if(alreadyInDom){
+		// "pagehide": "onPageHide"
+			$previousEl.remove();
+		}
 	},
 	makeLastPageTransparent : function(prevPageAsTransparentBackground){
 		if(prevPageAsTransparentBackground.css("display") !== "none"){

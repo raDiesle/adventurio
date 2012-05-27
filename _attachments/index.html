@@ -10,16 +10,15 @@
 		<link rel="stylesheet" href="css/style.css">
 		<title>Adventurio</title>
 	</head>
-	<body>
+<body>
 
-<div id="allPagesContainer">
+<!-- <div id="allPagesContainer">
 </div>
-
 <script id="template_renderAllDetectedPageContainers" type="text/x-handlebars-template">
 	{{#allPages}}
 		<div data-role="page" id="{{pageID}}" data-position="inline" data-nobackbtn="true">template content</div>
 	{{/allPages}}
-</script>
+</script> -->
 
 <script id="template_basic_page_simple" type="text/x-handlebars-template">
 	<div data-role="header">
@@ -44,21 +43,17 @@
 	<p><a href="#">{{tags}}</a></p>
 </script>
 
-<!--  TEMPLATE MENU -->
 <script id="templates_menus_simple" type="text/x-handlebars-template">
-	{{whatis this}}
 	<div class="reader_index_content">
 		<div class="ui-grid-a" >
-			<div class="ui-block-a" >
-				content
-			</div>
+			<div class="ui-block-a" >content</div>
 			<ul data-role="listview" data-theme="g" class="ui-block-b transparent" data-inset="true">
 			
 			{{#menuObjects}}
 				<li data-role="list-divider">{{header}}</li>
 				{{#menu}}
 				<li>
-					<a href="#{{route}}" data-ajax="false" class="reader_index_menu_link" data-identity="{{route}}" >
+					<a href="#{{route}}" data-ajax="false" class="reader_index_menu_link" data-identity="{{route}}">
 						{{entry}}
 					</a>
 				</li>
@@ -69,37 +64,26 @@
 	</div>
 </script>
 
-
-
 <script id="templates_listviews_SimpleList" type="text/x-handlebars-template">
-<ul data-role="listview" data-theme="c" data-divendertheme="b">
-	{{#storyObjects}}
-	<li>
-		<a href="#{{../visitEntryPrefix}}{{_id}}" data-ajax="false" data-identity="{{_id}}" >
-			<h2>{{name}}</h2>
-			<p>{{creator}}</p>
-			<p>{{tags}}</p>
-		</a>
-	</li>
-	{{/storyObjects}}
-</ul>
+	<ul data-role="listview" data-theme="c" data-divendertheme="b">
+		{{#storyObjects}}
+			<li>
+				<a href="#{{../visitEntryPrefix}}{{_id}}" data-ajax="false" data-identity="{{_id}}">
+					<h2>{{name}}</h2>
+					<p>{{creator}}</p>
+					<p>{{tags}}</p>
+				</a>
+			</li>
+		{{/storyObjects}}
+	</ul>
 </script>
 
 <script id="template_page_reader_ListStories" type="text/x-handlebars-template">
 	{{> templates_listviews_SimpleList}}
 </script>
 
-
-
-
-
-
-
-
 <script id="template_creator_page_element_editor" type="text/x-handlebars-template"> 
-	<p>
-		Options for formItem
-	</p>
+	<p>Options for formItem</p>
 	<div data-role="fieldcontain">
 		<form action="#" method="GET" >
 			
@@ -117,109 +101,77 @@
 			{{/ifIsTypeOf}}
 			
 			{{> templates_creator_page_options_buttons}}
-			
-			
 		</form>
 	</div>
 </script>
 
 <script id="templates_creator_page_options_buttons" type="text/x-handlebars-template">
 	buttons
-			<a href="#" data-role="button" class="submitButton">Click</a>
+	<a href="#" data-role="button" class="submitButton">Click</a>
 </script>
-
 
 <script id="template_creator_formitems_statictext_options" type="text/x-handlebars-template">
 	statictext options
 	
 	<label for="template_creator_page_formitems_options_name" >name:</label>
-			<input type="name" name="name" id="template_creator_page_formitems_options_name"/>
-			<label for="template_creator_page_formitems_options_title" >title</label>
-			<input type="title" name="title" id="template_creator_page_formitems_options_title" />
+	<input type="name" name="name" id="template_creator_page_formitems_options_name"/>
+	<label for="template_creator_page_formitems_options_title" >title</label>
+	<input type="title" name="title" id="template_creator_page_formitems_options_title" />
 </script>
 
-
-
-
-
-
 <script id="templates_creator_formitems_text_display" type="text/x-handlebars-template">
-	<li>
-		<a class="edit_area" data-identity="{{$_.pos}}" href="#creator/stories/{{_id }}/{{horizontal}}/{{vertical}}/{{$_.pos}}" data-identity="{{pos}}" data-ajax="false">{{{$_.value}}}</a>
-	</li>
+	<li><a class="edit_area" data-identity="{{$_.pos}}" href="#creator/stories/{{_id }}/{{horizontal}}/{{vertical}}/{{$_.pos}}" data-identity="{{pos}}" data-ajax="false">{{{$_.value}}}</a></li>
 </script>
 
 <script id="templates_creator_formitems_text_edit" type="text/x-handlebars-template">
-	<textarea class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset">
-		{{value}}
-	</textarea>
+	<textarea class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset">{{value}}</textarea>
 	<a href="#" data-role="button" class="saveButton" data-identity="{{pos}}">save</a>
 </script>
 
-
-
 <script id="templates_creator_formitems_textfield_display" type="text/x-handlebars-template">
-<li>
-	<a href="#">
-		<span id="textid" placeholder="Enter character name" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset" style="padding: 7px; width: auto">
-			{{$_.value}}
-		</span>
-	</a>
-	<a href="#creator/stories/{{_id }}/{{vertical}}/{{horizontal}}/{{$_.formItemPos}}" class="setFormItemProperties" data-ajax="false" >PROPERTIES</a>
-</li>
+	<li>
+		<a href="#">
+			<span id="textid" placeholder="Enter character name" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset" style="padding: 7px; width: auto">
+				{{$_.value}}
+			</span>
+		</a>
+		<a href="#creator/stories/{{_id }}/{{vertical}}/{{horizontal}}/{{$_.formItemPos}}" class="setFormItemProperties" data-ajax="false" >PROPERTIES</a>
+	</li>
 </script>
 
-
-
 <script id="templates_creator_formitems_linkPageDecisions_display" type="text/x-handlebars-template">
-<li style="background-color:red;">
-	<a href="#">
-		<div data-role="controlgroup" data-type="horizontal">
-			{{#linkPageDecisions}} 
-				<a href="#creator/stories/{{../props/_id }}/{{vPos}}/{{hPos}}" data-role="button" type="">{{value}}</a>
-			{{/linkPageDecisions}}
-		</div>
-		<!-- <a href="#creator/stories/{{_id }}/{{vertical}}/{{horizontal}}/{{$_.formItemPos}}" class="setFormItemProperties" data-ajax="false" >PROPERTIES</a> -->
-	</a>
-</li>
+	<li style="background-color:red;">
+		<a href="#">
+			<div data-role="controlgroup" data-type="horizontal">
+				{{#linkPageDecisions}} 
+					<a href="#creator/stories/{{../props/_id }}/{{vPos}}/{{hPos}}" data-role="button" type="">{{value}}</a>
+				{{/linkPageDecisions}}
+			</div>
+			<!-- <a href="#creator/stories/{{_id }}/{{vertical}}/{{horizontal}}/{{$_.formItemPos}}" class="setFormItemProperties" data-ajax="false" >PROPERTIES</a> -->
+		</a>
+	</li>
 </script>
 
 <script id="templates_creator_formitems_linkPageDecisions_edit" type="text/x-handlebars-template">
-<li>
-	<a href="#">
-		<div data-role="controlgroup" data-type="horizontal">
-			{{#linkPageDecisions}} 
-				<a href="#creator/stories/{{../props/_id }}/{{vPos}}/{{hPos}}" data-role="button" type="">{{value}}</a>
-			{{/linkPageDecisions}}
-		</div>
-	</a>
-</li>
+	<li>
+		<a href="#">
+			<div data-role="controlgroup" data-type="horizontal">
+				{{#linkPageDecisions}} 
+					<a href="#creator/stories/{{../props/_id }}/{{vPos}}/{{hPos}}" data-role="button" type="">{{value}}</a>
+				{{/linkPageDecisions}}
+			</div>
+		</a>
+	</li>
 </script> 
 
-<script id="templates_forms_dynamic" type="text/x-handlebars-template">
-	<ul data-role="listview" data-inset="true" data-split-theme="d">
-	 {{#formItems}}
-		{{#ifIsTypeOf this "text"}}
-			{{#$ ../../props }}{{> templates_creator_formitems_text_display}}{{/$}}
-		{{/ifIsTypeOf}}
-		{{#ifIsTypeOf this "textfield"}}
-			{{#$ ../../props }}{{> templates_creator_formitems_textfield_display}}{{/$}}
-		{{/ifIsTypeOf}}
-	{{/formItems}}
-	
-	{{> templates_creator_formitems_linkPageDecisions_display}}
-	</ul>
-</script>
-
-<!-- TEMPLATE Browse Listview -->
 <script id="templates_listviews_Browse" type="text/x-handlebars-template">
-<ul data-role="listview" data-theme="a" data-divendertheme="b">  <!-- class="ui-block-b transparent" data-inset="true" -->
-	{{#pages}}
-	<li>
-		<a href="#creator/stories/{{../id}}/{{../vPos}}/{{hPos}}" data-ajax="false"><p>{{hPos}} {{header.value}}</p></a>
-	</li>
-	{{/pages}}
-</ul>
+	<ul data-role="listview" data-theme="a" data-divendertheme="b">  <!-- class="ui-block-b transparent" data-inset="true" -->
+		{{#pages}}
+		<li>
+			<a href="#creator/stories/{{../id}}/{{../vPos}}/{{hPos}}" data-ajax="false"><p>{{hPos}} {{header.value}}</p></a>
+		</li>
+		{{/pages}}
+	</ul>
 </script>
 
 <script id="template_page_creator_CreateStory" type="text/x-handlebars-template">
@@ -229,9 +181,7 @@
 	{{> template_creator_CreateOrEditStory}}
 </script>
 
-<!--  Edit Story Template -->
 <script id="template_creator_CreateOrEditStory" type="text/x-handlebars-template">
-	
 	<form action="#" >
 		<div data-role="fieldcontain">
 			<label for="editStory_storyName">Name: </label>
@@ -260,11 +210,54 @@
 	</form>
 </script>
 
+<script id="template_page_creator_stories" type="text/x-handlebars-template">
+	{{> templates_listviews_SimpleList}}
+</script>
 
-<script id="templates_creator_login" type="text/x-handlebars-template">
-	<p>
-		Please Login with your userdata
-	</p>
+<script id="template_page_creator_stories_storyid" type="text/x-handlebars-template">
+	{{> templates_menus_simple}}
+</script>
+
+<!-- CREATOR: adventurio.creator.EditPageFormItemOptions Dialog  -->
+<div data-role="dialog" id="dialog_creator_pageelementeditor"  class="dialog_window_option" data-id="creator_page_formitem_options">
+	<div data-role="content" >
+	<!-- template_creator_page_editors -->
+	</div>
+</div>	
+
+<!-- READER: view single story-->		
+<div data-role="page" id="page_reader_story" data-url="#page_reader_story" data-position="inline">
+	<div data-role="header" id="storyheader">
+		<h2 class="storyname">Name</h2>
+		<a href="#mainpage" data-icon="grid" class="ui-btn-right"  data-rel="back" >Home</a>
+	</div>
+	<div data-role="content" data-identity="{{storyId}}">
+		<!-- showStory_template -->
+	</div>
+	<div data-role="footer">
+		Footer
+	</div>
+</div>
+		
+<script id="template_page_creator_signup" type="text/x-handlebars-template">
+	<p>Please Signup</p>
+	<div data-role="fieldcontain">
+		<form action="#" method="post" >
+			<label for="username" >Username:</label>
+			<input type="text" name="username" id="username"/>
+			<label for="password" >Password:</label>
+			<input type="password" name="password" id="password" />
+			
+			<div data-role="controlgroup" data-type="horizontal">
+				<input type="reset" value="logout">
+				<input type="submit" value="signup">
+			</div>
+		</form>
+	</div>
+</script>
+
+<script id="template_page_creator_login" type="text/x-handlebars-template">
+	<p>Please Login with your userdata</p>
 	<div data-role="fieldcontain">
 		<form action="#">
 			<label for="login_username" >Username:</label>
@@ -280,154 +273,34 @@
 		</form>
 	</div>
 </script>
-
-
-<script id="template_page_creator_stories" type="text/x-handlebars-template">
-	{{> templates_listviews_SimpleList}}
+		
+<script id="template_page_creator_vPos_hPos" type="text/x-handlebars-template">
+	<ul data-role="listview" data-inset="true" data-split-theme="d">
+		 {{#fields}}
+			{{#ifIsTypeOf this "text"}}
+				{{#$ ../../props }}{{> templates_creator_formitems_text_display}}{{/$}}
+			{{/ifIsTypeOf}}
+			{{#ifIsTypeOf this "textfield"}}
+				{{#$ ../../props }}{{> templates_creator_formitems_textfield_display}}{{/$}}
+			{{/ifIsTypeOf}}
+		{{/fields}}
+		
+		{{> templates_creator_formitems_linkPageDecisions_display}}
+	</ul>
 </script>
 
-
-<script id="template_page_creator_stories_storyid" type="text/x-handlebars-template">
-	{{> templates_menus_simple}}
-</script>
-
-<!-- CREATOR: adventurio.creator.EditPageFormItemOptions Dialog  -->
-<div data-role="dialog" id="dialog_creator_pageelementeditor"  class="dialog_window_option" data-id="creator_page_formitem_options">
-	<div data-role="content" >
-	<!-- template_creator_page_editors -->
-	</div>
-</div>	
-
-
-
-
-<!-- READER: view single story-->		
-		<div data-role="page" id="page_reader_story" data-url="#page_reader_story" data-position="inline">
-			<div data-role="header" id="storyheader">
-				<h2 class="storyname">Name</h2>
-				<a href="#mainpage" data-icon="grid" class="ui-btn-right"  data-rel="back" >Home</a>
-			</div>
-			<div data-role="content" data-identity="{{storyId}}">
-				<!-- showStory_template -->
-			</div>
-			<div data-role="footer">
-				Footer
-			</div>
-		</div>
-		
-<!-- Creator -->
-<!-- Creator start page -->
-<div data-role="page" id="creator_page" data-id="creator_page">
-	<div data-role="header">
-		<h2>Login</h2>
-	</div>
-	<div data-role="content" >
-		<p>
-			Welcome to manage your stories
-		</p>
-	</div>
-	<div data-role="footer">
-		<a href="#" data-role="button" data-icon="plus" class="addButton">Create New Story</a>
-	</div>
-</div>
-
-<!-- Signup dialog -->
-<div data-role="page" id="creator_signup" data-id="creator_signup">
-	<div data-role="header">
-		<h2>Login</h2>
-	</div>
-	<div data-role="content" class="content">
-		<p>
-			Please Signup
-		</p>
-		<div data-role="fieldcontain">
-			<form action="#" method="post" >
-				<label for="username" >Username:</label>
-				<input type="text" name="username" id="username"/>
-				<label for="password" >Password:</label>
-				<input type="password" name="password" id="password" />
-				
-				<div data-role="controlgroup" data-type="horizontal">
-					<input type="reset" value="logout">
-					<input type="submit" value="signup">
-				</div>
-				
-			</form>
-		</div>
-<!-- 				</script> -->
-	</div>
-	<div data-role="footer"></div>
-</div>
-		
-		
-<!-- Login dialog -->
-<div data-role="page" id="page_creator_login" data-id="page_creator_login">
-	<div data-role="header">
-		<h2>Login</h2>
-	</div>
-	<div data-role="content" class="content">
-		<!-- templates_creator_login -->
-	</div>
-	<div data-role="footer"></div>
-</div>
-		
-<!--  Creator: adventurio.creator.CreatePage -->		
-<div data-role="page" id="page_creator_vPos_hPos"> <!--data-url="createpage" data-position="inline" data-nobackbtn="true" -->
-	<div data-role="header">
-		<h2> </h2>
-		<a id="cancelBackButton" href="#" data-icon="delete">Close</a>
-	</div>
-	<div data-role="content" >
-		<!-- templates_forms_dynamic -->
-	</div>
-	<div data-role="footer">
-		Footer
-	</div>
-</div>
-
-
-<div data-role="page" id="creator_stories_story_browse" data-position="inline" >
-	<div data-role="header" >
-		<h1 ></h1>
-		<a id="cancelBackButton" href="#creator/stories" data-icon="delete" data-rel="back">Back</a>
-	</div>
-	<div data-role="content">
-		<!--  templates_listviews_Browse -->
-	</div>
-	<div data-role="footer" data-position="fixed">
+<script id="template_page_creator_stories_story_browse" type="text/x-handlebars-template">
+		{{> templates_listviews_Browse}}
+	<!-- make footer page template -->
+	<!-- <div data-role="footer" data-position="fixed">
 		<form>
 		<label for="slider-0">Input slider:</label>
 		<input type="range" name="slider" id="slider" value="0" min="0" max="100" data-mini="true" />
 		</form>
-	</div>
-	</div>
-</div>
-		
-				
-		
-		
-		<!--
-		/********************************************************
-		*  Script management
-		*********************************************************/
-		-->
-		<script type="text/javascript" src="lib/LAB.js"></script>
-		<script type="text/javascript" src="Resources.js"></script>
-<!-- 		<script type="text/javascript" src="lib/watcher.js"></script> -->
-<!-- 		<script type="text/javascript" src="lib/collector.js"></script> -->
-		<!-- https://github.com/twolfson/Resource-Collector  -->
-		<script>
-// 		    (function () {
-// 		       var watcher = new FileWatcher(),
-// 		           resources = ResourceCollector.collect();
-// 		       watcher.addListener(function (url) {
-// 		         if (url.match(/(js|html)$/)) {
-// 		           location.reload();
-// 		         }
-// 		       });
-// 		       watcher.watch(resources);
-// 		    }());
-		</script>
-<!-- 		<meta http-equiv="refresh" content="2;url=index.html" />  -->
-	</body>
+	</div> -->
+</script>
+	
+	<script type="text/javascript" src="lib/LAB.js"></script>
+	<script type="text/javascript" src="Resources.js"></script>
+</body>
 </html>

@@ -1,7 +1,6 @@
-adventurio.templates.creator.Signup = null;
 
 adventurio.views.creator.Signup = Backbone.View.extend({
-	el: ('#creator_signup'),
+	id: "creator_signup",
 	model: adventurio.models.UserSingleton,
 	initialize : function() {
 		// hack, otherwise changePage throws exception

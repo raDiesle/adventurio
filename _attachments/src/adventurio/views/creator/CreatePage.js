@@ -1,9 +1,21 @@
 adventurio.views.creator.CreatePage = adventurio.views.superClasses.Basic.extend({
-	el : $('#page_creator_vPos_hPos'),
-	attributes : {
+	id : "page_creator_vPos_hPos",
+	getCurrentPage : function(){
+		return this.model.getModelPagePath(this.options.parameter.vPos, this.options.parameter.hPos);
+	},
+	getSpecificTemplateValues : function(){
+		var html ="";
+		var context = {};
+		context.props = {};
+		context.props.vertical = this.options.parameter.vPos;
+		context.props.horizontal = this.options.parameter.hPos;
+		context.props._id = this.model.id;
+		
+		context.fields = this.getCurrentPage().fields;
+		context.linkPageDecisions = this.getCurrentPage().linkPageDecisions;
+		return context;
 	},
 	initialize : function() {
-		// $().ready($.proxy(this.render, this)); // hack
 		this.model.on('change', this.render, this);
 		this.model.lazyFetch(); 
 	},
@@ -12,18 +24,7 @@ adventurio.views.creator.CreatePage = adventurio.views.superClasses.Basic.extend
 		// Hack
 		$('.edit_area').trigger('create');
 		$('input').textinput();
-
-		var html ="";
-		var context = {};
-		context.props = {};
-		context.props.vertical = this.options.parameter.vPos;
-		context.props.horizontal = this.options.parameter.hPos;
-		context.props._id = this.model.id;
-		var currentPage = this.model.getModelPagePath(this.options.parameter.vPos, this.options.parameter.hPos);
-		context.fields = currentPage.fields;
-		context.linkPageDecisions = currentPage.linkPageDecisions;
-	
-		this._super("render", [adventurio.templates.forms.Dynamic.compile(context), currentPage.header.value]);
+		this._super("render", [this.getCurrentPage().header.value]);
 	},
 	events : {
 		// "click .edit_area" : "triggerCreate",
