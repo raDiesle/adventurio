@@ -89,20 +89,18 @@
 		
 <script id="template_page_creator_vPos_hPos" type="text/x-handlebars-template">
 	<ul data-role="listview" data-inset="true" data-split-theme="d">
-		 {{#fields}}
+		{{#fields}}
 			{{#ifIsTypeOf this "text"}}
 				{{#$ ../../props }}{{> templates_creator_formitems_text_display}}{{/$}}
 			{{/ifIsTypeOf}}
 			{{#ifIsTypeOf this "textfield"}}
 				{{#$ ../../props }}{{> templates_creator_formitems_textfield_display}}{{/$}}
 			{{/ifIsTypeOf}}
-		{{/fields}}
+		{{/fields}} 
 		
 		{{> templates_creator_formitems_linkPageDecisions_display}}
 	</ul>
 </script>
-
-
 
 <script id="template_creator_page_element_editor" type="text/x-handlebars-template"> 
 	<p>Options for formItem</p>
@@ -186,12 +184,25 @@
 	</li>
 </script> 
 
-<script id="templates_listviews_Browse" type="text/x-handlebars-template">
-	<ul data-role="listview" data-theme="a" data-divendertheme="b">  <!-- class="ui-block-b transparent" data-inset="true" -->
-		{{#pages}}
-		<li>
-			<a href="#creator/stories/{{../id}}/{{../vPos}}/{{hPos}}" data-ajax="false"><p>{{hPos}} {{header.value}}</p></a>
-		</li>
-		{{/pages}}
-	</ul>
+
+<script id="template_page_creator_stories_story_browse" type="text/x-handlebars-template">
+	<div data-role="header">
+		<h2>{{headerTitle}}</h2>
+		<a href="#" data-icon="delete">Close</a>
+	</div>
+	<div data-role="content">
+		<ul data-role="listview" data-theme="a" data-divendertheme="b">  <!-- class="ui-block-b transparent" data-inset="true" -->
+			{{#pages}}
+			<li>
+				<a href="#creator/stories/{{../id}}/{{../vPos}}/{{hPos}}" data-ajax="false"><p>{{hPos}} {{header.value}}</p></a>
+			</li>
+			{{/pages}}
+		</ul>
+	</div>
+	<div data-role="footer" data-position="fixed">
+		<form>
+		<label for="slider-0">Input slider:</label>
+		<input type="range" name="slider" id="slider" value="0" min="0" max="100" data-mini="true" />
+		</form>
+	</div>
 </script>

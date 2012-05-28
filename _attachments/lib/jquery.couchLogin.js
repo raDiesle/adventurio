@@ -62,9 +62,9 @@
             return false;      
         });
     }
-    if(adventurio.templates.creator.Login === null) {
-		adventurio.templates.creator.Login = $("#creator_login_template").html();
-	}
+    // if(adventurio.templates.creator.Login === null) {
+		// adventurio.templates.creator.Login = $("#creator_login_template").html();
+	// }
     var templates = 
     {
         adminParty : '<p><strong>Admin party, everyone is admin!</strong> Fix this in <a href="/_utils/index.html">Futon</a> before proceeding.</p>',

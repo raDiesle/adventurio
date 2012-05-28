@@ -2,22 +2,6 @@
 	{{> templates_menus_simple}}
 </script>
 
-<script id="template_page_creator_stories_story_browse" type="text/x-handlebars-template">
-	<div data-role="header">
-		<h2>{{headerTitle}}</h2>
-		<a href="#" data-icon="delete">Close</a>
-	</div>
-	<div data-role="content">
-		{{> templates_listviews_Browse}}
-	</div>
-	<div data-role="footer" data-position="fixed">
-		<form>
-		<label for="slider-0">Input slider:</label>
-		<input type="range" name="slider" id="slider" value="0" min="0" max="100" data-mini="true" />
-		</form>
-	</div>
-</script>
-
 <script id="template_page_reader_StorySummary" type="text/x-handlebars-template">
 	<h2>{{name}} (by {{user}})</h2>
 	<p>{{description}}</p>

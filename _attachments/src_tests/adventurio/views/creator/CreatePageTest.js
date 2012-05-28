@@ -2,22 +2,22 @@ describe(
 		"Create Page should initialize ",
 		function() {
 			it('should initialze basics', function() {
-				expect(adventurio.views.creator.CreatePage).toBeDefined();
-				expect(adventurio.views.creator.CreatePage.model).toBeUndefined();
+				expect(adventurio.views.creator.ManagePage).toBeDefined();
+				expect(adventurio.views.creator.ManagePage.model).toBeUndefined();
 				
 				// var storyId = "5bbb283105f08f47ba02597b8500027b";
-				// var urlToCurrentCreatePage = "creator/stories/"+storyId+"/1/1";
-				// adventurio.routers.MainRouter.singleton.navigate(urlToCurrentCreatePage, {trigger: true});
+				// var urlToCurrentManagePage = "creator/stories/"+storyId+"/1/1";
+				// adventurio.routers.MainRouter.singleton.navigate(urlToCurrentManagePage, {trigger: true});
 				
-				// var viewModel = adventurio.views.creator.CreatePage.model.get("fields");
+				// var viewModel = adventurio.views.creator.ManagePage.model.get("fields");
 				// expect(viewModel).toBeDefined();
 				// expect(viewModel[0].type).toBe("text");
 				
-				// expect(adventurio.views.creator.CreatePage.singleton.attributes.editModeStatus.ENTERS_WRITE_MODE).toBe(true);
-				// expect(adventurio.views.creator.CreatePage.singleton.model.get("_id")).toBe(storyId);
+				// expect(adventurio.views.creator.ManagePage.singleton.attributes.editModeStatus.ENTERS_WRITE_MODE).toBe(true);
+				// expect(adventurio.views.creator.ManagePage.singleton.model.get("_id")).toBe(storyId);
 			}),
 			it('should save edited value to model', function() {
-				var createPage = new adventurio.views.creator.CreatePage({
+				var ManagePage = new adventurio.views.creator.ManagePage({
 					parameter : {
 						vPos : 1,
 						hPos : 2
@@ -37,7 +37,7 @@ describe(
 						return 1;
 					}}}
 				
-				createPage.saveEditedValue(clickEvent);
+				ManagePage.saveEditedValue(clickEvent);
 			});
 			
 			

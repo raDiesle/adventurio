@@ -24,6 +24,7 @@ $LAB
         $.mobile.ajaxEnabled = false;
         $.mobile.hashListeningEnabled = false;
 		$.mobile.page.prototype.options.degradeInputs.date = true;
+		$.mobile.page.prototype.options.domCache = false;
         $.mobile.pushStateEnabled = false;
         //$.mobile.linkBindingEnabled = false; //-- will cause bug where window.hash = will stay empty
       });
@@ -72,7 +73,7 @@ $LAB
  .script(srcFolder+"/adventurio/views/reader/StorySummary.js")
  .script(srcFolder+"/adventurio/views/creator/CreateStory.js")
  .script(srcFolder+"/adventurio/views/creator/EditPageFormItemOptionsWindow.js")
- .script(srcFolder+"/adventurio/views/creator/CreatePage.js")
+ .script(srcFolder+"/adventurio/views/creator/ManagePage.js")
  .script(srcFolder+"/adventurio/views/creator/BrowseStory.js")
  .script(srcFolder+"/adventurio/views/creator/Story.js")
  .script(srcFolder+"/adventurio/views/creator/Signup.js")
@@ -82,5 +83,8 @@ $LAB
  .script(srcFolder+"/adventurio/collections/StoriesCollection.js")
  .script(srcFolder+"/adventurio/routers/MainRouter.js")
 // .script(srcFolder+"/adventurio/templates/listviews/Browse.js")
-.script(srcFolder+"/adventurio/utilies/Handlebars.js")		
+.script(srcFolder+"/adventurio/application/Handlebars.js")
+.script(srcFolder+"/adventurio/application/ErrorHandling.js")
+.script(srcFolder+"/adventurio/application/I18nSettings.js")
+.script(srcFolder+"/adventurio/application/Validators.js")		
 .script(srcFolder+"/adventurio/application/ApplicationSettings.js");

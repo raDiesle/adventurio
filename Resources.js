@@ -32,7 +32,7 @@ $LAB
  .script(srcFolder+"/adventurio/views/ShowStory.js")
  .script(srcFolder+"/adventurio/views/CreateStory.js")
  .script(srcFolder+"/adventurio/views/EditStory.js")
- .script(srcFolder+"/adventurio/views/CreatePage.js")
+ .script(srcFolder+"/adventurio/views/ManagePage.js")
  .script(srcFolder+"/adventurio/views/creator/Index.js")
  .script(srcFolder+"/adventurio/views/creator/Signup.js")
  .script(srcFolder+"/adventurio/views/creator/Login.js")

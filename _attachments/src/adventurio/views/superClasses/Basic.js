@@ -25,13 +25,22 @@ adventurio.views.superClasses.Basic = Backbone.View.extend({
 		this.cleanupPossiblePageDuplicationInDOM();
 		
 		$(this.el).html(this.getHTMLwithAddingHrefPagePrefix(htmlContent));
+		$(this.el).attr("data-role", "page");
+		// $(this.el)
+	    // .page();
+	    //.addClass($.mobile.activePageClass)
+	    // .trigger('create');
+		
 		$("body").append($(this.el));
+		$("#" + this.id).page();
 		
 		$.mobile.changePage("#" + this.id, {
 			transition : 'slideup',
 			reverse : false,
 			changeHash : false,
 			role : role
+			// ,allowSamePageTransition: true
+			// ,reloadPage : false
 		});
 	},
 	addValidationHandler : function() {
@@ -43,7 +52,7 @@ adventurio.views.superClasses.Basic = Backbone.View.extend({
 	},
 	cleanupPossiblePageDuplicationInDOM : function(){
 				var $previousEl = $("#"+this.id);
-		var alreadyInDom = $previousEl.length > 0;
+		var alreadyInDom = $previousEl.length >= 0;
 		if(alreadyInDom){
 		// "pagehide": "onPageHide"
 			$previousEl.remove();

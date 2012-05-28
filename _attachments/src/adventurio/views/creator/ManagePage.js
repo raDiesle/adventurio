@@ -1,4 +1,4 @@
-adventurio.views.creator.CreatePage = adventurio.views.superClasses.Basic.extend({
+adventurio.views.creator.ManagePage = adventurio.views.superClasses.Basic.extend({
 	id : "page_creator_vPos_hPos",
 	getCurrentPage : function() {
 		return this.model.getModelPagePath(this.options.parameter.vPos, this.options.parameter.hPos);
@@ -19,10 +19,10 @@ adventurio.views.creator.CreatePage = adventurio.views.superClasses.Basic.extend
 		this.model.lazyFetch();
 	},
 	render : function() {
-		$("#page_creator_vPos_hPos").removeClass("ui-dialog-background ");
+		//$("#page_creator_vPos_hPos").removeClass("ui-dialog-background ");
 		// Hack
-		$('.edit_area').trigger('create');
-		$('input').textinput();
+		// $('.edit_area').trigger('create');
+		// $('input').textinput();
 		this._super("render", [this.getCurrentPage().header.value]);
 	},
 	events : {
@@ -63,8 +63,8 @@ adventurio.views.creator.CreatePage = adventurio.views.superClasses.Basic.extend
 			containerEditElement.html(adventurio.templates.creator.page.fields.StaticText.edit.compile(context));
 
 			// hack to support autoscroll
-			$('.edit_area').trigger('create');
-			$('input').textinput();
+			// $('.edit_area').trigger('create');
+			// $('input').textinput();
 			this.attributes.editModeStatus.READ_MODE = false;
 		} else if(this.attributes.editModeStatus.LEAVES_WRITE_MODE) {
 			// go to read mode
