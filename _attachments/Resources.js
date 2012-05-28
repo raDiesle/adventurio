@@ -8,7 +8,7 @@ $LAB
  
  .script("ApplicationScope.js")
  .script(libFolder+"json2.js")
- //.script(libFolder+"jquery-1.7.1.js") // http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
+ .script(libFolder+"jquery-1.7.1.js") // http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
  
  .wait(function() {
  	// $(document).on("pagebeforechange", function(e, data){
