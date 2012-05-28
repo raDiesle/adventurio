@@ -1,5 +1,8 @@
 adventurio.views.superClasses.Basic = Backbone.View.extend({
 	
+	getTemplateID : function(){
+		return "template_basic_page_simple";	
+	},
 	getTemplateResult : function(templateDefinitionID, templateValues){
 		return Handlebars.compile($("#"+templateDefinitionID).html())(templateValues);
 	},
@@ -8,7 +11,7 @@ adventurio.views.superClasses.Basic = Backbone.View.extend({
 		var specific = this.getSpecificTemplateValues();
 		
 		$.extend(templateValues, this.getSpecificTemplateValues());
-		return this.getTemplateResult("template_basic_page_simple", templateValues);
+		return this.getTemplateResult(this.getTemplateID(), templateValues);
 	},
 	getRequestedPageTemplateResult : function(){
 		this.getBasicPageTemplateResult();
@@ -16,11 +19,12 @@ adventurio.views.superClasses.Basic = Backbone.View.extend({
 	render : function(headerTitle, options) {
 		options = options || {};
 		var role = typeof options['role'] == 'undefined' ? "page" : options['role'];
+		// var role = typeof options['templateType'] == 'undefined' ? "basic" : options['templateType'];
 		var htmlContent = typeof options['htmlContent'] == 'undefined' ? this.getBasicPageTemplateResult(headerTitle) : options['htmlContent'];
 		
 		this.cleanupPossiblePageDuplicationInDOM();
-				
-		$(this.el).html(htmlContent);
+		
+		$(this.el).html(this.getHTMLwithAddingHrefPagePrefix(htmlContent));
 		$("body").append($(this.el));
 		
 		$.mobile.changePage("#" + this.id, {
@@ -44,6 +48,11 @@ adventurio.views.superClasses.Basic = Backbone.View.extend({
 		// "pagehide": "onPageHide"
 			$previousEl.remove();
 		}
+	},
+	// Hack: if used anchor, # will be removed on first click on link, but not on second 
+	getHTMLwithAddingHrefPagePrefix : function(htmlContent){
+		return htmlContent;
+		// return htmlContent.replace(/href=\"#/g, "href=\"index.html#");
 	},
 	makeLastPageTransparent : function(prevPageAsTransparentBackground){
 		if(prevPageAsTransparentBackground.css("display") !== "none"){

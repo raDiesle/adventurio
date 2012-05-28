@@ -1,13 +1,14 @@
 var libFolder = "lib/"; 
 var srcFolder = "src/";
 var localeFolder = "locale/";
+window.templates = {};
 
 $LAB
  .setOptions({AlwaysPreserveOrder:true, UseLocalXHR : true})
  
  .script("ApplicationScope.js")
  .script(libFolder+"json2.js")
- .script(libFolder+"jquery-1.7.1.js") // http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
+ //.script(libFolder+"jquery-1.7.1.js") // http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
  
  .wait(function() {
  	// $(document).on("pagebeforechange", function(e, data){
@@ -22,8 +23,9 @@ $LAB
       $(document).bind("mobileinit", function(){
         $.mobile.ajaxEnabled = false;
         $.mobile.hashListeningEnabled = false;
+		$.mobile.page.prototype.options.degradeInputs.date = true;
         $.mobile.pushStateEnabled = false;
-        // $.mobile.linkBindingEnabled = false; //-- will cause bug where window.hash = will stay empty
+        //$.mobile.linkBindingEnabled = false; //-- will cause bug where window.hash = will stay empty
       });
   })
  
@@ -59,7 +61,7 @@ $LAB
  
  .script(localeFolder+"locales.js") // i18n
  .script(srcFolder+"/adventurio/utilies/Json.js")
- .script(srcFolder+"/adventurio/utilies/Handlebars.js")
+
  // .script(srcFolder+"/adventurio/application/jeditable/MarkItUpSettings.js")
  .script(srcFolder+"/adventurio/models/StoryModel.js")
  .script(srcFolder+"/adventurio/models/User.js")
@@ -80,4 +82,5 @@ $LAB
  .script(srcFolder+"/adventurio/collections/StoriesCollection.js")
  .script(srcFolder+"/adventurio/routers/MainRouter.js")
 // .script(srcFolder+"/adventurio/templates/listviews/Browse.js")
+.script(srcFolder+"/adventurio/utilies/Handlebars.js")		
 .script(srcFolder+"/adventurio/application/ApplicationSettings.js");

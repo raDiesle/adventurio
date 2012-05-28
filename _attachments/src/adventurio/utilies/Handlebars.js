@@ -12,6 +12,23 @@ Handlebars.registerHelper('whatis', function(param) {
 });
 
 
+function findAndRegisterPartials($scanElement){
+	var templateValues = {
+		allPages : $scanElement.children('script[id^="template_page_"]').map(function() {
+			console.debug("Container pages were created: "+ this.id.replace(/template_page_/, "page_"));
+			return {
+				'templatePartialPageID' : this.id,
+				'pageID' : this.id.replace(/template_page_/, "page_"),
+			};
+		}).toArray()
+	};
+	
+	$.each(templateValues.allPages, function(index, foundPage) {
+		console.debug("page partial was registered: "+ foundPage.templatePartialPageID);
+		Handlebars.registerPartial(foundPage.templatePartialPageID, $("#" + foundPage.templatePartialPageID).html());
+	});
+};
+
 Handlebars.registerPartial("template_basic_page_simple", $("#template_basic_page_simple").html());
 Handlebars.registerPartial("templates_menus_simple", $("#templates_menus_simple").html());
 Handlebars.registerPartial("templates_listviews_SimpleList", $("#templates_listviews_SimpleList").html());

@@ -1,0 +1,197 @@
+
+<script id="template_page_creator_CreateStory" type="text/x-handlebars-template">
+	{{> template_creator_CreateOrEditStory}}
+</script>
+<script id="template_page_creator_EditStory" type="text/x-handlebars-template">
+	{{> template_creator_CreateOrEditStory}}
+</script>
+
+<script id="template_creator_CreateOrEditStory" type="text/x-handlebars-template">
+	<form action="#" >
+		<div data-role="fieldcontain">
+			<label for="editStory_storyName">Name: </label>
+			<input id="editStory_storyName" name="name" type="text" value="{{name}}"/>
+		</div>
+		<div data-role="fieldcontain">
+			<label for="editStory_description">Description:</label>
+			<textarea id="editStory_description" name="description" cols="40" rows="8">{{description}}</textarea>
+		</div>
+		<div data-role="fieldcontain">
+			<label for="editStory_tags">Tags</label>
+			<input id="editStory_tags" name="tags" type="text" value="{{tags}}" />
+		</div>
+		
+		<div data-role="fieldcontain">
+			<label for="editStory_language">Language</label>
+			<input id="editStory_language" name="language" type="text" value="{{language}}" />
+		</div>
+	
+		<div data-role="controlgroup" data-type="horizontal">
+			<!-- <input  type="reset" value="cancel" />
+			<input  type="submit" value="submit" /> -->
+			<a href="#" data-role="button" >Cancel</a>
+			<a href="#" data-role="button" data-theme="b" type="submit">Submit</a>
+		</div>
+	</form>
+</script>
+
+
+
+<script id="template_page_creator_stories" type="text/x-handlebars-template">
+	{{> templates_listviews_SimpleList}}
+</script>
+
+<script id="template_page_creator_stories_storyid" type="text/x-handlebars-template">
+	{{> templates_menus_simple}}
+</script>
+
+<!-- CREATOR: adventurio.creator.EditPageFormItemOptions Dialog  -->
+<div data-role="dialog" id="dialog_creator_pageelementeditor"  class="dialog_window_option" data-id="creator_page_formitem_options">
+	<div data-role="content" >
+	<!-- template_creator_page_editors -->
+	</div>
+</div>	
+
+<script id="template_page_creator_signup" type="text/x-handlebars-template">
+	<p>Please Signup</p>
+	<div data-role="fieldcontain">
+		<form action="#" method="post" >
+			<label for="username" >Username:</label>
+			<input type="text" name="username" id="username"/>
+			<label for="password" >Password:</label>
+			<input type="password" name="password" id="password" />
+			
+			<div data-role="controlgroup" data-type="horizontal">
+				<input type="reset" value="logout">
+				<input type="submit" value="signup">
+			</div>
+		</form>
+	</div>
+</script>
+
+<script id="template_page_creator_login" type="text/x-handlebars-template">
+	<p>Please Login with your userdata</p>
+	<div data-role="fieldcontain">
+		<form action="#">
+			<label for="login_username" >Username:</label>
+			<input type="text" name="username" id="login_username"/>
+			
+			<label for="login_password" >Password:</label>
+			<input type="password" name="password" id="login_password"/>
+			
+			<div data-role="controlgroup" data-type="horizontal">
+				<a href="#" data-role="button" type="">Logout</a>
+				<a href="#" data-role="button" data-theme="b" type="submit">Login</a>
+			</div>
+		</form>
+	</div>
+</script>
+		
+<script id="template_page_creator_vPos_hPos" type="text/x-handlebars-template">
+	<ul data-role="listview" data-inset="true" data-split-theme="d">
+		 {{#fields}}
+			{{#ifIsTypeOf this "text"}}
+				{{#$ ../../props }}{{> templates_creator_formitems_text_display}}{{/$}}
+			{{/ifIsTypeOf}}
+			{{#ifIsTypeOf this "textfield"}}
+				{{#$ ../../props }}{{> templates_creator_formitems_textfield_display}}{{/$}}
+			{{/ifIsTypeOf}}
+		{{/fields}}
+		
+		{{> templates_creator_formitems_linkPageDecisions_display}}
+	</ul>
+</script>
+
+
+
+<script id="template_creator_page_element_editor" type="text/x-handlebars-template"> 
+	<p>Options for formItem</p>
+	<div data-role="fieldcontain">
+		<form action="#" method="GET" >
+			
+			{{#ifIsTypeOf this "statictext"}}
+				{{#$ ../../props }}{{> templates_creator_formitems_statictext_options}}{{/$}}
+			{{/ifIsTypeOf}}
+			{{#ifIsTypeOf this "textfield"}}
+				{{#$ ../../props }}{{> templates_creator_formitems_textfield_options}}{{/$}}
+			{{/ifIsTypeOf}}
+			{{#ifIsTypeOf this "linkPageDecisions"}}
+				{{#$ ../../props }}{{> templates_creator_linkPageDecisions_options}}{{/$}}
+			{{/ifIsTypeOf}}
+			{{#ifIsTypeOf this "header"}}
+				{{#$ ../../props }}{{> templates_creator_header_options}}{{/$}}
+			{{/ifIsTypeOf}}
+			
+			{{> templates_creator_page_options_buttons}}
+		</form>
+	</div>
+</script>
+
+<script id="templates_creator_page_options_buttons" type="text/x-handlebars-template">
+	buttons
+	<a href="#" data-role="button" class="submitButton">Click</a>
+</script>
+
+<script id="template_creator_formitems_statictext_options" type="text/x-handlebars-template">
+	statictext options
+	
+	<label for="template_creator_page_formitems_options_name" >name:</label>
+	<input type="name" name="name" id="template_creator_page_formitems_options_name"/>
+	<label for="template_creator_page_formitems_options_title" >title</label>
+	<input type="title" name="title" id="template_creator_page_formitems_options_title" />
+</script>
+
+<script id="templates_creator_formitems_text_display" type="text/x-handlebars-template">
+	<li><a class="edit_area" data-identity="{{$_.pos}}" href="#creator/stories/{{_id }}/{{horizontal}}/{{vertical}}/{{$_.pos}}" data-identity="{{pos}}" data-ajax="false">{{{$_.value}}}</a></li>
+</script>
+
+<script id="templates_creator_formitems_text_edit" type="text/x-handlebars-template">
+	<textarea class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset">{{value}}</textarea>
+	<a href="#" data-role="button" class="saveButton" data-identity="{{pos}}">save</a>
+</script>
+
+<script id="templates_creator_formitems_textfield_display" type="text/x-handlebars-template">
+	<li>
+		<a href="#">
+			<span id="textid" placeholder="Enter character name" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset" style="padding: 7px; width: auto">
+				{{$_.value}}
+			</span>
+		</a>
+		<a href="#creator/stories/{{_id }}/{{vertical}}/{{horizontal}}/{{$_.formItemPos}}" class="setFormItemProperties" data-ajax="false" >PROPERTIES</a>
+	</li>
+</script>
+
+<script id="templates_creator_formitems_linkPageDecisions_display" type="text/x-handlebars-template">
+	<li style="background-color:red;">
+		<a href="#">
+			<div data-role="controlgroup" data-type="horizontal">
+				{{#linkPageDecisions}} 
+					<a href="#creator/stories/{{../props/_id }}/{{vPos}}/{{hPos}}" data-role="button" type="">{{value}}</a>
+				{{/linkPageDecisions}}
+			</div>
+			<!-- <a href="#creator/stories/{{_id }}/{{vertical}}/{{horizontal}}/{{$_.formItemPos}}" class="setFormItemProperties" data-ajax="false" >PROPERTIES</a> -->
+		</a>
+	</li>
+</script>
+
+<script id="templates_creator_formitems_linkPageDecisions_edit" type="text/x-handlebars-template">
+	<li>
+		<a href="#">
+			<div data-role="controlgroup" data-type="horizontal">
+				{{#linkPageDecisions}} 
+					<a href="#creator/stories/{{../props/_id }}/{{vPos}}/{{hPos}}" data-role="button" type="">{{value}}</a>
+				{{/linkPageDecisions}}
+			</div>
+		</a>
+	</li>
+</script> 
+
+<script id="templates_listviews_Browse" type="text/x-handlebars-template">
+	<ul data-role="listview" data-theme="a" data-divendertheme="b">  <!-- class="ui-block-b transparent" data-inset="true" -->
+		{{#pages}}
+		<li>
+			<a href="#creator/stories/{{../id}}/{{../vPos}}/{{hPos}}" data-ajax="false"><p>{{hPos}} {{header.value}}</p></a>
+		</li>
+		{{/pages}}
+	</ul>
+</script>

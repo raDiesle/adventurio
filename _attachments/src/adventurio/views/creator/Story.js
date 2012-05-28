@@ -1,5 +1,5 @@
 adventurio.views.creator.Story = adventurio.views.superClasses.Basic.extend({
-	id : 'page_creator_stories_story',
+	id : 'template_page_reader_StorySummary',
 	initialize : function(){
 		this.model.on('change', this.render, this);
 		this.model.lazyFetch();

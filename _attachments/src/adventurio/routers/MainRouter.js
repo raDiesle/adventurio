@@ -1,6 +1,4 @@
-$.mobile.hashListeningEnabled = false;
-$.mobile.pushStateEnabled = false;
-$.mobile.page.prototype.options.degradeInputs.date = true;
+
 
 // $(document).bind("mobileinit",function(){
 //

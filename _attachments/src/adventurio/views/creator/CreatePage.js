@@ -1,23 +1,22 @@
 adventurio.views.creator.CreatePage = adventurio.views.superClasses.Basic.extend({
 	id : "page_creator_vPos_hPos",
-	getCurrentPage : function(){
+	getCurrentPage : function() {
 		return this.model.getModelPagePath(this.options.parameter.vPos, this.options.parameter.hPos);
 	},
-	getSpecificTemplateValues : function(){
-		var html ="";
-		var context = {};
-		context.props = {};
-		context.props.vertical = this.options.parameter.vPos;
-		context.props.horizontal = this.options.parameter.hPos;
-		context.props._id = this.model.id;
-		
-		context.fields = this.getCurrentPage().fields;
-		context.linkPageDecisions = this.getCurrentPage().linkPageDecisions;
-		return context;
+	getSpecificTemplateValues : function() {
+		return {
+			props : {
+				vertical : this.options.parameter.vPos,
+				horizontal : this.options.parameter.hPos,
+				_id : this.model.id
+			},
+			fields : this.getCurrentPage().fields,
+			linkPageDecisions : this.getCurrentPage().linkPageDecisions
+		}
 	},
 	initialize : function() {
 		this.model.on('change', this.render, this);
-		this.model.lazyFetch(); 
+		this.model.lazyFetch();
 	},
 	render : function() {
 		$("#page_creator_vPos_hPos").removeClass("ui-dialog-background ");
@@ -35,19 +34,21 @@ adventurio.views.creator.CreatePage = adventurio.views.superClasses.Basic.extend
 		clickEvent.preventDefault();
 		this.attributes.editModeStatus.LEAVES_WRITE_MODE = true;
 		this.attributes.editModeStatus.READ_MODE = true;
-		
+
 		var fieldPos = $(clickEvent.currentTarget).data("identity");
 		var vPos = this.options.parameter.vPos;
 		var hPos = this.options.parameter.hPos;
-		
+
 		// var fieldToChange = this.model.getModelFieldPath(vPos, hPos, fieldPos);
 		var editedValueToSave = $(clickEvent.currentTarget).prev().val();
 		var fieldToBeChanged = this.model.getModelFieldPath(vPos, hPos, fieldPos);
-		fieldToBeChanged.value = editedValueToSave.replace(/^\s+|\s+$/g, "").replace(/\n/g, "<br>"); // .replace( /\r?\n/g, "\r\n"
-		this.model.save(); // this.model.toJSON()
+		fieldToBeChanged.value = editedValueToSave.replace(/^\s+|\s+$/g, "").replace(/\n/g, "<br>");
+		// .replace( /\r?\n/g, "\r\n"
+		this.model.save();
+		// this.model.toJSON()
 		// this.model.set({fields : });
 		// this.model.setModelFieldValue(vPos, hPos, fieldPos, editedValueToSave);
-		
+
 	},
 	triggerCreate : function(event) {
 		event.stopPropagation();
@@ -57,8 +58,8 @@ adventurio.views.creator.CreatePage = adventurio.views.superClasses.Basic.extend
 		if(this.attributes.editModeStatus.READ_MODE && !this.attributes.editModeStatus.LEAVES_WRITE_MODE) {
 			var context = {};
 			context.value = containerEditElement.html().replace(/<br>/g, "\n");
-			context.pos =  containerEditElement.data("identity");
-			
+			context.pos = containerEditElement.data("identity");
+
 			containerEditElement.html(adventurio.templates.creator.page.fields.StaticText.edit.compile(context));
 
 			// hack to support autoscroll

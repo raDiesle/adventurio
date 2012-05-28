@@ -1,19 +1,11 @@
 /* Initialize all jquery mobile pages without content dynamic */
-var templateValues = {
-	allPages : $("body").children('script[id^="template_page_"]').map(function() {
-		console.debug("Container pages were created: "+ this.id.replace(/template_page_/, "page_"));
-		return {
-			'templatePartialPageID' : this.id,
-			'pageID' : this.id.replace(/template_page_/, "page_"),
-		};
-	}).toArray()
-};
+// $(document).ready(function() {
+  
+// });
 
 
-$.each(templateValues.allPages, function(index, foundPage) {
-	console.debug("page partial was registered: "+ foundPage.templatePartialPageID);
-	Handlebars.registerPartial(foundPage.templatePartialPageID, $("#" + foundPage.templatePartialPageID).html());
-});
+findAndRegisterPartials($("body"));
+
 
 // $("#allPagesContainer").html(Handlebars.compile($("#template_renderAllDetectedPageContainers").html())(templateValues));
 
