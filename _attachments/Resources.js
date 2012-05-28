@@ -26,7 +26,9 @@ $LAB
 		$.mobile.page.prototype.options.degradeInputs.date = true;
 		$.mobile.page.prototype.options.domCache = false;
         $.mobile.pushStateEnabled = false;
-        //$.mobile.linkBindingEnabled = false; //-- will cause bug where window.hash = will stay empty
+        $.mobile.defaultDialogTransition = "none";
+        $.mobile.defaultPageTransition = "none";
+        $.mobile.linkBindingEnabled = false; //-- will cause bug where window.hash = will stay empty
       });
   })
  

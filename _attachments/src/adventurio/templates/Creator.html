@@ -38,11 +38,11 @@
 
 
 <script id="template_page_creator_stories" type="text/x-handlebars-template">
-	{{> templates_listviews_SimpleList}}
+	{{> template_listviews_SimpleList}}
 </script>
 
 <script id="template_page_creator_stories_storyid" type="text/x-handlebars-template">
-	{{> templates_menus_simple}}
+	{{> template_menus_simple}}
 </script>
 
 <!-- CREATOR: adventurio.creator.EditPageFormItemOptions Dialog  -->
@@ -90,48 +90,50 @@
 <script id="template_page_creator_vPos_hPos" type="text/x-handlebars-template">
 	<ul data-role="listview" data-inset="true" data-split-theme="d">
 		{{#fields}}
-			{{#ifIsTypeOf this "text"}}
-				{{#$ ../../props }}{{> templates_creator_formitems_text_display}}{{/$}}
-			{{/ifIsTypeOf}}
-			{{#ifIsTypeOf this "textfield"}}
-				{{#$ ../../props }}{{> templates_creator_formitems_textfield_display}}{{/$}}
-			{{/ifIsTypeOf}}
+			{{#ifFieldIsTypeOf this "statictext"}}
+				{{#$ ../../props }}{{> template_creator_formitems_text_display}}{{/$}}
+			{{/ifFieldIsTypeOf}}
+			{{#ifFieldIsTypeOf this "textfield"}}
+				{{#$ ../../props }}{{> template_creator_formitems_textfield_display}}{{/$}}
+			{{/ifFieldIsTypeOf}}
 		{{/fields}} 
 		
-		{{> templates_creator_formitems_linkPageDecisions_display}}
+		{{> template_creator_formitems_linkPageDecisions_display}}
 	</ul>
 </script>
 
-<script id="template_creator_page_element_editor" type="text/x-handlebars-template"> 
+<script id="template_dialog_creator_fields_options" type="text/x-handlebars-template"> 
 	<p>Options for formItem</p>
 	<div data-role="fieldcontain">
 		<form action="#" method="GET" >
+		{{whatis this}}
+			{{#ifFieldIsTypeOf this.field "statictext"}}
+				{{> template_creator_formitems_statictext_options}}
+			{{/ifFieldIsTypeOf}}
+			{{#ifFieldIsTypeOf this.field "textfield"}}
 			
-			{{#ifIsTypeOf this "statictext"}}
-				{{#$ ../../props }}{{> templates_creator_formitems_statictext_options}}{{/$}}
-			{{/ifIsTypeOf}}
-			{{#ifIsTypeOf this "textfield"}}
-				{{#$ ../../props }}{{> templates_creator_formitems_textfield_options}}{{/$}}
-			{{/ifIsTypeOf}}
-			{{#ifIsTypeOf this "linkPageDecisions"}}
-				{{#$ ../../props }}{{> templates_creator_linkPageDecisions_options}}{{/$}}
-			{{/ifIsTypeOf}}
-			{{#ifIsTypeOf this "header"}}
-				{{#$ ../../props }}{{> templates_creator_header_options}}{{/$}}
-			{{/ifIsTypeOf}}
+				{{#$ ../../props }}{{> template_creator_formitems_textfield_options}}{{/$}}
+			{{/ifFieldIsTypeOf}}
+			{{#ifFieldIsTypeOf this.field "linkPageDecisions"}}
+				{{#$ ../../props }}{{> template_creator_linkPageDecisions_options}}{{/$}}
+			{{/ifFieldIsTypeOf}}
+			{{#ifFieldIsTypeOf this.field "header"}}
+				{{#$ ../../props }}{{> template_creator_header_options}}{{/$}}
+			{{/ifFieldIsTypeOf}}
 			
-			{{> templates_creator_page_options_buttons}}
+			{{> template_creator_page_options_buttons}}
 		</form>
 	</div>
 </script>
 
-<script id="templates_creator_page_options_buttons" type="text/x-handlebars-template">
+<script id="template_creator_page_options_buttons" type="text/x-handlebars-template">
 	buttons
 	<a href="#" data-role="button" class="submitButton">Click</a>
 </script>
 
 <script id="template_creator_formitems_statictext_options" type="text/x-handlebars-template">
 	statictext options
+	{{whatis this}}
 	
 	<label for="template_creator_page_formitems_options_name" >name:</label>
 	<input type="name" name="name" id="template_creator_page_formitems_options_name"/>
@@ -139,16 +141,16 @@
 	<input type="title" name="title" id="template_creator_page_formitems_options_title" />
 </script>
 
-<script id="templates_creator_formitems_text_display" type="text/x-handlebars-template">
-	<li><a class="edit_area" data-identity="{{$_.pos}}" href="#creator/stories/{{_id }}/{{horizontal}}/{{vertical}}/{{$_.pos}}" data-identity="{{pos}}" data-ajax="false">{{{$_.value}}}</a></li>
+<script id="template_creator_formitems_text_display" type="text/x-handlebars-template">
+	<li><a class="edit_area" data-identity="{{$_.pos}}" href="#creator/stories/{{_id }}/{{horizontal}}/{{vertical}}/{{$_.pos}}" data-ajax="false">{{{$_.value}}}</a></li>
 </script>
 
-<script id="templates_creator_formitems_text_edit" type="text/x-handlebars-template">
+<script id="template_creator_formitems_text_edit" type="text/x-handlebars-template">
 	<textarea class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset">{{value}}</textarea>
 	<a href="#" data-role="button" class="saveButton" data-identity="{{pos}}">save</a>
 </script>
 
-<script id="templates_creator_formitems_textfield_display" type="text/x-handlebars-template">
+<script id="template_creator_formitems_textfield_display" type="text/x-handlebars-template">
 	<li>
 		<a href="#">
 			<span id="textid" placeholder="Enter character name" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset" style="padding: 7px; width: auto">
@@ -159,7 +161,7 @@
 	</li>
 </script>
 
-<script id="templates_creator_formitems_linkPageDecisions_display" type="text/x-handlebars-template">
+<script id="template_creator_formitems_linkPageDecisions_display" type="text/x-handlebars-template">
 	<li style="background-color:red;">
 		<a href="#">
 			<div data-role="controlgroup" data-type="horizontal">
@@ -172,7 +174,7 @@
 	</li>
 </script>
 
-<script id="templates_creator_formitems_linkPageDecisions_edit" type="text/x-handlebars-template">
+<script id="template_creator_formitems_linkPageDecisions_edit" type="text/x-handlebars-template">
 	<li>
 		<a href="#">
 			<div data-role="controlgroup" data-type="horizontal">

@@ -25,17 +25,14 @@ adventurio.views.superClasses.Basic = Backbone.View.extend({
 		this.cleanupPossiblePageDuplicationInDOM();
 		
 		$(this.el).html(this.getHTMLwithAddingHrefPagePrefix(htmlContent));
-		$(this.el).attr("data-role", "page");
-		// $(this.el)
-	    // .page();
-	    //.addClass($.mobile.activePageClass)
-	    // .trigger('create');
-		
+
+		$(this.el).attr("data-role", role);
 		$("body").append($(this.el));
+		
 		$("#" + this.id).page();
 		
 		$.mobile.changePage("#" + this.id, {
-			transition : 'slideup',
+			// transition : 'slideup',
 			reverse : false,
 			changeHash : false,
 			role : role

@@ -50,7 +50,7 @@ Handlebars.registerHelper('I18n',
   }
 );
 
-Handlebars.registerHelper("ifIsTypeOf", function(actualFormItem, formItemTypeToCheck, fn, elseFn) {
+Handlebars.registerHelper("ifFieldIsTypeOf", function(actualFormItem, formItemTypeToCheck, fn, elseFn) {
 	if(actualFormItem.type === formItemTypeToCheck){
 		return fn(actualFormItem);
 	}

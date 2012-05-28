@@ -24,7 +24,7 @@ adventurio.models.StoryModel = Backbone.Model.extend({ // Backbone.DeepModel.ext
 				fields : [
 				 {
 					pos : 1,
-					type : "text",
+					type : "statictext",
 					value : "<h1>Please enter your name:</h1>"
 				},{
 					pos : 2,
@@ -33,7 +33,7 @@ adventurio.models.StoryModel = Backbone.Model.extend({ // Backbone.DeepModel.ext
 					value : "Your name"
 				},{
 					pos : 3,
-					type : "text",
+					type : "statictext",
 					value : "You're in a forest, everything is dark. What do you want to do next?"
 				},
 				]

@@ -1,15 +1,14 @@
 adventurio.views.creator.PageElementEditor = adventurio.views.superClasses.Basic.extend({
-	el : $("#dialog_creator_fields_options"),
+	id : "dialog_creator_fields_options",
 	initialize : function() {
 		$().ready($.proxy(this.render, this));
-		// hack
 	},
 	parameter : {
 		vPos : {},
 		hPos : {},
 		fieldPos : {}
 	},
-	getTemplateValues : function() {
+	getSpecificTemplateValues : function() {
 		return {
 			vPos : this.parameter.vPos,
 			hPos : this.parameter.hPos,
@@ -21,7 +20,7 @@ adventurio.views.creator.PageElementEditor = adventurio.views.superClasses.Basic
 	render : function() {
 		this.constructor.__super__.makeLastPageTransparent.apply(this, [$("#page_creator_vPos_hPos")]);
 
-		this._super("render", [adventurio.templates.creator.page.PageElementEditor.compile(this.getTemplateValues()), "Editor", {
+		this._super("render", ["Editor", {
 			role : "dialog"
 		}]);
 	},
