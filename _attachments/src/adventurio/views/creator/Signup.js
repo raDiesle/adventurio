@@ -2,16 +2,11 @@
 adventurio.views.creator.Signup = Backbone.View.extend({
 	id: "creator_signup",
 	model: adventurio.models.UserSingleton,
-	initialize : function() {
-		// hack, otherwise changePage throws exception
-		$().ready(this.render);
-		// this.render();
-	},
-	render: function(event){
-		$.mobile.changePage('#creator_signup', {transition: 'slideup',  role: "dialog", reverse: false, changeHash: false});
-	},
 	events : {
 		"click .submitButton" : "signup"
+	},
+	getSpecificTemplateValues : function(){
+		headerTitle : "Signup"
 	},
 	signup : function(){
 		var serializedJsonForm = $("#creator_signup form").first().serializeJSON();

@@ -1,16 +1,10 @@
 adventurio.views.creator.Index = Backbone.View.extend({
-	el : $('#'),
+	// not used - tested  , yet
+	id : "creator_page",
+	headerTitle : "creator index",
 	initialize : function() {
 		// hack, otherwise changePage throws exception
 		$().ready(this.render);
-	},
-	render : function() {
-		$.mobile.changePage('#creator_page', {
-			transition : 'slideup',
-			role : "page",
-			reverse : false,
-			changeHash : false
-		});
 	},
 	events : {
 		'click .addButton' : 'addStory'

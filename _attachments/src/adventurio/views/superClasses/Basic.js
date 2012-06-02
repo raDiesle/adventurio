@@ -1,13 +1,21 @@
 adventurio.views.superClasses.Basic = Backbone.View.extend({
-	
+	// onSuccessfulValidation : undefined,
+	initialize : function() {
+		 _.bindAll(this, 'render');
+		 this.render();
+	},
+	role : "page",
+	getHeaderTitle : function(){
+		return this.getSpecificTemplateValues().headerTitle; 
+	},
 	getTemplateID : function(){
 		return "template_basic_page_simple";	
 	},
 	getTemplateResult : function(templateDefinitionID, templateValues){
 		return Handlebars.compile($("#"+templateDefinitionID).html())(templateValues);
 	},
-	getBasicPageTemplateResult : function(headerTitle){
-		var templateValues = {templatePartialPageID : "template_"+this.id, headerTitle : headerTitle};
+	getBasicPageTemplateResult : function(){
+		var templateValues = {templatePartialPageID : "template_"+this.id, headerTitle : this.getHeaderTitle()};
 		var specific = this.getSpecificTemplateValues();
 		
 		$.extend(templateValues, this.getSpecificTemplateValues());
@@ -16,35 +24,24 @@ adventurio.views.superClasses.Basic = Backbone.View.extend({
 	getRequestedPageTemplateResult : function(){
 		this.getBasicPageTemplateResult();
 	},
-	render : function(headerTitle, options) {
-		options = options || {};
-		var role = typeof options['role'] == 'undefined' ? "page" : options['role'];
-		// var role = typeof options['templateType'] == 'undefined' ? "basic" : options['templateType'];
-		var htmlContent = typeof options['htmlContent'] == 'undefined' ? this.getBasicPageTemplateResult(headerTitle) : options['htmlContent'];
+	render : function() {
+		var htmlContent = this.getBasicPageTemplateResult();
 		
 		this.cleanupPossiblePageDuplicationInDOM();
 		
 		$(this.el).html(this.getHTMLwithAddingHrefPagePrefix(htmlContent));
 
-		$(this.el).attr("data-role", role);
+		$(this.el).attr("data-role", this.role);
 		$("body").append($(this.el));
 		
 		$("#" + this.id).page();
 		
 		$.mobile.changePage("#" + this.id, {
-			// transition : 'slideup',
 			reverse : false,
 			changeHash : false,
-			role : role
+			role : this.role
 			// ,allowSamePageTransition: true
 			// ,reloadPage : false
-		});
-	},
-	addValidationHandler : function() {
-			$("form", this.el).validate({
-			rules : this.model.settings.validation.rules,
-			submitHandler : $.proxy(this.onSuccessfulValidation, this),
-			debug : true
 		});
 	},
 	cleanupPossiblePageDuplicationInDOM : function(){

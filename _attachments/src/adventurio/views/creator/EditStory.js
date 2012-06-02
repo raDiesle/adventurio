@@ -1,20 +1,19 @@
 adventurio.views.creator.Story = adventurio.views.superClasses.Basic.extend({
-	id : 'template_page_reader_StorySummary',
+	id : 'page_creator_EditStory',
 	initialize : function(){
 		this.model.on('change', this.render, this);
 		this.model.lazyFetch();
 	},
+	getHeaderTitle : function(){
+		return "edit story" + this.model.get("name");
+	},
 	getSpecificTemplateValues : function(){
 		return this.model.toJSON();
-	},
-	render : function() {
-		this._super("render", [this.model.get("name")]);
 	},
 	events : {
 		"click .submitButton" : "editStory",
 	},
 	editStory : function(event) {
-
 		if(this.model) {
 			// can use error dialog instead and use usage of localstorage
 			this.model.save({

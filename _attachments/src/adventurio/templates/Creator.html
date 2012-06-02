@@ -36,7 +36,6 @@
 </script>
 
 
-
 <script id="template_page_creator_stories" type="text/x-handlebars-template">
 	{{> template_listviews_SimpleList}}
 </script>
@@ -106,9 +105,9 @@
 	<p>Options for formItem</p>
 	<div data-role="fieldcontain">
 		<form action="#" method="GET" >
-		{{whatis this}}
+		
 			{{#ifFieldIsTypeOf this.field "statictext"}}
-				{{> template_creator_formitems_statictext_options}}
+				{{#$ .. }}{{> template_creator_formitems_statictext_options}}{{/$}}
 			{{/ifFieldIsTypeOf}}
 			{{#ifFieldIsTypeOf this.field "textfield"}}
 			
@@ -127,18 +126,18 @@
 </script>
 
 <script id="template_creator_page_options_buttons" type="text/x-handlebars-template">
-	buttons
-	<a href="#" data-role="button" class="submitButton">Click</a>
+	<div data-role="controlgroup" data-type="horizontal">
+		<a href="#" data-role="button" class="submitButton">Save</a>
+		<a href="#" data-role="button" class="submitButton">Move</a>
+		<a href="#" data-role="button" class="submitButton">Delete</a>
+	</div>
 </script>
 
 <script id="template_creator_formitems_statictext_options" type="text/x-handlebars-template">
-	statictext options
-	{{whatis this}}
-	
-	<label for="template_creator_page_formitems_options_name" >name:</label>
-	<input type="name" name="name" id="template_creator_page_formitems_options_name"/>
-	<label for="template_creator_page_formitems_options_title" >title</label>
-	<input type="title" name="title" id="template_creator_page_formitems_options_title" />
+	<div data-role="fieldcontain">
+		<label for="template_creator_page_formitems_options_name" >name:</label>
+		<input type="text" name="value" id="template_creator_page_formitems_options_name" value="{{$_value}}" />
+	</div>
 </script>
 
 <script id="template_creator_formitems_text_display" type="text/x-handlebars-template">

@@ -21,7 +21,8 @@ var adventurio = adventurio || {
 	},
 	views : {
 		superClasses : {
-			Basic : {}
+			Basic : {},
+			Validateable : {}
 		},
 		creator : {
 			ManageStory : {},
@@ -32,7 +33,7 @@ var adventurio = adventurio || {
 			Login : {},
 			Signup : {},
 			Stories : {},
-			Story : {},
+			EditStory : {},
 			CreateStory : {}
 		},
 		reader : {
@@ -60,6 +61,9 @@ var adventurio = adventurio || {
 		jeditable : {
 			MarkItUpSettings : {}
 		}
+	},
+	events : {
+		SubmitForm : {}
 	}
 };
 

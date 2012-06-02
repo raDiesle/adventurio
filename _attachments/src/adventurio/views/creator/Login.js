@@ -1,15 +1,11 @@
 adventurio.views.creator.Login = adventurio.views.superClasses.Basic.extend({
 	id : "page_creator_login",
+	role : "dialog",
 	model : adventurio.models.User,
-	initialize : function() {
-		$().ready($.proxy(this.render, this));
-	},
 	getSpecificTemplateValues : function(){
-	},
-	render : function(event) {
-		this._super("render", ["Story header", {
-			'role' : 'dialog'
-		}]);
+		return {
+			storyHeader : "Login"
+		}
 	},
 	events : {
 		"click a[type='submit']" : "login",

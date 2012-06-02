@@ -1,9 +1,17 @@
-adventurio.views.creator.CreateStory = adventurio.views.superClasses.Basic.extend({
+adventurio.views.creator.CreateStory = adventurio.views.superClasses.Validateable.extend({
 	id : "page_creator_CreateStory",
+	getHeaderTitle : function(){
+		return "Create new Story";
+	},
 	model : adventurio.models.SingleStorySingleton,
 	initialize : function() {
 		//_.bindAll(this, 'render');
 		// this.render();
+		
+		// $(this.el).on("click a[type='submit']", function(){
+			// console.warn("submitted");
+		// });
+		
 		$().ready($.proxy(this.render, this));
 	},
 	getSpecificTemplateValues : function(){
@@ -12,17 +20,10 @@ adventurio.views.creator.CreateStory = adventurio.views.superClasses.Basic.exten
 		}
 		return {};
 	},
-	render : function(event) {
-		this._super("render", ["Story header"]);
-		$.proxy(this.constructor.__super__.addValidationHandler.apply(this, []), this);
-		return this;
-	},
-	events : {
-		"click a[type='submit']" : "validateForm",
-	},
-	validateForm : function(event) {
-		event.preventDefault();
-		$.proxy($("form", this.el).submit(), this);
+	events : function(){
+		return _.extend({
+		// another event
+		}, this.constructor.__super__.events);
 	},
 	onSuccessfulValidation : function() {
 		var storyToBeCreated = $("form", this.el).serializeJSON();

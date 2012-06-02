@@ -10,14 +10,11 @@ adventurio.views.creator.BrowseStory = adventurio.views.superClasses.Basic.exten
 	},
 	getSpecificTemplateValues : function(){
 		return {
+			headerTitle : "Browse Story",
 			pages : this.model.get("levels")[this.options.parameter.verticalFrom - 1].pages,
 			id : this.model.id,
 			vPos : this.options.parameter.verticalFrom
 		};
-	},
-	render : function() {
-		this._super("render", ["Browse Story"]);
-		return this;
 	},
 	events : {
 		'change input' : 'changeValue'

@@ -1,8 +1,6 @@
 adventurio.views.creator.PageElementEditor = adventurio.views.superClasses.Basic.extend({
 	id : "dialog_creator_fields_options",
-	initialize : function() {
-		$().ready($.proxy(this.render, this));
-	},
+	role : "dialog",
 	parameter : {
 		vPos : {},
 		hPos : {},
@@ -10,6 +8,7 @@ adventurio.views.creator.PageElementEditor = adventurio.views.superClasses.Basic
 	},
 	getSpecificTemplateValues : function() {
 		return {
+			headerTitle : "Edit Element",
 			vPos : this.parameter.vPos,
 			hPos : this.parameter.hPos,
 			fieldPos : this.parameter.fieldPos,
@@ -19,9 +18,6 @@ adventurio.views.creator.PageElementEditor = adventurio.views.superClasses.Basic
 	},
 	render : function() {
 		this.constructor.__super__.makeLastPageTransparent.apply(this, [$("#page_creator_vPos_hPos")]);
-
-		this._super("render", ["Editor", {
-			role : "dialog"
-		}]);
+		this._super("render", {});
 	},
 }); 

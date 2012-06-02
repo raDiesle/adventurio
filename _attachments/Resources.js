@@ -69,6 +69,7 @@ $LAB
  .script(srcFolder+"/adventurio/models/StoryModel.js")
  .script(srcFolder+"/adventurio/models/User.js")
  .script(srcFolder+"/adventurio/views/superClasses/Basic.js")
+ .script(srcFolder+"/adventurio/views/superClasses/Validateable.js")
  
  .script(srcFolder+"/adventurio/views/reader/Index.js")
  .script(srcFolder+"/adventurio/views/reader/Stories.js")
@@ -77,7 +78,7 @@ $LAB
  .script(srcFolder+"/adventurio/views/creator/EditPageFormItemOptionsWindow.js")
  .script(srcFolder+"/adventurio/views/creator/ManagePage.js")
  .script(srcFolder+"/adventurio/views/creator/BrowseStory.js")
- .script(srcFolder+"/adventurio/views/creator/Story.js")
+ .script(srcFolder+"/adventurio/views/creator/EditStory.js")
  .script(srcFolder+"/adventurio/views/creator/Signup.js")
  .script(srcFolder+"/adventurio/views/creator/Login.js")
  .script(srcFolder+"/adventurio/views/creator/Stories.js")
@@ -88,5 +89,6 @@ $LAB
 .script(srcFolder+"/adventurio/application/Handlebars.js")
 .script(srcFolder+"/adventurio/application/ErrorHandling.js")
 .script(srcFolder+"/adventurio/application/I18nSettings.js")
-.script(srcFolder+"/adventurio/application/Validators.js")		
+.script(srcFolder+"/adventurio/application/Validators.js")
+.script(srcFolder+"/adventurio/application/Inheritance.js")		
 .script(srcFolder+"/adventurio/application/ApplicationSettings.js");

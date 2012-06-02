@@ -5,6 +5,7 @@ adventurio.views.creator.ManagePage = adventurio.views.superClasses.Basic.extend
 	},
 	getSpecificTemplateValues : function() {
 		return {
+			headerTitle : this.getCurrentPage().header.value,
 			props : {
 				vertical : this.options.parameter.vPos,
 				horizontal : this.options.parameter.hPos,
@@ -17,18 +18,6 @@ adventurio.views.creator.ManagePage = adventurio.views.superClasses.Basic.extend
 	initialize : function() {
 		this.model.on('change', this.render, this);
 		this.model.lazyFetch();
-	},
-	render : function() {
-		//$("#page_creator_vPos_hPos").removeClass("ui-dialog-background ");
-		// Hack
-		// $('.edit_area').trigger('create');
-		// $('input').textinput();
-		this._super("render", [this.getCurrentPage().header.value]);
-	},
-	events : {
-		// "click .edit_area" : "triggerCreate",
-		// "click .saveButton" : "saveEditedValue"
-		// "click a" : "openFormItemProperties"
 	},
 	saveEditedValue : function(clickEvent) {
 		clickEvent.preventDefault();

@@ -1,10 +1,8 @@
 adventurio.views.creator.ManageStory = adventurio.views.superClasses.Basic.extend({
 	id : "page_creator_stories_storyid",
-	initialize : function() {
-		$().ready($.proxy(this.render, this));
-	},
 	getSpecificTemplateValues : function(){
 		return {
+			headerTitle : "Manage Story",
 			menuObjects : {
 				header : I18n.t("creator.stories.singleStory.menu.header"),
 				menu :[ {
@@ -22,9 +20,5 @@ adventurio.views.creator.ManageStory = adventurio.views.superClasses.Basic.exten
 				]
 			}
 		};
-	},
-	render : function() {
-		this._super("render", ["manage title"]);
-		return this;
 	}
 });
