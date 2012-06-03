@@ -22,7 +22,8 @@ var adventurio = adventurio || {
 	views : {
 		superClasses : {
 			Basic : {},
-			Validateable : {}
+			Validateable : {},
+			BasicDialog : {}
 		},
 		creator : {
 			ManageStory : {},

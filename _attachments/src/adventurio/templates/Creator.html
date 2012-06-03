@@ -44,13 +44,6 @@
 	{{> template_menus_simple}}
 </script>
 
-<!-- CREATOR: adventurio.creator.EditPageFormItemOptions Dialog  -->
-<div data-role="dialog" id="dialog_creator_pageelementeditor"  class="dialog_window_option" data-id="creator_page_formitem_options">
-	<div data-role="content" >
-	<!-- template_creator_page_editors -->
-	</div>
-</div>	
-
 <script id="template_page_creator_signup" type="text/x-handlebars-template">
 	<p>Please Signup</p>
 	<div data-role="fieldcontain">
@@ -102,16 +95,15 @@
 </script>
 
 <script id="template_dialog_creator_fields_options" type="text/x-handlebars-template"> 
-	<p>Options for formItem</p>
+	<h3>Options for Item</h3>
 	<div data-role="fieldcontain">
-		<form action="#" method="GET" >
+		<form action="#" method="GET">
 		
 			{{#ifFieldIsTypeOf this.field "statictext"}}
 				{{#$ .. }}{{> template_creator_formitems_statictext_options}}{{/$}}
 			{{/ifFieldIsTypeOf}}
 			{{#ifFieldIsTypeOf this.field "textfield"}}
-			
-				{{#$ ../../props }}{{> template_creator_formitems_textfield_options}}{{/$}}
+				{{#$ .. }}{{> template_creator_formitems_textfield_options}}{{/$}}
 			{{/ifFieldIsTypeOf}}
 			{{#ifFieldIsTypeOf this.field "linkPageDecisions"}}
 				{{#$ ../../props }}{{> template_creator_linkPageDecisions_options}}{{/$}}
@@ -127,36 +119,36 @@
 
 <script id="template_creator_page_options_buttons" type="text/x-handlebars-template">
 	<div data-role="controlgroup" data-type="horizontal">
-		<a href="#" data-role="button" class="submitButton">Save</a>
-		<a href="#" data-role="button" class="submitButton">Move</a>
-		<a href="#" data-role="button" class="submitButton">Delete</a>
+		<a href="#" data-role="button" type="submit">Save</a>
+		<a href="#" data-role="button" >Move</a>
+		<a href="#" data-role="button" type="delete">Delete</a>
+		<a href="#" data-role="button" type="reset">Close</a>
 	</div>
+</script>
+
+
+
+<script id="template_creator_formitems_textfield_options" type="text/x-handlebars-template">
+	<label for="template_creator_formitems_textfield_options_value" >Label:</label>
+	<input type="text" name="value" id="template_creator_formitems_textfield_options_value" value="{{field.value}}" />
 </script>
 
 <script id="template_creator_formitems_statictext_options" type="text/x-handlebars-template">
-	<div data-role="fieldcontain">
-		<label for="template_creator_page_formitems_options_name" >name:</label>
-		<input type="text" name="value" id="template_creator_page_formitems_options_name" value="{{$_value}}" />
-	</div>
+	<label for="template_creator_page_formitems_options_value" >Name:</label>
+	<textarea name="value" id="template_creator_page_formitems_options_value" >{{{field.value}}}</textarea>
 </script>
 
 <script id="template_creator_formitems_text_display" type="text/x-handlebars-template">
-	<li><a class="edit_area" data-identity="{{$_.pos}}" href="#creator/stories/{{_id }}/{{horizontal}}/{{vertical}}/{{$_.pos}}" data-ajax="false">{{{$_.value}}}</a></li>
-</script>
-
-<script id="template_creator_formitems_text_edit" type="text/x-handlebars-template">
-	<textarea class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset">{{value}}</textarea>
-	<a href="#" data-role="button" class="saveButton" data-identity="{{pos}}">save</a>
+	<li><a class="edit_area" data-identity="{{$_.pos}}" href="{{getEditOptionsURLForCurrentField}}" data-ajax="false">{{{$_.value}}}</a></li>
 </script>
 
 <script id="template_creator_formitems_textfield_display" type="text/x-handlebars-template">
 	<li>
-		<a href="#">
+		<a href="{{getEditOptionsURLForCurrentField}}">
 			<span id="textid" placeholder="Enter character name" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset" style="padding: 7px; width: auto">
 				{{$_.value}}
 			</span>
 		</a>
-		<a href="#creator/stories/{{_id }}/{{vertical}}/{{horizontal}}/{{$_.formItemPos}}" class="setFormItemProperties" data-ajax="false" >PROPERTIES</a>
 	</li>
 </script>
 

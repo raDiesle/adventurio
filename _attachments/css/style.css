@@ -18,6 +18,14 @@
 	margin-top: 0;
 }
 
+ui-dialog .ui-dialog-contain { 
+	margin-top: 0; 
+}
+
+div.ui-dialog-contain textarea.ui-input-text{
+	width: 100%;
+}
+
 label.error {
     color: red;
     font-size: 16px;

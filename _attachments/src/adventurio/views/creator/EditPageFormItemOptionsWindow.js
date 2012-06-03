@@ -1,6 +1,6 @@
-adventurio.views.creator.PageElementEditor = adventurio.views.superClasses.Basic.extend({
+adventurio.views.creator.PageElementEditor = adventurio.views.superClasses.BasicDialog.extend({
 	id : "dialog_creator_fields_options",
-	role : "dialog",
+	transparentBackgroundPageElID: "page_creator_vPos_hPos",
 	parameter : {
 		vPos : {},
 		hPos : {},
@@ -16,8 +16,7 @@ adventurio.views.creator.PageElementEditor = adventurio.views.superClasses.Basic
 			field : this.model.getModelFieldPath(this.options.parameter.vPos, this.options.parameter.hPos, this.options.parameter.fieldPos)
 		}
 	},
-	render : function() {
-		this.constructor.__super__.makeLastPageTransparent.apply(this, [$("#page_creator_vPos_hPos")]);
-		this._super("render", {});
-	},
+	onSuccessfulValidation : function(){
+		alert("saved");	
+	}
 }); 

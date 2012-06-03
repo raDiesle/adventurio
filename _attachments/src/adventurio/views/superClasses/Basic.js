@@ -1,10 +1,14 @@
 adventurio.views.superClasses.Basic = Backbone.View.extend({
-	// onSuccessfulValidation : undefined,
 	initialize : function() {
-		 _.bindAll(this, 'render');
+		 _.bindAll(); // this, 'render'
 		 this.render();
 	},
 	role : "page",
+	attributes : function(){
+		return {
+			"data-role" : this.role	
+		}
+	},
 	getHeaderTitle : function(){
 		return this.getSpecificTemplateValues().headerTitle; 
 	},
@@ -25,41 +29,28 @@ adventurio.views.superClasses.Basic = Backbone.View.extend({
 		this.getBasicPageTemplateResult();
 	},
 	render : function() {
-		var htmlContent = this.getBasicPageTemplateResult();
-		
 		this.cleanupPossiblePageDuplicationInDOM();
 		
-		$(this.el).html(this.getHTMLwithAddingHrefPagePrefix(htmlContent));
+		$(this.el).html(this.getBasicPageTemplateResult());
 
-		$(this.el).attr("data-role", this.role);
-		$("body").append($(this.el));
-		
-		$("#" + this.id).page();
+		this.addPageToDOMAndRenderJQM();
 		
 		$.mobile.changePage("#" + this.id, {
 			reverse : false,
 			changeHash : false,
 			role : this.role
-			// ,allowSamePageTransition: true
-			// ,reloadPage : false
 		});
 	},
+	addPageToDOMAndRenderJQM : function(){
+		$("body").append($(this.el));
+		$("#" + this.id).page();
+	},
+	// Instead you could use event "pagehide": "onPageHide"
 	cleanupPossiblePageDuplicationInDOM : function(){
-				var $previousEl = $("#"+this.id);
+		var $previousEl = $("#"+this.id);
 		var alreadyInDom = $previousEl.length >= 0;
 		if(alreadyInDom){
-		// "pagehide": "onPageHide"
 			$previousEl.remove();
-		}
-	},
-	// Hack: if used anchor, # will be removed on first click on link, but not on second 
-	getHTMLwithAddingHrefPagePrefix : function(htmlContent){
-		return htmlContent;
-		// return htmlContent.replace(/href=\"#/g, "href=\"index.html#");
-	},
-	makeLastPageTransparent : function(prevPageAsTransparentBackground){
-		if(prevPageAsTransparentBackground.css("display") !== "none"){
-			prevPageAsTransparentBackground.addClass("ui-dialog-background ");
 		}
 	}
 }); 

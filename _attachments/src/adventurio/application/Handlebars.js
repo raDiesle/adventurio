@@ -56,6 +56,12 @@ Handlebars.registerHelper("ifFieldIsTypeOf", function(actualFormItem, formItemTy
 	}
 });
 
+Handlebars.registerHelper("getEditOptionsURLForCurrentField", function() {
+		return "#creator/stories/"+this._id+"/"+this.horizontal+"/"+this.vertical+"/"+this.$_.pos;
+	}
+);
+
+
 // check for handlebar helpers
 // https://github.com/kanso/handlebars-helpers/blob/master/build/helpers.js
 
