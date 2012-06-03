@@ -59,7 +59,7 @@ $LAB
  // .script(libFolder+"form2js.js") // November 13 2011, https://github.com/maxatwork/form2js/tree/master/src
  // .script("lib/jstorange.js")// november 2011 https://github.com/andris9/jStorage
  
-// .script(srcFolder+"/adventurio/mocks/Stories.js")
+// .script(srcFolder+"/adventurio/mocks/Stories.js" change
 // .script(srcFolder+"/adventurio/mocks/SingleStory.js")
  
  .script(localeFolder+"locales.js") // i18n
