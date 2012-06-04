@@ -80,7 +80,7 @@
 </script>
 		
 <script id="template_page_creator_vPos_hPos" type="text/x-handlebars-template">
-	<ul data-role="listview" data-inset="true" data-split-theme="d">
+	<ul data-role="listview" data-inset="true" data-split-theme="a">
 		{{#fields}}
 			{{#ifFieldIsTypeOf this "statictext"}}
 				{{#$ ../../props }}{{> template_creator_formitems_text_display}}{{/$}}
@@ -120,13 +120,10 @@
 <script id="template_creator_page_options_buttons" type="text/x-handlebars-template">
 	<div data-role="controlgroup" data-type="horizontal">
 		<a href="#" data-role="button" type="submit">Save</a>
-		<a href="#" data-role="button" >Move</a>
 		<a href="#" data-role="button" type="delete">Delete</a>
 		<a href="#" data-role="button" type="reset">Close</a>
 	</div>
 </script>
-
-
 
 <script id="template_creator_formitems_textfield_options" type="text/x-handlebars-template">
 	<label for="template_creator_formitems_textfield_options_value" >Label:</label>
@@ -135,11 +132,16 @@
 
 <script id="template_creator_formitems_statictext_options" type="text/x-handlebars-template">
 	<label for="template_creator_page_formitems_options_value" >Name:</label>
-	<textarea name="value" id="template_creator_page_formitems_options_value" >{{{field.value}}}</textarea>
+	<form>
+		<textarea name="value" id="template_creator_page_formitems_options_value" >{{{field.value}}}</textarea>
+	</form>
 </script>
 
 <script id="template_creator_formitems_text_display" type="text/x-handlebars-template">
-	<li><a class="edit_area" data-identity="{{$_.pos}}" href="{{getEditOptionsURLForCurrentField}}" data-ajax="false">{{{$_.value}}}</a></li>
+	<li data-icon="star" >
+		<a data-identity="{{$_.pos}}" href="{{getEditOptionsURLForCurrentField}}" data-ajax="false">{{{$_.value}}}</a>
+		<a href="#" >something</a>
+	</li>
 </script>
 
 <script id="template_creator_formitems_textfield_display" type="text/x-handlebars-template">
