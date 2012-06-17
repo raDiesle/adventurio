@@ -1,3 +1,8 @@
+
+/* 
+ unused.
+ used for tests?
+ * */
 var libFolder = "lib/"; 
 var srcFolder = "src/";
 var localeFolder = "locale/";
@@ -21,6 +26,8 @@ $LAB
  // .script(libFolder+"js2form.js")// september 19 2011, .script("lib/jstorange.js")// november 2011 https://github.com/andris9/jStorage
  .script(libFolder+"jquery.toObject.js")// Nomeber 13 2011, . https://github.com/daffl/jquery.dform/
  .script(libFolder+"jquery.couchLogin.js")// May 10, 2011 https://github.com/couchapp/couchdb-login-jquery
+ 
+ // http://touchpunch.furf.com/
  
 // .script(srcFolder+"/adventurio/mocks/Stories.js")
 // .script(srcFolder+"/adventurio/mocks/SingleStory.js")

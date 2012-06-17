@@ -20,4 +20,7 @@ adventurio.views.superClasses.Validateable = adventurio.views.superClasses.Basic
 		// $.proxy($("form", this.el).submit(), this);
 		$("form", this.el).submit();
 	},
+	getFormData : function(){
+		return $("form", this.el).serializeJSON();
+	}
 });

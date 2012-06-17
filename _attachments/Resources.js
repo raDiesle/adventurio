@@ -8,31 +8,11 @@ $LAB
  
  .script("ApplicationScope.js")
  .script(libFolder+"json2.js")
- .script(libFolder+"jquery-1.7.1.js") // http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
+// .script(libFolder+"jquery-1.7.1.js") // http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
  
- .wait(function() {
- 	// $(document).on("pagebeforechange", function(e, data){
-		// // Only on url updates, non-jquery elements
-		// if (typeof data.toPage === "string") {
-		// e.preventDefault();
-		// var url = $("<a/>").attr("href",data.toPage)[0].pathname; // Get our path
-		// adventurio.routers.MainRouter.navigate(url, {trigger: true});
-		// }
-	// })
- 	
-      $(document).bind("mobileinit", function(){
-        $.mobile.ajaxEnabled = false;
-        $.mobile.hashListeningEnabled = false;
-		$.mobile.page.prototype.options.degradeInputs.date = true;
-		$.mobile.page.prototype.options.domCache = false;
-        $.mobile.pushStateEnabled = false;
-        $.mobile.defaultDialogTransition = "none";
-        $.mobile.defaultPageTransition = "none";
-        $.mobile.linkBindingEnabled = false; //-- will cause bug where window.hash = will stay empty
-      });
-  })
- 
+ .script("jqmInit.js")
  .script(libFolder+"jquery.mobile-1.1.0.js")
+ 
  .script(libFolder+"jquery.couch.js") // for signup november 2011 https://github.com/apache/couchdb/blob/master/share/www/script/jquery.couch.js
  .script(libFolder+"jquery.couch.app.js") // v 1.0.1 https://github.com/couchapp/couchapp/blob/master/couchapp/templates/vendor/couchapp/_attachments/jquery.couch.app.js
  .script(libFolder+"couch.js") // oktober 2011 https://github.com/apache/couchdb/blob/master/share/www/script/couch.js
@@ -76,7 +56,8 @@ $LAB
  .script(srcFolder+"/adventurio/views/reader/Stories.js")
  .script(srcFolder+"/adventurio/views/reader/StorySummary.js")
  .script(srcFolder+"/adventurio/views/creator/CreateStory.js")
- .script(srcFolder+"/adventurio/views/creator/EditPageFormItemOptionsWindow.js")
+ .script(srcFolder+"/adventurio/views/creator/PageElementEditor.js")
+ .script(srcFolder+"/adventurio/views/creator/PageLinkEditor.js")
  .script(srcFolder+"/adventurio/views/creator/ManagePage.js")
  .script(srcFolder+"/adventurio/views/creator/BrowseStory.js")
  .script(srcFolder+"/adventurio/views/creator/EditStory.js")

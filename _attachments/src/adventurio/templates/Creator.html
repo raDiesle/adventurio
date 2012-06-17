@@ -72,7 +72,7 @@
 			<input type="password" name="password" id="login_password"/>
 			
 			<div data-role="controlgroup" data-type="horizontal">
-				<a href="#" data-role="button" type="">Logout</a>
+				<a href="#" data-role="button" type="cancel">Logout</a>
 				<a href="#" data-role="button" data-theme="b" type="submit">Login</a>
 			</div>
 		</form>
@@ -105,9 +105,7 @@
 			{{#ifFieldIsTypeOf this.field "textfield"}}
 				{{#$ .. }}{{> template_creator_formitems_textfield_options}}{{/$}}
 			{{/ifFieldIsTypeOf}}
-			{{#ifFieldIsTypeOf this.field "linkPageDecisions"}}
-				{{#$ ../../props }}{{> template_creator_linkPageDecisions_options}}{{/$}}
-			{{/ifFieldIsTypeOf}}
+
 			{{#ifFieldIsTypeOf this.field "header"}}
 				{{#$ ../../props }}{{> template_creator_header_options}}{{/$}}
 			{{/ifFieldIsTypeOf}}
@@ -116,6 +114,20 @@
 		</form>
 	</div>
 </script>
+
+<script id="template_dialog_creator_link_options" type="text/x-handlebars-template"> 
+	<h3>Options for Links</h3>
+	<div data-role="fieldcontain">
+		<form action="#" method="GET">
+				<label for="template_creator_link_options_value" >Label:</label>
+				<input type="text" name="value" id="template_creator_link_options_value" value="{{value}}" />
+			{{> template_creator_page_options_buttons}}
+		</form>
+	</div>
+</script>
+
+
+
 
 <script id="template_creator_page_options_buttons" type="text/x-handlebars-template">
 	<div data-role="controlgroup" data-type="horizontal">
@@ -156,28 +168,19 @@
 
 <script id="template_creator_formitems_linkPageDecisions_display" type="text/x-handlebars-template">
 	<li style="background-color:red;">
-		<a href="#">
-			<div data-role="controlgroup" data-type="horizontal">
-				{{#linkPageDecisions}} 
-					<a href="#creator/stories/{{../props/_id }}/{{vPos}}/{{hPos}}" data-role="button" type="">{{value}}</a>
-				{{/linkPageDecisions}}
-			</div>
-			<!-- <a href="#creator/stories/{{_id }}/{{vertical}}/{{horizontal}}/{{$_.formItemPos}}" class="setFormItemProperties" data-ajax="false" >PROPERTIES</a> -->
-		</a>
+		<div data-role="controlgroup" data-type="horizontal">
+				{{whatis this}}
+			{{#linkPageDecisions}}
+<!-- 			"#creator/stories/"+this._id+"/"+this.horizontal+"/"+this.vertical+"/"+this.$_.pos; -->
+
+				<a href="#creator/stories/{{../props/_id }}/{{../props/vertical}}/{{../props/horizontal}}/links/{{pos}}" data-role="button" type="">{{value}}</a>
+			{{/linkPageDecisions}}
+		</div>
 	</li>
 </script>
-
-<script id="template_creator_formitems_linkPageDecisions_edit" type="text/x-handlebars-template">
-	<li>
-		<a href="#">
-			<div data-role="controlgroup" data-type="horizontal">
-				{{#linkPageDecisions}} 
-					<a href="#creator/stories/{{../props/_id }}/{{vPos}}/{{hPos}}" data-role="button" type="">{{value}}</a>
-				{{/linkPageDecisions}}
-			</div>
-		</a>
-	</li>
-</script> 
+<!-- 		<a href="#creator/stories/{{_id }}/{{vertical}}/{{horizontal}}/{{$_.formItemPos}}">
+		</a> -->
+			<!-- <a href="#creator/stories/{{_id }}/{{vertical}}/{{horizontal}}/{{$_.formItemPos}}" class="setFormItemProperties" data-ajax="false" >PROPERTIES</a> -->
 
 
 <script id="template_page_creator_stories_story_browse" type="text/x-handlebars-template">

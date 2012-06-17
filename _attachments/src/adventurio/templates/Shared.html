@@ -1,7 +1,8 @@
+
 <script id="template_basic_page_simple" type="text/x-handlebars-template">
 	<div data-role="header">
 		<h2>{{headerTitle}}</h2>
-		<a href="#" data-icon="delete">Close</a>
+		<a href="#" data-icon="star" data-rel="back">Back</a>
 	</div>
 	<div data-role="content">
 		{{> templatePartialPageID}}
@@ -22,7 +23,7 @@
 				<li data-role="list-divider">{{header}}</li>
 				{{#menu}}
 				<li>
-					<a href="#{{route}}"  class="reader_index_menu_link" data-identity="{{route}}" data-ajax="false"> <!--data-identity="{{route}}" -->
+					<a href="#{{route}}"  class="reader_index_menu_link" data-url="#{{route}}" data-identity="{{route}}" data-ajax="false" > <!--data-ajax="false"  -->
 						{{entry}}
 					</a>
 				</li>
@@ -37,7 +38,7 @@
 	<ul data-role="listview" data-theme="c" data-divendertheme="b">
 		{{#storyObjects}}
 			<li>
-				<a href="#{{../visitEntryPrefix}}{{_id}}" data-ajax="false" data-identity="{{_id}}">
+				<a href="#{{../visitEntryPrefix}}{{_id}}" data-ajax="false" > <!-- data-identity="{{_id}}"-->
 					<h2>{{name}}</h2>
 					<p>{{creator}}</p>
 					<p>{{tags}}</p>

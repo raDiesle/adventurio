@@ -1,6 +1,6 @@
 adventurio.views.creator.PageElementEditor = adventurio.views.superClasses.BasicDialog.extend({
 	id : "dialog_creator_fields_options",
-	transparentBackgroundPageElID: "page_creator_vPos_hPos",
+	transparentBackgroundPageElID : "page_creator_vPos_hPos",
 	parameter : {
 		vPos : {},
 		hPos : {},
@@ -20,15 +20,20 @@ adventurio.views.creator.PageElementEditor = adventurio.views.superClasses.Basic
 		this.model.on('change', this.render, this);
 		this.model.lazyFetch();
 	},
-	getCurrentField : function(){
+	getCurrentField : function() {
 		return this.model.getModelFieldPath(this.options.parameter.vPos, this.options.parameter.hPos, this.options.parameter.fieldPos);
 	},
-	onSuccessfulValidation : function(){
+	onSuccessfulValidation : function() {
 		var fieldOptionValues = $("form", this.el).serializeJSON();
-		
+
 		this.getCurrentField().value = fieldOptionValues.value.replace(/^\s+|\s+$/g, "").replace(/\n/g, "<br>");
 		// .replace( /\r?\n/g, "\r\n"
 		// this.model.trigger("change");
-		this.model.save();
+
+		this.model.save(this.model.toJSON(), {
+			success : function(model, response) {
+				history.go(-1);
+			}
+		});
 	}
-}); 
+});

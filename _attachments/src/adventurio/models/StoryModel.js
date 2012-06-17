@@ -50,9 +50,12 @@ adventurio.models.StoryModel = Backbone.Model.extend({ // Backbone.DeepModel.ext
 		return this.get("levels")[vPos-1].pages[hPos - 1];
 	},
 	getModelFieldsPath : function(vPos, hPos){
-		// return "levels."+(vPos-1)+".pages."+(this.options.parameter.hPos-1)+"fields";
 		var getModelPagePath = this.getModelPagePath(vPos, hPos);
 		return getModelPagePath.fields;
+	},
+	getModelLinksPath : function(vPos, hPos){
+		var getModelPagePath = this.getModelPagePath(vPos, hPos);
+		return getModelPagePath.linkPageDecisions;
 	},
 	getModelFieldValuePath : function(vPos, hPos, fieldPos){
 		// return getModelFieldsPath(vPos, hPos) + "."+fieldPos+".value";

@@ -30,6 +30,7 @@ var adventurio = adventurio || {
 			BrowseStory : {},
 			ManagePage : {},
 			PageElementEditor : {},
+			PageLinkEditor : {},
 			Index : {},
 			Login : {},
 			Signup : {},

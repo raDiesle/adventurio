@@ -1,5 +1,3 @@
-
-
 // $(document).bind("mobileinit",function(){
 //
 // });
@@ -20,12 +18,13 @@ adventurio.routers.MainRouter = Backbone.Router.extend({
 		"creator/signup" : "signup_dialog",
 		"creator/stories" : "creator_stories",
 		"creator/stories/new" : "doCreateNewStoryRequestedAction",
-		"creator/stories/:story?edit" : "doEditStoryAction",
+		"creator/stories/:storyId?edit" : "doEditStoryAction",
 		// "creator/stories/:story?browse" : "doNavigatePagesRequestedAction",
 		"creator/stories/:story/:vertical" : "doNavigatePagesRequestedAction",
 		// "creator/stories/:story?browse=:verticalFrom-:verticalTo" : "doNavigatePagesRequestedAction",
 		"creator/stories/:storyId" : "doManageStoryRequestedAction",
 		"creator/stories/:storyId/:vertical/:horizontal" : "doManagePageAction",
+		"creator/stories/:storyId/:vertical/:horizontal/links/:linkPos" : "doManagePageLinksAction",
 		"creator/stories/:storyId/:vertical/:horizontal/:formItemPos" : "doEditPageFormItemOptionsAction",
 		"" : "doIndexHomePageRequestedAction",
 	},
@@ -41,9 +40,21 @@ adventurio.routers.MainRouter = Backbone.Router.extend({
 			})
 		})
 	},
+	doManagePageLinksAction : function(storyId, vPos, hPos, linkPos) {
+		new adventurio.views.creator.PageLinkEditor({
+			parameter : {
+				'vPos' : vPos,
+				'hPos' : hPos,
+				'linkPos' : linkPos
+			},
+			model : new adventurio.models.StoryModel({
+				'_id' : storyId
+			})
+		});
+	},
 	doNavigatePagesRequestedAction : function(storyId, verticalFrom) {
-		console.log(storyId + "_" + verticalFrom );
-		if(verticalFrom == undefined) {
+		console.log(storyId + "_" + verticalFrom);
+		if (verticalFrom == undefined) {
 			verticalFrom = 1;
 		}
 

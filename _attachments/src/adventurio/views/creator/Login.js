@@ -1,6 +1,5 @@
-adventurio.views.creator.Login = adventurio.views.superClasses.Basic.extend({
+adventurio.views.creator.Login = adventurio.views.superClasses.BasicDialog.extend({
 	id : "page_creator_login",
-	role : "dialog",
 	model : adventurio.models.User,
 	getSpecificTemplateValues : function(){
 		return {
@@ -9,9 +8,11 @@ adventurio.views.creator.Login = adventurio.views.superClasses.Basic.extend({
 	},
 	events : {
 		"click a[type='submit']" : "login",
-		"click a[type='reset']" : "logout"
+		"click a[type='cancel']" : "logout"
 	},
-	login : function() {
+	login : function(clickEvent) {
+		clickEvent.preventDefault();
+		
 		var serializedJsonForm = $("form", this.el).first().serializeJSON();
 
 		this.model.login(serializedJsonForm.username, serializedJsonForm.password);
@@ -23,7 +24,11 @@ adventurio.views.creator.Login = adventurio.views.superClasses.Basic.extend({
 			}
 		}, this)
 	},
-	logout : function(){
+	logout : function(clickEvent){
+		clickEvent.preventDefault();
 		this.model.logout();
+	},
+	onSuccessfulValidation : function(){
+		
 	}
 });

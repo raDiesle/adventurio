@@ -4,6 +4,13 @@ adventurio.models.User = new (Backbone.Model.extend({
 	defaults : {
 		"name" : "guest"  
 	},
+	settings : {
+		validation : {
+			rules : {
+				
+			}
+		}
+	},
 	isAuthenticated: function(){
 		return this.get("name") !== this.defaults.name;
 	},

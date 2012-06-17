@@ -30,8 +30,8 @@ adventurio.views.superClasses.Basic = Backbone.View.extend({
 	},
 	render : function() {
 		this.cleanupPossiblePageDuplicationInDOM();
-		
-		$(this.el).html(this.getBasicPageTemplateResult());
+
+		$(this.el).html(this.getHTMLwithAddingHrefPagePrefix(this.getBasicPageTemplateResult()));
 
 		this.addPageToDOMAndRenderJQM();
 		
@@ -52,5 +52,10 @@ adventurio.views.superClasses.Basic = Backbone.View.extend({
 		if(alreadyInDom){
 			$previousEl.remove();
 		}
-	}
+	},
+		// Hack: if used anchor, # will be removed on first click on link, but not on second 
+	getHTMLwithAddingHrefPagePrefix : function(htmlContent){
+		// return htmlContent;
+		return htmlContent.replace(/href=\"#/g, "href=\"##");
+	},
 }); 

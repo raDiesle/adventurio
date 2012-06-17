@@ -4,16 +4,6 @@ adventurio.views.creator.CreateStory = adventurio.views.superClasses.Validateabl
 		return "Create new Story";
 	},
 	model : adventurio.models.SingleStorySingleton,
-	initialize : function() {
-		//_.bindAll(this, 'render');
-		// this.render();
-		
-		// $(this.el).on("click a[type='submit']", function(){
-			// console.warn("submitted");
-		// });
-		
-		$().ready($.proxy(this.render, this));
-	},
 	getSpecificTemplateValues : function(){
 		if(adventurio.models.SingleStorySingleton.tempNew != undefined) {
 			return adventurio.models.SingleStorySingleton.tempNew;
@@ -26,7 +16,7 @@ adventurio.views.creator.CreateStory = adventurio.views.superClasses.Validateabl
 		}, this.constructor.__super__.events);
 	},
 	onSuccessfulValidation : function() {
-		var storyToBeCreated = $("form", this.el).serializeJSON();
+		var storyToBeCreated = this.getFormData();
 		if(adventurio.models.User.isAuthenticated()) {
 			storyToBeCreated.user = adventurio.models.User.attributes.name;
 		}
