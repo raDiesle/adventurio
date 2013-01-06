@@ -12,6 +12,10 @@ adventurio.views.creator.BrowseStory = adventurio.views.superClasses.Basic.exten
 		return {
 			headerTitle : "Browse Story",
 			pages : this.model.get("levels")[this.options.parameter.verticalFrom - 1].pages,
+            addNewPage : {
+                hPos : this.model.getLatestPlusOneHPagePos(this.options.parameter.verticalFrom),
+                title : "Add new Page"
+            },
 			id : this.model.id,
 			vPos : this.options.parameter.verticalFrom
 		};

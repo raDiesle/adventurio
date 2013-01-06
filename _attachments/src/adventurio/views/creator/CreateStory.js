@@ -3,7 +3,7 @@ adventurio.views.creator.CreateStory = adventurio.views.superClasses.Validateabl
 	getHeaderTitle : function(){
 		return "Create new Story";
 	},
-	model : adventurio.models.SingleStorySingleton,
+	model : new adventurio.models.StoryModel(), // adventurio.models.SingleStorySingleton
 	getSpecificTemplateValues : function(){
 		if(adventurio.models.SingleStorySingleton.tempNew != undefined) {
 			return adventurio.models.SingleStorySingleton.tempNew;
@@ -24,8 +24,9 @@ adventurio.views.creator.CreateStory = adventurio.views.superClasses.Validateabl
 		adventurio.models.SingleStorySingleton.tempNew = storyToBeCreated;
 
 		this.model.save(storyToBeCreated, {
-			success : function(model, response) {
-				adventurio.routers.MainRouter.singleton.navigate("creator/stories/" + model.id + "/1/1", {
+			success : function(newCreatedStoryModel, response) {
+                adventurio.models.SingleStorySingleton = newCreatedStoryModel;
+				adventurio.routers.MainRouter.singleton.navigate("creator/stories/" + newCreatedStoryModel.id + "/1/1", {
 					trigger : true
 				});
 			}

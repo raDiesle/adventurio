@@ -7,7 +7,13 @@ adventurio.models.User = new (Backbone.Model.extend({
 	settings : {
 		validation : {
 			rules : {
-				
+                name : {
+                    "required" : true,
+                    "noSpecialChars" : true
+                },
+                password : {
+                    "required" : true
+                }
 			}
 		}
 	},

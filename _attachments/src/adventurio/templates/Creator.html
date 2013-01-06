@@ -7,7 +7,7 @@
 </script>
 
 <script id="template_creator_CreateOrEditStory" type="text/x-handlebars-template">
-	<form action="#" >
+	<form action="#customRedirect" >
 		<div data-role="fieldcontain">
 			<label for="editStory_storyName">Name: </label>
 			<input id="editStory_storyName" name="name" type="text" value="{{name}}"/>
@@ -29,8 +29,8 @@
 		<div data-role="controlgroup" data-type="horizontal">
 			<!-- <input  type="reset" value="cancel" />
 			<input  type="submit" value="submit" /> -->
-			<a href="#" data-role="button" >Cancel</a>
-			<a href="#" data-role="button" data-theme="b" type="submit">Submit</a>
+			<a href="#customRedirect" data-role="button" type="cancel" >Cancel</a>
+			<a href="#customRedirect" data-role="button" data-theme="b" type="submit">Submit</a>
 		</div>
 	</form>
 </script>
@@ -66,14 +66,14 @@
 	<div data-role="fieldcontain">
 		<form action="#">
 			<label for="login_username" >Username:</label>
-			<input type="text" name="username" id="login_username"/>
+			<input type="text" name="name" id="login_username"/>
 			
 			<label for="login_password" >Password:</label>
 			<input type="password" name="password" id="login_password"/>
 			
 			<div data-role="controlgroup" data-type="horizontal">
-				<a href="#" data-role="button" type="cancel">Logout</a>
-				<a href="#" data-role="button" data-theme="b" type="submit">Login</a>
+				<a href="#customRedirect" data-role="button" type="cancel">Logout</a>
+				<a href="#customRedirect" data-role="button" data-theme="b" type="submit">Login</a>
 			</div>
 		</form>
 	</div>
@@ -91,7 +91,14 @@
 		{{/fields}} 
 		
 		{{> template_creator_formitems_linkPageDecisions_display}}
+
+        {{> template_creator_formitems_delete_display}}
 	</ul>
+</script>
+
+
+<script id="template_creator_formitems_delete_display" type="text/x-handlebars-template">
+    <a href="#customRedirect" type="delete" data-role="button">Delete Page</a>
 </script>
 
 <script id="template_dialog_creator_fields_options" type="text/x-handlebars-template"> 
@@ -120,14 +127,13 @@
 	<div data-role="fieldcontain">
 		<form action="#" method="GET">
 				<label for="template_creator_link_options_value" >Label:</label>
-				<input type="text" name="value" id="template_creator_link_options_value" value="{{value}}" />
+				<input type="text" name="value" id="template_creator_link_options_value" value="{{field.value}}" />
+                {{whatis this}}
+                <a href="#creator/stories/{{storyId}}/{{vPos}}/{{hPos}}/links/{{linkPos}}/{{vPos}}" id="template_creator_link_options_destination" data-role="button">Select Destination</a>
 			{{> template_creator_page_options_buttons}}
 		</form>
 	</div>
 </script>
-
-
-
 
 <script id="template_creator_page_options_buttons" type="text/x-handlebars-template">
 	<div data-role="controlgroup" data-type="horizontal">
@@ -190,11 +196,18 @@
 	</div>
 	<div data-role="content">
 		<ul data-role="listview" data-theme="a" data-divendertheme="b">  <!-- class="ui-block-b transparent" data-inset="true" -->
+            {{whatis this}}
 			{{#pages}}
 			<li>
 				<a href="#creator/stories/{{../id}}/{{../vPos}}/{{hPos}}" data-ajax="false"><p>{{hPos}} {{header.value}}</p></a>
 			</li>
 			{{/pages}}
+            <li>
+                <a href="#creator/stories/{{id}}/{{vPos}}/{{addNewPage.hPos}}" data-ajax="false"><p>{{addNewPage.title}}</p></a>
+            </li>
+
+
+
 		</ul>
 	</div>
 	<div data-role="footer" data-position="fixed">

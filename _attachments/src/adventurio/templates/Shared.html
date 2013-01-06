@@ -2,7 +2,8 @@
 <script id="template_basic_page_simple" type="text/x-handlebars-template">
 	<div data-role="header">
 		<h2>{{headerTitle}}</h2>
-		<a href="#" data-icon="star" data-rel="back">Back</a>
+        {{whatis this}}
+		<a href="javascript:history.go(-1);" data-icon="star" id="backButton"  data-rel="back">Back</a>
 	</div>
 	<div data-role="content">
 		{{> templatePartialPageID}}

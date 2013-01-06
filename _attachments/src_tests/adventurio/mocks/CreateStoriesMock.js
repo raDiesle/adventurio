@@ -2,10 +2,9 @@ describe("No Test, just for creating mock data", function() {
 	it('creates some stories', function() {
 		
 		adventurio.models.User.on('change', createMocks, this);
-		adventurio.models.User.login("simpleUser", "trinity");
+		adventurio.models.User.login("simpleUser", "password");
 
-		
-		
+
 		// new adventurio.models.StoryModel().save({
 			// name : "",
 			// description : "",

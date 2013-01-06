@@ -28,6 +28,7 @@ var adventurio = adventurio || {
 		creator : {
 			ManageStory : {},
 			BrowseStory : {},
+            DestinationPageSelection : {},
 			ManagePage : {},
 			PageElementEditor : {},
 			PageLinkEditor : {},
@@ -41,7 +42,7 @@ var adventurio = adventurio || {
 		reader : {
 			Index : {},
 			Story : {},
-			Stories : {},
+			Stories : {}
 		}
 	},
 	mocks : {

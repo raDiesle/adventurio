@@ -35,42 +35,96 @@ adventurio.models.StoryModel = Backbone.Model.extend({ // Backbone.DeepModel.ext
 					pos : 3,
 					type : "statictext",
 					value : "You're in a forest, everything is dark. What do you want to do next?"
-				},
+				}
 				]
 			}]
 		}]
 	},
+    createNewPageDefaults : function(hPosToCreate) {
+        return {
+            hPos : hPosToCreate,
+                header : {
+            value : "New Page Title"
+        },
+            linkPageDecisions : [{
+                pos: 1,
+                vPos : 2,
+                hPos : 1,
+                value : "Go left"
+            },{
+                pos : 2,
+                vPos : 2,
+                hPos : 2,
+                value : "Go right"
+            }],
+                fields : [
+                 {
+                    pos : 1,
+                    type : "statictext",
+                    value : "Some new Text"
+                }
+        ]
+        }
+    },
 	attributes : {
-		
 		_id : {},
 		_rev : {},
-		copyValuesToSingletonNeeded : true,
+		copyValuesToSingletonNeeded : true
 	},
 	getModelPagePath : function(vPos, hPos){
+        assert(vPos != undefined, "vPos is undefined");
+        assert(hPos != undefined, "hPos is undefined");
+
 		return this.get("levels")[vPos-1].pages[hPos - 1];
 	},
+    getModelPagesPath : function(vPos){
+        assert(vPos != undefined, "vPos is undefined");
+        return this.get("levels")[vPos-1].pages;
+    },
 	getModelFieldsPath : function(vPos, hPos){
-		var getModelPagePath = this.getModelPagePath(vPos, hPos);
-		return getModelPagePath.fields;
+		var getModelPagePath = this.getModelPagePath(vPos, hPos).fields;
+		return getModelPagePath;
 	},
 	getModelLinksPath : function(vPos, hPos){
+        assert(vPos != undefined, "vPos is undefined");
+        assert(hPos != undefined, "hPos is undefined");
 		var getModelPagePath = this.getModelPagePath(vPos, hPos);
 		return getModelPagePath.linkPageDecisions;
 	},
-	getModelFieldValuePath : function(vPos, hPos, fieldPos){
+    getModelLinkPath : function(vPos, hPos, linkPos){
+        var modelLinkPath = this.getModelLinksPath(vPos, hPos);
+        return modelLinkPath[linkPos-1];
+    },
+    getModelFieldValuePath : function(vPos, hPos, fieldPos){
 		// return getModelFieldsPath(vPos, hPos) + "."+fieldPos+".value";
 		var getModelFieldPath = this.getModelFieldPath(vPos,hPos, fieldPos);
 		return getModelFieldPath.value;
 	},
 	getModelFieldPath : function(vPos, hPos, fieldPos){
-		// return getModelFieldsPath(vPos, hPos) + "."+fieldPos+".value";
 		var modelFieldsPath = this.getModelFieldsPath(vPos, hPos);
-		return modelFieldsPath[fieldPos-1];
+        return modelFieldsPath[fieldPos-1];
 	},
 	setModelFieldValue : function(vPos, hPos, fieldPos, newValue){
 		// return getModelFieldsPath(vPos, hPos) + "."+fieldPos+".value";
-		return this.get("levels").get(vPos-1).get("pages").get(hPos-1).get("fields").set({value : newValue});
+		this.get("levels").get(vPos-1).get("pages").get(hPos-1).get("fields").set({value : newValue});
+//        return this.get("levels").get(vPos-1).get("pages").get(hPos-1).get("fields").set({value : newValue});
 	},
+    getLatestPlusOneHPagePos : function(vPos){
+        var pageWithMaxHPos = _.max(this.get("levels")[vPos - 1].pages, function(singlePage){
+            return singlePage.hPos;
+        });
+        return pageWithMaxHPos.hPos  + 1;
+    },
+
+    deleteCurrentPage : function(vPos, hPos){
+        this.getModelPagesPath(vPos).remove(hPos);
+    },
+    addNewDefaultPage : function(vPos){
+        var newPageData = this.createNewPageDefaults(this.getLatestPlusOneHPagePos(vPos));
+        this.attributes.levels[vPos-1].pages.push(newPageData);
+        //this.trigger("change");
+        //this.set({levels : newLevels});
+    },
 	settings : {
 		validation : {
 			rules : {

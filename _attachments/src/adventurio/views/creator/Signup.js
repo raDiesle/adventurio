@@ -3,7 +3,7 @@ adventurio.views.creator.Signup = Backbone.View.extend({
 	id: "creator_signup",
 	model: adventurio.models.UserSingleton,
 	events : {
-		"click .submitButton" : "signup"
+		"click a[type='submit']" : "signup"
 	},
 	getSpecificTemplateValues : function(){
 		headerTitle : "Signup"

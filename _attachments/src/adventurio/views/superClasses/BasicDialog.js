@@ -11,7 +11,7 @@ adventurio.views.superClasses.BasicDialog = adventurio.views.superClasses.Valida
 		if(this.transparentBackgroundPageElID){
 			this.makeLastPageTransparent();
 		}
-		this._super("render", {});
+		this._super("render", []);
 	},
 	makeLastPageTransparent : function(){
 		$transparentBackgroundPageEl = $("#"+this.transparentBackgroundPageElID);

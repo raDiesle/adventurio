@@ -14,6 +14,6 @@ adventurio.views.creator.Stories = adventurio.views.superClasses.Basic.extend({
 		this._super("render", ["list creator stories"]);
 	},
 	events : {
-	},
+	}
 });
 

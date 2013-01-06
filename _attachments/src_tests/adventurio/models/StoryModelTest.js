@@ -1,19 +1,34 @@
 describe("Story Model operations", function() {
 
-	it('should get and set deep model structure', function() {
+    var story = "null";
+    beforeEach(function () {
+        story = new adventurio.models.StoryModel();
+    }),
+
+        it('should get and set deep model structure', function() {
 		// adventurio.routers.MainRouterSingleton.get().navigate("creator/stories/new", {trigger : true});
-		var story = new adventurio.models.StoryModel();
+
 		
 		var vPos = 1;
-		var hPos = 2;
-		var fieldPos = 3;
+		var hPos = 1;
+		var fieldPos = 1;
 		
 		var actualFieldsPath = story.getModelFieldsPath(vPos, hPos);
-		var actualFieldValuePath = story.getModelFieldValuePath(vPos, hPos, fieldPos)
-		
-		// story.get() missing
-		expect(actualFieldsPath).toBe(story.attributes.levels[0].pages[1].fields);
-		expect(actualFieldValuePath).toBe("another example");
+        expect(actualFieldsPath.length).toBe(3);
+
+		var actualFieldValuePath = story.getModelFieldValuePath(vPos, hPos, fieldPos);
+		expect(actualFieldValuePath).toBe("<h1>Please enter your name:</h1>");
 	});
+
+    it('should create new default page', function() {
+        var vPos = 1;
+        var hPos = 1;
+
+        var currentPageSize = story.getModelPagesPath(vPos).length;
+        expect(currentPageSize).toBe(1);
+        story.addNewDefaultPage(currentPageSize+1);
+        var newPageSize = story.getModelPagesPath(vPos).length;
+        expect(newPageSize).toBe(2);
+    });
 	
 });

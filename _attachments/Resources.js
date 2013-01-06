@@ -8,10 +8,10 @@ $LAB
  
  .script("ApplicationScope.js")
  .script(libFolder+"json2.js")
-// .script(libFolder+"jquery-1.7.1.js") // http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
+ .script(libFolder+"jquery-1.7.1.js") // duplicated http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
  
  .script("jqmInit.js")
- .script(libFolder+"jquery.mobile-1.1.0.js")
+ .script(libFolder+"jquery.mobile-1.1.1-rc1.js")
  
  .script(libFolder+"jquery.couch.js") // for signup november 2011 https://github.com/apache/couchdb/blob/master/share/www/script/jquery.couch.js
  .script(libFolder+"jquery.couch.app.js") // v 1.0.1 https://github.com/couchapp/couchapp/blob/master/couchapp/templates/vendor/couchapp/_attachments/jquery.couch.app.js
@@ -60,6 +60,7 @@ $LAB
  .script(srcFolder+"/adventurio/views/creator/PageLinkEditor.js")
  .script(srcFolder+"/adventurio/views/creator/ManagePage.js")
  .script(srcFolder+"/adventurio/views/creator/BrowseStory.js")
+ .script(srcFolder+"/adventurio/views/creator/DestinationPageSelection.js")
  .script(srcFolder+"/adventurio/views/creator/EditStory.js")
  .script(srcFolder+"/adventurio/views/creator/Signup.js")
  .script(srcFolder+"/adventurio/views/creator/Login.js")
