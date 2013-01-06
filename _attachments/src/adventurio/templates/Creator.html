@@ -105,7 +105,7 @@
 	<h3>Options for Item</h3>
 	<div data-role="fieldcontain">
 		<form action="#" method="GET">
-		
+		    {{whatis this}}
 			{{#ifFieldIsTypeOf this.field "statictext"}}
 				{{#$ .. }}{{> template_creator_formitems_statictext_options}}{{/$}}
 			{{/ifFieldIsTypeOf}}
@@ -196,7 +196,6 @@
 	</div>
 	<div data-role="content">
 		<ul data-role="listview" data-theme="a" data-divendertheme="b">  <!-- class="ui-block-b transparent" data-inset="true" -->
-            {{whatis this}}
 			{{#pages}}
 			<li>
 				<a href="#creator/stories/{{../id}}/{{../vPos}}/{{hPos}}" data-ajax="false"><p>{{hPos}} {{header.value}}</p></a>

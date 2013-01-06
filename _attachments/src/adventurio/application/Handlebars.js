@@ -57,7 +57,7 @@ Handlebars.registerHelper("ifFieldIsTypeOf", function(actualFormItem, formItemTy
 });
 
 Handlebars.registerHelper("getEditOptionsURLForCurrentField", function() {
-		return "#creator/stories/"+this._id+"/"+this.horizontal+"/"+this.vertical+"/"+this.$_.pos;
+		return "#creator/stories/"+this._id+"/"+this.vertical+"/"+this.horizontal+"/"+this.$_.pos;
 	}
 );
 

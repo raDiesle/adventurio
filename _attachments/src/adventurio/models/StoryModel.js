@@ -43,9 +43,9 @@ adventurio.models.StoryModel = Backbone.Model.extend({ // Backbone.DeepModel.ext
     createNewPageDefaults : function(hPosToCreate) {
         return {
             hPos : hPosToCreate,
-                header : {
-            value : "New Page Title"
-        },
+            header : {
+                value : "New Page Title"
+            },
             linkPageDecisions : [{
                 pos: 1,
                 vPos : 2,
@@ -117,7 +117,12 @@ adventurio.models.StoryModel = Backbone.Model.extend({ // Backbone.DeepModel.ext
     },
 
     deleteCurrentPage : function(vPos, hPos){
-        this.getModelPagesPath(vPos).remove(hPos);
+        //this.getModelPagesPath(vPos).remove(hPos-1);
+        this.get("levels")[vPos-1].pages = this.getModelPagesPath(vPos).slice(0,1);
+        //this.get("levels")[vPos-1].pages = this.getModelPagesPath(vPos);
+        //this.get("levels").get(vPos-1);
+        //this.get("levels").get(vPos-1).set({"pages" : this.getModelPagesPath(vPos)});
+        //this.trigger("change");
     },
     addNewDefaultPage : function(vPos){
         var newPageData = this.createNewPageDefaults(this.getLatestPlusOneHPagePos(vPos));

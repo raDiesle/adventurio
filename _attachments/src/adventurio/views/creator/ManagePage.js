@@ -21,7 +21,7 @@ adventurio.views.creator.ManagePage = adventurio.views.superClasses.Basic.extend
     getCurrentPage : function() {
         var requestedPage = this.model.getModelPagePath(this.options.parameter.vPos, this.options.parameter.hPos);
         if(requestedPage == undefined){
-            requestedPage = this.model.createNewPageDefaults();
+
             this.model.addNewDefaultPage(this.options.parameter.vPos);
 
             this.model.save(this.model.toJSON(), {
@@ -29,6 +29,7 @@ adventurio.views.creator.ManagePage = adventurio.views.superClasses.Basic.extend
                     console.log("successfully persisted new page");
                 }
             });
+            requestedPage = this.model.createNewPageDefaults();
         }
 		return requestedPage;
 	},
