@@ -1,4 +1,6 @@
-
+# choose your own adventure CYOA book creator editor online
+## create your own story
+### searching for contributors
 
 Configure in local.ini of couchdb:
 	bind_address = 127.0.0.1
