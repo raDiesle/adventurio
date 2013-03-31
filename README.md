@@ -1,5 +1,4 @@
 
-
 # choose your own adventure CYOA book creator editor online
 
 The idea is to create a Choose your own adventure text base social game
@@ -10,7 +9,10 @@ Technologies used:
 * JavaScript
 * jQuery Validator plugin
 * jQuery Mobile
+* jQuery
 * Backbone.js
+* Underscore
+* Handlebars
 * currently couchdb -> port later to appengine and google cloud storage
   ( Because of REST PATCH operation on JSON files and authorization)
 * couchdb authentication
@@ -18,6 +20,7 @@ Technologies used:
 * Goals: easy to use and understand, flexible and unlimited possibilities to customize, Offline Support, Multi language support, Tests, social connection
 
 Want to join or collaborate, contact me by david.amend@it-amend.de
+or chat at gmail or skype: raDies_chen
 
 Screenshots so far:
 
