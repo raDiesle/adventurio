@@ -18,11 +18,14 @@ creator, focused on mobile, but also working for desktop.
 * deprecated: couchdb authentication
 * Optional, jQuery Mobile can be exchanged with Twitter boostrap later on
 
-#### TODO, port to technologies:
+#### Planned, port to technologies:
 * Thorax and lumber
 * appengine
+* Python( minimum Server logic expected)
 * google cloud storage
   ( Because of REST PATCH operation on JSON files and authorization)
+* Extensive usage of Client-API
+  see https://developers.google.com/storage/docs/json_api/
 
 ### Jump in: Project explanation for developers
 
@@ -30,12 +33,15 @@ creator, focused on mobile, but also working for desktop.
 
 #### Overall Goals
 
+* easy for developers to join, JavaScript based
 * easy to use and understand
 * guide how to use
-* flexible and unlimited possibilities to customize
+* Flexible and unlimited possibilities to customize
 * Offline Support
+* Single Page App
 * Multi language support
-* Tests, social connection
+* Tests
+* Socializing features
 
 
 
