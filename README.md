@@ -3,6 +3,27 @@
 The idea is to create a Choose your own adventure text base social game
 creator, focused on mobile, but also working for desktop.
 
+## Overall Goals
+
+* easy for developers to join
+* JavaScript, REST and JSON based
+* Mobile First approach
+* Nice looking UI
+* Multi platform support
+* Easy to use and understand for users
+* Flexible and unlimited possibilities to customize
+* Offline Support
+* Single Page App
+* Multi language support
+* Tests
+* Socializing features
+
+
+
+* easy for developers to join, JavaScript based
+* easy, extendable architecture and technologies
+* Nice and understandable UI
+
 #### Technologies:
 
 * Very clear architecture, REST-based
@@ -26,22 +47,11 @@ creator, focused on mobile, but also working for desktop.
   ( Because of REST PATCH operation on JSON files and authorization)
 * Extensive usage of Client-API
   see https://developers.google.com/storage/docs/json_api/
-
+* oAuth
+* 
 ### Jump in: Project explanation for developers
 
 * a story = model is one complex json object
-
-#### Overall Goals
-
-* easy for developers to join, JavaScript based
-* easy to use and understand
-* guide how to use
-* Flexible and unlimited possibilities to customize
-* Offline Support
-* Single Page App
-* Multi language support
-* Tests
-* Socializing features
 
 
 
